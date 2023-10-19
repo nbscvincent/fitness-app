@@ -9,10 +9,16 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -53,16 +59,38 @@ class AbsBeg {
         }
         Column(
             modifier = Modifier
-                .padding(start = 15.dp),
-            verticalArrangement = Arrangement.Center,
+                .padding(top = 30.dp),
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start
         ) {
-            Text(
-                text = "ABS BEGINNER",
-                fontSize = 20.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold
-            )
+        SmallFloatingActionButton(
+            onClick = { },
+            containerColor = Color.Transparent,
+            modifier = Modifier.padding(start = 25.dp, end = 25.dp)
+        ) {
+            Icon(Icons.Filled.KeyboardArrowLeft, "Back")
+        }
+        }
+
+            Column(
+                modifier = Modifier
+                    .padding(start = 15.dp , top = 130.dp),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text = "ABS BEGINNER",
+                    fontSize = 20.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        Column(
+            modifier = Modifier
+                .padding(start = 20.dp , top = 200.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start
+        ) {
             Text(
                 text = " 20 mins • 16 Workouts",
                 fontSize = 13.sp,
@@ -70,12 +98,193 @@ class AbsBeg {
                 fontWeight = FontWeight.Bold
             )
         }
-        Button(
-            onClick = { },
-        ) {
-            Text("JUMPING JACKS", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)
-        }
 
+        LazyColumn(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            item {
+
+
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+
+                    ) {
+                    Text(
+                        "JUMPING JACKS",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp,
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "ABDOMINAL CRUNCHES",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "RUSSIAN TWIST",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "MOUNTAIN CLIMBERS",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "HEEL TOUCH",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "LEG RAISES",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "PLANK",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "ABDOMINAL CRUNCHES",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "RUSSIAN TWIST",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "MOUNTAIN CLIMBERS",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "HEEL TOUCH",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "LEG RAISES",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "PLANK",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "COBRA STRETCH",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "SPINE LUMBAR TWIST STRETCH LEFT",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+                Button(
+                    onClick = { },
+                    shape = RoundedCornerShape(1.dp),
+                ) {
+                    Text(
+                        "SPINE LUMBAR TWIST STRETCH RIGHT",
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp
+                    )
+                }
+            }
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,8 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.AbsInter
+import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.ChestInter
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.AbsBeg
+import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.ChestBeg
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +27,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val begabs = AbsBeg()
-                    begabs.absbeg()
+//                    val begabs = AbsBeg()
+//                    begabs.absbeg()
+            //        val interabs = AbsInter()
+            //        interabs.absinter()
+                    val begchest = ChestBeg()
+                    begchest.chestbeg()
+            //        val interchest = ChestInter()
+            //        interchest.chestinter()
+
                 }
             }
         }
