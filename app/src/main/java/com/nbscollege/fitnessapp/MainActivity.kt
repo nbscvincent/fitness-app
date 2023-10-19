@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
+import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.AbsBeg
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    val begabs = AbsBeg()
+                    begabs.absbeg()
                 }
             }
         }
@@ -34,6 +36,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier
+    )
+    Text(
+        text = ""
     )
 }
 
