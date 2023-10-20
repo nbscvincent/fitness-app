@@ -41,7 +41,6 @@ class ChestInter {
                 Icon(Icons.Filled.KeyboardArrowLeft, "Back")
             }
         }
-
         Column(
             modifier = Modifier
                 .padding(start = 15.dp, top = 130.dp),
@@ -71,15 +70,12 @@ class ChestInter {
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
-        ) {  // Your existing UI components here
-
-            // Call the ButtonList composable to display the buttons
+        ) {
+            // Calling the ButtonList composable to display the buttons
             ButtonList()
         }
 
     }
-
-
 
     @Composable
     fun ButtonList() {
@@ -98,7 +94,7 @@ class ChestInter {
 
                         ) {
                         Text(
-                            "JUMPING JACKS",
+                            "       JUMPING JACKS       ",
                             color = Color.Black,
                             fontWeight = FontWeight.Bold,
                             fontSize = 13.sp,
@@ -241,7 +237,9 @@ class ChestInter {
                 }
             }
 
-
+// last brace for buttonlist
         }
+
+    // last brace for class
     }
 
