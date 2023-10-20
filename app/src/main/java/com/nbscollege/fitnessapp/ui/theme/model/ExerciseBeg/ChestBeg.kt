@@ -73,7 +73,7 @@ class ChestBeg {
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
-                            .graphicsLayer(translationY = 200f, translationX = 30f)
+                            .graphicsLayer(translationY = 170f, translationX = 30f)
                     )
                     Text(
                         text = " 20 mins • 16 Workouts",
@@ -102,7 +102,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-
+                                modifier = Modifier.fillMaxWidth(),
                                 ) {
                                 Text(
                                     "JUMPING JACKS",
@@ -114,6 +114,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "ABDOMINAL CRUNCHES",
@@ -125,6 +126,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "RUSSIAN TWIST",
@@ -136,6 +138,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "MOUNTAIN CLIMBERS",
@@ -147,6 +150,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "HEEL TOUCH",
@@ -158,6 +162,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "LEG RAISES",
@@ -169,6 +174,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "PLANK",
@@ -180,6 +186,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "ABDOMINAL CRUNCHES",
@@ -191,6 +198,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "RUSSIAN TWIST",
@@ -202,6 +210,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "MOUNTAIN CLIMBERS",
@@ -213,6 +222,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "HEEL TOUCH",
@@ -224,6 +234,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "LEG RAISES",
@@ -235,6 +246,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "PLANK",
@@ -246,6 +258,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "COBRA STRETCH",
@@ -257,6 +270,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "SPINE LUMBAR TWIST STRETCH LEFT",
@@ -268,6 +282,7 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
                                     "SPINE LUMBAR TWIST STRETCH RIGHT",

@@ -33,8 +33,8 @@ class MainActivity : ComponentActivity() {
             //        interabs.absinter()
                     val begchest = ChestBeg()
                     begchest.chestbeg()
-            //        val interchest = ChestInter()
-            //        interchest.chestinter()
+//                    val interchest = ChestInter()
+//                    interchest.chestinter()
 
                 }
             }

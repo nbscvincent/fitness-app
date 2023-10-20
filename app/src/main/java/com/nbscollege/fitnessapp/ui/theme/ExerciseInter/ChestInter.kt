@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 
 class ChestInter {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -36,7 +37,9 @@ class ChestInter {
             SmallFloatingActionButton(
                 onClick = { },
                 containerColor = Color.Transparent,
-                modifier = Modifier.padding(start = 25.dp, end = 25.dp)
+                modifier = Modifier
+                    .padding(start = 25.dp, end = 25.dp)
+                    .zIndex(1f)
             ) {
                 Icon(Icons.Filled.KeyboardArrowLeft, "Back")
             }
