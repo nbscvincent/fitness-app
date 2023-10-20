@@ -63,6 +63,7 @@ class HomeScreen {
     @Composable
     fun homescreen() {
 
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -70,25 +71,35 @@ class HomeScreen {
                 .background(Color.White), verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            // HEADER TITLE
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp)
                     .padding(bottom = 800.dp)
-                    .background(Color.Gray)
-                    .padding(20.dp)
+                    .background(Color.White)
                     .padding(horizontal = 16.dp),
 
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                // Back icon
+                // TITLE HEADER
                 Text(
                     text = "FITNESS WORKOUT",
-                    color= Color.Black
+                    color= Color.Black,
+                    fontSize = 25.sp
+
                 )
 
             }
         }
+
+        // SECTION
+
+        Text(text = "Beginner Exercise",
+            color= Color.Black,
+            fontSize = 25.sp,
+        )
 
     }
 }
