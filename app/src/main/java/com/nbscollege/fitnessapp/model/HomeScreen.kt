@@ -78,8 +78,10 @@ class HomeScreen {
                     .fillMaxWidth()
                     .padding(top = 20.dp)
                     .padding(bottom = 800.dp)
-                    .background(Color.White)
-                    .padding(horizontal = 16.dp),
+                    .padding(5.dp)
+                    .background(Color.White),
+
+
 
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
@@ -87,18 +89,23 @@ class HomeScreen {
                 Text(
                     text = "FITNESS WORKOUT",
                     color= Color.Black,
+                    fontWeight = FontWeight.Bold,
                     fontSize = 25.sp
+
 
                 )
 
             }
+
         }
 
-        // SECTION
-
-        Text(text = "Beginner Exercise",
+        // SECTION BEGINNER
+        Text(text = "Beginner",
             color= Color.Black,
-            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold,
+            fontSize = 20.sp,
+
+            modifier = Modifier.padding(top = 70.dp).padding(5.dp)
         )
 
     }
