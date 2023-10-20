@@ -54,6 +54,7 @@ class ChestBeg {
                         modifier = Modifier
                             .padding(start = 5.dp, end = 5.dp)
                             .zIndex(1f)
+
                     ) {
                         Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                     }
