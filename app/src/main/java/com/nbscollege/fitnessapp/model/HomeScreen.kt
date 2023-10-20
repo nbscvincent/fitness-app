@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -62,51 +63,41 @@ import androidx.compose.ui.unit.sp
 class HomeScreen {
     @Composable
     fun homescreen() {
-
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .fillMaxWidth()
-                .background(Color.White), verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+                .background(Color.White),
 
+        ) {
             // HEADER TITLE
-            Row(
+            Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 20.dp)
-                    .padding(bottom = 800.dp)
-                    .padding(5.dp)
-                    .background(Color.White),
-
-
-
-                horizontalArrangement = Arrangement.SpaceBetween
+                    .background(Color.LightGray)
             ) {
-                // TITLE HEADER
                 Text(
                     text = "FITNESS WORKOUT",
-                    color= Color.Black,
+                    color = Color.Black,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp
-
-
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(top = 20.dp)
+                    
                 )
-
             }
 
+            // SECTION BEGINNER
+            Text(
+                text = "Beginner",
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontSize = 20.sp,
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .background(Color.Red)
+
+            )
         }
-
-        // SECTION BEGINNER
-        Text(text = "Beginner",
-            color= Color.Black,
-            fontWeight = FontWeight.Bold,
-            fontSize = 20.sp,
-
-            modifier = Modifier.padding(top = 70.dp).padding(5.dp)
-        )
-
     }
 }
