@@ -134,7 +134,7 @@ class ChestBeg {
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 10.dp)
+                                        .padding(start = 42.dp)
                                 )
                             }
                             Button(
@@ -155,7 +155,7 @@ class ChestBeg {
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 45.dp)
+                                        .padding(start = 77.dp)
                                 )
                             }
                             Button(
@@ -175,6 +175,8 @@ class ChestBeg {
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 39.dp)
                                 )
                             }
                             Button(
@@ -195,7 +197,7 @@ class ChestBeg {
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 45.dp)
+                                        .padding(start = 70.dp)
                                 )
                             }
                             Button(
@@ -214,7 +216,9 @@ class ChestBeg {
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 28.dp)
                                 )
                             }
                             Button(
@@ -229,11 +233,13 @@ class ChestBeg {
                                 Text(
                                     "LEG RAISES"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "16x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 20.dp)
                                 )
                             }
                             Button(
@@ -248,11 +254,12 @@ class ChestBeg {
                                 Text(
                                     "PLANK"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "00:20"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+
                                 )
                             }
                             Button(
@@ -267,13 +274,13 @@ class ChestBeg {
                                 Text(
                                     "ABDOMINAL CRUNCHES"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "12x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 45.dp)
+                                        .padding(start = 77.dp)
                                 )
                             }
                             Button(
@@ -288,11 +295,13 @@ class ChestBeg {
                                 Text(
                                     "RUSSIAN TWIST"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "32x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                    .padding(start = 39.dp)
                                 )
                             }
                             Button(
@@ -307,13 +316,13 @@ class ChestBeg {
                                 Text(
                                     "MOUNTAIN CLIMBERS"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "12x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 45.dp)
+                                        .padding(start = 70.dp)
                                 )
                             }
                             Button(
@@ -332,7 +341,9 @@ class ChestBeg {
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 28.dp)
                                 )
                             }
                             Button(
@@ -347,11 +358,13 @@ class ChestBeg {
                                 Text(
                                     "LEG RAISES"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "14x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 20.dp)
                                 )
                             }
                             Button(
@@ -366,7 +379,7 @@ class ChestBeg {
                                 Text(
                                     "PLANK"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "00:30"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
@@ -385,7 +398,7 @@ class ChestBeg {
                                 Text(
                                     "COBRA STRETCH"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "00:30"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
@@ -406,13 +419,13 @@ class ChestBeg {
                                 Text(
                                     "SPINE LUMBAR TWIST STRETCH LEFT"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "00:30"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 75.dp)
+                                        .padding(start = 135.dp)
                                 )
                             }
                             Button(
@@ -427,13 +440,13 @@ class ChestBeg {
                                 Text(
                                     "SPINE LUMBAR TWIST STRETCH RIGHT"+
                                             "\n"+"\n"+
-                                            "20x"+
+                                            "00:30"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                        .padding(start = 75.dp)
+                                        .padding(start = 135.dp)
                                 )
                             }
                         }
