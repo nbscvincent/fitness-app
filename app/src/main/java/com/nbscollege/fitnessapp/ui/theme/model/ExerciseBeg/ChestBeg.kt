@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -105,7 +106,10 @@ class ChestBeg {
                                 modifier = Modifier.fillMaxWidth(),
                                 ) {
                                 Text(
-                                    "JUMPING JACKS",
+                                    "JUMPING JACKS"+
+                                            "\n"+"\n"+
+                                            "00:20"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
@@ -117,7 +121,10 @@ class ChestBeg {
                                 modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
-                                    "ABDOMINAL CRUNCHES",
+                                    "ABDOMINAL CRUNCHES"+
+                                            "\n"+"\n"+
+                                            "16x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp
@@ -129,7 +136,10 @@ class ChestBeg {
                                 modifier = Modifier.fillMaxWidth(),
                             ) {
                                 Text(
-                                    "RUSSIAN TWIST",
+                                    "RUSSIAN TWIST"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp
@@ -139,9 +149,14 @@ class ChestBeg {
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "MOUNTAIN CLIMBERS",
+                                    "MOUNTAIN CLIMBERS"+
+                                            "\n"+"\n"+
+                                            "16x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp
