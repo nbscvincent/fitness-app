@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp.model
 
+import android.graphics.Paint.Align
 import android.provider.CalendarContract.Colors
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -82,8 +84,8 @@ class HomeScreen {
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     modifier = Modifier
-                        .padding(top = 20.dp)
-                    
+                        .padding(20.dp),
+
                 )
             }
 
