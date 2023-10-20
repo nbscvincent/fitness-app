@@ -82,7 +82,7 @@ class ChestBeg {
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
-                            .graphicsLayer(translationY = 290f, translationX = 30f)
+                            .graphicsLayer(translationY = 300f, translationX = 25f)
                     )
                 }
             }
@@ -97,13 +97,33 @@ class ChestBeg {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+//                        item{
+//                            Column (
+//                                modifier = Modifier
+//                                .padding(start = 30.dp , end = 25.dp),
+//                                horizontalAlignment = Alignment.Start
+//                            ){
+//                                Text(
+//                                    text = " 20 mins • 16 Workouts",
+//                                    fontSize = 13.sp,
+//                                    color = Color.White,
+//                                    fontWeight = FontWeight.Bold,
+//                                    modifier = Modifier
+//                                    .zIndex(1f)
+//                                    .graphicsLayer(translationY = 290f, translationX = 30f)
+//                                        .padding(start = 30.dp,)
+//                                )
+//                            }
+//                        }
                         item {
-
-
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                                 ) {
                                 Text(
                                     "JUMPING JACKS"+
@@ -113,17 +133,84 @@ class ChestBeg {
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 10.dp)
                                 )
                             }
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
                                     "ABDOMINAL CRUNCHES"+
                                             "\n"+"\n"+
                                             "16x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 45.dp)
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "RUSSIAN TWIST"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "MOUNTAIN CLIMBERS"+
+                                            "\n"+"\n"+
+                                            "16x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 45.dp)
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "HEEL TOUCH"+
+                                            "\n"+"\n"+
+                                            "20x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
@@ -133,7 +220,70 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "LEG RAISES"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "PLANK"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "ABDOMINAL CRUNCHES"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 45.dp)
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
                                     "RUSSIAN TWIST"+
@@ -148,14 +298,37 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.White),
                             ) {
                                 Text(
                                     "MOUNTAIN CLIMBERS"+
                                             "\n"+"\n"+
-                                            "16x"+
+                                            "20x"+
+                                            "\n"+"\n",
+                                    color = Color.Black,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 45.dp)
+                                )
+                            }
+                            Button(
+                                onClick = { },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
+                            ) {
+                                Text(
+                                    "HEEL TOUCH"+
+                                            "\n"+"\n"+
+                                            "20x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
@@ -165,10 +338,17 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "HEEL TOUCH",
+                                    "LEG RAISES"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp
@@ -177,10 +357,17 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "LEG RAISES",
+                                    "PLANK"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp
@@ -189,121 +376,64 @@ class ChestBeg {
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "PLANK",
+                                    "COBRA STRETCH"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 45.dp)
                                 )
                             }
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "ABDOMINAL CRUNCHES",
+                                    "SPINE LUMBAR TWIST STRETCH LEFT"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 75.dp)
                                 )
                             }
                             Button(
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
+                                modifier = Modifier
+                                    .border(1.dp, color = Color.Black)
+                                    .fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.White),
                             ) {
                                 Text(
-                                    "RUSSIAN TWIST",
+                                    "SPINE LUMBAR TWIST STRETCH RIGHT"+
+                                            "\n"+"\n"+
+                                            "20x"+
+                                            "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "MOUNTAIN CLIMBERS",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "HEEL TOUCH",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "LEG RAISES",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "PLANK",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "COBRA STRETCH",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "SPINE LUMBAR TWIST STRETCH LEFT",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
-                                )
-                            }
-                            Button(
-                                onClick = { },
-                                shape = RoundedCornerShape(1.dp),
-                                modifier = Modifier.fillMaxWidth(),
-                            ) {
-                                Text(
-                                    "SPINE LUMBAR TWIST STRETCH RIGHT",
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp
+                                    fontSize = 13.sp,
+                                    modifier = Modifier
+                                        .padding(start = 75.dp)
                                 )
                             }
                         }
