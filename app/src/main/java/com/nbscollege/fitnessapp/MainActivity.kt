@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.example.model.LogInScreen
+import com.example.example.model.SignUpScreen
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,29 +20,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             FitnessAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                var log = SignUpScreen()
+                log.SignUp()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FitnessAppTheme {
-        Greeting("Android")
     }
 }
