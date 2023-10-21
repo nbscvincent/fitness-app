@@ -302,8 +302,8 @@ class SignUpScreen {
                 }
                 // "Terms and Conditions" Button
                 Text(
-                    text = "By continuing you accept thea",
-                    fontSize = 8.sp,
+                    text = "By continuing you accept the",
+                    fontSize = 9.sp,
                     color = Color.Black
                 )
 
@@ -312,12 +312,12 @@ class SignUpScreen {
                         // Handle "Terms and Conditions" button click
                     }
                 ) {
-                    Text("Privacy Policy", color = Color.Blue, fontSize = 8.sp)
+                    Text("Privacy Policy", color = Color.Blue, fontSize = 9.sp)
                 }
 
                 Text(
                     text = "and",
-                    fontSize = 12.sp,
+                    fontSize = 9.sp,
                     color = Color.Black
                 )
 
@@ -326,7 +326,7 @@ class SignUpScreen {
                         // Handle "Conditions" button click
                     }
                 ) {
-                    Text("Terms of Use.", color = Color.Blue, fontSize = 8.sp)
+                    Text("Terms of Use.", color = Color.Blue, fontSize = 9.sp)
                 }
             }
 
