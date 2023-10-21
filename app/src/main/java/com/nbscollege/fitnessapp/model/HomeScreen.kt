@@ -98,7 +98,7 @@ class HomeScreen {
                 fontSize = 20.sp,
                 modifier = Modifier
                     .padding(top = 16.dp)
-                    .background(Color.Red)
+
             )
         }
     }
