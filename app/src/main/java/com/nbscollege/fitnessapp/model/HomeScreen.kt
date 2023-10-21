@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
+import android.graphics.Paint.Align
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.compose.foundation.background
@@ -131,8 +132,7 @@ class HomeScreen {
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
-                                    modifier = Modifier
-                                        .padding(start = 11.dp)
+                                    modifier = Modifier.padding(end = 200.dp).padding(top = 20.dp)
 
                                 )
                             }
