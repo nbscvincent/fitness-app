@@ -90,7 +90,7 @@ class HomeScreen {
         { innerPadding ->
 
             Column(
-                modifier = Modifier,
+                modifier = Modifier.padding(top = 100.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -98,17 +98,17 @@ class HomeScreen {
                 Text(
                     text = "BEGINNER",
                     fontSize = 20.sp,
-                    color = Color.Black,
+                    color = Color.White,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        //.graphicsLayer(translationY = 100f, translationX = 30f)
+                        .padding(end = 300.dp)
                 )
 
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .fillMaxHeight()
-                        .padding(top= 100.dp)
+                        //.padding(top= 50.dp)
                         .background(Color.White),
                     contentAlignment = Alignment.Center
                 ) {
