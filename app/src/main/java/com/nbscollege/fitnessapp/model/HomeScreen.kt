@@ -71,6 +71,7 @@ class HomeScreen {
                 Box(
                     modifier = Modifier
                         .height(70.dp)
+                        .padding(bottom=10.dp)
                         .fillMaxWidth()
                         .background(Color.LightGray)
                 ) {
@@ -88,7 +89,7 @@ class HomeScreen {
         { innerPadding ->
 
             Column(
-                modifier = Modifier.padding(top = 100.dp),
+                modifier = Modifier,
 
             ) {
 
