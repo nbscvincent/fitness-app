@@ -70,9 +70,10 @@ class HomeScreen {
                 .fillMaxSize()
                 .fillMaxWidth()
                 .background(Color.White),
-
         ) {
+
             // HEADER TITLE
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -85,11 +86,11 @@ class HomeScreen {
                     fontSize = 25.sp,
                     modifier = Modifier
                         .padding(20.dp),
-
                 )
             }
 
             // SECTION BEGINNER
+
             Text(
                 text = "Beginner",
                 color = Color.Black,
@@ -98,7 +99,6 @@ class HomeScreen {
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .background(Color.Red)
-
             )
         }
     }
