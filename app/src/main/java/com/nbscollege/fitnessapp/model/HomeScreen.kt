@@ -21,18 +21,22 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -63,43 +67,61 @@ import androidx.compose.ui.unit.sp
 
 
 class HomeScreen {
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen() {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .fillMaxWidth()
-                .background(Color.White),
-        ) {
 
-            // HEADER TITLE
+        var presses by remember { mutableIntStateOf(0) }
 
-            Box(
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    colors = topAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary,
+                    ),
+                    title = {
+                        Text("Top app bar")
+                    }
+                )
+            },
+            bottomBar = {
+                BottomAppBar(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    contentColor = MaterialTheme.colorScheme.primary,
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        textAlign = TextAlign.Center,
+                        text = "Bottom app bar",
+                    )
+                }
+            },
+            floatingActionButton = {
+                FloatingActionButton(onClick = { presses++ }) {
+                    Icon(Icons.Default.Add, contentDescription = "Add")
+                }
+            }
+        ) { innerPadding ->
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.LightGray)
+                    .padding(innerPadding),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
                 Text(
-                    text = "FITNESS WORKOUT",
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
-                    modifier = Modifier
-                        .padding(20.dp),
+                    modifier = Modifier.padding(8.dp),
+                    text =
+                    """
+                    This is an example of a scaffold. It uses the Scaffold composable's parameters to create a screen with a simple top app bar, bottom app bar, and floating action button.
+
+                    It also contains some basic inner content, such as this text.
+
+                    You have pressed the floating action button $presses times.
+                """.trimIndent(),
                 )
             }
-
-            // SECTION BEGINNER
-
-            Text(
-                text = "Beginner",
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                fontSize = 20.sp,
-                modifier = Modifier
-                    .padding(top = 16.dp)
-
-            )
         }
+
     }
 }
