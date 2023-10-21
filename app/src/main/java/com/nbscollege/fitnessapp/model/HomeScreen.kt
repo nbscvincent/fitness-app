@@ -91,8 +91,7 @@ class HomeScreen {
 
             Column(
                 modifier = Modifier.padding(top = 100.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+
             ) {
 
                 Text(
@@ -101,7 +100,7 @@ class HomeScreen {
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(end = 300.dp)
+                        .graphicsLayer(translationX = 30f),
                 )
 
                 Box(
