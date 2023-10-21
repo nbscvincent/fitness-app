@@ -9,6 +9,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -71,7 +72,6 @@ class HomeScreen {
                 Box(
                     modifier = Modifier
                         .height(70.dp)
-                        .padding(bottom=10.dp)
                         .fillMaxWidth()
                         .background(Color.LightGray)
                 ) {
@@ -83,11 +83,15 @@ class HomeScreen {
                         modifier = Modifier
                             .graphicsLayer(translationY = 70f, translationX = 30f)
                     )
+
                 }
             },
-        )
-        { innerPadding ->
 
+        )
+
+
+
+        { innerPadding ->
             Column(
                 modifier = Modifier,
 
