@@ -65,7 +65,6 @@ class HomeScreen {
     @Composable
     fun homescreen() {
 
-
         Scaffold(
             topBar = {
                 Box(
@@ -81,9 +80,7 @@ class HomeScreen {
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .graphicsLayer(translationY = 70f, translationX = 30f)
-
                     )
-
                 }
             },
         )
@@ -127,9 +124,9 @@ class HomeScreen {
                                     containerColor = Color.White),
                             ) {
                                 Text(
-                                    "JUMPING JACKS"+
+                                    "ABS BEGINNER"+
                                             "\n"+"\n"+
-                                            "00:20"+
+                                            "20 MINS" + " - " + "16 EXERCISES" +
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
