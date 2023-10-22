@@ -89,31 +89,28 @@ class HomeScreen {
 
         )
 
-
-
         { innerPadding ->
+
             Column(
                 modifier = Modifier,
 
-            ) {
-
+                ) {
                 Text(
                     text = "BEGINNER",
                     fontSize = 20.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier
-                        .graphicsLayer(translationX = 30f),
+                    modifier = Modifier.padding(),
                 )
 
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .fillMaxHeight()
                         //.padding(top= 50.dp)
                         .background(Color.White),
                     contentAlignment = Alignment.Center
                 ) {
+
                     LazyColumn(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -124,7 +121,7 @@ class HomeScreen {
                                 onClick = { },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
-                                    .border(1.dp, color = Color.Black)
+                                    .border(0.5.dp, color = Color.LightGray)
                                     .fillMaxWidth(),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.White),
@@ -431,9 +428,12 @@ class HomeScreen {
                         }
                     }
                 }
+
             }
 
+
         }
+
     }
 }
 
