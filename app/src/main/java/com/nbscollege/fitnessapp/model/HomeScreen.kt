@@ -91,17 +91,25 @@ class HomeScreen {
 
         { innerPadding ->
 
+
             Column(
                 modifier = Modifier,
 
                 ) {
-                Text(
-                    text = "BEGINNER",
-                    fontSize = 20.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(),
-                )
+
+                Column (
+                    modifier = Modifier
+                        .padding(top=50.dp)
+                        .fillMaxSize()
+                ) {
+                    Text(
+                        text = "BEGINNER",
+                        fontSize = 20.sp,
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(),
+                    )
+                }
 
                 Box(
                     modifier = Modifier
@@ -115,6 +123,8 @@ class HomeScreen {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+
+
                         item {
 
                             Button(
