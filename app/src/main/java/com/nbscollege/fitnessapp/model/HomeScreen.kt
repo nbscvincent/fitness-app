@@ -67,6 +67,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.background
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Search
 
 import androidx.compose.material3.Icon
 
@@ -84,23 +86,14 @@ class HomeScreen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen() {
-        val context = LocalContext.current
-        val density = LocalDensity.current.density
-
-        val topBarModifier = Modifier.background(Color.White)
 
         Scaffold(
 
             topBar = {
-
                 TopAppBar(
-                        title = {
-                            Text("Top app bar")
-                        },
-
-                    )
+                    title = { Text(text = "Top Bar Title") },
+                )
             },
-
             bottomBar = {
                 BottomAppBar {
                     Row(

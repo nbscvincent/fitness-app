@@ -44,3 +44,15 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+
+@Composable
+fun MyApp(content: @Composable () -> Unit) {
+    MaterialTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = Color.White,
+        ) {
+            content()
+        }
+    }
+}
