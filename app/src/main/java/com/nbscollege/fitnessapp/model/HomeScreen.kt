@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
+import androidx.benchmark.perfetto.Row
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -89,18 +90,15 @@ class HomeScreen {
         val topBarModifier = Modifier.background(Color.White)
 
         Scaffold(
+
             topBar = {
 
-                    TopAppBar(
-                        modifier = topBarModifier,
-
+                TopAppBar(
                         title = {
-                                Text(text = "FITNESS WORKOUT")
-                            },
+                            Text("Top app bar")
+                        },
 
                     )
-
-
             },
 
             bottomBar = {
@@ -123,7 +121,7 @@ class HomeScreen {
                             modifier = Modifier
                                 .width(0.5.dp) // Adjust the width of the divider
                                 .fillMaxHeight()
-                                .background(Color.Black) // Color of the divider line
+                                .background(Color.White) // Color of the divider line
                         )
 
                         IconButton(modifier = Modifier.padding(top = 10.dp),
@@ -138,7 +136,7 @@ class HomeScreen {
                             modifier = Modifier
                                 .width(0.5.dp) // Adjust the width of the divider
                                 .fillMaxHeight()
-                                .background(Color.Black) // Color of the divider line
+                                .background(Color.White) // Color of the divider line
                         )
 
                         IconButton(modifier = Modifier.padding(top = 10.dp),
