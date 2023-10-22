@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -55,8 +56,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 
-private val Any.Report: Any
-    get() { TODO ()}
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.unit.dp
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.remember
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.foundation.background
+
+import androidx.compose.material3.Icon
+
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+
+
+
+
 
 class HomeScreen {
 
@@ -68,22 +86,32 @@ class HomeScreen {
         val context = LocalContext.current
         val density = LocalDensity.current.density
 
+        val topBarModifier = Modifier.background(Color.White)
+
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Text(text = "FITNESS WORKOUT")
-                    },
 
-                )
+                    TopAppBar(
+                        modifier = topBarModifier,
+
+                        title = {
+                                Text(text = "FITNESS WORKOUT")
+                            },
+
+                    )
+
+
             },
+
             bottomBar = {
                 BottomAppBar {
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(Color.White),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        IconButton(
+                        IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
                                 // Handle Home button click
                             }
@@ -91,14 +119,14 @@ class HomeScreen {
                             Icon(imageVector = Icons.Default.Home, contentDescription = "Home")
                         }
 
-                        Spacer(
+                        Divider(
                             modifier = Modifier
-                                .width(2.dp) // Adjust the width of the divider
+                                .width(0.5.dp) // Adjust the width of the divider
                                 .fillMaxHeight()
-                                .background(Color.White) // Color of the divider line
+                                .background(Color.Black) // Color of the divider line
                         )
 
-                        IconButton(
+                        IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
                                 // Handle Report button click
                             }
@@ -106,14 +134,14 @@ class HomeScreen {
                             Icon(imageVector = Icons.Default.Add, contentDescription = "Report")
                         }
 
-                        Spacer(
+                        Divider(
                             modifier = Modifier
-                                .width(2.dp) // Adjust the width of the divider
+                                .width(0.5.dp) // Adjust the width of the divider
                                 .fillMaxHeight()
-                                .background(Color.White) // Color of the divider line
+                                .background(Color.Black) // Color of the divider line
                         )
 
-                        IconButton(
+                        IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
                                 // Handle Settings button click
                             }
@@ -125,8 +153,7 @@ class HomeScreen {
                         }
                     }
                 }
-            }
-            ,
+            },
         ) { innerPadding ->
             // Content of your screen goes here
             Column(
@@ -135,10 +162,14 @@ class HomeScreen {
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-                // Add your content here
+                Text(
+                    text = "EDI WOW"
+                )
             }
         }
     }
+
+
 
 }
 
