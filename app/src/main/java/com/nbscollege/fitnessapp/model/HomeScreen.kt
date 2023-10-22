@@ -161,7 +161,7 @@ class HomeScreen {
                     .padding(innerPadding)
             ) {
                 Text(
-                    text = "EDI WOW"
+                    text = "Beginner"
                 )
             }
         }
