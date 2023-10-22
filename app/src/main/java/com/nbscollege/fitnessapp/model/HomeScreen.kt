@@ -109,7 +109,7 @@ class HomeScreen {
                     title = {
                         Text(text = "Top Bar Title")
                     },
-                    backgroundColor = Color.Red;
+
                 )
             },
             bottomBar = {
