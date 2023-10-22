@@ -87,11 +87,13 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.Image
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-
-
-
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import com.nbscollege.fitnessapp.R
 
 
 class HomeScreen {
@@ -102,15 +104,26 @@ class HomeScreen {
     @Composable
     fun homescreen() {
 
+
         Scaffold(
 
             topBar = {
-                TopAppBar(
-                    title = {
-                        Text(text = "Top Bar Title")
-                    },
 
-                )
+                Box(
+                    modifier = Modifier
+                        .height(50.dp).background(Color.White).fillMaxWidth()
+                ) {
+                            Text(
+                                text = "FITNESS WORKOUT",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 25.sp,
+                                color = Color.Black,
+                                modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                            )
+
+
+                }
+
             },
             bottomBar = {
                 BottomAppBar {
@@ -165,21 +178,454 @@ class HomeScreen {
             },
         ) { innerPadding ->
             // Content of your screen goes here
+
             Column(
                 modifier = Modifier
                     .background(Color.White)
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-                Text(
-                    text = "Beginner"
-                )
+
+                LazyColumn(
+
+                ) {
+                    item {
+
+                        // ------ BEGINNER ----- //
+                        Text(
+                            text = "BEGINNER",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier.graphicsLayer(translationY = 50f, translationX = 30f)
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "ABS BEGINNER",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 30.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "CHEST BEGINNER",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "ARM BEGINNER",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "LEG BEGINNER",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "SHOULDER & BACK BEGINNER",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        // ----- START INTER WORKOUT ------ //
+
+                        Text(
+                            text = "INTERMEDIATE",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "ABS INTERMEDIATE",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "CHEST INTERMEDIATE",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "ARM INTERMEDIATE",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "LEG INTERMEDIATE",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(150.dp)
+                                .padding(8.dp)
+                        ) {
+                            // Background image
+                            Image(
+                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                contentDescription = null,
+                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(16.dp))
+                            )
+
+                            // TextButton
+                            Button(
+                                onClick = {
+
+                                },
+                                shape = RoundedCornerShape(1.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .height(150.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
+                            ) {
+                                Text(
+                                    text = "SHOULDER INTERMEDIATE",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 13.sp,
+                                    modifier = Modifier.padding(start = 11.dp)
+                                )
+                            }
+                        }
+
+
+                    }
+                }
             }
         }
     }
-
-
-
 }
+
+
 
 
