@@ -75,6 +75,21 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
 
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import androidx.activity.compose.BackHandler
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Icon
+
 
 
 
@@ -91,7 +106,10 @@ class HomeScreen {
 
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Top Bar Title") },
+                    title = {
+                        Text(text = "Top Bar Title")
+                    },
+                    backgroundColor = Color.Red;
                 )
             },
             bottomBar = {
