@@ -88,10 +88,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -106,7 +110,9 @@ class HomeScreen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen() {
-
+        var isFavorite by remember { mutableStateOf(false) }
+        var isHome by remember { mutableStateOf(false) }
+        var isSettings by remember { mutableStateOf(false) }
 
         Scaffold(
 
@@ -136,44 +142,90 @@ class HomeScreen {
                             .background(Color.White),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        IconButton(modifier = Modifier.padding(top = 10.dp),
+                        IconButton(modifier = Modifier
+                            .padding(top = 10.dp),
+
                             onClick = {
-                                // Handle Home button click
+                                isHome = !isHome
                             }
                         ) {
-                            Icon(imageVector = Icons.Default.Home, contentDescription = "Home")
+                            val iconTint = if (isHome) {
+                                Color.Blue // Color when the button is "favorited"
+                            } else {
+                                Color.Black // Color when the button is not "favorited"
+                            }
+                            Icon(imageVector = Icons.Default.Home, contentDescription = "Home",
+                                tint = iconTint,
+                                modifier = Modifier.size(40.dp)
+                            )
                         }
 
-                        Divider(
+                        Box(
                             modifier = Modifier
-                                .width(0.5.dp) // Adjust the width of the divider
+                                .width(2.dp)
                                 .fillMaxHeight()
-                                .background(Color.White) // Color of the divider line
+                                .then(Modifier.drawWithContent {
+                                    // Draw a border on the right side
+                                    drawLine(
+                                        color = Color.Gray,
+                                        start = Offset(size.width, 0f),
+                                        end = Offset(size.width, size.height),
+                                        strokeWidth = 1.dp.toPx()
+                                    )
+                                }),
                         )
+
 
                         IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
-                                // Handle Report button click
+
+                                isFavorite = !isFavorite
+
                             }
                         ) {
-                            Icon(imageVector = Icons.Default.Add, contentDescription = "Report")
+                            val iconTint = if (isFavorite) {
+                                Color.Blue // Color when the button is "favorited"
+                            } else {
+                                Color.Black // Color when the button is not "favorited"
+                            }
+                            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Report",
+                                tint = iconTint,
+                                modifier = Modifier.size(40.dp),
+                            )
                         }
 
-                        Divider(
+                        Box(
                             modifier = Modifier
-                                .width(0.5.dp) // Adjust the width of the divider
+                                .width(2.dp)
                                 .fillMaxHeight()
-                                .background(Color.White) // Color of the divider line
+                                .then(Modifier.drawWithContent {
+                                    // Draw a border on the right side
+                                    drawLine(
+                                        color = Color.Gray,
+                                        start = Offset(size.width, 0f),
+                                        end = Offset(size.width, size.height),
+                                        strokeWidth = 1.dp.toPx()
+                                    )
+                                }),
                         )
+
+
 
                         IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
-                                // Handle Settings button click
+                                isSettings = !isSettings
                             }
                         ) {
+                            val iconTint = if (isSettings) {
+                                Color.Blue // Color when the button is "favorited"
+                            } else {
+                                Color.Black // Color when the button is not "favorited"
+                            }
                             Icon(
                                 imageVector = Icons.Default.Settings,
-                                contentDescription = "Settings"
+                                contentDescription = "Settings",
+                                tint = iconTint,
+                                modifier = Modifier.size(40.dp)
                             )
                         }
                     }
