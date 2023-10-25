@@ -90,8 +90,11 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.nbscollege.fitnessapp.R
 
@@ -197,24 +200,23 @@ class HomeScreen {
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
-                            modifier = Modifier.graphicsLayer(translationY = 50f, translationX = 30f)
+                            modifier = Modifier.graphicsLayer(translationY = 50f, translationX = 30f),
                         )
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(20.dp),)
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(170.dp)
-                                .padding(8.dp)
+                                .padding(8.dp),
                         ) {
                             // Background image
                             Image(
                                 painter = painterResource(id = R.drawable.abs), // Replace with your image resource
                                 contentDescription = null,
-                                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
+                                contentScale = ContentScale.Crop,
                                 modifier = Modifier
                                     .fillMaxSize()
-
-                                    .clip(RoundedCornerShape(16.dp))
+                                    .clip(RoundedCornerShape(16.dp)),
                             )
 
                             // TextButton
@@ -229,7 +231,7 @@ class HomeScreen {
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
                                     colors = ButtonDefaults.buttonColors(
-                                    containerColor = Color.Transparent
+                                    containerColor = Color.Transparent,
                                 )
                             ) {
                                 Column (
@@ -241,19 +243,20 @@ class HomeScreen {
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
                                         modifier = Modifier
-                                            .padding(end = 170.dp)
+                                            .padding(end = 190.dp),
                                     )
-                                    Spacer(modifier = Modifier.height(5.dp))
+                                    Spacer(modifier = Modifier.height(5.dp),)
                                     Text(
                                         text = "11 EXERCISES",
                                         color = Color.White,
-                                        fontSize = 14.sp,
+                                        fontSize = 15.sp,
                                         modifier = Modifier
                                             .padding()
                                     )
                                 }
                             }
                         }
+
 
                         Box(
                             modifier = Modifier
@@ -277,7 +280,6 @@ class HomeScreen {
 
                                 },
                                 shape = RoundedCornerShape(1.dp),
-
                                 modifier = Modifier
 
                                     .fillMaxWidth()
@@ -295,18 +297,17 @@ class HomeScreen {
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
-                                        modifier = Modifier.padding(end = 170.dp)
+                                        modifier = Modifier
+                                            .padding(end = 170.dp)
                                     )
-
                                     Spacer(modifier = Modifier.height(5.dp))
-
                                     Text(
                                         text = "11 EXERCISES",
                                         color = Color.White,
-                                        fontSize = 14.sp,
-                                        modifier = Modifier.padding()
-
-                                        )
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding(end = 170.dp)
+                                    )
                                 }
                             }
                         }
@@ -314,7 +315,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -337,7 +338,7 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -355,7 +356,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -378,7 +379,7 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -396,7 +397,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -419,7 +420,7 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -449,7 +450,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -472,7 +473,7 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -490,7 +491,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -512,7 +513,7 @@ class HomeScreen {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -530,7 +531,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -552,7 +553,7 @@ class HomeScreen {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -570,7 +571,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -592,7 +593,7 @@ class HomeScreen {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
@@ -610,7 +611,7 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
@@ -632,7 +633,7 @@ class HomeScreen {
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
