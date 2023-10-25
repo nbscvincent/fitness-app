@@ -590,7 +590,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.interarm), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -617,7 +617,7 @@ class HomeScreen {
 
                                 ) {
                                     Text(
-                                        text = "SHOULDER & BACK BEGINNER",
+                                        text = "ARM INTERMEDIATE",
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
@@ -626,7 +626,7 @@ class HomeScreen {
                                     )
                                     Spacer(modifier = Modifier.height(5.dp),)
                                     Text(
-                                        text = "17 EXERCISES",
+                                        text = "25 EXERCISES",
                                         color = Color.White,
                                         fontSize = 15.sp,
                                         modifier = Modifier
