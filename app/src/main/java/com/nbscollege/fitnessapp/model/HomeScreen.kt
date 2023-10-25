@@ -213,7 +213,7 @@ class HomeScreen {
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
                                     .fillMaxSize()
-                                    
+
                                     .clip(RoundedCornerShape(16.dp))
                             )
 
@@ -241,9 +241,9 @@ class HomeScreen {
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
                                         modifier = Modifier
-                                            .padding(end = 200.dp)
+                                            .padding(end = 170.dp)
                                     )
-                                    Spacer(modifier = Modifier.height(10.dp))
+                                    Spacer(modifier = Modifier.height(5.dp))
                                     Text(
                                         text = "11 EXERCISES",
                                         color = Color.White,
@@ -258,12 +258,12 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.pushup), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -277,22 +277,37 @@ class HomeScreen {
 
                                 },
                                 shape = RoundedCornerShape(1.dp),
+
                                 modifier = Modifier
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
+                                    .height(170.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "CHEST BEGINNER",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "CHEST BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier.padding(end = 170.dp)
+                                    )
+
+                                    Spacer(modifier = Modifier.height(5.dp))
+
+                                    Text(
+                                        text = "11 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 14.sp,
+                                        modifier = Modifier.padding()
+
+                                        )
+                                }
                             }
                         }
 
