@@ -644,7 +644,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.interleg), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -671,7 +671,7 @@ class HomeScreen {
 
                                 ) {
                                     Text(
-                                        text = "SHOULDER & BACK BEGINNER",
+                                        text = "LEG INTERMEDIATE",
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
@@ -680,7 +680,7 @@ class HomeScreen {
                                     )
                                     Spacer(modifier = Modifier.height(5.dp),)
                                     Text(
-                                        text = "17 EXERCISES",
+                                        text = "36 EXERCISES",
                                         color = Color.White,
                                         fontSize = 15.sp,
                                         modifier = Modifier
@@ -698,7 +698,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.interback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
