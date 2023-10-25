@@ -203,16 +203,17 @@ class HomeScreen {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp)
+                                .height(170.dp)
                                 .padding(8.dp)
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.abs), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
                                     .fillMaxSize()
+                                    
                                     .clip(RoundedCornerShape(16.dp))
                             )
 
@@ -226,18 +227,31 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-                                    .height(150.dp),
-                                colors = ButtonDefaults.buttonColors(
+                                    .height(170.dp),
+                                    colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "ABS BEGINNER",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 30.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "ABS BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 200.dp)
+                                    )
+                                    Spacer(modifier = Modifier.height(10.dp))
+                                    Text(
+                                        text = "11 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 14.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
