@@ -385,20 +385,25 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "ARM BEGINNER",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 25.sp,
-                                    modifier = Modifier.padding(end = 150.dp)
-                                )
 
-                                Text(
-                                    text = "19 EXERCISES",
-                                    color = Color.White,
-                                    fontSize = 15.sp,
-                                    modifier = Modifier.padding(end = 150.dp)
-                                )
+                                Column(
+
+                                ) {
+                                    Text(
+                                        text = "ARM BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier.padding(end = 180.dp)
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp))
+                                    Text(
+                                        text = "19 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier.padding(end = 200.dp)
+                                    )
+                                }
                             }
                         }
 
@@ -410,7 +415,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.leg), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -433,13 +438,26 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "LEG BEGINNER",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "LEG BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 190.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "23 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
@@ -451,7 +469,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.shouolderback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -474,13 +492,26 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "SHOULDER & BACK BEGINNER",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "SHOULDER & BACK BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 150.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "17 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
