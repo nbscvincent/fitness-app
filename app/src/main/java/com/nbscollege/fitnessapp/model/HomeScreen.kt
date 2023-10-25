@@ -47,6 +47,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.nbscollege.fitnessapp.R
@@ -92,23 +93,30 @@ class HomeScreen {
                             .background(Color.White),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        IconButton(modifier = Modifier
-                            .padding(top = 10.dp),
+                        // HOME BUTTON
+                            Button(
+                                onClick = {
+                                    isHome = !isHome
+                                },
+                                modifier = Modifier
+                                    .width(100.dp)
+                                    .height(100.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                ),
+                            ) {
 
-                            onClick = {
-                                isHome = !isHome
-                            }
-                        ) {
-
-                            Icon(imageVector = Icons.Default.Home, contentDescription = "Home",
-                                tint = Color.Black,
-                                modifier = Modifier.size(40.dp)
-                            )
+                                Icon(
+                                    imageVector = Icons.Default.Home, contentDescription = "Home",
+                                    tint = Color.Black,
+                                    modifier = Modifier.size(40.dp)
+                                )
                         }
 
+                        // PERSON BUTTON
                         Box(
                             modifier = Modifier
-                                .width(2.dp)
+                                .width(1.dp)
                                 .fillMaxHeight()
                                 .then(Modifier.drawWithContent {
                                     // Draw a border on the right side
@@ -121,13 +129,18 @@ class HomeScreen {
                                 }),
                         )
 
-
-                        IconButton(modifier = Modifier.padding(top = 10.dp),
+                        // SETTINGS BUTTON
+                        Button(
                             onClick = {
 
                                 isPerson = !isPerson
 
-                            }
+                            },
+                            modifier = Modifier
+                                .width(100.dp)
+                                .height(100.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent),
                         ) {
 
                             Icon(imageVector = Icons.Default.Person, contentDescription = "Profile",
@@ -153,10 +166,15 @@ class HomeScreen {
 
 
 
-                        IconButton(modifier = Modifier.padding(top = 10.dp),
+                        Button(
                             onClick = {
                                 isSettings = !isSettings
-                            }
+                            },
+                            modifier = Modifier
+                                .width(100.dp)
+                                .height(100.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent),
                         ) {
 
                             Icon(
