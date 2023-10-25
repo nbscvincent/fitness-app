@@ -111,9 +111,10 @@ class HomeScreen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen() {
-        var isPerson by remember { mutableStateOf(false) }
-        var isHome by remember { mutableStateOf(false) }
-        var isSettings by remember { mutableStateOf(false) }
+        var isPerson by remember { mutableStateOf(true) }
+        var isHome by remember { mutableStateOf(true) }
+        var isSettings by remember { mutableStateOf(true) }
+
 
         Scaffold(
 
@@ -361,7 +362,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.arm), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -388,8 +389,15 @@ class HomeScreen {
                                     text = "ARM BEGINNER",
                                     color = Color.White,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
+                                    fontSize = 25.sp,
+                                    modifier = Modifier.padding(end = 150.dp)
+                                )
+
+                                Text(
+                                    text = "19 EXERCISES",
+                                    color = Color.White,
+                                    fontSize = 15.sp,
+                                    modifier = Modifier.padding(end = 150.dp)
                                 )
                             }
                         }
