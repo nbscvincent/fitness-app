@@ -363,7 +363,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.interabs), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.leg), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -436,7 +436,7 @@ class HomeScreen {
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
-                                colors = ButtonDefaults.buttonColors(
+                                    colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 )
                             ) {
@@ -474,7 +474,6 @@ class HomeScreen {
                         )
                         Spacer(modifier = Modifier.height(20.dp))
 
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -483,7 +482,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.interabs), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -501,7 +500,10 @@ class HomeScreen {
 
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
-
+                                    .height(170.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color.Transparent
+                                )
                             ) {
                                 Column (
 
@@ -512,15 +514,15 @@ class HomeScreen {
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
                                         modifier = Modifier
-                                            .padding(end = 170.dp)
+                                            .padding(end = 150.dp),
                                     )
-                                    Spacer(modifier = Modifier.height(5.dp))
+                                    Spacer(modifier = Modifier.height(5.dp),)
                                     Text(
-                                        text = "11 EXERCISES",
+                                        text = "21 EXERCISES",
                                         color = Color.White,
                                         fontSize = 15.sp,
                                         modifier = Modifier
-                                            .padding(end = 170.dp)
+                                            .padding()
                                     )
                                 }
                             }
@@ -534,7 +536,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -549,6 +551,7 @@ class HomeScreen {
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
+
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
@@ -556,13 +559,26 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "CHEST INTERMEDIATE",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "SHOULDER & BACK BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 150.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "17 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
@@ -574,7 +590,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -589,6 +605,7 @@ class HomeScreen {
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
+
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
@@ -596,13 +613,26 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "ARM INTERMEDIATE",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "SHOULDER & BACK BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 150.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "17 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
@@ -614,7 +644,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -629,6 +659,7 @@ class HomeScreen {
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
+
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
@@ -636,13 +667,26 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "LEG INTERMEDIATE",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "SHOULDER & BACK BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 150.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "17 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
@@ -654,7 +698,7 @@ class HomeScreen {
                         ) {
                             // Background image
                             Image(
-                                painter = painterResource(id = R.drawable.abs_logo), // Replace with your image resource
+                                painter = painterResource(id = R.drawable.shoulderback), // Replace with your image resource
                                 contentDescription = null,
                                 contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                                 modifier = Modifier
@@ -669,6 +713,7 @@ class HomeScreen {
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
+
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
@@ -676,18 +721,33 @@ class HomeScreen {
                                     containerColor = Color.Transparent
                                 )
                             ) {
-                                Text(
-                                    text = "SHOULDER INTERMEDIATE",
-                                    color = Color.White,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 13.sp,
-                                    modifier = Modifier.padding(start = 11.dp)
-                                )
+                                Column (
+
+                                ) {
+                                    Text(
+                                        text = "SHOULDER & BACK BEGINNER",
+                                        color = Color.White,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 25.sp,
+                                        modifier = Modifier
+                                            .padding(end = 150.dp),
+                                    )
+                                    Spacer(modifier = Modifier.height(5.dp),)
+                                    Text(
+                                        text = "17 EXERCISES",
+                                        color = Color.White,
+                                        fontSize = 15.sp,
+                                        modifier = Modifier
+                                            .padding()
+                                    )
+                                }
                             }
                         }
 
 
-                    }
+
+
+                    } //lazycolumn bracket
                 }
             }
         }
