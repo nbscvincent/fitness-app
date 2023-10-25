@@ -90,6 +90,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.ui.draw.alpha
@@ -110,7 +111,7 @@ class HomeScreen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen() {
-        var isFavorite by remember { mutableStateOf(false) }
+        var isPerson by remember { mutableStateOf(false) }
         var isHome by remember { mutableStateOf(false) }
         var isSettings by remember { mutableStateOf(false) }
 
@@ -149,13 +150,9 @@ class HomeScreen {
                                 isHome = !isHome
                             }
                         ) {
-                            val iconTint = if (isHome) {
-                                Color.Blue // Color when the button is "favorited"
-                            } else {
-                                Color.Black // Color when the button is not "favorited"
-                            }
+
                             Icon(imageVector = Icons.Default.Home, contentDescription = "Home",
-                                tint = iconTint,
+                                tint = Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
@@ -179,17 +176,13 @@ class HomeScreen {
                         IconButton(modifier = Modifier.padding(top = 10.dp),
                             onClick = {
 
-                                isFavorite = !isFavorite
+                                isPerson = !isPerson
 
                             }
                         ) {
-                            val iconTint = if (isFavorite) {
-                                Color.Blue // Color when the button is "favorited"
-                            } else {
-                                Color.Black // Color when the button is not "favorited"
-                            }
-                            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Report",
-                                tint = iconTint,
+
+                            Icon(imageVector = Icons.Default.Person, contentDescription = "Profile",
+                                tint = Color.Black,
                                 modifier = Modifier.size(40.dp),
                             )
                         }
@@ -216,15 +209,11 @@ class HomeScreen {
                                 isSettings = !isSettings
                             }
                         ) {
-                            val iconTint = if (isSettings) {
-                                Color.Blue // Color when the button is "favorited"
-                            } else {
-                                Color.Black // Color when the button is not "favorited"
-                            }
+
                             Icon(
                                 imageVector = Icons.Default.Settings,
                                 contentDescription = "Settings",
-                                tint = iconTint,
+                                tint = Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
