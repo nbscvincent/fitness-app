@@ -128,7 +128,7 @@ class ChestBeg {
                                 Text(
                                     "JUMPING JACKS"+
                                             "\n"+"\n"+
-                                            "00:20"+
+                                            "00:30"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
@@ -149,7 +149,7 @@ class ChestBeg {
                                 Text(
                                     "ABDOMINAL CRUNCHES"+
                                             "\n"+"\n"+
-                                            "16x"+
+                                            "20x"+
                                             "\n"+"\n",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
