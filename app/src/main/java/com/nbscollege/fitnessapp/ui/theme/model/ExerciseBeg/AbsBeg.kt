@@ -33,12 +33,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-class AbsBeg {
+
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun absbeg() {
+    fun absbeg(navController : NavController) {
 
         Column(
             modifier = Modifier
@@ -287,4 +288,3 @@ class AbsBeg {
         }
 
     }
-}

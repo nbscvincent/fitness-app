@@ -26,12 +26,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-class AbsInter {
+
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun absinter() {
+    fun absinter(navController : NavController) {
 
 
         Column(
@@ -464,4 +465,3 @@ class AbsInter {
         }
 
     }
-}
