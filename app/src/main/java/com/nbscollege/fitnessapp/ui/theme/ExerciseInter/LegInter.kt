@@ -2,7 +2,6 @@ package com.nbscollege.fitnessapp.ui.theme.ExerciseInter
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -38,11 +36,10 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun absinter(navController : NavController) {
+fun leginter(navController : NavController) {
 
     Scaffold(
         topBar = {
@@ -63,7 +60,7 @@ fun absinter(navController : NavController) {
                     Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                 }
                 Image(
-                    painter = painterResource(id = R.drawable.pushup),
+                    painter = painterResource(id = R.drawable.inter),
                     contentDescription = "",
                     modifier = Modifier
                         .zIndex(0f)
@@ -72,7 +69,7 @@ fun absinter(navController : NavController) {
                     contentScale = ContentScale.FillBounds
                 )
                 Text(
-                    text = "CHEST INTERMEDIATE",
+                    text = "LEG INTERMEDIATE",
                     fontSize = 20.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
@@ -456,7 +453,5 @@ fun absinter(navController : NavController) {
                 }
             }
         }
-
-
     }
 }

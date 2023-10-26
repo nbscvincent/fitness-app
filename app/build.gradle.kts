@@ -69,7 +69,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+// galing sakin
     implementation("androidx.navigation:navigation-compose:2.7.4")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+// galing kay cayce
+    implementation("androidx.compose.ui:ui:1.0.0")
+    implementation("androidx.compose.material3:material3:1.0.0")
+    implementation("androidx.activity:activity-compose:1.3.0")
+
+    // navigation compose
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
 
 }

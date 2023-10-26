@@ -1,5 +1,4 @@
 package com.nbscollege.fitnessapp
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -45,7 +44,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
@@ -53,12 +51,8 @@ import androidx.navigation.NavHostController
         var isPerson by remember { mutableStateOf(true) }
         var isHome by remember { mutableStateOf(true) }
         var isSettings by remember { mutableStateOf(true) }
-
-
         Scaffold(
-
             topBar = {
-
                 Box(
                     modifier = Modifier
                         .height(50.dp)
@@ -73,7 +67,6 @@ import androidx.navigation.NavHostController
                         modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                     )
                 }
-
             },
             bottomBar = {
                 BottomAppBar {
@@ -95,14 +88,12 @@ import androidx.navigation.NavHostController
                                 containerColor = Color.Transparent
                             ),
                         ) {
-
                             Icon(
                                 imageVector = Icons.Default.Home, contentDescription = "Home",
                                 tint = Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
-
                         // PERSON BUTTON
                         Box(
                             modifier = Modifier
@@ -118,7 +109,6 @@ import androidx.navigation.NavHostController
                                     )
                                 }),
                         )
-
                         // SETTINGS BUTTON
                         Button(
                             onClick = {
@@ -137,7 +127,6 @@ import androidx.navigation.NavHostController
                                 modifier = Modifier.size(40.dp),
                             )
                         }
-
                         Box(
                             modifier = Modifier
                                 .width(2.dp)
@@ -152,9 +141,6 @@ import androidx.navigation.NavHostController
                                     )
                                 }),
                         )
-
-
-
                         Button(
                             onClick = {
                                 isSettings = !isSettings
@@ -185,7 +171,6 @@ import androidx.navigation.NavHostController
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-
                 LazyColumn(
                 ) {
                     item {
@@ -216,7 +201,7 @@ import androidx.navigation.NavHostController
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate("AbsBeg")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -229,7 +214,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "ABS BEGINNER",
@@ -250,8 +234,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -267,11 +249,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate("ChestBeg")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -305,7 +286,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -321,11 +301,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "ArmBeg")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -337,9 +316,7 @@ import androidx.navigation.NavHostController
                                     containerColor = Color.Transparent
                                 )
                             ) {
-
                                 Column(
-
                                 ) {
                                     Text(
                                         text = "ARM BEGINNER",
@@ -358,7 +335,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -374,11 +350,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "LegBeg")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -391,7 +366,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "LEG BEGINNER",
@@ -412,7 +386,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -428,11 +401,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "BackBeg")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -445,7 +417,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "SHOULDER & BACK BEGINNER",
@@ -466,9 +437,7 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         // ----- START INTER WORKOUT ------ //
-
                         Text(
                             text = "INTERMEDIATE",
                             fontWeight = FontWeight.Bold,
@@ -477,7 +446,6 @@ import androidx.navigation.NavHostController
                             modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                         )
                         Spacer(modifier = Modifier.height(20.dp))
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -493,11 +461,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "AbsInter")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -510,7 +477,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "ABS INTERMEDIATE",
@@ -531,7 +497,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -547,11 +512,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "ChestInter")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -564,7 +528,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "CHEST INTERMEDIATE",
@@ -585,7 +548,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -601,11 +563,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "ArmInter")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -618,7 +579,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "ARM INTERMEDIATE",
@@ -639,7 +599,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -655,11 +614,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "LegInter")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -672,7 +630,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "LEG INTERMEDIATE",
@@ -693,7 +650,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -709,11 +665,10 @@ import androidx.navigation.NavHostController
                                     .fillMaxSize()
                                     .clip(RoundedCornerShape(16.dp))
                             )
-
                             // TextButton
                             Button(
                                 onClick = {
-
+                                    navController.navigate(route = "BackInter")
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
@@ -726,7 +681,6 @@ import androidx.navigation.NavHostController
                                 )
                             ) {
                                 Column (
-
                                 ) {
                                     Text(
                                         text = "SHOULDER & BACK BEGINNER",
@@ -747,10 +701,6 @@ import androidx.navigation.NavHostController
                                 }
                             }
                         }
-
-
-
-
                     } //lazycolumn bracket
                 }
             }

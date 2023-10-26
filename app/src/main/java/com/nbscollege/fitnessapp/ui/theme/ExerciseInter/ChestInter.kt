@@ -52,7 +52,7 @@ import androidx.navigation.NavController
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = "ABS INTERMEDIATE",
+                text = "CHEST INTERMEDIATE",
                 fontSize = 20.sp,
                 color = Color.White,
                 fontWeight = FontWeight.Bold

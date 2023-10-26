@@ -6,7 +6,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,7 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,11 +36,10 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun chestbeg(navController : NavController) {
+    fun backbeg(navController : NavController) {
 
         Scaffold(
             topBar = {
@@ -63,7 +60,7 @@ import com.nbscollege.fitnessapp.R
                         Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                     }
                     Image(
-                        painter = painterResource(id = R.drawable.pushup),
+                        painter = painterResource(id = R.drawable.arm),
                         contentDescription = "",
                         modifier = Modifier
                             .zIndex(0f)
@@ -72,7 +69,7 @@ import com.nbscollege.fitnessapp.R
                         contentScale = ContentScale.FillBounds
                     )
                     Text(
-                        text = "CHEST BEGINNER",
+                        text = "SHOULDER & BACK BEGINNER",
                         fontSize = 20.sp,
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
@@ -127,7 +124,7 @@ import com.nbscollege.fitnessapp.R
                                     .fillMaxWidth(),
                                 colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.White),
-                                ) {
+                            ) {
                                 Text(
                                     "JUMPING JACKS"+
                                             "\n"+"\n"+
@@ -263,7 +260,7 @@ import com.nbscollege.fitnessapp.R
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
 
-                                )
+                                    )
                             }
                             Button(
                                 onClick = { },
@@ -304,7 +301,7 @@ import com.nbscollege.fitnessapp.R
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 13.sp,
                                     modifier = Modifier
-                                    .padding(start = 39.dp)
+                                        .padding(start = 39.dp)
                                 )
                             }
                             Button(
@@ -454,10 +451,7 @@ import com.nbscollege.fitnessapp.R
                             }
                         }
                     }
+                }
             }
         }
-
-
-        }
     }
-

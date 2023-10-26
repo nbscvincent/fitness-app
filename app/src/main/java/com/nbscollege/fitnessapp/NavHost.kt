@@ -7,22 +7,24 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.absinter
+import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.backinter
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.chestinter
+import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.leginter
 import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.absbeg
+import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.armbeg
+import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.backbeg
 import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.chestbeg
-
+import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.legbeg
 
 @Composable
     fun Nav() {
         val navController = rememberNavController()
-
         NavHost(navController = navController, startDestination = "home",
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Left,
                     animationSpec = tween(900)
                 )
-
             },
             exitTransition = {
                 slideOutOfContainer(
@@ -30,20 +32,38 @@ import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.chestbeg
                     animationSpec = tween(900)
                 )
             }) {
-            composable("login") {
+            composable("Home") {
                 home(navController = navController)
             }
-            composable("signup") {
+            composable("AbsBeg") {
                 absbeg(navController = navController)
             }
-            composable("verify") {
+            composable("ChestBeg") {
                 chestbeg(navController = navController)
             }
-            composable("signup") {
+            composable("ArmBeg") {
+                armbeg(navController = navController)
+            }
+            composable("LegBeg") {
+                legbeg(navController = navController)
+            }
+            composable("BackBeg") {
+                backbeg(navController = navController)
+            }
+            composable("AbsInter") {
                 absinter(navController = navController)
             }
-            composable("verify") {
+            composable("ChestInter") {
                 chestinter(navController = navController)
+            }
+            composable("ArmInter") {
+                armbeg(navController = navController)
+            }
+            composable("LegInter") {
+                leginter(navController = navController)
+            }
+            composable("BackInter") {
+                backinter(navController = navController)
             }
         }
     }
