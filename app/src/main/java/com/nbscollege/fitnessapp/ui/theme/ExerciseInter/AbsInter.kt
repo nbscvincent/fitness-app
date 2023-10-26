@@ -63,16 +63,17 @@ fun absinter(navController : NavController) {
                     Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                 }
                 Image(
-                    painter = painterResource(id = R.drawable.pushup),
+                    painter = painterResource(id = R.drawable.interabs),
                     contentDescription = "",
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                     modifier = Modifier
                         .zIndex(0f)
                         .fillMaxWidth()
                         .border(1.dp, color = Color.Transparent),
-                    contentScale = ContentScale.FillBounds
+//                    contentScale = ContentScale.FillBounds
                 )
                 Text(
-                    text = "CHEST INTERMEDIATE",
+                    text = "ABS INTERMEDIATE",
                     fontSize = 20.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,

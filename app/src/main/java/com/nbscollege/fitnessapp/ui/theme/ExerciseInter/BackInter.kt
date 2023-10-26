@@ -60,7 +60,7 @@ fun backinter(navController : NavController) {
                     Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                 }
                 Image(
-                    painter = painterResource(id = R.drawable.pushup),
+                    painter = painterResource(id = R.drawable.interback),
                     contentDescription = "",
                     modifier = Modifier
                         .zIndex(0f)

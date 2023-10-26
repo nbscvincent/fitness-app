@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.absinter
+import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.arminter
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.backinter
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.chestinter
 import com.nbscollege.fitnessapp.ui.theme.ExerciseInter.leginter
@@ -57,7 +58,7 @@ import com.nbscollege.fitnessapp.ui.theme.model.ExerciseBeg.legbeg
                 chestinter(navController = navController)
             }
             composable("ArmInter") {
-                armbeg(navController = navController)
+                arminter(navController = navController)
             }
             composable("LegInter") {
                 leginter(navController = navController)

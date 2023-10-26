@@ -56,12 +56,11 @@ import com.nbscollege.fitnessapp.R
                         modifier = Modifier
                             .padding(start = 5.dp, end = 5.dp)
                             .zIndex(1f)
-
                     ) {
                         Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                     }
                     Image(
-                        painter = painterResource(id = R.drawable.arm),
+                        painter = painterResource(id = R.drawable.leg),
                         contentDescription = "",
                         modifier = Modifier
                             .zIndex(0f)

@@ -60,7 +60,7 @@ import com.nbscollege.fitnessapp.R
                         Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                     }
                     Image(
-                        painter = painterResource(id = R.drawable.arm),
+                        painter = painterResource(id = R.drawable.shoulderback),
                         contentDescription = "",
                         modifier = Modifier
                             .zIndex(0f)

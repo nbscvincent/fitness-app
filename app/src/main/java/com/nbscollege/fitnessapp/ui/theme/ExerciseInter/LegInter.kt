@@ -60,7 +60,7 @@ fun leginter(navController : NavController) {
                     Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
                 }
                 Image(
-                    painter = painterResource(id = R.drawable.inter),
+                    painter = painterResource(id = R.drawable.interleg),
                     contentDescription = "",
                     modifier = Modifier
                         .zIndex(0f)
