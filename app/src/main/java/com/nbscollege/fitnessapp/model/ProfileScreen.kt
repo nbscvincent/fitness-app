@@ -54,15 +54,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
+enum class SelectedButton2 {
+    Home,
+    Person,
+    Settings
+}
+
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun profilescreen(navController: NavController) {
 
-        var isPerson by remember { mutableStateOf(true) }
-        var isHome by remember { mutableStateOf(true) }
-        var isSettings by remember { mutableStateOf(true) }
+        var isPerson by remember { mutableStateOf(false) }
+        var isHome by remember { mutableStateOf(false) }
+        var isSettings by remember { mutableStateOf(false) }
+
+        var selectedButton2 by remember { mutableStateOf(SelectedButton2.Person) }
 
         Scaffold(
             topBar = {
@@ -94,20 +102,20 @@ import com.nbscollege.fitnessapp.R
                         // HOME BUTTON
                         Button(
                             onClick = {
-                                isHome = !isHome
+                                selectedButton2 = SelectedButton2.Home
                                 navController.navigate(route = "Home")
                             },
                             modifier = Modifier
                                 .width(100.dp)
                                 .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
+                                 colors = ButtonDefaults.buttonColors(
                                 containerColor = Color.Transparent
                             ),
                         ) {
 
                             Icon(
                                 imageVector = Icons.Default.Home, contentDescription = "Home",
-                                tint = Color.Black,
+                                tint = if (selectedButton2 == SelectedButton2.Home) Color.Blue else Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
@@ -132,7 +140,7 @@ import com.nbscollege.fitnessapp.R
                         Button(
                             onClick = {
 
-                                isPerson = !isPerson
+                                selectedButton2 = SelectedButton2.Person
                                 navController.navigate(route = "profile")
 
                             },
@@ -146,7 +154,7 @@ import com.nbscollege.fitnessapp.R
 
                             Icon(
                                 imageVector = Icons.Default.Person, contentDescription = "Profile",
-                                tint = Color.Black,
+                                tint = if (selectedButton2 == SelectedButton2.Person) Color.Blue else Color.Black,
                                 modifier = Modifier.size(40.dp),
                             )
                         }
@@ -170,7 +178,8 @@ import com.nbscollege.fitnessapp.R
 
                         Button(
                             onClick = {
-                                isSettings = !isSettings
+                                selectedButton2 = SelectedButton2.Settings
+                                navController.navigate(route = "Settings")
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -183,7 +192,7 @@ import com.nbscollege.fitnessapp.R
                             Icon(
                                 imageVector = Icons.Default.Settings,
                                 contentDescription = "Settings",
-                                tint = Color.Black,
+                                tint = if (selectedButton2 == SelectedButton2.Settings) Color.Blue else Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }
@@ -204,3 +213,5 @@ import com.nbscollege.fitnessapp.R
             }
         }
     }
+
+

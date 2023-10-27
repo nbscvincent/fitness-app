@@ -49,13 +49,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
+enum class SelectedButton3 {
+    Home,
+    Person,
+    Settings
+}
 
 
 
@@ -63,9 +66,11 @@ import com.nbscollege.fitnessapp.R
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen(navController : NavController) {
-        var isPerson by remember { mutableStateOf(true) }
-        var isHome by remember { mutableStateOf(true) }
-        var isSettings by remember { mutableStateOf(true) }
+        var isPerson by remember { mutableStateOf(false) }
+        var isHome by remember { mutableStateOf(false) }
+        var isSettings by remember { mutableStateOf(false) }
+
+        var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
 
 
         Scaffold(
@@ -99,24 +104,25 @@ import com.nbscollege.fitnessapp.R
                         // HOME BUTTON
                             Button(
                                 onClick = {
+                                    selectedButton3 = SelectedButton3.Home
                                     navController.navigate(route = "Home")
                                 },
                                 modifier = Modifier
                                     .width(100.dp)
                                     .height(100.dp),
-                                colors = ButtonDefaults.buttonColors(
+                                    colors = ButtonDefaults.buttonColors(
                                     containerColor = Color.Transparent
                                 ),
                             ) {
 
                                 Icon(
-                                    imageVector = ImageVector.vectorResource(id = R.drawable.timer), contentDescription = "Home",
-                                    tint = Color.Black,
+                                    imageVector = Icons.Default.Home, contentDescription = "Home",
+                                    tint = if (selectedButton3 == SelectedButton3.Home) Color.Blue else Color.Black,
                                     modifier = Modifier.size(40.dp)
                                 )
                         }
 
-                        // PERSON BUTTON
+
                         Box(
                             modifier = Modifier
                                 .width(1.dp)
@@ -132,11 +138,11 @@ import com.nbscollege.fitnessapp.R
                                 }),
                         )
 
-                        // SETTINGS BUTTON
+                        // PERSON BUTTON
                         Button(
                             onClick = {
 
-                                isPerson = !isPerson
+                                selectedButton3 = SelectedButton3.Person
                                 navController.navigate(route = "profile")
 
                             },
@@ -148,7 +154,7 @@ import com.nbscollege.fitnessapp.R
                         ) {
 
                             Icon(imageVector = Icons.Default.Person, contentDescription = "Profile",
-                                tint = Color.Black,
+                                tint = if (selectedButton3 == SelectedButton3.Person) Color.Blue else Color.Black,
                                 modifier = Modifier.size(40.dp),
                             )
                         }
@@ -169,10 +175,11 @@ import com.nbscollege.fitnessapp.R
                         )
 
 
-
+                        // SETTINGS BUTTON
                         Button(
                             onClick = {
-                                isSettings = !isSettings
+                                selectedButton3 = SelectedButton3.Settings
+                                navController.navigate(route = "Settings")
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -184,7 +191,7 @@ import com.nbscollege.fitnessapp.R
                             Icon(
                                 imageVector = Icons.Default.Settings,
                                 contentDescription = "Settings",
-                                tint = Color.Black,
+                                tint = if (selectedButton3 == SelectedButton3.Settings) Color.Blue else Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )
                         }

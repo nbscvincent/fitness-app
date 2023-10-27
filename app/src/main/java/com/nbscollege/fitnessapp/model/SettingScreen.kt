@@ -53,14 +53,21 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
+enum class SelectedButton {
+    Home,
+    Person,
+    Settings
+}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun settingscreen(navController : NavController) {
-    var isPerson by remember { mutableStateOf(true) }
-    var isHome by remember { mutableStateOf(true) }
-    var isSettings by remember { mutableStateOf(true) }
+    var isPerson by remember { mutableStateOf(false) }
+    var isHome by remember { mutableStateOf(false) }
+    var isSettings by remember { mutableStateOf(false) }
+
+    var selectedButton by remember { mutableStateOf(SelectedButton.Settings) }
 
     Scaffold(
         topBar = {
@@ -92,7 +99,8 @@ fun settingscreen(navController : NavController) {
                     // HOME BUTTON
                     Button(
                         onClick = {
-                            isHome = !isHome
+                            selectedButton = SelectedButton.Home
+                            navController.navigate(route = "Home")
                         },
                         modifier = Modifier
                             .width(100.dp)
@@ -104,7 +112,7 @@ fun settingscreen(navController : NavController) {
 
                         Icon(
                             imageVector = Icons.Default.Home, contentDescription = "Home",
-                            tint = Color.Black,
+                            tint = if (selectedButton == SelectedButton.Home) Color.Blue else Color.Black,
                             modifier = Modifier.size(40.dp)
                         )
                     }
@@ -129,7 +137,8 @@ fun settingscreen(navController : NavController) {
                     Button(
                         onClick = {
 
-                            isPerson = !isPerson
+                            selectedButton = SelectedButton.Settings
+                            navController.navigate(route = "Profile")
 
                         },
                         modifier = Modifier
@@ -142,7 +151,7 @@ fun settingscreen(navController : NavController) {
 
                         Icon(
                             imageVector = Icons.Default.Person, contentDescription = "Profile",
-                            tint = Color.Black,
+                            tint = if (selectedButton == SelectedButton.Person) Color.Blue else Color.Black,
                             modifier = Modifier.size(40.dp),
                         )
                     }
@@ -167,6 +176,7 @@ fun settingscreen(navController : NavController) {
                     Button(
                         onClick = {
                             isSettings = !isSettings
+                            navController.navigate(route = "Settings")
                         },
                         modifier = Modifier
                             .width(100.dp)
@@ -179,7 +189,7 @@ fun settingscreen(navController : NavController) {
                         Icon(
                             imageVector = Icons.Default.Settings,
                             contentDescription = "Settings",
-                            tint = Color.Black,
+                            tint = if (selectedButton == SelectedButton.Settings) Color.Blue else Color.Black,
                             modifier = Modifier.size(40.dp)
                         )
                     }
