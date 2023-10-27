@@ -49,8 +49,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
@@ -108,7 +110,7 @@ import com.nbscollege.fitnessapp.R
                             ) {
 
                                 Icon(
-                                    imageVector = Icons.Default.Home, contentDescription = "Home",
+                                    imageVector = ImageVector.vectorResource(id = R.drawable.timer), contentDescription = "Home",
                                     tint = Color.Black,
                                     modifier = Modifier.size(40.dp)
                                 )

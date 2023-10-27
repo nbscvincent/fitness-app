@@ -186,7 +186,9 @@ fun settingscreen(navController : NavController) {
                 }
             }
         },
-    ) {
+    ) { innerPadding ->
+
+
 
     }
     }

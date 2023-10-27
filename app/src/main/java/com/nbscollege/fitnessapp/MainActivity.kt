@@ -20,16 +20,10 @@ class MainActivity : ComponentActivity() {
             FitnessAppTheme {
                 // A surface container using the 'background' color from the theme
 
-<<<<<<< HEAD
-                    var home = HomeScreen()
-                    home.homescreen()
 
-                    //var profile = ProfileScreen()
-                    //profile.profilescreen()
-=======
                     Navigation()
 
->>>>>>> 5bee3560eb06991b3a6e74d54b201a12b2b8f0ba
+
 
 
             }
