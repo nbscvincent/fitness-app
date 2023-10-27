@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
+import com.nbscollege.fitnessapp.Navibottom
 import com.nbscollege.fitnessapp.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -78,133 +79,137 @@ fun About(navController: NavHostController) {
             }
         },
         bottomBar = {
-            BottomAppBar {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color.White),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    // HOME BUTTON
-                    Button(
-                        onClick = {
-//                                isHome = !isHome
-                            navController.navigate(route = "Home")
-                        },
-                        modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Transparent
-                        ),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Home, contentDescription = "Home",
-                            tint = Color.Black,
-                            modifier = Modifier.size(40.dp)
-                        )
-                    }
-                    // PERSON BUTTON
-                    Box(
-                        modifier = Modifier
-                            .width(1.dp)
-                            .fillMaxHeight()
-                            .then(Modifier.drawWithContent {
-                                // Draw a border on the right side
-                                drawLine(
-                                    color = Color.Gray,
-                                    start = Offset(size.width, 0f),
-                                    end = Offset(size.width, size.height),
-                                    strokeWidth = 1.dp.toPx()
-                                )
-                            }),
-                    )
-                    // SETTINGS BUTTON
-                    Button(
-                        onClick = {
-
-//                                isPerson = !isPerson
-                            // navController.navigate(route = "profile")
-                        },
-                        modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Transparent),
-                    ) {
-                        Icon(imageVector = Icons.Default.Person, contentDescription = "Profile",
-                            tint = Color.Black,
-                            modifier = Modifier.size(40.dp),
-                        )
-                    }
-                    Box(
-                        modifier = Modifier
-                            .width(2.dp)
-                            .fillMaxHeight()
-                            .then(Modifier.drawWithContent {
-                                // Draw a border on the right side
-                                drawLine(
-                                    color = Color.Gray,
-                                    start = Offset(size.width, 0f),
-                                    end = Offset(size.width, size.height),
-                                    strokeWidth = 1.dp.toPx()
-                                )
-                            }),
-                    )
-                    Button(
-                        onClick = {
-//                                isSettings = !isSettings
-                        },
-                        modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Transparent),
-                    ) {
-
-                        Icon(
-                            imageVector = Icons.Default.Settings,
-                            contentDescription = "Settings",
-                            tint = Color.Black,
-                            modifier = Modifier.size(40.dp)
-                        )
-                    }
-                    Box(
-                        modifier = Modifier
-                            .width(2.dp)
-                            .fillMaxHeight()
-                            .then(Modifier.drawWithContent {
-                                // Draw a border on the right side
-                                drawLine(
-                                    color = Color.Gray,
-                                    start = Offset(size.width, 0f),
-                                    end = Offset(size.width, size.height),
-                                    strokeWidth = 1.dp.toPx()
-                                )
-                            }),
-                    )
-                    Button(
-                        onClick = {
-//                                isAbout = !isAbout
-                            navController.navigate(route = "About")
-                        },
-                        modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.Transparent),
-                    ) {
-
-                        Icon(
-                            imageVector = Icons.Default.Info,
-                            contentDescription = "About",
-                            tint = Color.Black,
-                            modifier = Modifier.size(40.dp)
-                        )
-                    }
-                }
-            }
-        },
+            Navibottom(navController = navController)
+        }
+//        bottomBar = {
+//            BottomAppBar {
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .background(Color.White),
+//                    horizontalArrangement = Arrangement.SpaceEvenly
+//                ) {
+//                    // HOME BUTTON
+//                    Button(
+//                        onClick = {
+////                                isHome = !isHome
+//                            navController.navigate(route = "Home")
+//                        },
+//                        modifier = Modifier
+//                            .width(100.dp)
+//                            .height(100.dp),
+//                        colors = ButtonDefaults.buttonColors(
+//                            containerColor = Color.Transparent
+//                        ),
+//                    ) {
+//                        Icon(
+//                            imageVector = Icons.Default.Home, contentDescription = "Home",
+//                            tint = Color.Black,
+//                            modifier = Modifier.size(40.dp)
+//                        )
+//                    }
+//                    // PERSON BUTTON
+//                    Box(
+//                        modifier = Modifier
+//                            .width(1.dp)
+//                            .fillMaxHeight()
+//                            .then(Modifier.drawWithContent {
+//                                // Draw a border on the right side
+//                                drawLine(
+//                                    color = Color.Gray,
+//                                    start = Offset(size.width, 0f),
+//                                    end = Offset(size.width, size.height),
+//                                    strokeWidth = 1.dp.toPx()
+//                                )
+//                            }),
+//                    )
+//                    // SETTINGS BUTTON
+//                    Button(
+//                        onClick = {
+//
+////                                isPerson = !isPerson
+//                            // navController.navigate(route = "profile")
+//                        },
+//                        modifier = Modifier
+//                            .width(100.dp)
+//                            .height(100.dp),
+//                        colors = ButtonDefaults.buttonColors(
+//                            containerColor = Color.Transparent),
+//                    ) {
+//                        Icon(imageVector = Icons.Default.Person, contentDescription = "Profile",
+//                            tint = Color.Black,
+//                            modifier = Modifier.size(40.dp),
+//                        )
+//                    }
+//                    // ABOUT BUTTON OR INFO
+//                    Box(
+//                        modifier = Modifier
+//                            .width(2.dp)
+//                            .fillMaxHeight()
+//                            .then(Modifier.drawWithContent {
+//                                // Draw a border on the right side
+//                                drawLine(
+//                                    color = Color.Gray,
+//                                    start = Offset(size.width, 0f),
+//                                    end = Offset(size.width, size.height),
+//                                    strokeWidth = 1.dp.toPx()
+//                                )
+//                            }),
+//                    )
+//                    Button(
+//                        onClick = {
+////                                isSettings = !isSettings
+//                        },
+//                        modifier = Modifier
+//                            .width(100.dp)
+//                            .height(100.dp),
+//                        colors = ButtonDefaults.buttonColors(
+//                            containerColor = Color.Transparent),
+//                    ) {
+//
+//                        Icon(
+//                            imageVector = Icons.Default.Settings,
+//                            contentDescription = "Settings",
+//                            tint = Color.Black,
+//                            modifier = Modifier.size(40.dp)
+//                        )
+//                    }
+//                    Box(
+//                        modifier = Modifier
+//                            .width(2.dp)
+//                            .fillMaxHeight()
+//                            .then(Modifier.drawWithContent {
+//                                // Draw a border on the right side
+//                                drawLine(
+//                                    color = Color.Gray,
+//                                    start = Offset(size.width, 0f),
+//                                    end = Offset(size.width, size.height),
+//                                    strokeWidth = 1.dp.toPx()
+//                                )
+//                            }),
+//                    )
+//                    Button(
+//                        onClick = {
+////                                isAbout = !isAbout
+//                            navController.navigate(route = "About")
+//                        },
+//                        modifier = Modifier
+//                            .width(100.dp)
+//                            .height(100.dp),
+//                        colors = ButtonDefaults.buttonColors(
+//                            containerColor = Color.Transparent),
+//                    ) {
+//
+//                        Icon(
+//                            imageVector = Icons.Default.Info,
+//                            contentDescription = "About",
+//                            tint = Color.Black,
+//                            modifier = Modifier.size(40.dp)
+//                        )
+//                    }
+//                }
+//            }
+//        },
     ) { innerPadding ->
         // Content of your screen goes here
 
@@ -227,6 +232,7 @@ fun About(navController: NavHostController) {
 //                Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
 //            }
 //        }
+
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
