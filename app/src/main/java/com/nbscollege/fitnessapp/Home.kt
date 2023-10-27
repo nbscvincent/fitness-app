@@ -18,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
@@ -79,6 +80,7 @@ import androidx.navigation.NavHostController
                         // HOME BUTTON
                         Button(
                             onClick = {
+//                                isHome = !isHome
                                 navController.navigate(route = "Home")
                             },
                             modifier = Modifier
@@ -113,8 +115,8 @@ import androidx.navigation.NavHostController
                         Button(
                             onClick = {
 
-                                isPerson = !isPerson
-                                navController.navigate(route = "profile")
+//                                isPerson = !isPerson
+                               // navController.navigate(route = "profile")
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -143,7 +145,7 @@ import androidx.navigation.NavHostController
                         )
                         Button(
                             onClick = {
-                                isSettings = !isSettings
+//                                isSettings = !isSettings
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -155,6 +157,39 @@ import androidx.navigation.NavHostController
                             Icon(
                                 imageVector = Icons.Default.Settings,
                                 contentDescription = "Settings",
+                                tint = Color.Black,
+                                modifier = Modifier.size(40.dp)
+                            )
+                        }
+                        Box(
+                            modifier = Modifier
+                                .width(2.dp)
+                                .fillMaxHeight()
+                                .then(Modifier.drawWithContent {
+                                    // Draw a border on the right side
+                                    drawLine(
+                                        color = Color.Gray,
+                                        start = Offset(size.width, 0f),
+                                        end = Offset(size.width, size.height),
+                                        strokeWidth = 1.dp.toPx()
+                                    )
+                                }),
+                        )
+                        Button(
+                            onClick = {
+//                                isAbout = !isAbout
+                                navController.navigate(route = "About")
+                            },
+                            modifier = Modifier
+                                .width(100.dp)
+                                .height(100.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent),
+                        ) {
+
+                            Icon(
+                                imageVector = Icons.Default.Info,
+                                contentDescription = "About",
                                 tint = Color.Black,
                                 modifier = Modifier.size(40.dp)
                             )

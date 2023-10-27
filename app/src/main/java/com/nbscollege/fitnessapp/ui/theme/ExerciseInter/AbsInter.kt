@@ -38,7 +38,6 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
