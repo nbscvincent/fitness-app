@@ -13,6 +13,7 @@ import com.nbscollege.fitnessapp.model.settingscreen
 fun Navigation() {
     val navController = rememberNavController()
 
+
     NavHost(navController = navController, startDestination = "Home") {
         composable("Home") { homescreen(navController)}
         composable("Profile") { profilescreen(navController)}
