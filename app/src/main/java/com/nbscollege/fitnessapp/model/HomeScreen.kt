@@ -44,22 +44,23 @@ import androidx.compose.runtime.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
 
-class HomeScreen {
 
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun homescreen() {
+    fun homescreen(navController : NavController) {
         var isPerson by remember { mutableStateOf(true) }
         var isHome by remember { mutableStateOf(true) }
         var isSettings by remember { mutableStateOf(true) }
@@ -71,7 +72,9 @@ class HomeScreen {
 
                 Box(
                     modifier = Modifier
-                        .height(50.dp).background(Color.White).fillMaxWidth()
+                        .height(50.dp)
+                        .background(Color.White)
+                        .fillMaxWidth()
                 ) {
                             Text(
                                 text = "FITNESS WORKOUT",
@@ -80,8 +83,6 @@ class HomeScreen {
                                 color = Color.Black,
                                 modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                             )
-
-
                 }
 
             },
@@ -96,7 +97,7 @@ class HomeScreen {
                         // HOME BUTTON
                             Button(
                                 onClick = {
-                                    isHome = !isHome
+                                    navController.navigate(route = "Home")
                                 },
                                 modifier = Modifier
                                     .width(100.dp)
@@ -134,6 +135,7 @@ class HomeScreen {
                             onClick = {
 
                                 isPerson = !isPerson
+                                navController.navigate(route = "profile")
 
                             },
                             modifier = Modifier
@@ -770,7 +772,7 @@ class HomeScreen {
             }
         }
     }
-}
+
 
 
 

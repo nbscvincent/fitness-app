@@ -51,13 +51,14 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-class ProfileScreen {
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun profilescreen() {
+    fun profilescreen(navController: NavController) {
 
         var isPerson by remember { mutableStateOf(true) }
         var isHome by remember { mutableStateOf(true) }
@@ -94,6 +95,7 @@ class ProfileScreen {
                         Button(
                             onClick = {
                                 isHome = !isHome
+                                navController.navigate(route = "Home")
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -131,6 +133,7 @@ class ProfileScreen {
                             onClick = {
 
                                 isPerson = !isPerson
+                                navController.navigate(route = "profile")
 
                             },
                             modifier = Modifier
@@ -201,4 +204,3 @@ class ProfileScreen {
             }
         }
     }
-}

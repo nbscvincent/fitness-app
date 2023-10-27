@@ -10,8 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.nbscollege.fitnessapp.model.HomeScreen
-import com.nbscollege.fitnessapp.model.ProfileScreen
+
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,11 +20,16 @@ class MainActivity : ComponentActivity() {
             FitnessAppTheme {
                 // A surface container using the 'background' color from the theme
 
+<<<<<<< HEAD
                     var home = HomeScreen()
                     home.homescreen()
 
                     //var profile = ProfileScreen()
                     //profile.profilescreen()
+=======
+                    Navigation()
+
+>>>>>>> 5bee3560eb06991b3a6e74d54b201a12b2b8f0ba
 
 
             }
