@@ -78,9 +78,9 @@ fun About(navController: NavHostController) {
                 )
             }
         },
-        bottomBar = {
-            Navibottom(navController = navController)
-        }
+//        bottomBar = {
+//            Navibottom(navController = navController)
+//        }
 //        bottomBar = {
 //            BottomAppBar {
 //                Row(

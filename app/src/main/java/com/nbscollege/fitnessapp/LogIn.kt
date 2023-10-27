@@ -4,12 +4,28 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,11 +34,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LOGIN() {
-
+fun LOGIN(
+    navController: NavHostController
+//        navController: NavController
+) {
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -45,8 +64,8 @@ fun LOGIN() {
         )
 
         Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = painterResource(id = R.drawable.logo).toString(),
+            painter = painterResource(id = R.drawable.musclelogo),
+            contentDescription = painterResource(id = R.drawable.musclelogo).toString(),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(150.dp)
@@ -54,7 +73,7 @@ fun LOGIN() {
 
         Text(
             text = "Welcome back", fontWeight = FontWeight.Bold,
-            color = Color.Black, fontSize = 38.sp
+            color = Color.Black, fontSize = 39.sp
         )
         Text(
             text = "sign in to access your account",
@@ -69,7 +88,7 @@ fun LOGIN() {
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") },
+            label = { "Email" },
             trailingIcon = {
                 Icon(imageVector = Icons.Default.Email, contentDescription = "Email")
             }
@@ -83,7 +102,7 @@ fun LOGIN() {
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { "Password" },
             trailingIcon = {
                 Icon(imageVector = Icons.Default.Lock, contentDescription = "Password")
             }
@@ -95,18 +114,17 @@ fun LOGIN() {
             horizontalArrangement = Arrangement.Center
         ) {
             Checkbox(
-                modifier = Modifier.size(30.dp),
+                modifier = Modifier.size(20.dp),
                 checked = rememberMe,
                 onCheckedChange = { checked ->
                     rememberMe = checked
                 }
             )
             Text(
-                text = "Remember Me",
+                text = " Remember Me",
                 fontSize = 10.sp,
                 color = Color.Black,
             )
-
             Row(verticalAlignment = Alignment.CenterVertically) {
                 TextButton(
                     modifier = Modifier.padding(start = 110.dp),
@@ -146,7 +164,6 @@ fun LOGIN() {
             color = Color.Black,
         )
 
-
         Column(
 
             verticalArrangement = Arrangement.Center,
@@ -155,14 +172,16 @@ fun LOGIN() {
 
 
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate("Home")
+                },
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Red
                 ),
                 shape = RoundedCornerShape(10.dp),
             ) {
                 Text(
-                    "                      Next  >                      ",
+                    "                      LogIn                      ",
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp
@@ -186,7 +205,9 @@ fun LOGIN() {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     TextButton(
                         modifier = Modifier.padding(start = 1.dp),
-                        onClick = { },
+                        onClick = {
+                            navController.navigate("signup")
+                        },
                     ) {
                         Text("Register now", color = Color.Red, fontSize = 17.sp)
                     }
@@ -195,23 +216,30 @@ fun LOGIN() {
             }
         }
     }
-    Column(
-        modifier = Modifier
-            .padding(start = 25.dp, end = 25.dp, top = 0.dp, bottom = 0.dp)
-            .fillMaxSize()
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start
-    ) {
-        Text(
-            text = "                      ",
-            fontSize = 13.sp,
-            color = Color.Black,
-        )
-        Text(
-            text = " < ",
-            fontSize = 50.sp,
-            color = Color.Black,
-        )
-    }
+//    Column(
+//        modifier = Modifier
+//            .padding(start = 15.dp, end = 15.dp, top = 0.dp, bottom = 0.dp)
+//            .fillMaxSize()
+//            .fillMaxWidth(),
+//        verticalArrangement = Arrangement.Top,
+//        horizontalAlignment = Alignment.Start
+//    ) {
+//        Text(
+//            text = "                      ",
+//            fontSize = 13.sp,
+//            color = Color.Black,
+//        )
+//        TextButton(onClick = {
+//            navController.navigate("loading")
+//        },
+//            modifier = Modifier
+//                .padding(start = 0.dp, end = 0.dp, top = 0.dp, bottom = 0.dp)
+//        ) {  Text(
+//            text = "<",
+//            fontSize = 50.sp,
+//            color = Color.Black,
+//        )}
+//    }
+
 }
+

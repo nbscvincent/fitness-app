@@ -70,7 +70,7 @@ import androidx.navigation.NavHostController
                     )
                 }
             },
-            bottomBar = { Navibottom(navController = navController) },
+//            bottomBar = { Navibottom(navController = navController) },
         ) { innerPadding ->
             // Content of your screen goes here
             Column(
