@@ -24,8 +24,6 @@ class MainActivity : ComponentActivity() {
                     Navigation()
 
 
-
-
             }
         }
     }
@@ -46,5 +44,7 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
+
+
 
 

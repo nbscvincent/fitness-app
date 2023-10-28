@@ -72,9 +72,7 @@ enum class SelectedButton3 {
 
         var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
 
-
         Scaffold(
-
             topBar = {
 
                 Box(

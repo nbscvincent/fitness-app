@@ -87,7 +87,6 @@ enum class SelectedButton2 {
                         modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                     )
 
-
                 }
 
             },
@@ -188,7 +187,6 @@ enum class SelectedButton2 {
                                 containerColor = Color.Transparent
                             ),
                         ) {
-
                             Icon(
                                 imageVector = Icons.Default.Settings,
                                 contentDescription = "Settings",

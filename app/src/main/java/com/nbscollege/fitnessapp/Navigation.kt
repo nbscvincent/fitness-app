@@ -24,10 +24,11 @@ import androidx.navigation.navArgument
 
 @Composable
 fun Navigation() {
+
     val navController = rememberNavController()
 
-
     NavHost(navController = navController, startDestination = "Home") {
+
         composable("Home") { homescreen(navController) }
         composable("Profile") { profilescreen(navController)}
         composable("Settings") { settingscreen(navController)}
