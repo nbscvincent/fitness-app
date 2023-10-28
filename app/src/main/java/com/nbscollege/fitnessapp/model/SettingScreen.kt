@@ -78,7 +78,7 @@ fun settingscreen(navController : NavController) {
                     .height(50.dp).background(Color.White).fillMaxWidth()
             ) {
                 Text(
-                    text = "Profile",
+                    text = "Settings",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     color = Color.Black,
