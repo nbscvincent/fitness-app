@@ -26,15 +26,7 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel: MyViewModel by viewModels()
         super.onCreate(savedInstanceState)
-
-        installSplashScreen().apply {
-            setKeepOnScreenCondition {
-                viewModel.loading.value
-            }
-        }
-
 
 
         setContent {
@@ -46,13 +38,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun setKeepOnScreenCondition(function: () -> Boolean) {
-
-    }
-
-    private fun installSplashScreen(): Any {
-        TODO("Not yet implemented")
-    }
 
 
 }
@@ -70,19 +55,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     FitnessAppTheme {
         Greeting("Android")
-    }
-}
-
-class MyViewModel : ViewModel() {
-    private val _loading = MutableStateFlow(true)
-    val loading = _loading.asStateFlow()
-
-    init {
-        viewModelScope.launch {
-            // run background task here
-            delay(2000)
-            _loading.value = false
-        }
     }
 }
 

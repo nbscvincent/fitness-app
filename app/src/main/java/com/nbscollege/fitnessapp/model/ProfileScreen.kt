@@ -91,113 +91,113 @@ enum class SelectedButton2 {
                 }
 
             },
-             bottomBar = {
-                BottomAppBar {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.White),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        // HOME BUTTON
-                        Button(
-                            onClick = {
-                                selectedButton2 = SelectedButton2.Home
-                                navController.navigate(screen.HomeScreen.name)
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                                 colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-
-                            Icon(
-                                imageVector = Icons.Default.Home, contentDescription = "Home",
-                                tint = if (selectedButton2 == SelectedButton2.Home) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp)
-                            )
-                        }
-
-                        // PERSON BUTTON
-                        Box(
-                            modifier = Modifier
-                                .width(1.dp)
-                                .fillMaxHeight()
-                                .then(Modifier.drawWithContent {
-                                    // Draw a border on the right side
-                                    drawLine(
-                                        color = Color.Gray,
-                                        start = Offset(size.width, 0f),
-                                        end = Offset(size.width, size.height),
-                                        strokeWidth = 1.dp.toPx()
-                                    )
-                                }),
-                        )
-
-                        // SETTINGS BUTTON
-                        Button(
-                            onClick = {
-
-                                selectedButton2 = SelectedButton2.Person
-                                navController.navigate(screen.ProfileScreen.name)
-
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-
-                            Icon(
-                                imageVector = Icons.Default.Person, contentDescription = "Profile",
-                                tint = if (selectedButton2 == SelectedButton2.Person) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp),
-                            )
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .width(2.dp)
-                                .fillMaxHeight()
-                                .then(Modifier.drawWithContent {
-                                    // Draw a border on the right side
-                                    drawLine(
-                                        color = Color.Gray,
-                                        start = Offset(size.width, 0f),
-                                        end = Offset(size.width, size.height),
-                                        strokeWidth = 1.dp.toPx()
-                                    )
-                                }),
-                        )
-
-
-
-                        Button(
-                            onClick = {
-                                selectedButton2 = SelectedButton2.Settings
-                                navController.navigate(screen.SettingScreen.name)
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = "Settings",
-                                tint = if (selectedButton2 == SelectedButton2.Settings) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp)
-                            )
-                        }
-                    }
-                }
-            },
+//             bottomBar = {
+//                BottomAppBar {
+//                    Row(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .background(Color.White),
+//                        horizontalArrangement = Arrangement.SpaceEvenly
+//                    ) {
+//                        // HOME BUTTON
+//                        Button(
+//                            onClick = {
+//                                selectedButton2 = SelectedButton2.Home
+//                                navController.navigate(screen.HomeScreen.name)
+//                            },
+//                            modifier = Modifier
+//                                .width(100.dp)
+//                                .height(100.dp),
+//                                 colors = ButtonDefaults.buttonColors(
+//                                containerColor = Color.Transparent
+//                            ),
+//                        ) {
+//
+//                            Icon(
+//                                imageVector = Icons.Default.Home, contentDescription = "Home",
+//                                tint = if (selectedButton2 == SelectedButton2.Home) Color.Blue else Color.Black,
+//                                modifier = Modifier.size(40.dp)
+//                            )
+//                        }
+//
+//                        // PERSON BUTTON
+//                        Box(
+//                            modifier = Modifier
+//                                .width(1.dp)
+//                                .fillMaxHeight()
+//                                .then(Modifier.drawWithContent {
+//                                    // Draw a border on the right side
+//                                    drawLine(
+//                                        color = Color.Gray,
+//                                        start = Offset(size.width, 0f),
+//                                        end = Offset(size.width, size.height),
+//                                        strokeWidth = 1.dp.toPx()
+//                                    )
+//                                }),
+//                        )
+//
+//                        // SETTINGS BUTTON
+//                        Button(
+//                            onClick = {
+//
+//                                selectedButton2 = SelectedButton2.Person
+//                                navController.navigate(screen.ProfileScreen.name)
+//
+//                            },
+//                            modifier = Modifier
+//                                .width(100.dp)
+//                                .height(100.dp),
+//                            colors = ButtonDefaults.buttonColors(
+//                                containerColor = Color.Transparent
+//                            ),
+//                        ) {
+//
+//                            Icon(
+//                                imageVector = Icons.Default.Person, contentDescription = "Profile",
+//                                tint = if (selectedButton2 == SelectedButton2.Person) Color.Blue else Color.Black,
+//                                modifier = Modifier.size(40.dp),
+//                            )
+//                        }
+//
+//                        Box(
+//                            modifier = Modifier
+//                                .width(2.dp)
+//                                .fillMaxHeight()
+//                                .then(Modifier.drawWithContent {
+//                                    // Draw a border on the right side
+//                                    drawLine(
+//                                        color = Color.Gray,
+//                                        start = Offset(size.width, 0f),
+//                                        end = Offset(size.width, size.height),
+//                                        strokeWidth = 1.dp.toPx()
+//                                    )
+//                                }),
+//                        )
+//
+//
+//
+//                        Button(
+//                            onClick = {
+//                                selectedButton2 = SelectedButton2.Settings
+//                                navController.navigate(screen.SettingScreen.name)
+//                            },
+//                            modifier = Modifier
+//                                .width(100.dp)
+//                                .height(100.dp),
+//                            colors = ButtonDefaults.buttonColors(
+//                                containerColor = Color.Transparent
+//                            ),
+//                        ) {
+//                            Icon(
+//                                imageVector = Icons.Default.Settings,
+//                                contentDescription = "Settings",
+//                                tint = if (selectedButton2 == SelectedButton2.Settings) Color.Blue else Color.Black,
+//                                modifier = Modifier.size(40.dp)
+//                            )
+//                        }
+//                    }
+//                }
+//            },
         ) { innerPadding ->
             Column(
                 modifier = Modifier

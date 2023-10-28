@@ -10,14 +10,17 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.screen
 import kotlinx.coroutines.delay
 
+
+
 @Composable
 fun SplashLoading(navController : NavController) {
     val isSplash by remember { mutableStateOf(false) }
 
-    LaunchedEffect(true) {
+    LaunchedEffect(Unit) {
         delay(3000) // Adjust the delay duration as needed
-        if(isSplash == true)navController.navigate(screen.HomeScreen.name)
     }
+
+
 
 }
 
