@@ -1,34 +1,24 @@
 package com.nbscollege.fitnessapp.model
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.screen
 import kotlinx.coroutines.delay
 
 @Composable
-fun Splash (navController : NavController) {
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(text="LOADING...")
-    }
+fun SplashLoading(navController : NavController) {
+    val isSplash by remember { mutableStateOf(false) }
 
     LaunchedEffect(true) {
         delay(3000) // Adjust the delay duration as needed
-        homescreen()
+        if(isSplash == true)navController.navigate(screen.HomeScreen.name)
     }
 
 }
+
+

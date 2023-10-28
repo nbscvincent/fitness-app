@@ -4,5 +4,5 @@ enum class screen{
     HomeScreen,
     ProfileScreen,
     SettingScreen,
-    SplashScreen
+    SplashLoading,
 }

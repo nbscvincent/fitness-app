@@ -74,6 +74,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.model.SplashLoading
 import com.nbscollege.fitnessapp.screen
 
 
@@ -90,11 +91,13 @@ fun Navigation() {
 
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = screen.HomeScreen.name) {
+    NavHost(navController = navController, startDestination = screen.SplashLoading.name) {
 
         composable(route = screen.HomeScreen.name) { homescreen(navController) }
         composable(route = screen.ProfileScreen.name) { profilescreen(navController)}
         composable(route = screen.SettingScreen.name) { settingscreen(navController)}
+
+
 
     }
 
