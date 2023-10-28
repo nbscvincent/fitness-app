@@ -52,6 +52,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.screen
 
 enum class SelectedButton {
     Home,
@@ -100,7 +101,7 @@ fun settingscreen(navController : NavController) {
                     Button(
                         onClick = {
                             selectedButton = SelectedButton.Home
-                            navController.navigate(route = "Home")
+                            navController.navigate(screen.HomeScreen.name)
                         },
                         modifier = Modifier
                             .width(100.dp)
@@ -138,7 +139,7 @@ fun settingscreen(navController : NavController) {
                         onClick = {
 
                             selectedButton = SelectedButton.Settings
-                            navController.navigate(route = "Profile")
+                            navController.navigate(screen.ProfileScreen.name)
 
                         },
                         modifier = Modifier
@@ -176,7 +177,7 @@ fun settingscreen(navController : NavController) {
                     Button(
                         onClick = {
                             isSettings = !isSettings
-                            navController.navigate(route = "Settings")
+                            navController.navigate(screen.SettingScreen.name)
                         },
                         modifier = Modifier
                             .width(100.dp)
@@ -198,7 +199,16 @@ fun settingscreen(navController : NavController) {
         },
     ) { innerPadding ->
 
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+
+        }
+
 
 
     }
-    }
+}

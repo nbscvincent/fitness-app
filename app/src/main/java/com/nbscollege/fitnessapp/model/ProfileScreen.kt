@@ -53,6 +53,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.screen
 
 enum class SelectedButton2 {
     Home,
@@ -90,7 +91,7 @@ enum class SelectedButton2 {
                 }
 
             },
-            bottomBar = {
+             bottomBar = {
                 BottomAppBar {
                     Row(
                         modifier = Modifier
@@ -102,7 +103,7 @@ enum class SelectedButton2 {
                         Button(
                             onClick = {
                                 selectedButton2 = SelectedButton2.Home
-                                navController.navigate(route = "Home")
+                                navController.navigate(screen.HomeScreen.name)
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -140,7 +141,7 @@ enum class SelectedButton2 {
                             onClick = {
 
                                 selectedButton2 = SelectedButton2.Person
-                                navController.navigate(route = "profile")
+                                navController.navigate(screen.ProfileScreen.name)
 
                             },
                             modifier = Modifier
@@ -178,7 +179,7 @@ enum class SelectedButton2 {
                         Button(
                             onClick = {
                                 selectedButton2 = SelectedButton2.Settings
-                                navController.navigate(route = "Settings")
+                                navController.navigate(screen.SettingScreen.name)
                             },
                             modifier = Modifier
                                 .width(100.dp)

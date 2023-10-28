@@ -53,14 +53,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.screen
 
 enum class SelectedButton3 {
     Home,
     Person,
     Settings
 }
-
-
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -103,7 +102,7 @@ enum class SelectedButton3 {
                             Button(
                                 onClick = {
                                     selectedButton3 = SelectedButton3.Home
-                                    navController.navigate(route = "Home")
+                                    navController.navigate(route = screen.HomeScreen.name)
                                 },
                                 modifier = Modifier
                                     .width(100.dp)
@@ -141,7 +140,7 @@ enum class SelectedButton3 {
                             onClick = {
 
                                 selectedButton3 = SelectedButton3.Person
-                                navController.navigate(route = "profile")
+                                navController.navigate(route = screen.ProfileScreen.name)
 
                             },
                             modifier = Modifier
@@ -177,7 +176,7 @@ enum class SelectedButton3 {
                         Button(
                             onClick = {
                                 selectedButton3 = SelectedButton3.Settings
-                                navController.navigate(route = "Settings")
+                                navController.navigate(screen.SettingScreen.name)
                             },
                             modifier = Modifier
                                 .width(100.dp)
@@ -774,7 +773,7 @@ enum class SelectedButton3 {
 
 
 
-                    } //lazycolumn bracket
+                    } //lazycolumn end bracket
                 }
             }
         }
