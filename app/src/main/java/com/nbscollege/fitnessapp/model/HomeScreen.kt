@@ -90,6 +90,11 @@ enum class SelectedButton3 {
                 }
 
             },
+            bottomBar = {
+                BottomAppBar {
+
+                }
+            }
         ) { innerPadding ->
             // Content of your screen goes here
 
@@ -664,6 +669,8 @@ enum class SelectedButton3 {
                                 }
                             }
                         }
+
+
 
 
 

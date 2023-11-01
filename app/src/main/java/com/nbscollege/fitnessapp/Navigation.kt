@@ -56,6 +56,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.model.SplashAnimated
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -67,6 +68,7 @@ enum class SelectedButton3 {
     Person,
     Settings
 }
+
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -183,8 +185,8 @@ fun Navigation() {
             }
         },
     ) {
-        NavHost(navController = navController, startDestination = screen.HomeScreen.name) {
-
+        NavHost(navController = navController, startDestination = screen.SplashScreen.name) {
+            composable(route = screen.SplashScreen.name) { SplashAnimated(navController)  }
             composable(route = screen.HomeScreen.name) { homescreen(navController) }
             composable(route = screen.ProfileScreen.name) { profilescreen(navController) }
             composable(route = screen.SettingScreen.name) { settingscreen(navController) }

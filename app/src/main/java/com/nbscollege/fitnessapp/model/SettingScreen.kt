@@ -89,6 +89,11 @@ fun settingscreen(navController : NavController) {
             }
 
         },
+        bottomBar = {
+            BottomAppBar {
+
+            }
+        }
     ) { innerPadding ->
 
         Column(

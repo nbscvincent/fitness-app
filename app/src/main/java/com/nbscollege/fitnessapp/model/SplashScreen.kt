@@ -1,6 +1,9 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -43,6 +46,7 @@ import androidx.compose.runtime.*
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.alpha
@@ -62,23 +66,39 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-fun SplashLoading(navController: NavController) {
-
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Display your branding/logo here
-        Image(
-            painter = painterResource(id = R.drawable.abs),
-            contentDescription = null,
-        )
-
+fun SplashAnimated(navController: NavController) {
+    var startAnimation by remember () { mutableStateOf((false)) }
+    val alphaAnim = animateFloatAsState(
+        targetValue = if(startAnimation) 1f else 0f,
+        animationSpec = tween(
+            durationMillis = 3000
+        ), label = ""
+    )
+    LaunchedEffect(key1 = true) {
+        startAnimation = true
+        delay(4000)
+        navController.navigate(screen.HomeScreen.name)
     }
-    GlobalScope.launch {
-        delay(2000) // Adjust the delay as needed
-        navController.navigate(route = screen.HomeScreen.name)
+    SplashScreen(alpha = alphaAnim.value)
+}
+
+@Composable
+fun SplashScreen(alpha: Float) {
+
+    Box(
+        modifier = Modifier
+            .background(Color.Black)
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Icon(modifier = Modifier
+            .size(120.dp),
+            imageVector = Icons.Default.Email,
+            contentDescription = "Email",
+            tint = Color.White
+        )
+    }
+
 
 
 

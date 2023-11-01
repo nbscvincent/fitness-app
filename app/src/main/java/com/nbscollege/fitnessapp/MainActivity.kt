@@ -23,8 +23,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.model.SplashLoading
-
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay

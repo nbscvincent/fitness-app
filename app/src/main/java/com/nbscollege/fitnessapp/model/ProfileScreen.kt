@@ -91,6 +91,11 @@ enum class SelectedButton2 {
                 }
 
             },
+            bottomBar = {
+                BottomAppBar {
+
+                }
+            }
         ) { innerPadding ->
             Column(
                 modifier = Modifier
