@@ -51,6 +51,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.Navigation
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.Screen
 
@@ -91,7 +92,7 @@ fun settingscreen(navController : NavController) {
         },
         bottomBar = {
             BottomAppBar {
-                BottomAppBar(navController)
+
             }
         }
     ) { innerPadding ->
