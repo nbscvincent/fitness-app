@@ -55,11 +55,11 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.screen
 
-enum class SelectedButton3 {
-    Home,
-    Person,
-    Settings
-}
+//enum class SelectedButton3 {
+//    Home,
+//    Person,
+//    Settings
+//}
 
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -69,7 +69,7 @@ enum class SelectedButton3 {
         var isHome by remember { mutableStateOf(false) }
         var isSettings by remember { mutableStateOf(false) }
 
-        var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
+//        var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
 
         Scaffold(
             topBar = {
@@ -92,7 +92,7 @@ enum class SelectedButton3 {
             },
             bottomBar = {
                 BottomAppBar {
-
+                    navController.navigate(route = screen.BottomAppBar.name)
                 }
             }
         ) { innerPadding ->

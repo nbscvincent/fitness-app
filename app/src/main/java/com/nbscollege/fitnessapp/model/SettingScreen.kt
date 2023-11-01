@@ -54,11 +54,11 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.screen
 
-enum class SelectedButton {
-    Home,
-    Person,
-    Settings
-}
+//enum class SelectedButton {
+//    Home,
+//    Person,
+//    Settings
+//}
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,7 +68,7 @@ fun settingscreen(navController : NavController) {
     var isHome by remember { mutableStateOf(false) }
     var isSettings by remember { mutableStateOf(false) }
 
-    var selectedButton by remember { mutableStateOf(SelectedButton.Settings) }
+
 
     Scaffold(
         topBar = {
