@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.nbscollege.fitnessapp.model.SplashAnimated
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -39,7 +40,6 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             FitnessAppTheme {
-
                     Navigation()
 
 

@@ -651,7 +651,7 @@ enum class SelectedButton3 {
 
                                 ) {
                                     Text(
-                                        text = "SHOULDER & BACK BEGINNER",
+                                        text = "SHOULDER & BACK INTERMEDIATE",
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 25.sp,
