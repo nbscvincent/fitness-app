@@ -27,7 +27,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.screen
+import com.nbscollege.fitnessapp.Screen
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -48,7 +48,7 @@ fun SplashAnimated(navController: NavController) {
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
-        navController.navigate(screen.HomeScreen.name)
+        navController.navigate(Screen.HomeScreen.name)
     }
     SplashScreen(alpha = alphaAnim.value)
 

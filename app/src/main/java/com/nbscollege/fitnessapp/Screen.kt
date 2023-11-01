@@ -1,9 +1,8 @@
 package com.nbscollege.fitnessapp
 
-enum class screen{
+enum class Screen {
     HomeScreen,
     ProfileScreen,
     SettingScreen,
-    SplashScreen,
-    BottomAppBar
+    SplashScreen
 }

@@ -179,11 +179,11 @@ fun Navigation() {
 //
 //    }
 
-    NavHost(navController = navController, startDestination = screen.SplashScreen.name) {
-        composable(route = screen.SplashScreen.name) { SplashAnimated(navController) }
-        composable(route = screen.HomeScreen.name) { homescreen(navController) }
-        composable(route = screen.ProfileScreen.name) { profilescreen(navController) }
-        composable(route = screen.SettingScreen.name) { settingscreen(navController) }
+    NavHost(navController = navController, startDestination = Screen.SplashScreen.name) {
+        composable(route = Screen.SplashScreen.name) { SplashAnimated(navController) }
+        composable(route = Screen.HomeScreen.name) { homescreen(navController) }
+        composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
+        composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
     }
 
 
