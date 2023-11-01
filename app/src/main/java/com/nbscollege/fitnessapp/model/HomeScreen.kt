@@ -64,7 +64,7 @@ import com.nbscollege.fitnessapp.Screen
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun homescreen(navController : NavController) {
+    fun homescreen(navController: NavController, bottomAppBarViewModel: BottomAppBarViewModel) {
         var isPerson by remember { mutableStateOf(false) }
         var isHome by remember { mutableStateOf(false) }
         var isSettings by remember { mutableStateOf(false) }
