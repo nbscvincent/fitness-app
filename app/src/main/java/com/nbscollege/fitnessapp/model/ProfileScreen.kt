@@ -92,7 +92,7 @@ import com.nbscollege.fitnessapp.screen
             },
             bottomBar = {
                 BottomAppBar {
-
+                    BottomAppBar(navController)
                 }
             }
         ) { innerPadding ->

@@ -92,7 +92,7 @@ import com.nbscollege.fitnessapp.screen
             },
             bottomBar = {
                 BottomAppBar {
-                    navController.navigate(route = screen.BottomAppBar.name)
+                    BottomAppBar(navController)
                 }
             }
         ) { innerPadding ->
