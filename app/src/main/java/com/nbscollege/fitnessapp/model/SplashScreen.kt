@@ -23,14 +23,9 @@ import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.Screen
-import kotlinx.coroutines.GlobalScope
+import com.nbscollege.fitnessapp.navigationRoute.Screen
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)

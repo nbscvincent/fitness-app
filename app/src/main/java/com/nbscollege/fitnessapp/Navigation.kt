@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -42,6 +41,7 @@ import com.nbscollege.fitnessapp.model.SplashAnimated
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
+import com.nbscollege.fitnessapp.navigationRoute.Screen
 
 
 enum class SelectedButton {
@@ -60,12 +60,6 @@ fun Navigation() {
     val navController = rememberNavController()
     var selectedButton by remember { mutableStateOf(SelectedButton.Home) }
 
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.name) {
-        composable(route = Screen.SplashScreen.name) { SplashAnimated(navController) }
-        composable(route = Screen.HomeScreen.name) { homescreen(navController) }
-        composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
-        composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
-    }
 
     Scaffold(
         bottomBar = {
