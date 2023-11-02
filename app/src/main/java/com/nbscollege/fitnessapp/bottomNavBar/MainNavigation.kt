@@ -56,7 +56,7 @@ enum class SelectedButton {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Navigation(navController: NavController) {
+fun mainNavigation(navController: NavController) {
 
     val navController = rememberNavController()
     var selectedButton by remember { mutableStateOf(SelectedButton.Home) }
