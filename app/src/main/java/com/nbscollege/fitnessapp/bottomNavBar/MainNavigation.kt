@@ -172,12 +172,14 @@ fun mainNavigation(navController: NavController) {
             }
         },
     ) {
+
         NavHost(navController = navController, startDestination = Screen.HomeScreen.name) {
-            //composable(route = Screen.SplashScreen.name) { SplashAnimated(navController) }
-            composable(route = Screen.HomeScreen.name) { homescreen(navController) }
-            composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
-            composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
-        }
+        //composable(route = Screen.SplashScreen.name) { SplashAnimated(navController) }
+        composable(route = Screen.HomeScreen.name) { homescreen(navController) }
+        composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
+        composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
+
+    }
 
     }
 
