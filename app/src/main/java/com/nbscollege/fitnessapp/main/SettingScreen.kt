@@ -60,7 +60,7 @@ fun settingscreen(navController : NavController) {
 
             Box(
                 modifier = Modifier
-                    .height(50.dp)
+                    .height(60.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
@@ -82,9 +82,6 @@ fun settingscreen(navController : NavController) {
                             tint = Color.Black
                         )
                     }
-                    Column(
-
-                    ) {
 
                         Row(
                             modifier = Modifier.fillMaxWidth().padding(end = 50.dp),
@@ -114,7 +111,6 @@ fun settingscreen(navController : NavController) {
                                 )
                             )
                         }
-                    }
                 }
             }
 
