@@ -82,25 +82,39 @@ fun settingscreen(navController : NavController) {
                             tint = Color.Black
                         )
                     }
+                    Column(
+
+                    ) {
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth().padding(end = 50.dp),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Settings,
+                                contentDescription = "Settings",
+                                modifier = Modifier.graphicsLayer(
+                                    translationY = 25f,
+                                    translationX = 30f
+                                )
+                                    .size(30.dp),
+                                tint = Color.Black
+
+                            )
 
 
-                        Icon(
-                            imageVector = Icons.Default.Settings,
-                            contentDescription = "Settings",
-                            modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
-                            .size(30.dp),
-                            tint = Color.Black
-
-                        )
-
-
-                    Text(
-                        text = "Settings",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 25.sp,
-                        color = Color.Black,
-                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
-                    )
+                            Text(
+                                text = "Settings",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 25.sp,
+                                color = Color.Black,
+                                modifier = Modifier.graphicsLayer(
+                                    translationY = 25f,
+                                    translationX = 30f
+                                )
+                            )
+                        }
+                    }
                 }
             }
 
