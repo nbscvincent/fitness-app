@@ -62,8 +62,8 @@ fun SplashScreen(alpha: Float) {
         contentAlignment = Alignment.Center
     ) {
         Image(modifier = Modifier
-            .size(120.dp),
-            painter = painterResource(id = R.drawable.leg), // Replace with your image resource
+            .size(200.dp),
+            painter = painterResource(id = R.drawable.fitness_logo), // Replace with your image resource
             contentDescription = "logo",
         )
     }
