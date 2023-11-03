@@ -60,7 +60,7 @@ fun settingscreen(navController : NavController) {
 
             Box(
                 modifier = Modifier
-                    .height(60.dp)
+                    .height(50.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
