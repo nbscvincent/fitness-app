@@ -40,9 +40,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             FitnessAppTheme {
+
                     SplashNav()
-
-
             }
         }
 
