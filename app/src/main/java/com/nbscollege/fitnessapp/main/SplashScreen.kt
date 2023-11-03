@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp.model
 import android.annotation.SuppressLint
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,7 +24,9 @@ import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.navigationRoute.Screen
 import kotlinx.coroutines.delay
 
@@ -54,15 +57,14 @@ fun SplashScreen(alpha: Float) {
 
     Box(
         modifier = Modifier
-            .background(Color.Black)
+            .background(Color.White)
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Icon(modifier = Modifier
+        Image(modifier = Modifier
             .size(120.dp),
-            imageVector = Icons.Default.Email,
-            contentDescription = "Email",
-            tint = Color.White
+            painter = painterResource(id = R.drawable.leg), // Replace with your image resource
+            contentDescription = "logo",
         )
     }
 

@@ -56,7 +56,7 @@ fun SplashNav() {
                 SplashAnimated(navController)
             }
             composable(route = Screen.HomeScreen.name) {
-                mainNavigation(navController)
+                mainNavigation()
             }
         }
     }
