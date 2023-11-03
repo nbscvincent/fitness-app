@@ -2,12 +2,21 @@ package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -26,6 +35,7 @@ import androidx.compose.ui.unit.sp
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
 
@@ -50,18 +60,53 @@ fun settingscreen(navController : NavController) {
 
             Box(
                 modifier = Modifier
-                    .height(50.dp).background(Color.White).fillMaxWidth()
+                    .height(50.dp)
+                    .background(Color.White)
+                    .fillMaxWidth()
+
             ) {
-                Text(
-                    text = "Settings",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
-                    color = Color.Black,
-                    modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Start
+                ) {
+                    IconButton(
+                        onClick = {
+                            // Handle back arrow click
+                            // Navigate back to the previous screen
+                            navController.popBackStack()
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "Back",
+                            tint = Color.Black
+                        )
+                    }
 
 
+                        Icon(
+                            imageVector = Icons.Default.Settings,
+                            contentDescription = "Settings",
+                            modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                            .size(30.dp),
+                            tint = Color.Black
+
+                        )
+
+
+                    Text(
+                        text = "Settings",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 25.sp,
+                        color = Color.Black,
+                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                    )
+                }
             }
+
+
+
+
 
         },
         bottomBar = {
@@ -73,7 +118,7 @@ fun settingscreen(navController : NavController) {
 
         Column(
             modifier = Modifier
-                .background(Color.White)
+                .background(Color.Black)
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
