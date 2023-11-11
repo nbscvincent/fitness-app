@@ -53,18 +53,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.navigationRoute.Screen
 
 
-class LogInScreen {
-
-
-    @OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun Login() {
+    fun Login(navController: NavController) {
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
         var rememberMe by remember { mutableStateOf(false) }
@@ -277,7 +275,7 @@ class LogInScreen {
 
                         TextButton(
                             onClick = {
-                                // "Next" TextButton click action
+                                navController.navigate(Screen.HomeScreen.name)
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -347,7 +345,7 @@ class LogInScreen {
     }
 
 
-    }
+
 
 
 

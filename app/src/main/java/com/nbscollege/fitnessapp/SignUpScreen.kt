@@ -65,15 +65,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.nbscollege.fitnessapp.R
 
 
-class SignUpScreen {
+
 
 
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
     @Composable
-    fun SignUp() {
+    fun SignUp(navController: NavController) {
         var name by remember { mutableStateOf("") }
         var email by remember { mutableStateOf("") }
         var phoneNumber by remember { mutableStateOf("") }
@@ -428,12 +430,6 @@ class SignUpScreen {
         }
     }
 
-    fun Text(color: Color, modifier: Modifier) {
 
-    }
-}
 
-private fun Alignment.clickable(function: () -> Unit) {
-
-}
 

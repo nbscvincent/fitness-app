@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp
 
+import MainScreen
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -37,7 +38,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.example.model.Login
+import com.example.example.model.SignUp
 import com.nbscollege.fitnessapp.model.SplashAnimated
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
@@ -55,6 +59,13 @@ fun SplashNav() {
             composable(route = Screen.SplashScreen.name) {
                 SplashAnimated(navController)
             }
+            composable(route = MainScreen.LogInScreen.name) {
+                Login(navController)
+            }
+            composable(route = MainScreen.SignUpScreen.name) {
+                SignUp(navController)
+            }
+            
             composable(route = Screen.HomeScreen.name) {
                 mainNavigation()
             }

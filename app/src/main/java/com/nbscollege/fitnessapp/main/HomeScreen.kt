@@ -44,7 +44,6 @@ import com.nbscollege.fitnessapp.R
 //    Person,
 //    Settings
 //}
-
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
