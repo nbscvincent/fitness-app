@@ -177,11 +177,9 @@ import com.nbscollege.fitnessapp.R
                             // TextButton
                             Button(
                                 onClick = {
-
                                 },
                                 shape = RoundedCornerShape(1.dp),
                                 modifier = Modifier
-
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(16.dp))
                                     .height(170.dp),
