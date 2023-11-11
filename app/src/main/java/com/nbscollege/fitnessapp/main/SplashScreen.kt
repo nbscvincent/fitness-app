@@ -46,7 +46,7 @@ fun SplashAnimated(navController: NavController) {
     LaunchedEffect(key1 = true) {
         startAnimation = true
         delay(4000)
-        navController.navigate(Screen.HomeScreen.name)
+        navController.navigate(MainScreen.LogInScreen.name)
     }
     SplashScreen(alpha = alphaAnim.value)
 
