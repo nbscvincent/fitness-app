@@ -54,7 +54,6 @@ import com.nbscollege.fitnessapp.R
         var isSettings by remember { mutableStateOf(false) }
 
 //        var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
-
         Scaffold(
             topBar = {
 
