@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -23,9 +24,13 @@ import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -39,7 +44,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -51,12 +55,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.dialog.AlertDialogExample
-import com.nbscollege.fitnessapp.util.StringUtil
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var email by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
@@ -91,13 +99,14 @@ fun SignUpScreen(navController: NavController) {
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Email") },
-                value = email,
-                onValueChange = { email = it },
+                label = { Text("Username") },
+                value = username,
+                onValueChange = { username = it },
+                singleLine = true,
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "Email"
+                        contentDescription = "Username"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -112,7 +121,10 @@ fun SignUpScreen(navController: NavController) {
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password") }, value = password, onValueChange = { password = it },
+                label = { Text("Password") },
+                value = password,
+                onValueChange = { password = it },
+                singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
@@ -128,8 +140,10 @@ fun SignUpScreen(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
-                )
+                ),
+
             )
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween

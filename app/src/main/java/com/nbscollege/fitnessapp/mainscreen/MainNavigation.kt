@@ -37,19 +37,11 @@ import androidx.compose.ui.geometry.Offset
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.Screen
-
-
-enum class SelectedButton {
-    Home,
-    Person,
-    Settings,
-    SplashScreen
-}
-
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,117 +49,11 @@ enum class SelectedButton {
 fun mainNavigation() {
 
     val navController = rememberNavController()
-    var selectedButton by remember { mutableStateOf(SelectedButton.Home) }
 
 
     Scaffold(
         bottomBar = {
-                BottomAppBar {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.White),
-                        horizontalArrangement = Arrangement.SpaceEvenly
-                    ) {
-                        // HOME BUTTON
-                        Button(
-                            onClick = {
-                                selectedButton = SelectedButton.Home
-                                navController.navigate(route = Screen.HomeScreen.name)
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-
-                            Icon(
-                                imageVector = Icons.Default.Home, contentDescription = "Home",
-                                tint = if (selectedButton == SelectedButton.Home) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp)
-                            )
-                        }
-
-
-                        Box(
-                            modifier = Modifier
-                                .width(1.dp)
-                                .fillMaxHeight()
-                                .then(Modifier.drawWithContent {
-                                    // Draw a border on the right side
-                                    drawLine(
-                                        color = Color.Gray,
-                                        start = Offset(size.width, 0f),
-                                        end = Offset(size.width, size.height),
-                                        strokeWidth = 1.dp.toPx()
-                                    )
-                                }),
-                        )
-
-                        // PERSON BUTTON
-                        Button(
-                            onClick = {
-
-                                selectedButton = SelectedButton.Person
-                                navController.navigate(route = Screen.ProfileScreen.name)
-
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-
-                            Icon(
-                                imageVector = Icons.Default.Person, contentDescription = "Profile",
-                                tint = if (selectedButton == SelectedButton.Person) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp),
-                            )
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .width(2.dp)
-                                .fillMaxHeight()
-                                .then(Modifier.drawWithContent {
-                                    // Draw a border on the right side
-                                    drawLine(
-                                        color = Color.Gray,
-                                        start = Offset(size.width, 0f),
-                                        end = Offset(size.width, size.height),
-                                        strokeWidth = 1.dp.toPx()
-                                    )
-                                }),
-                        )
-
-
-                        // SETTINGS BUTTON
-                        Button(
-                            onClick = {
-                                selectedButton = SelectedButton.Settings
-                                navController.navigate(Screen.SettingScreen.name)
-                            },
-                            modifier = Modifier
-                                .width(100.dp)
-                                .height(100.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = Color.Transparent
-                            ),
-                        ) {
-
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = "Settings",
-                                tint = if (selectedButton == SelectedButton.Settings) Color.Blue else Color.Black,
-                                modifier = Modifier.size(40.dp)
-                            )
-                        }
-                    }
-            }
+            BottomNavBar(navController = navController)
         },
     ) {
 

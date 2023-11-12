@@ -24,12 +24,7 @@ fun BottomNavBar(navController: NavController) {
     val items = listOf(
         BottomNavItem("Home", Icons.Filled.Home, Icons.Outlined.Home, Screen.HomeScreen.name),
         BottomNavItem("Profile", Icons.Default.People, Icons.Outlined.People, Screen.ProfileScreen.name),
-        BottomNavItem(
-            "Settings",
-            Icons.Default.Settings,
-            Icons.Outlined.Settings,
-            Screen.ProfileScreen.name
-        )
+        BottomNavItem("Settings", Icons.Default.Settings, Icons.Outlined.Settings, Screen.SettingScreen.name)
     )
 
     var selectedItem by remember { mutableStateOf(0) }

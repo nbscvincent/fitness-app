@@ -39,20 +39,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
-//enum class SelectedButton3 {
-//    Home,
-//    Person,
-//    Settings
-//}
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen(navController : NavController) {
-        var isPerson by remember { mutableStateOf(false) }
-        var isHome by remember { mutableStateOf(false) }
-        var isSettings by remember { mutableStateOf(false) }
 
-//        var selectedButton3 by remember { mutableStateOf(SelectedButton3.Home) }
+
+
         Scaffold(
             topBar = {
 

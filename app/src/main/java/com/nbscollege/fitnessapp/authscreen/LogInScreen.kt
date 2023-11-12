@@ -47,13 +47,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.util.StringUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController) {
-    var email by remember { mutableStateOf("") }
+fun LoginScreen(navController: NavController ) {
+    var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
@@ -93,13 +94,14 @@ fun LoginScreen(navController: NavController) {
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Email") },
-                value = email,
-                onValueChange = { email = it },
+                label = { Text("Username") },
+                value = username,
+                singleLine = true,
+                onValueChange = { username = it },
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "Email"
+                        contentDescription = "Username"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -116,7 +118,10 @@ fun LoginScreen(navController: NavController) {
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password") }, value = password, onValueChange = { password = it },
+                label = { Text("Password") },
+                value = password,
+                onValueChange = { password = it },
+                singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
@@ -141,7 +146,7 @@ fun LoginScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (StringUtil().isEmptyString(email)) {
+                        if (StringUtil().isEmptyString(username)) {
                             emailError = true
                             return@Button
                         }
