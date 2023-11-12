@@ -3,9 +3,11 @@ package com.nbscollege.fitnessapp.bottomNavBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.People
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.People
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -23,7 +25,7 @@ import com.nbscollege.fitnessapp.navigation.Screen
 fun BottomNavBar(navController: NavController) {
     val items = listOf(
         BottomNavItem("Home", Icons.Filled.Home, Icons.Outlined.Home, Screen.HomeScreen.name),
-        BottomNavItem("Profile", Icons.Default.People, Icons.Outlined.People, Screen.ProfileScreen.name),
+        BottomNavItem("Profile", Icons.Default.Person, Icons.Outlined.Person, Screen.ProfileScreen.name),
         BottomNavItem("Settings", Icons.Default.Settings, Icons.Outlined.Settings, Screen.SettingScreen.name)
     )
 
