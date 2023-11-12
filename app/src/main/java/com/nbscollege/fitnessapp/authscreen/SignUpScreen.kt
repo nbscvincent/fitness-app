@@ -39,21 +39,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.dialog.AlertDialogExample
+import com.nbscollege.fitnessapp.util.StringUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RegistrationScreen(navController: NavController) {
+fun SignUpScreen(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
@@ -81,7 +83,7 @@ fun RegistrationScreen(navController: NavController) {
             )
             Text(
                 "Fill out the following details to create a new a account",
-                style = TextStyle(fontSize = 18.sp, color = Color.Gray)
+                style = TextStyle(fontSize = 18.sp, color = Color.Gray, textAlign = TextAlign.Center)
             )
             Box(Modifier.height(25.dp))
             TextField(
@@ -134,21 +136,8 @@ fun RegistrationScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        when {
-                            // ...
-                            openAlertDialog.value -> {
-                                AlertDialogExample(
-                                    onDismissRequest = { openAlertDialog.value = false },
-                                    onConfirmation = {
-                                        openAlertDialog.value = false
-                                        println("Confirmation registered") // Add logic here to handle confirmation.
-                                    },
-                                    dialogTitle = "Alert dialog example",
-                                    dialogText = "This is an example of an alert dialog with buttons.",
-                                    icon = Icons.Default.Info
-                                )
-                            }
-                        }
+
+                        openAlertDialog.value = true
                     },
                     modifier = Modifier
                         .absolutePadding(
@@ -164,6 +153,21 @@ fun RegistrationScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
+                    }
+                    when {
+                        // ...
+                        openAlertDialog.value -> {
+                            AlertDialogExample(
+                                onDismissRequest = { openAlertDialog.value = false },
+                                onConfirmation = {
+                                    openAlertDialog.value = false
+                                    println("Confirmation registered") // Add logic here to handle confirmation.
+                                },
+                                dialogTitle = "You Successfully Created an Account",
+                                dialogText = "",
+                                icon = Icons.Default.Info
+                            )
+                        }
                     }
                 }
                 Row(
@@ -187,6 +191,7 @@ fun RegistrationScreen(navController: NavController) {
         }
     }
 }
+
 
 
 

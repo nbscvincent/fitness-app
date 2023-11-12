@@ -45,7 +45,7 @@ fun AlertDialogExample(
     dialogTitle: String,
     dialogText: String,
     icon: ImageVector
-): Unit {
+){
     AlertDialog(
         icon = {
             Icon(icon, contentDescription = "Example Icon")
