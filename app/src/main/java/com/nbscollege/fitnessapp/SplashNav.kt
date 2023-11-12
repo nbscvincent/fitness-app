@@ -14,15 +14,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.example.model.LoginScreen
 import com.example.example.model.SignUpScreen
+import com.nbscollege.fitnessapp.mainscreen.Category
 import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.navigation.Routes
-import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SplashNav(screenViewModel: ScreenViewModel,) {
+fun SplashNav(screenViewModel: ScreenViewModel) {
     val navController: NavHostController = rememberNavController()
 
     Scaffold {
@@ -38,7 +38,7 @@ fun SplashNav(screenViewModel: ScreenViewModel,) {
             }
             
             composable(route = Routes.MAIN.name) {
-                mainNavigation()
+                mainNavigation(navController)
             }
         }
     }

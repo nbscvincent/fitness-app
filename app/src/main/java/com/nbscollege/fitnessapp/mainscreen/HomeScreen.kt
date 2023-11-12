@@ -4,24 +4,16 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -35,33 +27,19 @@ import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.Alignment
 
-import androidx.compose.ui.text.TextStyle
 import androidx.navigation.NavController
 
-import com.nbscollege.fitnessapp.mainscreen.Category
-import com.nbscollege.fitnessapp.mainscreen.CategoryCard
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.ViewCompact
 
-import androidx.compose.material3.Icon
-import com.nbscollege.fitnessapp.R
-import org.w3c.dom.Text
+import com.nbscollege.fitnessapp.mainscreen.CategoryCard
+import com.nbscollege.fitnessapp.mainscreen.categoryExercise
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen(navController : NavController) {
-    val categoryExercise = listOf(
-        Category("ABS WORKOUT", "11", "Exercise", R.drawable.abs),
-        Category("CHEST WORKOUT", "11", "Exercise", R.drawable.interchest),
-        Category("ARM WORKOUT", "19", "Exercise", R.drawable.arm),
-        Category("LEG WORKOUT", "23", "Exercise", R.drawable.leg),
-        Category("SHOULDER & BACK BEGINNER WORKOUT", "17", "Exercise", R.drawable.shoulderback),
-    )
+
 
     Scaffold(
         topBar = {
@@ -89,7 +67,6 @@ import org.w3c.dom.Text
         }
     ) { innerPadding ->
         // Content of your screen goes here
-
         Column(
             modifier = Modifier
                 .background(Color.White)
@@ -104,12 +81,12 @@ import org.w3c.dom.Text
             ) {
 
                 Box(modifier = Modifier.height(20.dp))
-
-
                 LazyColumn(
                     modifier = Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(7.dp),
                 ) {
+
+
                     item {
                         Text(
                             text = "EXERCISE",
@@ -119,12 +96,21 @@ import org.w3c.dom.Text
                             modifier = Modifier
                         )
                     }
+
                     items(categoryExercise) { category ->
                         CategoryCard(category = category)
                     }
 
 
+
+
+
                 }
+            }
+
+        }
+    }
+}
 
 
 
@@ -698,12 +684,6 @@ import org.w3c.dom.Text
 //
 //
 //                    } //lazycolumn end bracket
-                }
-            }
-        }
-}
-
-
 
 
 
