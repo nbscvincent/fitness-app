@@ -1,72 +1,43 @@
 package com.nbscollege.fitnessapp
 
-import MainScreen
+import Auth
+
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.example.model.Login
+import com.example.example.model.LoginScreen
 import com.example.example.model.SignUp
-import com.nbscollege.fitnessapp.model.SplashAnimated
-import com.nbscollege.fitnessapp.model.homescreen
-import com.nbscollege.fitnessapp.model.profilescreen
-import com.nbscollege.fitnessapp.model.settingscreen
-import com.nbscollege.fitnessapp.navigationRoute.Screen
+import com.nbscollege.fitnessapp.model.SplashScreen
+import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SplashNav() {
+fun SplashNav(screenViewModel: ScreenViewModel,) {
     val navController: NavHostController = rememberNavController()
 
     Scaffold {
-        NavHost(navController = navController, startDestination =  Screen.SplashScreen.name) {
-            composable(route = Screen.SplashScreen.name) {
-                SplashAnimated(navController)
+        NavHost(navController = navController, startDestination =  Auth.Splash.name) {
+            composable(route = Auth.Splash.name) {
+                SplashScreen(navController, screenViewModel)
             }
-            composable(route = MainScreen.LogInScreen.name) {
-                Login(navController)
+            composable(route = Auth.LogInScreen.name) {
+                LoginScreen(navController)
             }
-            composable(route = MainScreen.SignUpScreen.name) {
+            composable(route = Auth.SignUpScreen.name) {
                 SignUp(navController)
             }
             
-            composable(route = Screen.HomeScreen.name) {
+            composable(route = Routes.MAIN.name) {
                 mainNavigation()
             }
         }

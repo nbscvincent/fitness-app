@@ -34,15 +34,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.model.SplashAnimated
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
-import com.nbscollege.fitnessapp.navigationRoute.Screen
+import com.nbscollege.fitnessapp.navigation.Screen
 
 
 enum class SelectedButton {

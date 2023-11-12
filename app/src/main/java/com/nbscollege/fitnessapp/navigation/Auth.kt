@@ -1,4 +1,4 @@
-enum class MainScreen {
+enum class Auth {
     Splash,
     LogInScreen,
     SignUpScreen,
