@@ -27,19 +27,33 @@ import androidx.compose.runtime.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.Alignment
 
-import androidx.navigation.NavController
-
 import androidx.compose.foundation.lazy.items
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 import com.nbscollege.fitnessapp.mainscreen.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.categoryExercise
+import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
+import com.nbscollege.fitnessapp.navigation.CategoryRoute
+import com.nbscollege.fitnessapp.navigation.Screen
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun homescreen(navController : NavController) {
+    fun homescreen(navController: NavHostController) {
 
+//    val navController = rememberNavController()
+//    NavHost(navController = navController, startDestination = Screen.HomeScreen.name){
+//        composable(route = CategoryRoute.ABS.name){
+//            AbsScreen(navController = navController)
+//        }
+//        composable(route = Screen.HomeScreen.name){
+//            homescreen(navController = navController)
+//        }
+//    }
 
     Scaffold(
         topBar = {

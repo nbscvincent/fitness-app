@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AbsScreen(navController: NavController) {
+fun ChestScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
@@ -38,13 +38,15 @@ fun AbsScreen(navController: NavController) {
                     .height(50.dp).background(Color.White).fillMaxWidth()
             ) {
                 Text(
-                    text = "ABS Workout",
+                    text = "CHEST WORKOUT",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     color = Color.Black,
                     modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
+
             }
+
         },
         bottomBar = {
             BottomAppBar {

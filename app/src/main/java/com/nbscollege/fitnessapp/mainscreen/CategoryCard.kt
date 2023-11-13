@@ -64,7 +64,7 @@ fun CategoryCard(category: Category, navController: NavController) {
 
                     Button(
                         onClick = {
-                                  navController.navigate(Screen.HomeScreen.name)
+                            navController.navigate(category.route)
                         },
                         shape = RoundedCornerShape(1.dp),
                         modifier = Modifier
