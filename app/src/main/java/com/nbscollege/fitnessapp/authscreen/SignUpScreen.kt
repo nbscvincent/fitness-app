@@ -1,5 +1,6 @@
 package com.example.example.model
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -59,20 +60,43 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+import com.nbscollege.fitnessapp.authscreen.model.LogInUser
+import com.nbscollege.fitnessapp.authscreen.model.account
+import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.rememberCoroutineScope
+
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var newUsername by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
     var showPassword by remember {
+        mutableStateOf(false)
+    }
+    var confirmShowPassword by remember {
         mutableStateOf(false)
     }
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     val openAlertDialog = remember { mutableStateOf(false) }
+
+    var userError by remember { mutableStateOf(false) }
+    var passwordError by remember { mutableStateOf(false) }
+    var weightError by remember { mutableStateOf(false) }
+    var heightError by remember { mutableStateOf(false) }
+
+
+    val context = LocalContext.current
 
 
     Box(
@@ -103,13 +127,13 @@ fun SignUpScreen(navController: NavController) {
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
-                value = username,
-                onValueChange = { username = it },
+                value = newUsername,
+                onValueChange = { newUsername = it },
                 singleLine = true,
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        contentDescription = "newUsername"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -125,14 +149,14 @@ fun SignUpScreen(navController: NavController) {
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
                 label = { Text("Password") },
-                value = password,
-                onValueChange = { password = it },
+                value = newPassword,
+                onValueChange = { newPassword = it },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
                             if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = "Password"
+                            contentDescription = "newPassword"
                         )
                     }
                 },
@@ -146,6 +170,33 @@ fun SignUpScreen(navController: NavController) {
                 ),
 
             )
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+
+                label = { Text("Confirm Password") },
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it },
+                singleLine = true,
+                trailingIcon = {
+                    IconButton(onClick = { confirmShowPassword = confirmShowPassword != true }) {
+                        Icon(
+                            if (confirmShowPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = "confirmPassword"
+                        )
+                    }
+                },
+                visualTransformation = if (confirmShowPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                shape = RoundedCornerShape(16.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent
+                ),
+
+                )
 
                 Row(
                     modifier = Modifier,
@@ -200,18 +251,46 @@ fun SignUpScreen(navController: NavController) {
                     }
                 }
 
-
-
-
-
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
                     onClick = {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty()) {
+                            // Check if the username is already taken
+                            if (registeredUsers.any { it.username == newUsername}) {
+                                userError = true
+                                passwordError = false
+                                weightError = false
+                                heightError = false
+                            }
+                            else {
+                                userError = false
+                                passwordError = false
+                                weightError = false
+                                heightError = false
 
-                        openAlertDialog.value = true
+
+                                // Add the new user to the list of registered users
+                                registeredUsers.add(LogInUser(newUsername, newPassword, weight, height))
+
+                                // Provide feedback to the user
+                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+
+                                // Optionally, navigate to the login screen after signup
+                                navController.navigate(Auth.LogInScreen.name)
+                            }
+                        } else {
+                            userError = newUsername.isEmpty()
+                            passwordError = newPassword.isEmpty()
+                            weightError = weight.isEmpty()
+                            heightError = height.isEmpty()
+                            Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
+                        }
+
+
+//                        openAlertDialog.value = true
                     },
                     modifier = Modifier
                         .absolutePadding(
@@ -228,21 +307,21 @@ fun SignUpScreen(navController: NavController) {
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
-                    when {
-                        // ...
-                        openAlertDialog.value -> {
-                            AlertDialogExample(
-                                onDismissRequest = { openAlertDialog.value = false },
-                                onConfirmation = {
-                                    openAlertDialog.value = false
-                                    println("Confirmation registered") // Add logic here to handle confirmation.
-                                },
-                                dialogTitle = "You Successfully Created an Account",
-                                dialogText = "",
-                                icon = Icons.Default.Info
-                            )
-                        }
-                    }
+//                    when {
+//                        // ...
+//                        openAlertDialog.value -> {
+//                            AlertDialogExample(
+//                                onDismissRequest = { openAlertDialog.value = false },
+//                                onConfirmation = {
+//                                    openAlertDialog.value = false
+//                                    println("Confirmation registered") // Add logic here to handle confirmation.
+//                                },
+//                                dialogTitle = "You Successfully Created an Account",
+//                                dialogText = "",
+//                                icon = Icons.Default.Info
+//                            )
+//                        }
+//                    }
                 }
                 Row(
                     modifier = Modifier
