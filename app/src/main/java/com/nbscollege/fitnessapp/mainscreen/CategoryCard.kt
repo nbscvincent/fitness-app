@@ -46,7 +46,6 @@ fun CategoryCard(category: Category, navController: NavController) {
                 defaultElevation = 10.dp,
             ),
             content = {
-
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()

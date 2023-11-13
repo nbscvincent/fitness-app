@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.nbscollege.fitnessapp.mainscreen.Category
 import com.nbscollege.fitnessapp.ui.theme.FitnessAppTheme
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
@@ -39,6 +41,7 @@ class MainActivity : ComponentActivity() {
 //                }
 //            }
             SplashNav(screenViewModel)
+
         }
     }
 }
