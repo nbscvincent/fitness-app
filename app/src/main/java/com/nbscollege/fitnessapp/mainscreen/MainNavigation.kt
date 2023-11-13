@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navigation
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.Category
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
@@ -43,11 +44,13 @@ fun mainNavigation(navController: NavController) {
     ) {
 
         NavHost(navController = navController, startDestination = Screen.HomeScreen.name) {
-        //composable(route = Screen.SplashScreen.name) { SplashAnimated(navController) }
-        composable(route = Screen.HomeScreen.name) { homescreen(navController) }
-        composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
-        composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
-        composable(route = CategoryRoute.ABS.name) { AbsScreen(navController)}
+        navigation(startDestination = Screen.HomeScreen.name,route = Screen.HomeScreen.name) {
+            composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
+        }
+            composable(route = Screen.HomeScreen.name){ homescreen(navController)}
+            composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
+            composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
+//        composable(route = CategoryRoute.ABS.name) { AbsScreen(navController)}
 
     }
 

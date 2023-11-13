@@ -30,11 +30,6 @@ import androidx.navigation.NavController
 @Composable
 fun AbsScreen(navController: NavController) {
 
-    var isPerson by remember { mutableStateOf(false) }
-    var isHome by remember { mutableStateOf(false) }
-    var isSettings by remember { mutableStateOf(false) }
-
-
     Scaffold(
         topBar = {
 

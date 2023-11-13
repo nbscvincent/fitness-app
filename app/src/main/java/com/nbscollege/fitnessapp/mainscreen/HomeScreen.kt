@@ -98,7 +98,7 @@ import com.nbscollege.fitnessapp.mainscreen.categoryExercise
                     }
 
                     items(categoryExercise) { category ->
-                        CategoryCard(category = category)
+                        CategoryCard(category = category, navController)
                     }
 
 

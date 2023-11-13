@@ -28,11 +28,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.navigation.CategoryRoute
+import com.nbscollege.fitnessapp.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun CategoryCard(category: Category) {
+fun CategoryCard(category: Category, navController: NavController) {
 
 
 
@@ -61,7 +64,7 @@ fun CategoryCard(category: Category) {
 
                     Button(
                         onClick = {
-
+                                  navController.navigate(Screen.HomeScreen.name)
                         },
                         shape = RoundedCornerShape(1.dp),
                         modifier = Modifier
