@@ -144,25 +144,17 @@ fun SignUpScreen(navController: NavController) {
 
             )
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-            ) {
                 Row(
-                    modifier = Modifier
-                        .padding(11.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                        horizontalArrangement = Arrangement.SpaceEvenly
+
                     ) {
                         TextField(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .clip(CircleShape)
-                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                                .absolutePadding(left = 40.dp, bottom = 11.dp),
                             label = { Text("Username") },
                             value = username,
                             onValueChange = { username = it },
@@ -182,9 +174,8 @@ fun SignUpScreen(navController: NavController) {
                         )
                         TextField(
                             modifier = Modifier
-                                .fillMaxWidth()
                                 .clip(CircleShape)
-                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                                .absolutePadding(left = 40.dp,bottom = 11.dp),
                             label = { Text("Username") },
                             value = username,
                             onValueChange = { username = it },
@@ -204,7 +195,7 @@ fun SignUpScreen(navController: NavController) {
                         )
                     }
                 }
-            }
+
 
 
 
