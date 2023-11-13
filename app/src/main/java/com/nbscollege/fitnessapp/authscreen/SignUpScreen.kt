@@ -57,6 +57,7 @@ import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
 
 
@@ -69,6 +70,8 @@ fun SignUpScreen(navController: NavController) {
     var showPassword by remember {
         mutableStateOf(false)
     }
+    var weight by remember { mutableStateOf("") }
+    var height by remember { mutableStateOf("") }
     val openAlertDialog = remember { mutableStateOf(false) }
 
 
@@ -153,18 +156,18 @@ fun SignUpScreen(navController: NavController) {
 
                     ) {
                         TextField(
-                            modifier = Modifier
+                            modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Username") },
-                            value = username,
-                            onValueChange = { username = it },
+                            label = { Text("Weight") },
+                            value = weight,
+                            onValueChange = { weight = it },
                             singleLine = true,
-                            trailingIcon = {
-                                Icon(
-                                    Icons.Rounded.Email,
-                                    contentDescription = "Username"
-                                )
-                            },
+//                            trailingIcon = {
+//                                Icon(
+//                                    Icons.Rounded.,
+//                                    contentDescription = "Weight"
+//                                )
+//                            },
                             shape = RoundedCornerShape(16.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
@@ -173,19 +176,20 @@ fun SignUpScreen(navController: NavController) {
                             )
                         )
                         TextField(
-                            modifier = Modifier
+                            modifier = Modifier.
+                                width(300.dp)
                                 .clip(CircleShape)
-                                .absolutePadding(left = 40.dp,bottom = 11.dp),
-                            label = { Text("Username") },
-                            value = username,
-                            onValueChange = { username = it },
+                                .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+                            label = { Text("Height") },
+                            value = height,
+                            onValueChange = { height = it },
                             singleLine = true,
-                            trailingIcon = {
-                                Icon(
-                                    Icons.Rounded.Email,
-                                    contentDescription = "Username"
-                                )
-                            },
+//                            trailingIcon = {
+//                                Icon(
+//                                    Icons.Rounded.Email,
+//                                    contentDescription = "height"
+//                                )
+//                            },
                             shape = RoundedCornerShape(16.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
