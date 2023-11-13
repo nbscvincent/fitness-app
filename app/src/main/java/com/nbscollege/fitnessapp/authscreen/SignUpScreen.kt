@@ -143,6 +143,60 @@ fun SignUpScreen(navController: NavController) {
                 ),
 
             )
+            Column(
+
+            ) {
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(CircleShape)
+                            .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                        label = { Text("Weight") },
+                        value = username,
+                        onValueChange = { username = it },
+                        singleLine = true,
+                        trailingIcon = {
+                            Icon(
+                                Icons.Rounded.Email,
+                                contentDescription = "Weight"
+                            )
+                        },
+                        shape = RoundedCornerShape(16.dp),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent
+                        )
+                    )
+                    TextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(CircleShape)
+                            .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                        label = { Text("Height") },
+                        value = username,
+                        onValueChange = { username = it },
+                        singleLine = true,
+                        trailingIcon = {
+                            Icon(
+                                Icons.Rounded.Email,
+                                contentDescription = "Height"
+                            )
+                        },
+                        shape = RoundedCornerShape(16.dp),
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent
+                        )
+                    )
+                }
+            }
+
+
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
