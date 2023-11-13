@@ -25,6 +25,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
 
 import androidx.compose.foundation.lazy.items
@@ -60,7 +61,7 @@ import com.nbscollege.fitnessapp.navigation.Screen
 
             Box(
                 modifier = Modifier
-                    .height(50.dp)
+//                    .height(50.dp)
                     .background(Color.White)
                     .fillMaxWidth()
             ) {
@@ -81,6 +82,7 @@ import com.nbscollege.fitnessapp.navigation.Screen
         }
     ) { innerPadding ->
         // Content of your screen goes here
+
         Column(
             modifier = Modifier
                 .background(Color.White)
@@ -94,14 +96,14 @@ import com.nbscollege.fitnessapp.navigation.Screen
                 verticalArrangement = Arrangement.Center
             ) {
 
-                Box(modifier = Modifier.height(20.dp))
+//                Spacer(modifier = Modifier.height(20.dp))
                 LazyColumn(
                     modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(7.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
 
-
                     item {
+                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
                             text = "EXERCISE",
                             fontWeight = FontWeight.Bold,
