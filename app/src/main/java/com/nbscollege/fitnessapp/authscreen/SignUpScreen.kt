@@ -77,8 +77,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var newUsername by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
@@ -127,13 +127,13 @@ fun SignUpScreen(navController: NavController) {
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
-                value = username,
-                onValueChange = { username = it },
+                value = newUsername,
+                onValueChange = { newUsername = it },
                 singleLine = true,
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "username"
+                        contentDescription = "newUsername"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -149,14 +149,14 @@ fun SignUpScreen(navController: NavController) {
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
                 label = { Text("Password") },
-                value = password,
-                onValueChange = { password = it },
+                value = newPassword,
+                onValueChange = { newPassword = it },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
                             if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = "password"
+                            contentDescription = "newPassword"
                         )
                     }
                 },
@@ -257,9 +257,9 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
                             // Check if the username is already taken
-                            if (registeredUsers.any { it.username == username}) {
+                            if (registeredUsers.any { it.username == newUsername}) {
                                 userError = true
                                 passwordError = false
                                 weightError = false
@@ -273,7 +273,7 @@ fun SignUpScreen(navController: NavController) {
 
 
                                 // Add the new user to the list of registered users
-                                registeredUsers.add(User(username, password, weight, height))
+                                registeredUsers.add(User(newUsername, newPassword, weight, height))
 
                                 // Provide feedback to the user
                                 Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
@@ -282,8 +282,8 @@ fun SignUpScreen(navController: NavController) {
                                 navController.navigate(Auth.LogInScreen.name)
                             }
                         } else {
-                            userError = username.isEmpty()
-                            passwordError = password.isEmpty()
+                            userError = newUsername.isEmpty()
+                            passwordError = newPassword.isEmpty()
                             weightError = weight.isEmpty()
                             heightError = height.isEmpty()
                             Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
