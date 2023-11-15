@@ -257,7 +257,7 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()) {
                             // Check if the username is already taken
                             if (registeredUsers.any { it.username == newUsername}) {
                                 userError = true
