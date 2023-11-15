@@ -61,8 +61,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import com.nbscollege.fitnessapp.authscreen.model.LogInUser
-import com.nbscollege.fitnessapp.authscreen.model.account
+//import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
 import androidx.compose.foundation.layout.Column
@@ -70,6 +69,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.rememberCoroutineScope
+import com.nbscollege.fitnessapp.authscreen.model.User
 
 import kotlinx.coroutines.launch
 
@@ -77,8 +77,8 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var newUsername by remember { mutableStateOf("") }
-    var newPassword by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
@@ -127,13 +127,13 @@ fun SignUpScreen(navController: NavController) {
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
-                value = newUsername,
-                onValueChange = { newUsername = it },
+                value = username,
+                onValueChange = { username = it },
                 singleLine = true,
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "newUsername"
+                        contentDescription = "username"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -149,14 +149,14 @@ fun SignUpScreen(navController: NavController) {
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
                 label = { Text("Password") },
-                value = newPassword,
-                onValueChange = { newPassword = it },
+                value = password,
+                onValueChange = { password = it },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
                             if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = "newPassword"
+                            contentDescription = "password"
                         )
                     }
                 },
@@ -257,9 +257,9 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
+                        if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty()) {
                             // Check if the username is already taken
-                            if (registeredUsers.any { it.username == newUsername}) {
+                            if (registeredUsers.any { it.username == username}) {
                                 userError = true
                                 passwordError = false
                                 weightError = false
@@ -273,7 +273,7 @@ fun SignUpScreen(navController: NavController) {
 
 
                                 // Add the new user to the list of registered users
-                                registeredUsers.add(LogInUser(newUsername, newPassword, weight, height))
+                                registeredUsers.add(User(username, password, weight, height))
 
                                 // Provide feedback to the user
                                 Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
@@ -282,8 +282,8 @@ fun SignUpScreen(navController: NavController) {
                                 navController.navigate(Auth.LogInScreen.name)
                             }
                         } else {
-                            userError = newUsername.isEmpty()
-                            passwordError = newPassword.isEmpty()
+                            userError = username.isEmpty()
+                            passwordError = password.isEmpty()
                             weightError = weight.isEmpty()
                             heightError = height.isEmpty()
                             Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()

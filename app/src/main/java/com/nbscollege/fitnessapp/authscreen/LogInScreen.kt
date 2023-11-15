@@ -50,7 +50,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.authscreen.model.account
+import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
+//import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.util.StringUtil
 
@@ -163,7 +164,7 @@ fun LoginScreen(navController: NavController ) {
                             return@Button
                         }
 
-                        if (account.any { it.username == username && it.password == password }) {
+                        if (registeredUsers.any { it.username == username && it.password == password }) {
                             // Authentication successful
                             Toast.makeText(context, "Login successful!", Toast.LENGTH_SHORT).show()
                             // Update the state to reflect the login success
