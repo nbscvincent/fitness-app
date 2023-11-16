@@ -42,6 +42,10 @@ class MainActivity : ComponentActivity() {
 //            }
             SplashNav(screenViewModel)
 
+
         }
+
     }
 }
+
+

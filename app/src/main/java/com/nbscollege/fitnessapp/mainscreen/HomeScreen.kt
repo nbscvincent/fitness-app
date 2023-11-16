@@ -33,6 +33,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 
 import com.nbscollege.fitnessapp.mainscreen.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.categoryExercise

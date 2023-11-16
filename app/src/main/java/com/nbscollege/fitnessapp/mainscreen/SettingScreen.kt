@@ -38,6 +38,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 
 //enum class SelectedButton {
 //    Home,
