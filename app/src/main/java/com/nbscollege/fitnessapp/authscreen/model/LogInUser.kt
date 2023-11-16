@@ -7,8 +7,8 @@ data class User (
     val height: String,
 )
 
-val registeredUsers = mutableListOf(
-    User("cayce", "cayce213", "","" )
+val registeredUsers = mutableListOf<User>(
+    User("cayce", "cayce213", "","" ),
 )
 //val account = listOf(
 //    User("cayce", "cayce213", "","" )
