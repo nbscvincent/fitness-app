@@ -65,6 +65,7 @@ fun LoginScreen(navController: NavController ) {
     }
 
     var isLoginSuccessful by remember { mutableStateOf(false) }
+
     val context = LocalContext.current
 
     var userError by remember {
@@ -166,7 +167,7 @@ fun LoginScreen(navController: NavController ) {
 
                         if (registeredUsers.any { it.username == username && it.password == password }) {
                             // Authentication successful
-                            Toast.makeText(context, "Login successful!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT).show()
                             // Update the state to reflect the login success
                             navController.navigate(Routes.MAIN.name)
                         } else {

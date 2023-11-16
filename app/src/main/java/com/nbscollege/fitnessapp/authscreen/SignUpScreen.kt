@@ -71,6 +71,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.rememberCoroutineScope
 import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.util.StringUtil
 
 import kotlinx.coroutines.launch
 
@@ -172,6 +173,7 @@ fun SignUpScreen(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
+
                 ),
 
             )
@@ -202,8 +204,7 @@ fun SignUpScreen(navController: NavController) {
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
                     textColor = Color.Black,
-
-
+                            cursorColor = confirmPasswordColor,
                 ),
 
 
@@ -285,6 +286,7 @@ fun SignUpScreen(navController: NavController) {
                                 passwordError = false
                                 weightError = false
                                 heightError = false
+                                confirmPassword = false.toString()
 
 
                                 // Add the new user to the list of registered users
@@ -302,12 +304,12 @@ fun SignUpScreen(navController: NavController) {
                         // Display error message if passwords do not match
 
                         else {
+
                             if (confirmPasswordError) {
                                 Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                             }
+
                             else {
-
-
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
@@ -319,6 +321,7 @@ fun SignUpScreen(navController: NavController) {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+
                         }
 
 
