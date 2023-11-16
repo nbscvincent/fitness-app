@@ -2,6 +2,7 @@ package com.example.example.model
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -86,6 +87,8 @@ fun SignUpScreen(navController: NavController) {
     var confirmShowPassword by remember {
         mutableStateOf(false)
     }
+    var confirmPasswordError by remember { mutableStateOf(false) }
+
     var weight by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     val openAlertDialog = remember { mutableStateOf(false) }
@@ -97,6 +100,8 @@ fun SignUpScreen(navController: NavController) {
 
 
     val context = LocalContext.current
+    var confirmPasswordColor = if (newPassword == confirmPassword) Color.Green else Color.Red
+
 
 
     Box(
@@ -177,13 +182,15 @@ fun SignUpScreen(navController: NavController) {
 
                 label = { Text("Confirm Password") },
                 value = confirmPassword,
-                onValueChange = { confirmPassword = it },
+                onValueChange = { confirmPassword = it
+                                },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { confirmShowPassword = confirmShowPassword != true }) {
                         Icon(
                             if (confirmShowPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = "confirmPassword"
+                            contentDescription = "confirmPassword",
+
                         )
                     }
                 },
@@ -193,10 +200,17 @@ fun SignUpScreen(navController: NavController) {
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
+                    disabledIndicatorColor = Color.Transparent,
+                    textColor = Color.Black,
+
+
                 ),
 
+
                 )
+
+
+
 
                 Row(
                     modifier = Modifier,
@@ -245,7 +259,7 @@ fun SignUpScreen(navController: NavController) {
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
-                                disabledIndicatorColor = Color.Transparent
+                                disabledIndicatorColor = Color.Transparent,
                             )
                         )
                     }
@@ -257,13 +271,14 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()) {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty() && newPassword == confirmPassword) {
                             // Check if the username is already taken
                             if (registeredUsers.any { it.username == newUsername}) {
                                 userError = true
                                 passwordError = false
                                 weightError = false
                                 heightError = false
+
                             }
                             else {
                                 userError = false
@@ -281,13 +296,32 @@ fun SignUpScreen(navController: NavController) {
                                 // Optionally, navigate to the login screen after signup
                                 navController.navigate(Auth.LogInScreen.name)
                             }
-                        } else {
-                            userError = newUsername.isEmpty()
-                            passwordError = newPassword.isEmpty()
-                            weightError = weight.isEmpty()
-                            heightError = height.isEmpty()
-                            Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
                         }
+
+
+                        // Display error message if passwords do not match
+
+                        else {
+                            if (confirmPasswordError) {
+                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+                            }
+                            else {
+
+
+                                userError = newUsername.isEmpty()
+                                passwordError = newPassword.isEmpty()
+                                weightError = weight.isEmpty()
+                                heightError = height.isEmpty()
+                                confirmPasswordError = confirmPassword.isNotEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please fill the registration!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+
+
 
 
 //                        openAlertDialog.value = true
@@ -307,21 +341,6 @@ fun SignUpScreen(navController: NavController) {
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
-//                    when {
-//                        // ...
-//                        openAlertDialog.value -> {
-//                            AlertDialogExample(
-//                                onDismissRequest = { openAlertDialog.value = false },
-//                                onConfirmation = {
-//                                    openAlertDialog.value = false
-//                                    println("Confirmation registered") // Add logic here to handle confirmation.
-//                                },
-//                                dialogTitle = "You Successfully Created an Account",
-//                                dialogText = "",
-//                                icon = Icons.Default.Info
-//                            )
-//                        }
-//                    }
                 }
                 Row(
                     modifier = Modifier
