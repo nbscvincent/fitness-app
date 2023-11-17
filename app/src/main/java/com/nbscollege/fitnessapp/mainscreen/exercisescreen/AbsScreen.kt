@@ -17,10 +17,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -45,6 +49,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -71,6 +76,23 @@ fun AbsScreen(navController: NavController) {
 
             ) {
 
+                SmallFloatingActionButton(
+                    onClick = {
+                        navController.navigate("HomeScreen")
+                    },
+                    containerColor = Color.White,
+                    modifier = Modifier
+                        .padding(start = 5.dp, end = 5.dp)
+                        .graphicsLayer(translationY = 35f, translationX = 30f)
+                        .zIndex(1f)
+
+                ) {
+                    Icon(Icons.Filled.KeyboardArrowLeft, "Back",
+                        modifier = Modifier
+                            .size(40.dp)
+                    )
+                }
+
                 Image(
                     modifier = Modifier.fillMaxWidth().height(180.dp),
                     painter = painterResource(id = R.drawable.abs),
@@ -82,8 +104,9 @@ fun AbsScreen(navController: NavController) {
                     text = "ABS Workout",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
-                    color = Color.Black,
-                    modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                    color = Color.White,
+                    modifier = Modifier
+                        .graphicsLayer(translationY = 270f, translationX = 30f)
 
                 )
 
