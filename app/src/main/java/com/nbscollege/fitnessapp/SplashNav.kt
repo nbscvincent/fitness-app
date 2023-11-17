@@ -4,7 +4,6 @@ import Auth
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,19 +16,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
 import com.example.example.model.LoginScreen
 import com.example.example.model.SignUpScreen
-import com.nbscollege.fitnessapp.mainscreen.Category
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.model.SplashScreen
-import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Routes
-import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
-import kotlin.system.exitProcess
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
