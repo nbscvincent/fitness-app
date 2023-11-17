@@ -36,8 +36,6 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 //    Person,
 //    Settings
 //}
-
-
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable

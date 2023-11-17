@@ -46,7 +46,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
             }
-            composable(route = Routes.MAIN.name) {
+            composable(route = Routes.MAIN.name) { 
                 BackHandler(true) {
                     // Or do nothing
                     Log.i("LOG_TAG", "Clicked back")
