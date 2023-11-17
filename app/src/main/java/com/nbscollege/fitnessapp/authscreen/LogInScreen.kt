@@ -1,6 +1,8 @@
 package com.example.example.model
 
 import Auth
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -38,6 +40,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -47,7 +50,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
+//import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.util.StringUtil
 
@@ -59,12 +63,18 @@ fun LoginScreen(navController: NavController ) {
     var showPassword by remember {
         mutableStateOf(false)
     }
-    var emailError by remember {
+
+    var isLoginSuccessful by remember { mutableStateOf(false) }
+
+    val context = LocalContext.current
+
+    var userError by remember {
         mutableStateOf(false)
     }
     var passwordError by remember {
         mutableStateOf(false)
     }
+
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -89,7 +99,7 @@ fun LoginScreen(navController: NavController ) {
             )
             Box(Modifier.height(25.dp))
             TextField(
-                isError = emailError,
+                isError = userError,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(CircleShape)
@@ -147,14 +157,26 @@ fun LoginScreen(navController: NavController ) {
                 Button(
                     onClick = {
                         if (StringUtil().isEmptyString(username)) {
-                            emailError = true
+                            userError = true
                             return@Button
                         }
                         if (StringUtil().isEmptyString(password)) {
                             passwordError = true
                             return@Button
                         }
-                        navController.navigate(Routes.MAIN.name)
+
+                        if (registeredUsers.any { it.username == username && it.password == password }) {
+                            // Authentication successful
+                            Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT).show()
+                            // Update the state to reflect the login success
+                            navController.navigate(Routes.MAIN.name)
+                        } else {
+                            // Authentication failed
+                            Toast.makeText(context, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
+                            // Update the state to reflect the login failure
+                        }
+
+
                     },
                     modifier = Modifier
                         .absolutePadding(
@@ -172,6 +194,11 @@ fun LoginScreen(navController: NavController ) {
                         Text("Login", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
                 }
+//                if (isLoginSuccessful) {
+//                    Text("Login successful!", color = Color.Green)
+//                } else {
+//                    Text("Login failed. Please try again.", color = Color.Red)
+//                }
                 Row(
                     modifier = Modifier
                         .padding(11.dp),

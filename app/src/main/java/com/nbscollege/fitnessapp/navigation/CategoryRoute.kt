@@ -5,5 +5,6 @@ enum class CategoryRoute{
     CHEST,
     ARM,
     LEG,
-    SHOULDER
+    SHOULDER,
+    CATEGORY
 }

@@ -1,6 +1,8 @@
 package com.example.example.model
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -57,19 +59,50 @@ import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
+//import com.nbscollege.fitnessapp.authscreen.model.account
+import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.runtime.rememberCoroutineScope
+import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.util.StringUtil
+
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var username by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var newUsername by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
     }
+    var confirmShowPassword by remember {
+        mutableStateOf(false)
+    }
+    var confirmPasswordError by remember { mutableStateOf(false) }
+
+    var weight by remember { mutableStateOf("") }
+    var height by remember { mutableStateOf("") }
     val openAlertDialog = remember { mutableStateOf(false) }
+
+    var userError by remember { mutableStateOf(false) }
+    var passwordError by remember { mutableStateOf(false) }
+    var weightError by remember { mutableStateOf(false) }
+    var heightError by remember { mutableStateOf(false) }
+
+
+    val context = LocalContext.current
+    var confirmPasswordColor = if (newPassword == confirmPassword) Color.Green else Color.Red
+
 
 
     Box(
@@ -100,13 +133,13 @@ fun SignUpScreen(navController: NavController) {
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
-                value = username,
-                onValueChange = { username = it },
+                value = newUsername,
+                onValueChange = { newUsername = it },
                 singleLine = true,
                 trailingIcon = {
                     Icon(
                         Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        contentDescription = "newUsername"
                     )
                 },
                 shape = RoundedCornerShape(16.dp),
@@ -122,14 +155,14 @@ fun SignUpScreen(navController: NavController) {
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
                 label = { Text("Password") },
-                value = password,
-                onValueChange = { password = it },
+                value = newPassword,
+                onValueChange = { newPassword = it },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
                         Icon(
                             if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                            contentDescription = "Password"
+                            contentDescription = "newPassword"
                         )
                     }
                 },
@@ -140,9 +173,98 @@ fun SignUpScreen(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent
+
                 ),
 
             )
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+
+                label = { Text("Confirm Password") },
+                value = confirmPassword,
+                onValueChange = { confirmPassword = it
+                                },
+                singleLine = true,
+                trailingIcon = {
+                    IconButton(onClick = { confirmShowPassword = confirmShowPassword != true }) {
+                        Icon(
+                            if (confirmShowPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = "confirmPassword",
+
+                        )
+                    }
+                },
+                visualTransformation = if (confirmShowPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                shape = RoundedCornerShape(16.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                    textColor = Color.Black,
+                            cursorColor = confirmPasswordColor,
+                ),
+
+
+                )
+
+
+
+
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceEvenly
+
+                    ) {
+                        TextField(
+                            modifier = Modifier.width(200.dp)
+                                .absolutePadding(left = 40.dp, bottom = 11.dp),
+                            label = { Text("Weight") },
+                            value = weight,
+                            onValueChange = { weight = it },
+                            singleLine = true,
+//                            trailingIcon = {
+//                                Icon(
+//                                    Icons.Rounded.,
+//                                    contentDescription = "Weight"
+//                                )
+//                            },
+                            shape = RoundedCornerShape(16.dp),
+                            colors = TextFieldDefaults.textFieldColors(
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent
+                            )
+                        )
+                        TextField(
+                            modifier = Modifier.
+                                width(300.dp)
+                                .clip(CircleShape)
+                                .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+                            label = { Text("Height") },
+                            value = height,
+                            onValueChange = { height = it },
+                            singleLine = true,
+//                            trailingIcon = {
+//                                Icon(
+//                                    Icons.Rounded.Email,
+//                                    contentDescription = "height"
+//                                )
+//                            },
+                            shape = RoundedCornerShape(16.dp),
+                            colors = TextFieldDefaults.textFieldColors(
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                            )
+                        )
+                    }
+                }
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -150,8 +272,62 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty() && newPassword == confirmPassword) {
+                            // Check if the username is already taken
+                            if (registeredUsers.any { it.username == newUsername}) {
+                                userError = true
+                                passwordError = false
+                                weightError = false
+                                heightError = false
 
-                        openAlertDialog.value = true
+                            }
+                            else {
+                                userError = false
+                                passwordError = false
+                                weightError = false
+                                heightError = false
+                                confirmPassword = false.toString()
+
+
+                                // Add the new user to the list of registered users
+                                registeredUsers.add(User(newUsername, newPassword, weight, height))
+
+                                // Provide feedback to the user
+                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+
+                                // Optionally, navigate to the login screen after signup
+                                navController.navigate(Auth.LogInScreen.name)
+                            }
+                        }
+
+
+                        // Display error message if passwords do not match
+
+                        else {
+
+                            if (confirmPasswordError) {
+                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+                            }
+
+                            else {
+                                userError = newUsername.isEmpty()
+                                passwordError = newPassword.isEmpty()
+                                weightError = weight.isEmpty()
+                                heightError = height.isEmpty()
+                                confirmPasswordError = confirmPassword.isNotEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please fill the registration!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                        }
+
+
+
+
+//                        openAlertDialog.value = true
                     },
                     modifier = Modifier
                         .absolutePadding(
@@ -167,21 +343,6 @@ fun SignUpScreen(navController: NavController) {
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
-                    }
-                    when {
-                        // ...
-                        openAlertDialog.value -> {
-                            AlertDialogExample(
-                                onDismissRequest = { openAlertDialog.value = false },
-                                onConfirmation = {
-                                    openAlertDialog.value = false
-                                    println("Confirmation registered") // Add logic here to handle confirmation.
-                                },
-                                dialogTitle = "You Successfully Created an Account",
-                                dialogText = "",
-                                icon = Icons.Default.Info
-                            )
-                        }
                     }
                 }
                 Row(
