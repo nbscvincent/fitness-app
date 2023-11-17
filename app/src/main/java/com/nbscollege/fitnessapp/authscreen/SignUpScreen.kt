@@ -312,7 +312,6 @@ fun SignUpScreen(navController: NavController) {
                         }
 
                         if (confirmPassword != newPassword) {
-
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                         }
                         // Display error message if passwords do not match
