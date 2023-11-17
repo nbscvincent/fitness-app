@@ -189,8 +189,11 @@ fun LoginScreen(navController: NavController ) {
                             navController.navigate(Routes.MAIN.name)
                         } else {
                             // Authentication failed
+
+
                             Toast.makeText(context, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
                             // Update the state to reflect the login failure
+                                            
                         }
 
 
@@ -202,8 +205,8 @@ fun LoginScreen(navController: NavController ) {
                             bottom = 25.dp,
                             top = 25.dp
                         )
-                        .fillMaxWidth()
-                        .height(150.dp),
+                        .fillMaxWidth(),
+
                     colors = ButtonDefaults.buttonColors(Color.Red),
                     shape = RoundedCornerShape(12.dp)
                 ) {
@@ -231,7 +234,7 @@ fun LoginScreen(navController: NavController ) {
                         Text("New Member?", fontSize = 16.sp)
                         Box(Modifier.width(7.dp))
                         TextButton(onClick = { navController.navigate(Auth.SignUpScreen.name) }) {
-                            Text("Register now", fontSize = 16.sp, color = Color.Red)
+                            Text("Register here", fontSize = 16.sp, color = Color.Red)
                         }
                     }
                 }

@@ -147,7 +147,7 @@ fun SignUpScreen(navController: NavController) {
                         contentDescription = "newUsername"
                     )
                 },
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -173,7 +173,7 @@ fun SignUpScreen(navController: NavController) {
                 },
                 visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -205,7 +205,7 @@ fun SignUpScreen(navController: NavController) {
                 },
                 visualTransformation = if (confirmShowPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -240,7 +240,7 @@ fun SignUpScreen(navController: NavController) {
 //                                    contentDescription = "Weight"
 //                                )
 //                            },
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -262,7 +262,7 @@ fun SignUpScreen(navController: NavController) {
 //                                    contentDescription = "height"
 //                                )
 //                            },
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -275,6 +275,7 @@ fun SignUpScreen(navController: NavController) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
+
             ) {
                 Button(
                     onClick = {
@@ -341,6 +342,7 @@ fun SignUpScreen(navController: NavController) {
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
+
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
@@ -358,7 +360,7 @@ fun SignUpScreen(navController: NavController) {
                         Text("Already a member?", fontSize = 16.sp)
                         Box(Modifier.width(7.dp))
                         TextButton(onClick = { navController.navigate(Auth.LogInScreen.name) }) {
-                            Text("Login now", fontSize = 16.sp, color = Color.Red)
+                            Text("Login here", fontSize = 16.sp, color = Color.Red)
                         }
                     }
                 }
