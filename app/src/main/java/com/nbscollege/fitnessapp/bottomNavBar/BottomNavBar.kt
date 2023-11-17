@@ -49,6 +49,7 @@ fun BottomNavBar(navController: NavController) {
                 selected = selectedItem == index,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
+
 //                    navController.navigate(item.route) {
 //                        // Pop up to the start destination of the graph to
 //                        // avoid building up a large stack of destinations
@@ -60,18 +61,8 @@ fun BottomNavBar(navController: NavController) {
 //                        // Restore state when reselecting a previously selected item
 //                        restoreState = true
 //                    }
-                          selectedItem = index
-//                    navController.navigate(item.route)
-
+                    selectedItem = index
                     navController.navigate(item.route)
-//                    {
-//                        popUpTo(navController.graph.findStartDestination().id) {
-//                            saveState = true
-//                        }
-//                        launchSingleTop = true
-//                        // Restore state when reselecting a previously selected item
-//                        restoreState = true
-//                    }
 
                 },
                 label = {
