@@ -120,9 +120,10 @@ fun settingscreen(navController : NavController) {
                 Row(
                     modifier = Modifier
                         .padding(start = 20.dp)
-                        .fillMaxSize(),
-
-
+                        .fillMaxWidth()
+                        .clickable( onClick = {
+                            navController.navigate(SettingsRoute.GeneralSettings.name)
+                        }),
                 ) {
                     Text(
                             text = "General Settings",
@@ -130,15 +131,22 @@ fun settingscreen(navController : NavController) {
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Light
                     )
-                    IconButton(onClick = { navController.navigate(SettingsRoute.GeneralSettings.name) }) {
                         Icon(
                             imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
                             modifier = Modifier
-                                .padding(start = 150.dp)
-                                .size(32.dp),
-                            contentDescription = "Arrow ForwardIos"
+                                .padding(start = 130.dp, top=10.dp)
+                                .size(25.dp),
+//                                .clickable( onClick = {
+//                                    navController.navigate(SettingsRoute.GeneralSettings.name)
+//                                }),
+
+
+                            contentDescription = "Arrow ForwardIos",
+                            tint = Color.Black
                         )
-                    }
+//                            .clickable( onClick = {
+//                                navController.navigate(Auth.OTP.name)
+
 
 
                 }
