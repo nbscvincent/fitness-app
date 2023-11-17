@@ -78,14 +78,14 @@ fun SettingCard(general: General, navController: NavController) {
                         color = Color.Black,
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Thin,
-                        modifier = Modifier.padding(start=20.dp, top=10.dp)
+                        modifier = Modifier.padding(start=40.dp, top=10.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
 
                     Icon(
                         imageVector = general.icon, // Replace with the desired icon
                         modifier = Modifier
-                            .padding(end = 30.dp, top = 20.dp)
+                            .padding(end = 50.dp, top = 20.dp)
                             .size(20.dp),
 
                         contentDescription = "Arrow ForwardIos",
