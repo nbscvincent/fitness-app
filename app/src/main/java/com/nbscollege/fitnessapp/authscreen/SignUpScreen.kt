@@ -287,7 +287,11 @@ fun SignUpScreen(navController: NavController) {
                                 weightError = false
                                 heightError = false
 
+                                Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
+
                             }
+
+
                             else {
                                 userError = false
                                 passwordError = false
@@ -307,16 +311,19 @@ fun SignUpScreen(navController: NavController) {
                             }
                         }
 
-
+                        if (confirmPassword != newPassword) {
+                            confirmPasswordError = true
+                            Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+                        }
                         // Display error message if passwords do not match
 
                         else {
 
-                            if (confirmPasswordError) {
-                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
-                            }
+//                            if (confirmPasswordError) {
+//                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+//                            }
 
-                            else {
+//                            else {
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
@@ -328,7 +335,7 @@ fun SignUpScreen(navController: NavController) {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-                        }
+//                        }
                     },
                     modifier = Modifier
                         .absolutePadding(
