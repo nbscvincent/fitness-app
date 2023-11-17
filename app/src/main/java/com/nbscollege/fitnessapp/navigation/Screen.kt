@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.navigationRoute
+package com.nbscollege.fitnessapp.navigation
 
 enum class Screen {
     HomeScreen,

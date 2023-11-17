@@ -1,76 +1,89 @@
 package com.nbscollege.fitnessapp
 
-import MainScreen
+import Auth
+
 import android.annotation.SuppressLint
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import android.content.Intent
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.compose.BackHandler
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.example.model.Login
-import com.example.example.model.SignUp
-import com.nbscollege.fitnessapp.model.SplashAnimated
-import com.nbscollege.fitnessapp.model.homescreen
-import com.nbscollege.fitnessapp.model.profilescreen
-import com.nbscollege.fitnessapp.model.settingscreen
-import com.nbscollege.fitnessapp.navigationRoute.Screen
+import androidx.navigation.navigation
+import com.example.example.model.LoginScreen
+import com.example.example.model.SignUpScreen
+import com.nbscollege.fitnessapp.mainscreen.Category
+import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
+import com.nbscollege.fitnessapp.model.SplashScreen
+import com.nbscollege.fitnessapp.navigation.CategoryRoute
+import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
+import kotlinx.coroutines.delay
+import kotlin.system.exitProcess
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SplashNav() {
+fun SplashNav(screenViewModel: ScreenViewModel) {
     val navController: NavHostController = rememberNavController()
 
+    var showToast by remember { mutableStateOf(false) }
+
+    var exit by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
+    if(showToast){
+        Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+        showToast= false
+    }
+
+
+    LaunchedEffect(key1 = exit) {
+        if (exit) {
+            delay(2000)
+            exit = false
+        }
+    }
+
+
     Scaffold {
-        NavHost(navController = navController, startDestination =  Screen.SplashScreen.name) {
-            composable(route = Screen.SplashScreen.name) {
-                SplashAnimated(navController)
+        NavHost(navController = navController, startDestination = Auth.Splash.name) {
+            composable(route = Auth.Splash.name) {
+                SplashScreen(navController, screenViewModel)
             }
-            composable(route = MainScreen.LogInScreen.name) {
-                Login(navController)
+            composable(route = Auth.LogInScreen.name) {
+                LoginScreen(navController)
             }
-            composable(route = MainScreen.SignUpScreen.name) {
-                SignUp(navController)
+            composable(route = Auth.SignUpScreen.name) {
+                SignUpScreen(navController)
             }
-            
-            composable(route = Screen.HomeScreen.name) {
-                mainNavigation()
+            composable(route = Routes.MAIN.name) {
+                BackHandler(enabled = true) {
+                    if (exit) {
+                        context.startActivity(Intent(Intent.ACTION_MAIN).apply {
+                            addCategory(Intent.CATEGORY_HOME)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        })
+                    } else {
+                        exit = true
+                        Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                    mainNavigation(navController)
             }
+
         }
     }
 }
-
 

@@ -51,10 +51,13 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.5.3")
+    implementation("androidx.wear.compose:compose-material:1.2.1")
 
     val nav_version = "2.7.4"
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    // Splash screen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -71,4 +74,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation ("me.onebone:toolbar-compose:2.1.0")
 }

@@ -29,14 +29,13 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 
 //enum class SelectedButton2 {
 //    Home,
 //    Person,
 //    Settings
 //}
-
-
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable

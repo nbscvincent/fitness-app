@@ -38,6 +38,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 
 //enum class SelectedButton {
 //    Home,
@@ -49,10 +50,6 @@ import androidx.navigation.NavController
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun settingscreen(navController : NavController) {
-    var isPerson by remember { mutableStateOf(false) }
-    var isHome by remember { mutableStateOf(false) }
-    var isSettings by remember { mutableStateOf(false) }
-
 
 
     Scaffold(
@@ -65,41 +62,6 @@ fun settingscreen(navController : NavController) {
                     .fillMaxWidth()
 
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start
-                ) {
-                    IconButton(
-                        onClick = {
-                            // Handle back arrow click
-                            // Navigate back to the previous screen
-                            navController.popBackStack()
-                        }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Back",
-                            tint = Color.Black
-                        )
-                    }
-
-                        Row(
-                            modifier = Modifier.fillMaxWidth().padding(end = 50.dp),
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Settings,
-                                contentDescription = "Settings",
-                                modifier = Modifier.graphicsLayer(
-                                    translationY = 25f,
-                                    translationX = 30f
-                                )
-                                    .size(30.dp),
-                                tint = Color.Black
-
-                            )
-
-
                             Text(
                                 text = "Settings",
                                 fontWeight = FontWeight.Bold,
@@ -110,25 +72,18 @@ fun settingscreen(navController : NavController) {
                                     translationX = 30f
                                 )
                             )
-                        }
+
                 }
-            }
-
-
-
-
 
         },
         bottomBar = {
-            BottomAppBar {
 
-            }
         }
     ) { innerPadding ->
 
         Column(
             modifier = Modifier
-                .background(Color.Black)
+                .background(Color.White)
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
