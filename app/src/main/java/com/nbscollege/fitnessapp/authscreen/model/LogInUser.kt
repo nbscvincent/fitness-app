@@ -9,6 +9,7 @@ data class User (
 
 val registeredUsers = mutableListOf<User>(
     User("c", "c", "","" ),
+    User("cm", "cm", "","" ),
 )
 //val account = listOf(
 //    User("cayce", "cayce213", "","" )

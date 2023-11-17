@@ -23,11 +23,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBackIos
-import androidx.compose.material.icons.filled.ArrowForwardIos
+
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.rounded.ArrowBackIos
+
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -58,7 +57,7 @@ import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
-
+import androidx.compose.material.icons.rounded.KeyboardArrowRight
 
 
 //enum class SelectedButton {
@@ -83,7 +82,7 @@ fun settingscreen(navController : NavController) {
             ) {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(
-                        imageVector = Icons.Rounded.ArrowBackIos,
+                        imageVector = Icons.Rounded.KeyboardArrowRight,
                         modifier = Modifier.size(30.dp),
                         contentDescription = "Back",
                         tint = Color.DarkGray

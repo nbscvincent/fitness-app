@@ -14,6 +14,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
+import com.nbscollege.fitnessapp.mainscreen.card.ExerCateg
+import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
+import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
@@ -79,6 +82,13 @@ fun mainNavigation(navController: NavController) {
                 composable(route = CategoryRoute.LEG.name) { LegScreen(navController) }
                 composable(route = CategoryRoute.SHOULDER.name) { ShoulderScreen(navController) }
             }
+//            navigation(startDestination = CategoryRoute.ABS.name, route = ExerRoute.ABS.name) {
+//                composable(route = ExerRoute.ABS.name) { ExerciseList }
+//                composable(route = ExerRoute.CHEST.name) { ChestScreen(navController) }
+//                composable(route = ExerRoute.ARM.name) { ArmScreen(navController) }
+//                composable(route = ExerRoute.LEG.name) { LegScreen(navController) }
+//                composable(route = ExerRoute.SHOULDER.name) { ShoulderScreen(navController) }
+//            }
 
         }
     }
