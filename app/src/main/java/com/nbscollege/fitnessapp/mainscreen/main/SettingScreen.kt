@@ -19,6 +19,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.rounded.ArrowBackIos
+import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -65,7 +68,7 @@ fun settingscreen(navController : NavController) {
             ) {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBackIos,
+                        imageVector = Icons.Rounded.ArrowBackIos,
                         modifier = Modifier.size(30.dp),
                         contentDescription = "Back"
                     )
@@ -83,18 +86,23 @@ fun settingscreen(navController : NavController) {
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
         ) {
             Row(
-                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
             ) {
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    modifier = Modifier.size(45.dp),
+                    contentDescription = "Back"
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(text = "Settings", color = Color.Black, fontSize = 38.sp, fontWeight = FontWeight.SemiBold)
+            }
 
-            }
-            Column (
-                
-            ) {
-                Text(text = "General Settings", color = Color.Black, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold)
-            }
+
+            Text(text = "General Settings", color = Color.Black, fontSize = 30.sp, fontWeight = FontWeight.Light)
+
 
         }
 
