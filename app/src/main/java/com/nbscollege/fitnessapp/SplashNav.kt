@@ -83,7 +83,6 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                     mainNavigation(navController)
             }
 
-
         }
     }
 }
