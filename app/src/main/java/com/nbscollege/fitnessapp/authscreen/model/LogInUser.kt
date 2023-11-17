@@ -8,12 +8,9 @@ data class User (
 )
 
 val registeredUsers = mutableListOf<User>(
-<<<<<<< Updated upstream
-    User("cayce", "cayce213", "","" ),
-=======
+
     User("c", "c", "","" ),
     User("m", "m", "","" ),
->>>>>>> Stashed changes
 )
 //val account = listOf(
 //    User("cayce", "cayce213", "","" )
