@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBackIos
+import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
@@ -45,6 +46,9 @@ import androidx.compose.ui.text.style.TextAlign
 
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
+import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 //enum class SelectedButton {
 //    Home,
@@ -95,7 +99,8 @@ fun settingscreen(navController : NavController) {
             ) {
 
                 Row(
-                    modifier = Modifier,
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Icon(
@@ -111,16 +116,31 @@ fun settingscreen(navController : NavController) {
                         fontWeight = FontWeight.SemiBold
                     )
                 }
+                Spacer(modifier = Modifier.height(50.dp))
+                Row(
+                    modifier = Modifier
+                        .padding(start = 20.dp)
+                        .fillMaxSize(),
 
-                Column(
 
                 ) {
                     Text(
-                        text = "General Settings",
-                        color = Color.Black,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Light
+                            text = "General Settings",
+                    color = Color.Black,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Light
                     )
+                    IconButton(onClick = { navController.navigate(SettingsRoute.GeneralSettings.name) }) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
+                            modifier = Modifier
+                                .padding(start = 150.dp)
+                                .size(32.dp),
+                            contentDescription = "Arrow ForwardIos"
+                        )
+                    }
+
+
                 }
 
 
