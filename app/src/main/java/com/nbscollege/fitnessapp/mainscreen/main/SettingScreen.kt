@@ -129,7 +129,6 @@ fun settingscreen(navController : NavController) {
 
             ) {
 
-
                 items(settingsList) { general ->
                     SettingCard(general = general, navController)
                 }

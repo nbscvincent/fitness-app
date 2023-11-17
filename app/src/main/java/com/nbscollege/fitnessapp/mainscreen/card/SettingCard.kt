@@ -58,12 +58,12 @@ fun SettingCard(general: General, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(Color.White)
+            ,
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp,
         ),
         content = {
-
                 Row(
                     modifier = Modifier
                         .height(60.dp)
@@ -77,23 +77,21 @@ fun SettingCard(general: General, navController: NavController) {
                         general.title,
                         color = Color.Black,
                         fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontWeight = FontWeight.Thin,
                         modifier = Modifier.padding(start=20.dp, top=10.dp)
                     )
+                    Spacer(modifier = Modifier.weight(1f))
+
                     Icon(
                         imageVector = general.icon, // Replace with the desired icon
                         modifier = Modifier
-                            .padding(start = 130.dp, top = 15.dp)
-                            .size(25.dp),
-//                                .clickable( onClick = {
-//                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-//                                }),
+                            .padding(end = 30.dp, top = 20.dp)
+                            .size(20.dp),
 
                         contentDescription = "Arrow ForwardIos",
                         tint = Color.DarkGray
                     )
-//                            .clickable( onClick = {
-//                                navController.navigate(Auth.OTP.name)
+
 
                 }
                 Divider(
