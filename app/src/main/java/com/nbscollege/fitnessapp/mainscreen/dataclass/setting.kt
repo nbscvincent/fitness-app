@@ -1,5 +1,7 @@
 package com.nbscollege.fitnessapp.mainscreen.dataclass
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
 import androidx.compose.material.icons.filled.Settings
@@ -21,3 +23,5 @@ val settingsList = listOf(
     General("Rate Us", Icons.Default.ArrowForwardIos, SettingsRoute.Rate.name),
     General("Log out", Icons.Default.ArrowForwardIos, SettingsRoute.LogOut.name),
 )
+
+

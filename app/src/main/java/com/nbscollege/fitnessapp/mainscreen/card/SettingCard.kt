@@ -70,7 +70,7 @@ fun SettingCard(general: General, navController: NavController) {
                         .background(Color.White)
                         .fillMaxWidth()
                         .clickable(onClick = {
-                            navController.navigate(SettingsRoute.GeneralSettings.name)
+                            navController.navigate(SettingsRoute.Settings.name)
                         }),
                 ) {
                     Text(

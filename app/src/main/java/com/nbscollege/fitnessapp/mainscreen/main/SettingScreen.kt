@@ -1,6 +1,9 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -45,6 +48,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 
 import androidx.navigation.NavController
@@ -53,9 +57,9 @@ import com.nbscollege.fitnessapp.mainscreen.card.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
-import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
-import com.nbscollege.fitnessapp.navigation.Screen
-import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import androidx.compose.foundation.layout.*
+
+
 
 //enum class SelectedButton {
 //    Home,
@@ -67,8 +71,6 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun settingscreen(navController : NavController) {
-
-
     Scaffold(
         topBar = {
             Box(
