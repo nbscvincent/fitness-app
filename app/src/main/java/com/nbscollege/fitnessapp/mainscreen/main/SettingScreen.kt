@@ -75,7 +75,7 @@ fun settingscreen(navController : NavController) {
                 modifier = Modifier
                     .height(50.dp)
                     .padding(top=10.dp)
-//                    .background(Color.White)
+                    .background(Color.White)
                     .fillMaxWidth()
 
             ) {
@@ -89,23 +89,46 @@ fun settingscreen(navController : NavController) {
                 }
 
                 }
-
         },
         bottomBar = {
 
         }
     ) { innerPadding ->
 
-//        Box(
-//            modifier = Modifier.fillMaxSize(),
-//        ) {
+        Box(
+            modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
 
+        ) {
+
+        Row(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Settings ,
+                modifier = Modifier.size(45.dp),
+                contentDescription = "Back",
+                tint = Color.Black
+            )
+            Spacer(modifier = Modifier.width(5.dp))
+            Text(
+                "Settings",
+                color = Color.Black,
+                fontSize = 38.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
             LazyColumn(
-                modifier = Modifier.padding(innerPadding),
+                modifier = Modifier.padding(innerPadding).background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
 
             ) {
+
 
                 items(settingsList) { general ->
                     SettingCard(general = general, navController)
@@ -259,5 +282,5 @@ fun settingscreen(navController : NavController) {
 
 
     }
-//}
+}
 

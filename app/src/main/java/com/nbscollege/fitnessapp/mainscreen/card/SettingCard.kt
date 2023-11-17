@@ -55,18 +55,19 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SettingCard(general: General, navController: NavController) {
-
     Card(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(Color.White),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp,
         ),
         content = {
-            
+
                 Row(
                     modifier = Modifier
                         .height(60.dp)
+                        .background(Color.White)
                         .fillMaxWidth()
                         .clickable(onClick = {
                             navController.navigate(SettingsRoute.GeneralSettings.name)
@@ -76,7 +77,7 @@ fun SettingCard(general: General, navController: NavController) {
                         general.title,
                         color = Color.Black,
                         fontSize = 30.sp,
-                        fontWeight = FontWeight.Light,
+                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(start=20.dp, top=10.dp)
                     )
                     Icon(
