@@ -31,6 +31,16 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
+
+            SplashNav(screenViewModel)
+
+
+        }
+
+    }
+}
+
+
 //            FitnessAppTheme {
 //                // A surface container using the 'background' color from the theme
 //                Surface(
@@ -40,12 +50,5 @@ class MainActivity : ComponentActivity() {
 //
 //                }
 //            }
-            SplashNav(screenViewModel)
-
-
-        }
-
-    }
-}
 
 

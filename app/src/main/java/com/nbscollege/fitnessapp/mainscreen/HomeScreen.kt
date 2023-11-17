@@ -59,7 +59,6 @@ import com.nbscollege.fitnessapp.navigation.Screen
 
     Scaffold(
         topBar = {
-
             Box(
                 modifier = Modifier
 //                    .height(50.dp)
@@ -74,7 +73,6 @@ import com.nbscollege.fitnessapp.navigation.Screen
                     modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
             }
-
         },
         bottomBar = {
             BottomAppBar {

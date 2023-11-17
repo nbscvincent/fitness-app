@@ -50,13 +50,13 @@ fun mainNavigation(navController: NavController) {
             }
             composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
             composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
+
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
                 composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
                 composable(route = CategoryRoute.CHEST.name) { ChestScreen(navController) }
                 composable(route = CategoryRoute.ARM.name) { ArmScreen(navController) }
                 composable(route = CategoryRoute.LEG.name) { LegScreen(navController) }
                 composable(route = CategoryRoute.SHOULDER.name) { ShoulderScreen(navController) }
-
             }
 
         }
