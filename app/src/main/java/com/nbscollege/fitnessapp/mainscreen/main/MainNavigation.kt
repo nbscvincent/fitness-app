@@ -19,11 +19,13 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,8 +50,27 @@ fun mainNavigation(navController: NavController) {
             composable(route = Screen.HomeScreen.name) {
                 homescreen(navController)
             }
-            composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
-            composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
+            composable(route = Screen.ProfileScreen.name) {
+                profilescreen(navController)
+            }
+            composable(route = Screen.SettingScreen.name) {
+                settingscreen(navController)
+            }
+            navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
+                composable(route = SettingsRoute.GeneralSettings.name) {
+                    GeneralSettings(navController)
+                }
+                composable(route = SettingsRoute.Feed.name) {
+                    GeneralSettings(navController)
+                }
+                composable(route = SettingsRoute.Rate.name) {
+                    GeneralSettings(navController)
+                }
+                composable(route = SettingsRoute.LogOut.name) {
+                    GeneralSettings(navController)
+                }
+
+            }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
                 composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }

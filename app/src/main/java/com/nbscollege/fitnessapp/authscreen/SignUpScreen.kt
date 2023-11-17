@@ -107,9 +107,6 @@ fun SignUpScreen(navController: NavController) {
         else if (newPassword == confirmPassword) Color.Green
         else Color.Red
 
-
-
-
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
