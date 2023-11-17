@@ -4,6 +4,7 @@ import Auth
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,9 +51,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.util.StringUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,7 +117,7 @@ fun LoginScreen(navController: NavController ) {
                         contentDescription = "Username"
                     )
                 },
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -142,7 +145,7 @@ fun LoginScreen(navController: NavController ) {
                 },
                 visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -150,6 +153,20 @@ fun LoginScreen(navController: NavController ) {
                     errorIndicatorColor = Color.Transparent
                 )
             )
+
+            Column(
+                modifier = Modifier.padding(start=220.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+
+            ) {
+                Text(text = "Forgot Password?", color = Color.Red, modifier = Modifier.clickable( onClick = {
+                    navController.navigate(Auth.OTP.name)
+                }, ) )
+            }
+
+
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
@@ -185,8 +202,10 @@ fun LoginScreen(navController: NavController ) {
                             bottom = 25.dp,
                             top = 25.dp
                         )
-                        .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Color.Red)
+                        .fillMaxWidth()
+                        .height(150.dp),
+                    colors = ButtonDefaults.buttonColors(Color.Red),
+                    shape = RoundedCornerShape(12.dp)
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,

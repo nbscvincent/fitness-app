@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.example.model.LoginScreen
 import com.example.example.model.SignUpScreen
+import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
@@ -59,6 +60,9 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
+            }
+            composable(route = Auth.OTP.name) {
+                AuthenticationScreen(navController)
             }
             composable(route = Routes.MAIN.name) {
                 BackHandler(enabled = true) {

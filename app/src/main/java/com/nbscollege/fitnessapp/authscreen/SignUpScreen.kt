@@ -103,7 +103,6 @@ fun SignUpScreen(navController: NavController) {
 
     val context = LocalContext.current
     var confirmPasswordColor =
-
         if (confirmPassword.isEmpty()) Color.Transparent
         else if (newPassword == confirmPassword) Color.Green
         else Color.Red
