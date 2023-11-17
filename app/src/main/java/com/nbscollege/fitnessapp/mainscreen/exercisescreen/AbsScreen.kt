@@ -59,21 +59,6 @@ import kotlin.math.roundToInt
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AbsScreen(navController: NavController) {
-    val toolbarHeight = 48.dp
-    val toolbarHeightPx = with(LocalDensity.current) { toolbarHeight.roundToPx().toFloat() }
-    val toolbarOffsetHeightPx = remember { mutableStateOf(0f) }
-
-    val nestedScrollConnection = remember {
-        object : NestedScrollConnection {
-            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
-
-                val delta = available.y
-                val newOffset = toolbarOffsetHeightPx.value + delta
-                toolbarOffsetHeightPx.value = newOffset.coerceIn(-toolbarHeightPx, 0f)
-                return Offset.Zero
-            }
-        }
-    }
 
     Scaffold(
         topBar = {
@@ -83,6 +68,7 @@ fun AbsScreen(navController: NavController) {
                     .height(180.dp)
                     .background(Color.White)
                     .fillMaxWidth()
+
             ) {
 
                 Image(
@@ -117,7 +103,8 @@ fun AbsScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            LazyColumn(contentPadding = PaddingValues(top = toolbarHeight)) {
+            LazyColumn(
+            ) {
                 items(20) { index ->
                     Text("I'm item $index", modifier = Modifier
                         .fillMaxWidth()

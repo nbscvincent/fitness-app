@@ -45,8 +45,8 @@ fun BottomNavBar(navController: NavController) {
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
-                selected = currentRoute == item.route,
-//                selected = selectedItem == index,
+//                selected = currentRoute == item.route,
+                selected = selectedItem == index,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
 //                    navController.navigate(item.route) {
@@ -60,19 +60,18 @@ fun BottomNavBar(navController: NavController) {
 //                        // Restore state when reselecting a previously selected item
 //                        restoreState = true
 //                    }
-//                          selectedItem = index
+                          selectedItem = index
 //                    navController.navigate(item.route)
-                    navController.navigate(item.route) {
-                        // Pop up to the start destination of the graph to
-                        // avoid building up a large stack of destinations
-                        // on the back stack as users select items
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        // Restore state when reselecting a previously selected item
-                        restoreState = true
-                    }
+
+                    navController.navigate(item.route)
+//                    {
+//                        popUpTo(navController.graph.findStartDestination().id) {
+//                            saveState = true
+//                        }
+//                        launchSingleTop = true
+//                        // Restore state when reselecting a previously selected item
+//                        restoreState = true
+//                    }
 
                 },
                 label = {

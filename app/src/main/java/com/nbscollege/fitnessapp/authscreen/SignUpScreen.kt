@@ -3,6 +3,7 @@ package com.example.example.model
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -101,7 +102,12 @@ fun SignUpScreen(navController: NavController) {
 
 
     val context = LocalContext.current
-    var confirmPasswordColor = if (newPassword == confirmPassword) Color.Green else Color.Red
+    var confirmPasswordColor =
+
+        if (confirmPassword.isEmpty()) Color.Transparent
+        else if (newPassword == confirmPassword) Color.Green
+        else Color.Red
+
 
 
 
@@ -180,7 +186,9 @@ fun SignUpScreen(navController: NavController) {
             TextField(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                    .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp)
+                    .border(1.dp, color = confirmPasswordColor, shape = RoundedCornerShape(16.dp)
+                    ),
 
                 label = { Text("Confirm Password") },
                 value = confirmPassword,
@@ -203,9 +211,8 @@ fun SignUpScreen(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
-                    textColor = Color.Black,
-                            cursorColor = confirmPasswordColor,
-                ),
+                    textColor = Color.Black
+                )
 
 
                 )
