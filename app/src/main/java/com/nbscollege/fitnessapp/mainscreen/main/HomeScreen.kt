@@ -31,7 +31,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.foundation.lazy.items
 import androidx.navigation.NavHostController
 
-import com.nbscollege.fitnessapp.mainscreen.exercisecategory.CategoryCard
+import com.nbscollege.fitnessapp.mainscreen.card.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 
 
