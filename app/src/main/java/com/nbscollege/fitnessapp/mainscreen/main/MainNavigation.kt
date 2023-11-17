@@ -48,8 +48,12 @@ fun mainNavigation(navController: NavController) {
             composable(route = Screen.HomeScreen.name) {
                 homescreen(navController)
             }
-            composable(route = Screen.ProfileScreen.name) { profilescreen(navController) }
-            composable(route = Screen.SettingScreen.name) { settingscreen(navController) }
+            composable(route = Screen.ProfileScreen.name) {
+                profilescreen(navController)
+            }
+            composable(route = Screen.SettingScreen.name) {
+                settingscreen(navController)
+            }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
                 composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }

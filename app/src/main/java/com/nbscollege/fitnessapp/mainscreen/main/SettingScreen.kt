@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBackIos
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -54,7 +56,6 @@ fun settingscreen(navController : NavController) {
 
     Scaffold(
         topBar = {
-
             Box(
                 modifier = Modifier
                     .height(50.dp)
@@ -62,16 +63,13 @@ fun settingscreen(navController : NavController) {
                     .fillMaxWidth()
 
             ) {
-                            Text(
-                                text = "Settings",
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 25.sp,
-                                color = Color.Black,
-                                modifier = Modifier.graphicsLayer(
-                                    translationY = 25f,
-                                    translationX = 30f
-                                )
-                            )
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBackIos,
+                        modifier = Modifier.size(30.dp),
+                        contentDescription = "Back"
+                    )
+                }
 
                 }
 
@@ -87,6 +85,16 @@ fun settingscreen(navController : NavController) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+            ) {
+
+            }
+            Column (
+                
+            ) {
+                Text(text = "General Settings", color = Color.Black, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold)
+            }
 
         }
 
