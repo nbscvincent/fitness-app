@@ -321,7 +321,7 @@ fun SignUpScreen(navController: NavController) {
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
-                                confirmPasswordError = confirmPassword.isNotEmpty()
+                                confirmPasswordError = confirmPassword.isEmpty()
                                 Toast.makeText(
                                     context,
                                     "Please fill the registration!",
@@ -338,7 +338,9 @@ fun SignUpScreen(navController: NavController) {
                             top = 25.dp
                         )
                         .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Color.Red)
+                    colors = ButtonDefaults.buttonColors(Color.Red),
+                    shape = RoundedCornerShape(12.dp),
+
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,

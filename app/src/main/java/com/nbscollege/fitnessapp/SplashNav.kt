@@ -56,6 +56,17 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                 SplashScreen(navController, screenViewModel)
             }
             composable(route = Auth.LogInScreen.name) {
+                BackHandler(enabled = true) {
+                    if (exit) {
+                        context.startActivity(Intent(Intent.ACTION_MAIN).apply {
+                            addCategory(Intent.CATEGORY_HOME)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        })
+                    } else {
+                        exit = true
+                        Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+                    }
+                }
                 LoginScreen(navController)
             }
             composable(route = Auth.SignUpScreen.name) {

@@ -173,27 +173,45 @@ fun LoginScreen(navController: NavController ) {
             ) {
                 Button(
                     onClick = {
-                        if (StringUtil().isEmptyString(username)) {
-                            userError = true
-                            return@Button
+//                        if (StringUtil().isEmptyString(username)) {
+//                            userError = true
+//                            return@Button
+//                        }
+//                        if (StringUtil().isEmptyString(password)) {
+//                            passwordError = true
+//                            return@Button
+//                        }
+
+                        if (password.isNotEmpty() && username.isNotEmpty()) {
+                            if (registeredUsers.any { it.username == username && it.password == password }) {
+                                // Authentication successful
+                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
+                                    .show()
+                                // Update the state to reflect the login success
+                                navController.navigate(Routes.MAIN.name)
+                            } else {
+                                // Authentication failed
+
+                                Toast.makeText(
+                                    context,
+                                    "Incorrect username or password.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                // Update the state to reflect the login failure
+                            }
                         }
-                        if (StringUtil().isEmptyString(password)) {
-                            passwordError = true
-                            return@Button
-                        }
-
-                        if (registeredUsers.any { it.username == username && it.password == password }) {
-                            // Authentication successful
-                            Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT).show()
-                            // Update the state to reflect the login success
-                            navController.navigate(Routes.MAIN.name)
-                        } else {
-                            // Authentication failed
+                        else {
 
 
-                            Toast.makeText(context, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
-                            // Update the state to reflect the login failure
-                                            
+                                userError = username.isEmpty()
+                                passwordError = password.isEmpty()
+
+                                Toast.makeText(
+                                    context,
+                                    "Please fill the registration!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            
                         }
 
 
