@@ -103,7 +103,6 @@ fun SignUpScreen(navController: NavController) {
 
     val context = LocalContext.current
     var confirmPasswordColor =
-
         if (confirmPassword.isEmpty()) Color.Transparent
         else if (newPassword == confirmPassword) Color.Green
         else Color.Red
@@ -148,7 +147,7 @@ fun SignUpScreen(navController: NavController) {
                         contentDescription = "newUsername"
                     )
                 },
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -174,7 +173,7 @@ fun SignUpScreen(navController: NavController) {
                 },
                 visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -206,7 +205,7 @@ fun SignUpScreen(navController: NavController) {
                 },
                 visualTransformation = if (confirmShowPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -241,7 +240,7 @@ fun SignUpScreen(navController: NavController) {
 //                                    contentDescription = "Weight"
 //                                )
 //                            },
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -263,7 +262,7 @@ fun SignUpScreen(navController: NavController) {
 //                                    contentDescription = "height"
 //                                )
 //                            },
-                            shape = RoundedCornerShape(16.dp),
+                            shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -276,6 +275,7 @@ fun SignUpScreen(navController: NavController) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
+
             ) {
                 Button(
                     onClick = {
@@ -287,7 +287,11 @@ fun SignUpScreen(navController: NavController) {
                                 weightError = false
                                 heightError = false
 
+                                Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
+
                             }
+
+
                             else {
                                 userError = false
                                 passwordError = false
@@ -307,34 +311,30 @@ fun SignUpScreen(navController: NavController) {
                             }
                         }
 
-
+                        if (confirmPassword != newPassword) {
+                            Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+                        }
                         // Display error message if passwords do not match
 
                         else {
 
-                            if (confirmPasswordError) {
-                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
-                            }
+//                            if (confirmPasswordError) {
+//                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
+//                            }
 
-                            else {
+//                            else {
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
-                                confirmPasswordError = confirmPassword.isNotEmpty()
+                                confirmPasswordError = confirmPassword.isEmpty()
                                 Toast.makeText(
                                     context,
                                     "Please fill the registration!",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-
-                        }
-
-
-
-
-//                        openAlertDialog.value = true
+//                        }
                     },
                     modifier = Modifier
                         .absolutePadding(
@@ -344,10 +344,13 @@ fun SignUpScreen(navController: NavController) {
                             top = 25.dp
                         )
                         .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Color.Red)
+                    colors = ButtonDefaults.buttonColors(Color.Red),
+                    shape = RoundedCornerShape(12.dp),
+
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
+
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
@@ -365,7 +368,7 @@ fun SignUpScreen(navController: NavController) {
                         Text("Already a member?", fontSize = 16.sp)
                         Box(Modifier.width(7.dp))
                         TextButton(onClick = { navController.navigate(Auth.LogInScreen.name) }) {
-                            Text("Login now", fontSize = 16.sp, color = Color.Red)
+                            Text("Login here", fontSize = 16.sp, color = Color.Red)
                         }
                     }
                 }

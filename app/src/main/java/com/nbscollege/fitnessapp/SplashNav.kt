@@ -4,7 +4,6 @@ import Auth
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,19 +16,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
 import com.example.example.model.LoginScreen
 import com.example.example.model.SignUpScreen
-import com.nbscollege.fitnessapp.mainscreen.Category
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
+import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.model.SplashScreen
-import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Routes
-import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
-import kotlin.system.exitProcess
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,10 +56,24 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                 SplashScreen(navController, screenViewModel)
             }
             composable(route = Auth.LogInScreen.name) {
+                BackHandler(enabled = true) {
+                    if (exit) {
+                        context.startActivity(Intent(Intent.ACTION_MAIN).apply {
+                            addCategory(Intent.CATEGORY_HOME)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        })
+                    } else {
+                        exit = true
+                        Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+                    }
+                }
                 LoginScreen(navController)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
+            }
+            composable(route = Auth.OTP.name) {
+                AuthenticationScreen(navController)
             }
             composable(route = Routes.MAIN.name) {
                 BackHandler(enabled = true) {

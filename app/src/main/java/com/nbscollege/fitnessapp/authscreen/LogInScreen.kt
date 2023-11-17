@@ -4,6 +4,7 @@ import Auth
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,9 +51,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.util.StringUtil
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -114,7 +117,7 @@ fun LoginScreen(navController: NavController ) {
                         contentDescription = "Username"
                     )
                 },
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -142,7 +145,7 @@ fun LoginScreen(navController: NavController ) {
                 },
                 visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(12.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
@@ -150,30 +153,65 @@ fun LoginScreen(navController: NavController ) {
                     errorIndicatorColor = Color.Transparent
                 )
             )
+
+            Column(
+                modifier = Modifier.padding(start=220.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+
+            ) {
+                Text(text = "Forgot Password?", color = Color.Red, modifier = Modifier.clickable( onClick = {
+                    navController.navigate(Auth.OTP.name)
+                }, ) )
+            }
+
+
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Button(
                     onClick = {
-                        if (StringUtil().isEmptyString(username)) {
-                            userError = true
-                            return@Button
-                        }
-                        if (StringUtil().isEmptyString(password)) {
-                            passwordError = true
-                            return@Button
-                        }
+//                        if (StringUtil().isEmptyString(username)) {
+//                            userError = true
+//                            return@Button
+//                        }
+//                        if (StringUtil().isEmptyString(password)) {
+//                            passwordError = true
+//                            return@Button
+//                        }
 
-                        if (registeredUsers.any { it.username == username && it.password == password }) {
-                            // Authentication successful
-                            Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT).show()
-                            // Update the state to reflect the login success
-                            navController.navigate(Routes.MAIN.name)
-                        } else {
-                            // Authentication failed
-                            Toast.makeText(context, "Login failed. Please try again.", Toast.LENGTH_SHORT).show()
-                            // Update the state to reflect the login failure
+                        if (password.isNotEmpty() && username.isNotEmpty()) {
+                            if (registeredUsers.any { it.username == username && it.password == password }) {
+                                // Authentication successful
+                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
+                                    .show()
+                                // Update the state to reflect the login success
+                                navController.navigate(Routes.MAIN.name)
+                            } else {
+                                // Authentication failed
+
+                                Toast.makeText(
+                                    context,
+                                    "Incorrect username or password.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                // Update the state to reflect the login failure
+                            }
+                        }
+                        else {
+
+
+                                userError = username.isEmpty()
+                                passwordError = password.isEmpty()
+
+                                Toast.makeText(
+                                    context,
+                                    "Please fill the registration!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            
                         }
 
 
@@ -186,7 +224,9 @@ fun LoginScreen(navController: NavController ) {
                             top = 25.dp
                         )
                         .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Color.Red)
+
+                    colors = ButtonDefaults.buttonColors(Color.Red),
+                    shape = RoundedCornerShape(12.dp)
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -212,7 +252,7 @@ fun LoginScreen(navController: NavController ) {
                         Text("New Member?", fontSize = 16.sp)
                         Box(Modifier.width(7.dp))
                         TextButton(onClick = { navController.navigate(Auth.SignUpScreen.name) }) {
-                            Text("Register now", fontSize = 16.sp, color = Color.Red)
+                            Text("Register here", fontSize = 16.sp, color = Color.Red)
                         }
                     }
                 }

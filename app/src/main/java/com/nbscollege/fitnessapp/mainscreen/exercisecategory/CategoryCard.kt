@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen
+package com.nbscollege.fitnessapp.mainscreen.exercisecategory
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -29,8 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.navigation.CategoryRoute
-import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

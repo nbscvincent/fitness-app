@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen
+package com.nbscollege.fitnessapp.mainscreen.dataclass
 
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
