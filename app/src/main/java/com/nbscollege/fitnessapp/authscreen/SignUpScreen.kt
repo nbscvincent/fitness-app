@@ -328,13 +328,7 @@ fun SignUpScreen(navController: NavController) {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-
                         }
-
-
-
-
-//                        openAlertDialog.value = true
                     },
                     modifier = Modifier
                         .absolutePadding(
