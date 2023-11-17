@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
 
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
@@ -62,7 +63,7 @@ fun settingscreen(navController : NavController) {
             Box(
                 modifier = Modifier
                     .height(50.dp)
-                    .background(Color.White)
+//                    .background(Color.White)
                     .fillMaxWidth()
 
             ) {
@@ -82,31 +83,53 @@ fun settingscreen(navController : NavController) {
         }
     ) { innerPadding ->
 
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding),
+        Box(
+            modifier = Modifier.fillMaxSize(),
         ) {
-            Row(
-                horizontalArrangement = Arrangement.Center,
+
+            Column(
+                modifier = Modifier.padding(innerPadding),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
+
             ) {
-                Icon(
-                    imageVector = Icons.Outlined.Settings,
-                    modifier = Modifier.size(45.dp),
-                    contentDescription = "Back"
-                )
-                Spacer(modifier = Modifier.width(5.dp))
-                Text(text = "Settings", color = Color.Black, fontSize = 38.sp, fontWeight = FontWeight.SemiBold)
+
+                Row(
+                    modifier = Modifier,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                            imageVector = Icons.Outlined.Settings,
+                            modifier = Modifier.size(45.dp),
+                            contentDescription = "Back"
+                    )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        text = "Settings",
+                        color = Color.Black,
+                        fontSize = 38.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+
+                Column(
+
+                ) {
+                    Text(
+                        text = "General Settings",
+                        color = Color.Black,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Light
+                    )
+                }
+
+
+
             }
-
-
-            Text(text = "General Settings", color = Color.Black, fontSize = 30.sp, fontWeight = FontWeight.Light)
-
-
         }
 
 
 
     }
 }
+
