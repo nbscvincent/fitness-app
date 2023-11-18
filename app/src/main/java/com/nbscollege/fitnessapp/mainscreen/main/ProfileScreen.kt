@@ -83,6 +83,8 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                     Text("Weight: ${profile.weight}")
                 }
 
+         
+
 
             }
         }
