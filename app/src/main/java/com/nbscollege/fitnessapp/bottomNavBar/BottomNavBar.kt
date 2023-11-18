@@ -35,10 +35,8 @@ fun BottomNavBar(navController: NavController) {
 //    val navBackStackEntry by navController.currentBackStackEntryAsState()
 //    val currentDestination = navBackStackEntry?.destination
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
-
-
+//    val navBackStackEntry by navController.currentBackStackEntryAsState()
+//    val currentRoute = navBackStackEntry?.destination?.route
 
     var selectedItem by remember { mutableStateOf(0) }
 
@@ -49,7 +47,6 @@ fun BottomNavBar(navController: NavController) {
                 selected = selectedItem == index,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
-
 //                    navController.navigate(item.route) {
 //                        // Pop up to the start destination of the graph to
 //                        // avoid building up a large stack of destinations
@@ -61,9 +58,9 @@ fun BottomNavBar(navController: NavController) {
 //                        // Restore state when reselecting a previously selected item
 //                        restoreState = true
 //                    }
+
                     selectedItem = index
                     navController.navigate(item.route)
-
                 },
                 label = {
                     Text(text = item.title)

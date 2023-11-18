@@ -1,7 +1,6 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
-import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,7 +35,6 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
-import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 
 
 //enum class SelectedButton {
@@ -48,7 +46,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun settingscreen(navController : NavController) {
+fun settingscreen(navController: NavController, backStackEntry: String?) {
     Scaffold(
         topBar = {
             Box(

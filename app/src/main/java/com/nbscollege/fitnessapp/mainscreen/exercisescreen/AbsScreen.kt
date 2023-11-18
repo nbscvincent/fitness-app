@@ -23,13 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AbsScreen(navController: NavController) {
+fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
 
     Scaffold(
         topBar = {

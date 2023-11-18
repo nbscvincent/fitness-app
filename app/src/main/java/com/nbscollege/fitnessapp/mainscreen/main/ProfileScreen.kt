@@ -2,9 +2,7 @@ package com.nbscollege.fitnessapp.model
 
 
 import android.annotation.SuppressLint
-import android.health.connect.datatypes.HeightRecord
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,21 +18,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
-import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,8 +36,6 @@ import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
-import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import java.util.Locale
 
 //enum class SelectedButton2 {
 //    Home,
@@ -56,7 +45,7 @@ import java.util.Locale
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun profilescreen(navController: NavController) {
+    fun profilescreen(navController: NavController, backStackEntry: String?) {
 
 
 
