@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.example.model.SignUpScreen
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.card.ExerCateg
 import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
@@ -70,7 +71,7 @@ fun mainNavigation(navController: NavController) {
                     GeneralSettings(navController)
                 }
                 composable(route = SettingsRoute.LogOut.name) {
-                    GeneralSettings(navController)
+                    SignUpScreen(navController)
                 }
 
             }
