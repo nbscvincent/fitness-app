@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
 import androidx.compose.material.icons.rounded.Person
@@ -55,6 +56,7 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun profilescreen(navController: NavController) {
+
 
 
     Scaffold(
@@ -97,7 +99,7 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                 horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    imageVector = Icons.Rounded.Person,
+                    imageVector = Icons.Outlined.Person,
                     modifier = Modifier.size(45.dp),
                     contentDescription = "Back",
                     tint = Color.DarkGray
@@ -117,25 +119,61 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
+
                 items(registeredUsers) { profile ->
-                    Text(
-                        "Username: ${profile.username}", color = Color.Black,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Thin,
-                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                    )
-                    Text(
-                        "Height: ${profile.height}", color = Color.Black,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Thin,
-                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                    )
-                    Text(
-                        "Weight: ${profile.weight}", color = Color.Black,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Thin,
-                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                    )
+
+
+                    Column(
+
+                    ) {
+                        Text(
+                            "Username: ${profile.username}",
+                            color = Color.Black,
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Thin,
+                            modifier = Modifier.padding(start = 40.dp, top=10.dp)
+                        )
+                        Text(
+                            "Height: ${profile.height}",
+                            color = Color.Black,
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Thin,
+                            modifier = Modifier.padding(start = 40.dp,top=10.dp)
+                        )
+                        Text(
+                            "Weight: ${profile.weight}",
+                            color = Color.Black,
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Thin,
+                            modifier = Modifier.padding(start = 40.dp,top=10.dp)
+                        )
+
+                        val height = profile.height
+                        val weight = profile.weight
+
+                        if (height != null && weight != null) {
+
+                            val bmi = weight / (height * height)
+                            // Display BMI
+                            Text(
+                                "BMI: $bmi",
+                                color = Color.Black,
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Thin,
+                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                            )
+                        } else {
+                            // Handle the case where height or weight couldn't be converted to numbers
+                            Text(
+                                "BMI: Invalid height or weight",
+                                color = Color.Red, // or any color you prefer for error messages
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Thin,
+                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                            )
+                        }
+                    }
+
                 }
             }
         }

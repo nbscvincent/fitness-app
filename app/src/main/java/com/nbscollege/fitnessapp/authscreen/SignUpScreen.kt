@@ -2,7 +2,6 @@ package com.example.example.model
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,20 +19,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.rounded.Email
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -57,24 +50,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.rememberCoroutineScope
 import com.nbscollege.fitnessapp.authscreen.model.User
-import com.nbscollege.fitnessapp.util.StringUtil
-
-import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -298,7 +281,7 @@ fun SignUpScreen(navController: NavController) {
 
 
                                 // Add the new user to the list of registered users
-                                registeredUsers.add(User(newUsername, newPassword, weight, height))
+                                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
 
                                 // Provide feedback to the user
                                 Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
