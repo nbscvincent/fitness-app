@@ -4,15 +4,23 @@ package com.nbscollege.fitnessapp.model
 import android.annotation.SuppressLint
 import android.health.connect.datatypes.HeightRecord
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.rounded.ArrowBackIos
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -47,30 +55,59 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
     fun profilescreen(navController: NavController) {
 
 
-        Scaffold(
-            topBar = {
+    Scaffold(
+        topBar = {
+            Box(
+                modifier = Modifier
+                    .height(50.dp)
+                    .padding(top=10.dp)
+                    .background(Color.White)
+                    .fillMaxWidth()
 
-                Box(
-                    modifier = Modifier
-                        .height(50.dp).background(Color.White).fillMaxWidth()
-                ) {
-                    Text(
-                        text = "Profile",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 25.sp,
-                        color = Color.Black,
-                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+            ) {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(
+                        imageVector = Icons.Rounded.ArrowBackIos,
+                        modifier = Modifier.size(30.dp),
+                        contentDescription = "Back",
+                        tint = Color.DarkGray
                     )
-
                 }
 
-            },
-            bottomBar = {
-                BottomAppBar {
-
-                }
             }
-        ) { innerPadding ->
+        },
+        bottomBar = {
+
+        }
+    ) { innerPadding ->
+
+        Box(
+            modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
+
+            ) {
+
+            Row(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Settings,
+                    modifier = Modifier.size(45.dp),
+                    contentDescription = "Back",
+                    tint = Color.DarkGray
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                Text(
+                    "Settings",
+                    color = Color.DarkGray,
+                    fontSize = 38.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+
             LazyColumn(
                 modifier = Modifier
                     .background(Color.White)
@@ -78,16 +115,28 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                     .padding(innerPadding)
             ) {
                 items(registeredUsers) { profile ->
-                    Text("Username: ${profile.username}")
-                    Text("Height: ${profile.height}")
-                    Text("Weight: ${profile.weight}")
+                    Text(
+                        "Username: ${profile.username}", color = Color.Black,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Thin,
+                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                    )
+                    Text(
+                        "Height: ${profile.height}", color = Color.Black,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Thin,
+                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                    )
+                    Text(
+                        "Weight: ${profile.weight}", color = Color.Black,
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Thin,
+                        modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                    )
                 }
-
-         
-
-
             }
         }
     }
+}
 
 
