@@ -46,6 +46,7 @@ import androidx.compose.ui.Alignment
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
+import java.util.Locale
 
 //enum class SelectedButton2 {
 //    Home,
@@ -151,12 +152,27 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                         val height = profile.height
                         val weight = profile.weight
 
+
                         if (height != null && weight != null) {
 
-                            val bmi = weight / (height * height)
+                            val bmi = weight / (height * height) * 10000
+//                            val bmiText = String.format(Locale.getDefault(), "BMI: %.2f - $bmiCategory", bmi)
+                            val bmiCategory = when {
+                                bmi < 18.5 -> "Underweight"
+                                bmi < 24.9 -> "Normal Weight"
+                                bmi < 29.9 -> "Overweight"
+                                else -> "Obese"
+                            }
                             // Display BMI
                             Text(
-                                "BMI: $bmi",
+                                "BMI: %.2f".format(bmi),
+                                color = Color.Black,
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Thin,
+                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                            )
+                            Text(
+                                "Category: $bmiCategory",
                                 color = Color.Black,
                                 fontSize = 30.sp,
                                 fontWeight = FontWeight.Thin,
