@@ -4,6 +4,7 @@ package com.nbscollege.fitnessapp.model
 import android.annotation.SuppressLint
 import android.health.connect.datatypes.HeightRecord
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,6 +40,7 @@ import androidx.compose.ui.unit.sp
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
@@ -60,7 +62,7 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
             Box(
                 modifier = Modifier
                     .height(50.dp)
-                    .padding(top=10.dp)
+                    .padding(top = 10.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
@@ -77,7 +79,9 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
             }
         },
         bottomBar = {
+            BottomAppBar {
 
+            }
         }
     ) { innerPadding ->
 
@@ -93,26 +97,25 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
                 horizontalArrangement = Arrangement.Center
             ) {
                 Icon(
-                    imageVector = Icons.Outlined.Settings,
+                    imageVector = Icons.Rounded.Person,
                     modifier = Modifier.size(45.dp),
                     contentDescription = "Back",
                     tint = Color.DarkGray
                 )
                 Spacer(modifier = Modifier.width(5.dp))
                 Text(
-                    "Settings",
+                    "Profile",
                     color = Color.DarkGray,
                     fontSize = 38.sp,
                     fontWeight = FontWeight.SemiBold
                 )
             }
 
-
             LazyColumn(
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxSize()
-                    .padding(innerPadding)
+
+                modifier = Modifier.padding(top=100.dp).background(Color.White),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
             ) {
                 items(registeredUsers) { profile ->
                     Text(
