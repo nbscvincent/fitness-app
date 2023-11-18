@@ -191,13 +191,11 @@ fun LoginScreen(navController: NavController ) {
                                 navController.navigate(Routes.MAIN.name)
                             } else {
                                 // Authentication failed
-
                                 Toast.makeText(
                                     context,
                                     "Incorrect username or password.",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                // Update the state to reflect the login failure
                             }
                         }
                         else {

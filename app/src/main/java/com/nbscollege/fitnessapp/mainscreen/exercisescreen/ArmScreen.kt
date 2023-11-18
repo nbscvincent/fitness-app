@@ -30,7 +30,6 @@ fun ArmScreen(navController: NavController) {
 
     Scaffold(
         topBar = {
-
             Box(
                 modifier = Modifier
                     .height(50.dp).background(Color.White).fillMaxWidth()
