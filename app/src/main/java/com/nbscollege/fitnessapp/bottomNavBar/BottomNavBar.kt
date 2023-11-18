@@ -22,6 +22,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
+import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.navigation.Screen
 
 @Composable
@@ -35,11 +37,14 @@ fun BottomNavBar(navController: NavController) {
 //    val navBackStackEntry by navController.currentBackStackEntryAsState()
 //    val currentDestination = navBackStackEntry?.destination
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
 //    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val currentRoute = navBackStackEntry?.destination?.route
+//    val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
+
 
     var selectedItem by remember { mutableStateOf(0) }
-
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -59,8 +64,10 @@ fun BottomNavBar(navController: NavController) {
 //                        restoreState = true
 //                    }
 
-                    selectedItem = index
-                    navController.navigate(item.route)
+//                    selectedItem = index
+                    navController.navigate(item.route) {
+                        launchSingleTop = true
+                    }
                 },
                 label = {
                     Text(text = item.title)
