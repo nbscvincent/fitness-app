@@ -52,12 +52,15 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
 import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -89,6 +92,29 @@ fun SignUpScreen(navController: NavController) {
         if (confirmPassword.isEmpty()) Color.Transparent
         else if (newPassword == confirmPassword) Color.Green
         else Color.Red
+
+    val darkGreen = colorResource(id = R.color.DarkGreen)
+
+
+    if (openAlertDialog.value) {
+        AlertDialogExample(
+            onDismissRequest = { openAlertDialog.value = false },
+            onConfirmation = {
+                openAlertDialog.value = false
+                userError = false
+                passwordError = false
+                weightError = false
+                heightError = false
+                confirmPasswordError = false
+                // Add the new user to the list of registered users
+                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
+                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
+            },
+            dialogTitle = "Sign up Successfully",
+            icon = Icons.Rounded.CheckCircle,
+        )
+    }
+
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -269,27 +295,27 @@ fun SignUpScreen(navController: NavController) {
 
                                 Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
 
+
                             }
 
 
                             else {
-                                userError = false
-                                passwordError = false
-                                weightError = false
-                                heightError = false
-                                confirmPassword = false.toString()
-
-
-                                // Add the new user to the list of registered users
-                                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
-
+//                                userError = false
+//                                passwordError = false
+//                                weightError = false
+//                                heightError = false
+//                                confirmPasswordError = false
+//                                // Add the new user to the list of registered users
+//                                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
                                 // Provide feedback to the user
-                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+//                                navController.navigate(Auth.LogInScreen.name)
+                                openAlertDialog.value = true
 
-                                // Optionally, navigate to the login screen after signup
-                                navController.navigate(Auth.LogInScreen.name)
                             }
                         }
+
+
 
                         if (confirmPassword != newPassword) {
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
@@ -297,25 +323,17 @@ fun SignUpScreen(navController: NavController) {
                         // Display error message if passwords do not match
 
                         else {
-
-//                            if (confirmPasswordError) {
-//                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
-//                            }
-
-//                            else {
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
                                 confirmPasswordError = confirmPassword.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please fill the registration!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
+                            Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
                             }
-//                        }
                     },
+
+
                     modifier = Modifier
                         .absolutePadding(
                             left = 40.dp,
@@ -328,6 +346,8 @@ fun SignUpScreen(navController: NavController) {
                     shape = RoundedCornerShape(12.dp),
 
                 ) {
+
+
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
 
@@ -335,6 +355,7 @@ fun SignUpScreen(navController: NavController) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
                 }
+
                 Row(
                     modifier = Modifier
                         .padding(11.dp),
