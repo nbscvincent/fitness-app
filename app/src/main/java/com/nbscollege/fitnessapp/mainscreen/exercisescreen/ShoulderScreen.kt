@@ -19,13 +19,14 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShoulderScreen(navController: NavController) {
+fun ShoulderScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
     val navController = rememberNavController()
 
     Scaffold(

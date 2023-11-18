@@ -1,16 +1,9 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,25 +15,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBackIos
-import androidx.compose.material.icons.filled.ArrowForwardIos
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
-import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,17 +30,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.style.TextAlign
 
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import com.nbscollege.fitnessapp.mainscreen.card.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
-import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
-
 
 
 //enum class SelectedButton {
@@ -70,7 +46,7 @@ import androidx.compose.foundation.layout.*
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun settingscreen(navController : NavController) {
+fun settingscreen(navController: NavController, backStackEntry: String?) {
     Scaffold(
         topBar = {
             Box(
@@ -131,14 +107,18 @@ fun settingscreen(navController : NavController) {
             ) {
 
                 items(settingsList) { general ->
-                    SettingCard(general = general, navController)
+                        SettingCard(general = general, navController)
                 }
+
 
             }
         }
 
     }
 }
+
+
+
 
 
 

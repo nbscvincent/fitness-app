@@ -38,7 +38,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun homescreen(navController: NavHostController) {
+    fun homescreen(navController: NavHostController, backStackEntry: String?) {
 
 //    val navController = rememberNavController()
 //    NavHost(navController = navController, startDestination = Screen.HomeScreen.name){
@@ -104,7 +104,6 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
                             modifier = Modifier
                         )
                     }
-
                     items(categoryExercise) { category ->
                         CategoryCard(category = category, navController)
                     }

@@ -2,8 +2,8 @@ package com.example.example.model
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,20 +20,14 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.rounded.Email
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -57,24 +51,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
+import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Height
+import androidx.compose.material.icons.rounded.ImageAspectRatio
 import androidx.compose.material.icons.rounded.MonitorWeight
+import androidx.compose.material.icons.rounded.PlusOne
+import androidx.compose.material.icons.rounded.Transgender
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.rememberCoroutineScope
 import com.nbscollege.fitnessapp.authscreen.model.User
-import com.nbscollege.fitnessapp.util.StringUtil
-
-import kotlinx.coroutines.launch
+import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -107,13 +99,36 @@ fun SignUpScreen(navController: NavController) {
         else if (newPassword == confirmPassword) Color.Green
         else Color.Red
 
+    val darkGreen = colorResource(id = R.color.DarkGreen)
+
+
+    if (openAlertDialog.value) {
+        AlertDialogExample(
+            onDismissRequest = { openAlertDialog.value = false },
+            onConfirmation = {
+                openAlertDialog.value = false
+                userError = false
+                passwordError = false
+                weightError = false
+                heightError = false
+                confirmPasswordError = false
+                // Add the new user to the list of registered users
+                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
+                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
+            },
+            dialogTitle = "Do you really want to create an account?",
+            icon = Icons.Rounded.CheckCircle,
+        )
+    }
+
+
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
         Column(
             modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween
+//            verticalArrangement = Arrangement.SpaceBetween
         ) {
             Image(
                 modifier = Modifier.size(300.dp),
@@ -209,12 +224,7 @@ fun SignUpScreen(navController: NavController) {
                     disabledIndicatorColor = Color.Transparent,
                     textColor = Color.Black
                 )
-
-
                 )
-
-
-
 
                 Row(
                     modifier = Modifier,
@@ -227,16 +237,17 @@ fun SignUpScreen(navController: NavController) {
                         TextField(
                             modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight") },
+                            label = { Text("Weight(lb)") },
                             value = weight,
                             onValueChange = { weight = it },
                             singleLine = true,
-//                            trailingIcon = {
-//                                Icon(
-//                                    Icons.Rounded.,
-//                                    contentDescription = "Weight"
-//                                )
-//                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            trailingIcon = {
+                                Icon(
+                                    Icons.Rounded.MonitorWeight,
+                                    contentDescription = "Weight"
+                                )
+                            },
                             shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
@@ -249,16 +260,17 @@ fun SignUpScreen(navController: NavController) {
                                 width(300.dp)
                                 .clip(CircleShape)
                                 .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-                            label = { Text("Height") },
+                            label = { Text("Height(cm)") },
                             value = height,
                             onValueChange = { height = it },
                             singleLine = true,
-//                            trailingIcon = {
-//                                Icon(
-//                                    Icons.Rounded.Email,
-//                                    contentDescription = "height"
-//                                )
-//                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            trailingIcon = {
+                                Icon(
+                                    Icons.Rounded.Height,
+                                    contentDescription = "height"
+                                )
+                            },
                             shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
@@ -267,11 +279,63 @@ fun SignUpScreen(navController: NavController) {
                             )
                         )
                     }
+
                 }
+            
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly
+
+            ) {
+                TextField(
+                    modifier = Modifier.width(200.dp)
+                        .absolutePadding(left = 40.dp, bottom = 11.dp),
+                    label = { Text("Age") },
+                    value = weight,
+                    onValueChange = { weight = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.PlusOne,
+                            contentDescription = "Weight"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent
+                    )
+                )
+                TextField(
+                    modifier = Modifier.
+                    width(300.dp)
+                        .clip(CircleShape)
+                        .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+                    label = { Text("Gender") },
+                    value = height,
+                    onValueChange = { height = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.Transgender,
+                            contentDescription = "height"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                    )
+                )
+            }
 
             Column(
+                modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
+//                verticalArrangement = Arrangement.SpaceBetween
 
             ) {
                 Button(
@@ -286,53 +350,44 @@ fun SignUpScreen(navController: NavController) {
 
                                 Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
 
+
                             }
 
-
                             else {
-                                userError = false
-                                passwordError = false
-                                weightError = false
-                                heightError = false
-                                confirmPassword = false.toString()
-
-
-                                // Add the new user to the list of registered users
-                                registeredUsers.add(User(newUsername, newPassword, weight, height))
-
+//                                userError = false
+//                                passwordError = false
+//                                weightError = false
+//                                heightError = false
+//                                confirmPasswordError = false
+//                                // Add the new user to the list of registered users
+//                                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
                                 // Provide feedback to the user
-                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
+//                                navController.navigate(Auth.LogInScreen.name)
+                                openAlertDialog.value = true
 
-                                // Optionally, navigate to the login screen after signup
-                                navController.navigate(Auth.LogInScreen.name)
                             }
                         }
 
-                        if (confirmPassword != newPassword) {
+
+
+                        else if (confirmPassword != newPassword) {
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                         }
                         // Display error message if passwords do not match
 
                         else {
-
-//                            if (confirmPasswordError) {
-//                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
-//                            }
-
-//                            else {
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
                                 confirmPasswordError = confirmPassword.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please fill the registration!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+
+                            Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
                             }
-//                        }
                     },
+
+
                     modifier = Modifier
                         .absolutePadding(
                             left = 40.dp,
@@ -346,15 +401,15 @@ fun SignUpScreen(navController: NavController) {
 
                 ) {
                     Row(
-                        verticalAlignment = Alignment.CenterVertically,
-
+//                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
                     }
                 }
+
                 Row(
                     modifier = Modifier
-                        .padding(11.dp),
+                        .padding(11.dp, bottom = 65.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
@@ -364,9 +419,10 @@ fun SignUpScreen(navController: NavController) {
                     ) {
                         Text("Already a member?", fontSize = 16.sp)
                         Box(Modifier.width(7.dp))
-                        TextButton(onClick = { navController.navigate(Auth.LogInScreen.name) }) {
-                            Text("Login here", fontSize = 16.sp, color = Color.Red)
-                        }
+                            Text("Login here", fontSize = 16.sp, color = Color.Red,modifier = Modifier.clickable( onClick = {
+                                navController.navigate(Auth.LogInScreen.name)
+                            }, ) )
+
                     }
                 }
             }

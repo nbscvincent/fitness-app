@@ -47,14 +47,14 @@ fun mainNavigation(navController: NavController) {
 //            composable(route = Screen.HomeScreen.name){ homescreen(navController)}
 //            composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
 //        }
-            composable(route = Screen.HomeScreen.name) {
-                homescreen(navController)
+            composable(route = Screen.HomeScreen.name) { backStackEntry ->
+                homescreen(navController, backStackEntry.arguments?.getString(Screen.HomeScreen.name))
             }
-            composable(route = Screen.ProfileScreen.name) {
-                profilescreen(navController)
+            composable(route = Screen.ProfileScreen.name) { backStackEntry ->
+                profilescreen(navController, backStackEntry.arguments?.getString(Screen.ProfileScreen.name))
             }
-            composable(route = Screen.SettingScreen.name) {
-                settingscreen(navController)
+            composable(route = Screen.SettingScreen.name) { backStackEntry ->
+                settingscreen(navController, backStackEntry.arguments?.getString(Screen.SettingScreen.name))
             }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) {
@@ -73,11 +73,11 @@ fun mainNavigation(navController: NavController) {
             }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
-                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
-                composable(route = CategoryRoute.CHEST.name) { ChestScreen(navController) }
-                composable(route = CategoryRoute.ARM.name) { ArmScreen(navController) }
-                composable(route = CategoryRoute.LEG.name) { LegScreen(navController) }
-                composable(route = CategoryRoute.SHOULDER.name) { ShoulderScreen(navController) }
+                composable(route = CategoryRoute.ABS.name) { backStackEntry ->  AbsScreen(navController, backStackEntry) }
+                composable(route = CategoryRoute.CHEST.name) { backStackEntry -> ChestScreen(navController, backStackEntry) }
+                composable(route = CategoryRoute.ARM.name) { backStackEntry -> ArmScreen(navController,backStackEntry) }
+                composable(route = CategoryRoute.LEG.name) { backStackEntry -> LegScreen(navController,backStackEntry) }
+                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->ShoulderScreen(navController,backStackEntry) }
             }
 
         }

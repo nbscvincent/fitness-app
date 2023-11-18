@@ -14,15 +14,6 @@
 //import androidx.navigation.compose.composable
 //import androidx.navigation.compose.navigation
 //import androidx.navigation.compose.rememberNavController
-//import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-//import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
-//import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
-//import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
-//import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
-//import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
-//import com.nbscollege.fitnessapp.model.homescreen
-//import com.nbscollege.fitnessapp.model.profilescreen
-//import com.nbscollege.fitnessapp.model.settingscreen
 //import com.nbscollege.fitnessapp.navigation.CategoryRoute
 //import com.nbscollege.fitnessapp.navigation.Screen
 //
@@ -39,6 +30,7 @@
 //    ) {
 //
 //        NavHost(navController = navController, startDestination = CategoryRoute.ABS.name) {
+//
 //                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
 //                composable(route = CategoryRoute.CHEST.name) { ChestScreen(navController) }
 //                composable(route = CategoryRoute.ARM.name) { ArmScreen(navController) }
