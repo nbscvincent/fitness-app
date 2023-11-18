@@ -53,6 +53,9 @@ import com.nbscollege.fitnessapp.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Height
+import androidx.compose.material.icons.rounded.ImageAspectRatio
+import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -110,7 +113,7 @@ fun SignUpScreen(navController: NavController) {
                 registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
             },
-            dialogTitle = "Sign up Successfully",
+            dialogTitle = "Do you really want to create an account?",
             icon = Icons.Rounded.CheckCircle,
         )
     }
@@ -236,16 +239,17 @@ fun SignUpScreen(navController: NavController) {
                         TextField(
                             modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight") },
+                            label = { Text("Weight(lb)") },
                             value = weight,
                             onValueChange = { weight = it },
                             singleLine = true,
-//                            trailingIcon = {
-//                                Icon(
-//                                    Icons.Rounded.,
-//                                    contentDescription = "Weight"
-//                                )
-//                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            trailingIcon = {
+                                Icon(
+                                    Icons.Rounded.MonitorWeight,
+                                    contentDescription = "Weight"
+                                )
+                            },
                             shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
@@ -258,16 +262,17 @@ fun SignUpScreen(navController: NavController) {
                                 width(300.dp)
                                 .clip(CircleShape)
                                 .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-                            label = { Text("Height") },
+                            label = { Text("Height(cm)") },
                             value = height,
                             onValueChange = { height = it },
                             singleLine = true,
-//                            trailingIcon = {
-//                                Icon(
-//                                    Icons.Rounded.Email,
-//                                    contentDescription = "height"
-//                                )
-//                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            trailingIcon = {
+                                Icon(
+                                    Icons.Rounded.Height,
+                                    contentDescription = "height"
+                                )
+                            },
                             shape = RoundedCornerShape(12.dp),
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
@@ -298,7 +303,6 @@ fun SignUpScreen(navController: NavController) {
 
                             }
 
-
                             else {
 //                                userError = false
 //                                passwordError = false
@@ -317,7 +321,7 @@ fun SignUpScreen(navController: NavController) {
 
 
 
-                        if (confirmPassword != newPassword) {
+                        else if (confirmPassword != newPassword) {
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                         }
                         // Display error message if passwords do not match

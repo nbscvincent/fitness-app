@@ -21,6 +21,7 @@ fun AlertDialogExample(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     dialogTitle: String,
+//    dialogText: String,
     icon: ImageVector,
 ) {
     val darkGreen = colorResource(id = R.color.DarkGreen)
@@ -32,6 +33,9 @@ fun AlertDialogExample(
         title = {
             Text(text = dialogTitle)
         },
+//        text = {
+//            Text(text = dialogText)
+//        },
         onDismissRequest = {
             onDismissRequest()
         },
