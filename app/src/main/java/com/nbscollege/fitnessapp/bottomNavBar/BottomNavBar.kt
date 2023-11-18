@@ -48,8 +48,8 @@ fun BottomNavBar(navController: NavController) {
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
-//                selected = currentRoute == item.route,
-                selected = selectedItem == index,
+                selected = currentRoute == item.route,
+//                selected = selectedItem == index,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
 //                    navController.navigate(item.route) {
@@ -64,7 +64,6 @@ fun BottomNavBar(navController: NavController) {
 //                        restoreState = true
 //                    }
 
-//                    selectedItem = index
                     navController.navigate(item.route) {
                         launchSingleTop = true
                     }

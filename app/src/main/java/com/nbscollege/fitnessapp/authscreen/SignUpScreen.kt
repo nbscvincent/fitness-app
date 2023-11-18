@@ -221,12 +221,7 @@ fun SignUpScreen(navController: NavController) {
                     disabledIndicatorColor = Color.Transparent,
                     textColor = Color.Black
                 )
-
-
                 )
-
-
-
 
                 Row(
                     modifier = Modifier,
@@ -281,9 +276,62 @@ fun SignUpScreen(navController: NavController) {
                             )
                         )
                     }
+
                 }
+            
+            Row(
+                horizontalArrangement = Arrangement.SpaceEvenly
+
+            ) {
+                TextField(
+                    modifier = Modifier.width(200.dp)
+                        .absolutePadding(left = 40.dp, bottom = 11.dp),
+                    label = { Text("Weight(lb)") },
+                    value = weight,
+                    onValueChange = { weight = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.MonitorWeight,
+                            contentDescription = "Weight"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent
+                    )
+                )
+                TextField(
+                    modifier = Modifier.
+                    width(300.dp)
+                        .clip(CircleShape)
+                        .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+                    label = { Text("Height(cm)") },
+                    value = height,
+                    onValueChange = { height = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.Height,
+                            contentDescription = "height"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                    )
+                )
+            }
+
 
             Column(
+                modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
 
