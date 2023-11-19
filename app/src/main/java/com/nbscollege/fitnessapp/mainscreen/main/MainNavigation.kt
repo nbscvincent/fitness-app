@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.example.model.LoginScreen
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
@@ -33,11 +34,14 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 fun mainNavigation(navController: NavController) {
 
     val navController = rememberNavController()
+    var showBottomBar by remember { mutableStateOf(true) }
 
 
     Scaffold(
         bottomBar = {
-            BottomNavBar(navController = navController)
+            if (showBottomBar) {
+                BottomNavBar(navController = navController)
+            }
         },
     ) {
 
@@ -68,20 +72,37 @@ fun mainNavigation(navController: NavController) {
                 }
                 composable(route = SettingsRoute.LogOut.name) {
                     GeneralSettings(navController)
+
                 }
 
             }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
-                composable(route = CategoryRoute.ABS.name) { backStackEntry ->  AbsScreen(navController, backStackEntry) }
-                composable(route = CategoryRoute.CHEST.name) { backStackEntry -> ChestScreen(navController, backStackEntry) }
-                composable(route = CategoryRoute.ARM.name) { backStackEntry -> ArmScreen(navController,backStackEntry) }
-                composable(route = CategoryRoute.LEG.name) { backStackEntry -> LegScreen(navController,backStackEntry) }
-                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->ShoulderScreen(navController,backStackEntry) }
+                composable(route = CategoryRoute.ABS.name) { backStackEntry ->
+                    AbsScreen(navController, backStackEntry)
+                    showBottomBar = false
+                }
+                composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
+                    ChestScreen(navController, backStackEntry)
+                    showBottomBar = false
+                }
+                composable(route = CategoryRoute.ARM.name) { backStackEntry ->
+                    ArmScreen(navController,backStackEntry)
+                    showBottomBar = false
+                }
+                composable(route = CategoryRoute.LEG.name) { backStackEntry ->
+                    LegScreen(navController,backStackEntry)
+                    showBottomBar = false
+                }
+                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
+                    ShoulderScreen(navController,backStackEntry)
+                    showBottomBar = false
+                }
             }
 
         }
     }
+
 }
 
 

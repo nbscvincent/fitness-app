@@ -11,11 +11,6 @@ data class Category(
     val route: String
 )
 
-data class ExerList(
-    val title: String,
-    val timer: String,
-
-)
 
 val categoryExercise = listOf(
     Category("ABS WORKOUT", "", "Exercise", R.drawable.abs, CategoryRoute.ABS.name),
