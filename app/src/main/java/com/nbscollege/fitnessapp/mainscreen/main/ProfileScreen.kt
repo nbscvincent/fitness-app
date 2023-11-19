@@ -124,6 +124,8 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
                 items(registeredUsers) { profile ->
                     Column(
                     ) {
+
+
                         Text(
                             "Username: ${profile.username}",
                             color = Color.Black,

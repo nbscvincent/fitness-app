@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 class MainActivity : ComponentActivity() {

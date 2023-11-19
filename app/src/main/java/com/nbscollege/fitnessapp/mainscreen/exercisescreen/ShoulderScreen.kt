@@ -45,11 +45,11 @@ fun ShoulderScreen(navController: NavController, backStackEntry: NavBackStackEnt
                 )
             }
         },
-        bottomBar = {
-            BottomAppBar {
-
-            }
-        }
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
     ) { innerPadding ->
         Column(
             modifier = Modifier

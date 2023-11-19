@@ -1,7 +1,14 @@
 package com.nbscollege.fitnessapp.viewmodel
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.example.model.LoginScreen
+import com.nbscollege.fitnessapp.model.homescreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +19,7 @@ class ScreenViewModel : ViewModel() {
     private val _splashLoaded = MutableStateFlow(false)
     private val _isLoggedin = MutableStateFlow(false)
     val splashLoaded = _splashLoaded.asStateFlow()
-    val isLoggedin = _isLoggedin.asStateFlow()
+//    var isLoggedin = _isLoggedin.asStateFlow()
 
     fun runSplashScreen() {
         viewModelScope.launch {
@@ -29,4 +36,9 @@ class ScreenViewModel : ViewModel() {
             _isLoggedin.value = true
         }
     }
+
+
+
+
 }
+
