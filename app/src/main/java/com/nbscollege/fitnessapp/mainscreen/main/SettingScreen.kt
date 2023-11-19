@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -51,22 +52,44 @@ fun settingscreen(navController: NavController, backStackEntry: String?) {
         topBar = {
             Box(
                 modifier = Modifier
-                    .height(50.dp)
+                    .height(80.dp)
                     .padding(top=10.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
             ) {
-                IconButton(onClick = { navController.navigateUp() }) {
+
+                Row(
+                    modifier = Modifier
+                        .background(Color.White)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                     IconButton(onClick = { navController.navigateUp() }) {
+                         Icon(
+                             imageVector = Icons.Rounded.ArrowBackIos,
+                             modifier = Modifier.size(30.dp).padding(end=20.dp).border(1.dp, color = Color.Black),
+                             contentDescription = "Back",
+                             tint = Color.DarkGray
+                         )
+                     }
+
                     Icon(
-                        imageVector = Icons.Rounded.ArrowBackIos,
-                        modifier = Modifier.size(30.dp),
+                        imageVector = Icons.Outlined.Settings ,
+                        modifier = Modifier.size(45.dp),
                         contentDescription = "Back",
                         tint = Color.DarkGray
                     )
+                    Spacer(modifier = Modifier.width(5.dp))
+                    Text(
+                        "Settings",
+                        color = Color.DarkGray,
+                        fontSize = 38.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
 
-                }
+            }
         },
         bottomBar = {
 
@@ -78,26 +101,26 @@ fun settingscreen(navController: NavController, backStackEntry: String?) {
 
         ) {
 
-        Row(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Icon(
-                imageVector = Icons.Outlined.Settings ,
-                modifier = Modifier.size(45.dp),
-                contentDescription = "Back",
-                tint = Color.DarkGray
-            )
-            Spacer(modifier = Modifier.width(5.dp))
-            Text(
-                "Settings",
-                color = Color.DarkGray,
-                fontSize = 38.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
+//        Row(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxWidth(),
+//            horizontalArrangement = Arrangement.Center
+//        ) {
+//            Icon(
+//                imageVector = Icons.Outlined.Settings ,
+//                modifier = Modifier.size(45.dp),
+//                contentDescription = "Back",
+//                tint = Color.DarkGray
+//            )
+//            Spacer(modifier = Modifier.width(5.dp))
+//            Text(
+//                "Settings",
+//                color = Color.DarkGray,
+//                fontSize = 38.sp,
+//                fontWeight = FontWeight.SemiBold
+//            )
+//        }
 
             LazyColumn(
                 modifier = Modifier.padding(top=100.dp).background(Color.White),
