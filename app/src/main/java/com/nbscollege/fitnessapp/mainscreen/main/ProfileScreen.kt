@@ -18,7 +18,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -53,19 +55,49 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
         topBar = {
             Box(
                 modifier = Modifier
-                    .height(50.dp)
-                    .padding(top = 10.dp)
+                    .height(100.dp)
+                    .padding(top=10.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
             ) {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(
-                        imageVector = Icons.Rounded.ArrowBackIos,
-                        modifier = Modifier.size(30.dp),
-                        contentDescription = "Back",
-                        tint = Color.DarkGray
-                    )
+
+                Row(
+                    modifier = Modifier
+                        .background(Color.White)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            imageVector = Icons.Rounded.ArrowBackIos,
+                            modifier = Modifier.size(30.dp),
+                            contentDescription = "Back",
+                            tint = Color.DarkGray
+                        )
+                    }
+                    Row(
+                        modifier = Modifier
+                            .background(Color.White)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+
+                        Icon(
+                            imageVector = Icons.Rounded.Person,
+                            modifier = Modifier.size(45.dp),
+                            contentDescription = "Back",
+                            tint = Color.DarkGray
+                        )
+                        Spacer(modifier = Modifier.width(5.dp))
+                        Text(
+                            "Profile",
+                            color = Color.DarkGray,
+                            fontSize = 38.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.padding(end=45.dp),
+                        )
+                    }
                 }
 
             }
@@ -82,30 +114,9 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
             ) {
 
-            Row(
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.Person,
-                    modifier = Modifier.size(45.dp),
-                    contentDescription = "Back",
-                    tint = Color.DarkGray
-                )
-                Spacer(modifier = Modifier.width(5.dp))
-                Text(
-                    "Profile",
-                    color = Color.DarkGray,
-                    fontSize = 38.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-            }
-
             LazyColumn(
 
-                modifier = Modifier.padding(top=100.dp).background(Color.White),
+                modifier = Modifier.padding(top = 10.dp).background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
