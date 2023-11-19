@@ -37,7 +37,7 @@ import kotlinx.coroutines.delay
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun mainNavigation(navController: NavController) {
+fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel) {
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
@@ -72,7 +72,7 @@ fun mainNavigation(navController: NavController) {
                 showBottomBar = true
             }
             composable(route = Screen.ProfileScreen.name) { backStackEntry ->
-                profilescreen(navController, backStackEntry.arguments?.getString(Screen.ProfileScreen.name))
+                profilescreen(screenViewModel ,navController,backStackEntry.arguments?.getString(Screen.ProfileScreen.name))
                 showBottomBar = true
             }
             composable(route = Screen.SettingScreen.name) { backStackEntry ->

@@ -57,10 +57,11 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.util.StringUtil
+import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController ) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
@@ -188,6 +189,7 @@ fun LoginScreen(navController: NavController ) {
                                 Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
                                     .show()
                                 // Update the state to reflect the login success
+                                screenViewModel.loginUser(username, password)
                                 navController.navigate(Routes.MAIN.name)
                             } else {
                                 // Authentication failed

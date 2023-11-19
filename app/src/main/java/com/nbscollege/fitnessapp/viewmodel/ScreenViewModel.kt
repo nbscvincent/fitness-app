@@ -8,6 +8,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.example.model.LoginScreen
+import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.model.homescreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +22,8 @@ class ScreenViewModel : ViewModel() {
     private val _isLoggedin = MutableStateFlow(false)
     val splashLoaded = _splashLoaded.asStateFlow()
 //    var isLoggedin = _isLoggedin.asStateFlow()
+    private val _currentUser = MutableStateFlow<User?>(null)
+    val currentUser = _currentUser.asStateFlow()
 
     fun runSplashScreen() {
         viewModelScope.launch {
@@ -29,11 +33,12 @@ class ScreenViewModel : ViewModel() {
         }
     }
 
-    fun loginUser() {
+    fun loginUser(username: String, password: String) {
         viewModelScope.launch {
             // set status to loggedIn after 2 seconds
-            delay(2000)
+            val user = registeredUsers.find { it.username == username && it.password == password }
             _isLoggedin.value = true
+            _currentUser.value = user
         }
     }
 

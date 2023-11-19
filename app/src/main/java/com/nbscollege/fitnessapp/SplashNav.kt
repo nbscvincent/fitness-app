@@ -68,7 +68,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                LoginScreen(navController)
+                LoginScreen(navController, screenViewModel)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
@@ -88,7 +88,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                    mainNavigation(navController)
+                    mainNavigation(navController, screenViewModel)
             }
 
         }
