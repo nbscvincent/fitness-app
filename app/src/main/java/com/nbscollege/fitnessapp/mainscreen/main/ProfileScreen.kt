@@ -122,10 +122,7 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
             ) {
 
                 items(registeredUsers) { profile ->
-
-
                     Column(
-
                     ) {
                         Text(
                             "Username: ${profile.username}",
@@ -164,20 +161,102 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
                                 else -> "Obese"
                             }
                             // Display BMI
-                            Text(
-                                "BMI: %.2f".format(bmi),
-                                color = Color.Black,
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Thin,
-                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                            )
-                            Text(
-                                "Category: $bmiCategory",
-                                color = Color.Black,
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Thin,
-                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                            )
+                            if (bmi < 18.5) {
+                                Text(
+                                    "BMI: %.2f".format(bmi),
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+
+                                Text(
+                                    "Category: $bmiCategory",
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp),
+                                )
+
+                                Text("Tips: Try to avoid foods with a lot of added sugar, fat and salt, like cakes, takeaway foods and sugary drinks. You can put on weight by eating small meals frequently throughout the day. Try to snack on healthy, high energy foods like cheese, nuts, milk-based smoothies and dried fruit.",
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                            }
+                            else if (bmi < 24.5) {
+                                Text(
+                                    "BMI: %.2f".format(bmi),
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                                Text(
+                                    "Category: $bmiCategory",
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                                Text("Please Maintain",
+                                    color = Color.Red,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                            }
+                            else if(bmi < 29.9) {
+                                Text(
+                                    "BMI: %.2f".format(bmi),
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                                Text(
+                                    "Category: $bmiCategory",
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                                Text("Tips: eat a balanced, calorie-controlled diet as recommended by your GP or weight loss management health professional (such as a dietitian) join a local weight loss group. take up activities such as fast walking, jogging, swimming or tennis for 150 to 300 minutes (two-and-a-half to five hours) a week."
+                                , color = Color.Red,
+                                    fontSize = 30.sp,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                            }
+                            else{
+                                Text(
+                                    "BMI: %.2f".format(bmi),
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                                Text(
+                                    "Category: $bmiCategory",
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+                            }
+
+//                            Text(
+//                                "BMI: %.2f".format(bmi),
+//                                color = Color.Black,
+//                                fontSize = 30.sp,
+//                                fontWeight = FontWeight.Thin,
+//                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                            )
+//                            Text(
+//                                "Category: $bmiCategory",
+//                                color = Color.Black,
+//                                fontSize = 30.sp,
+//                                fontWeight = FontWeight.Thin,
+//                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                            )
                         } else {
                             // Handle the case where height or weight couldn't be converted to numbers
                             Text(
