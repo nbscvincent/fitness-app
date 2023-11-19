@@ -44,11 +44,11 @@ fun ArmScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                 )
             }
         },
-        bottomBar = {
-            BottomAppBar {
-
-            }
-        }
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
     ) { innerPadding ->
         Column(
             modifier = Modifier

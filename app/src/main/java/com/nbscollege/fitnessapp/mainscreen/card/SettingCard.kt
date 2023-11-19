@@ -61,7 +61,7 @@ fun SettingCard(general: General, navController: NavController) {
                         .fillMaxWidth()
                         .clickable(onClick = {
 
-                            navController.navigate(SettingsRoute.Settings.name)
+                            navController.navigate(general.route)
                         }),
                 ) {
                     Text(

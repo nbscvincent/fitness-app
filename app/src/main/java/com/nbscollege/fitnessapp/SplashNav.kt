@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -67,7 +68,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                LoginScreen(navController)
+                LoginScreen(navController, screenViewModel)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
@@ -87,7 +88,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                    mainNavigation(navController)
+                    mainNavigation(navController, screenViewModel)
             }
 
         }
