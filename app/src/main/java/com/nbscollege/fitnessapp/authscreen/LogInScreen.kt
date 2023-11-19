@@ -4,6 +4,7 @@ import Auth
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,6 +26,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -53,11 +55,16 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
+import com.nbscollege.fitnessapp.model.SplashScreen
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.util.StringUtil
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,6 +74,9 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
     var showPassword by remember {
         mutableStateOf(false)
     }
+
+    val _isProgressVisible = MutableStateFlow(false)
+    val isProgressVisible: StateFlow<Boolean> = _isProgressVisible.asStateFlow()
 
     var isLoginSuccessful by remember { mutableStateOf(false) }
 
@@ -80,9 +90,11 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
     }
 
 
+
     Box(
         modifier = Modifier.fillMaxSize(),
     ) {
+
         Column(
             modifier = Modifier.align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -172,6 +184,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
+
                 Button(
                     onClick = {
 //                        if (StringUtil().isEmptyString(username)) {
@@ -190,7 +203,9 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                                     .show()
                                 // Update the state to reflect the login success
                                 screenViewModel.loginUser(username, password)
+
                                 navController.navigate(Routes.MAIN.name)
+
                             } else {
                                 // Authentication failed
                                 Toast.makeText(
@@ -241,7 +256,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
 //                                    "Pleas complete the log in",
 //                                    Toast.LENGTH_SHORT
 //                                ).show()
-                            
+
                         }
 
 
