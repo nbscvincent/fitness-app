@@ -93,6 +93,10 @@ fun SignUpScreen(navController: NavController) {
     var weightError by remember { mutableStateOf(false) }
     var heightError by remember { mutableStateOf(false) }
 
+    var age by remember { mutableStateOf("") }
+    var ageError by remember { mutableStateOf(false) }
+
+
 
     val context = LocalContext.current
     var confirmPasswordColor =
@@ -113,8 +117,9 @@ fun SignUpScreen(navController: NavController) {
                 weightError = false
                 heightError = false
                 confirmPasswordError = false
+                ageError = false
                 // Add the new user to the list of registered users
-                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
+                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull(), age.toInt()))
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
             },
             dialogTitle = "Do you really want to create an account?",
@@ -146,13 +151,16 @@ fun SignUpScreen(navController: NavController) {
             )
             Box(Modifier.height(25.dp))
             TextField(
+                isError = userError,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
                 value = newUsername,
-                onValueChange = { newUsername = it },
+                onValueChange = {
+                    newUsername = it
+                },
                 singleLine = true,
                 trailingIcon = {
                     Icon(
@@ -164,10 +172,12 @@ fun SignUpScreen(navController: NavController) {
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
+                    disabledIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent
                 )
             )
             TextField(
+                isError = passwordError,
                 modifier = Modifier
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
@@ -190,12 +200,14 @@ fun SignUpScreen(navController: NavController) {
                 colors = TextFieldDefaults.textFieldColors(
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
+                    disabledIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent
 
                 ),
 
             )
             TextField(
+                isError = confirmPasswordError,
                 modifier = Modifier
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp)
@@ -223,6 +235,7 @@ fun SignUpScreen(navController: NavController) {
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     disabledIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent,
                     textColor = Color.Black
                 )
                 )
@@ -236,6 +249,7 @@ fun SignUpScreen(navController: NavController) {
 
                     ) {
                         TextField(
+                            isError = weightError,
                             modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
                             label = { Text("Weight(lb)") },
@@ -253,10 +267,12 @@ fun SignUpScreen(navController: NavController) {
                             colors = TextFieldDefaults.textFieldColors(
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
-                                disabledIndicatorColor = Color.Transparent
+                                disabledIndicatorColor = Color.Transparent,
+                                errorIndicatorColor = Color.Transparent
                             )
                         )
                         TextField(
+                            isError = heightError,
                             modifier = Modifier.
                                 width(300.dp)
                                 .clip(CircleShape)
@@ -277,6 +293,7 @@ fun SignUpScreen(navController: NavController) {
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
                                 disabledIndicatorColor = Color.Transparent,
+                                errorIndicatorColor = Color.Transparent
                             )
                         )
                     }
@@ -288,24 +305,26 @@ fun SignUpScreen(navController: NavController) {
 
             ) {
                 TextField(
+                    isError = ageError,
                     modifier = Modifier.width(200.dp)
                         .absolutePadding(left = 40.dp, bottom = 11.dp),
                     label = { Text("Age") },
-                    value = weight,
-                    onValueChange = { weight = it },
+                    value = age,
+                    onValueChange = { age = it },
                     singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     trailingIcon = {
                         Icon(
                             Icons.Rounded.PlusOne,
-                            contentDescription = "Weight"
+                            contentDescription = "Age"
                         )
                     },
                     shape = RoundedCornerShape(12.dp),
                     colors = TextFieldDefaults.textFieldColors(
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent
+                        disabledIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent
                     )
                 )
                 TextField(
@@ -329,6 +348,7 @@ fun SignUpScreen(navController: NavController) {
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
                         disabledIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent
                     )
                 )
             }
@@ -341,32 +361,19 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty() && newPassword == confirmPassword) {
+                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()  && age.isNotEmpty() && newPassword == confirmPassword) {
                             // Check if the username is already taken
                             if (registeredUsers.any { it.username == newUsername}) {
                                 userError = true
                                 passwordError = false
                                 weightError = false
                                 heightError = false
+                                ageError = false
 
                                 Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
-
-
                             }
-
                             else {
-//                                userError = false
-//                                passwordError = false
-//                                weightError = false
-//                                heightError = false
-//                                confirmPasswordError = false
-//                                // Add the new user to the list of registered users
-//                                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull()))
-                                // Provide feedback to the user
-//                                Toast.makeText(context, "Signup successful!", Toast.LENGTH_SHORT).show()
-//                                navController.navigate(Auth.LogInScreen.name)
                                 openAlertDialog.value = true
-
                             }
                         }
 
@@ -375,14 +382,13 @@ fun SignUpScreen(navController: NavController) {
                         else if (confirmPassword != newPassword) {
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                         }
-                        // Display error message if passwords do not match
-
                         else {
                                 userError = newUsername.isEmpty()
                                 passwordError = newPassword.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
                                 confirmPasswordError = confirmPassword.isEmpty()
+                                ageError = age.isEmpty()
 
                             Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
                             }

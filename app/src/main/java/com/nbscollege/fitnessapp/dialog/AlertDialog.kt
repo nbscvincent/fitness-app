@@ -28,7 +28,7 @@ fun AlertDialogExample(
 
     AlertDialog(
         icon = {
-            Icon(icon, contentDescription = "Example Icon", modifier = Modifier.size(50.dp),tint = darkGreen)
+            Icon(icon, contentDescription = "Example Icon", modifier = Modifier.size(50.dp),tint = Color.DarkGray)
         },
         title = {
             Text(text = dialogTitle)

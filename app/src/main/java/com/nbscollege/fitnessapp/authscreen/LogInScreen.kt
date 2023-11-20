@@ -217,7 +217,6 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                         }
                         else {
 
-
                             if (username.isEmpty()) {
                                 userError = username.isEmpty()
                                 Toast.makeText(
@@ -243,20 +242,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                                     "Please input your username and password",
                                     Toast.LENGTH_SHORT
                                 ).show()
-
                             }
-
-
-
-//                                userError = username.isEmpty()
-//                                passwordError = password.isEmpty()
-//
-//                                Toast.makeText(
-//                                    context,
-//                                    "Pleas complete the log in",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-
                         }
 
 

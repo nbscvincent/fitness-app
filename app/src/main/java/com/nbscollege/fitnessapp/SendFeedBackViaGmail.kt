@@ -65,8 +65,12 @@ Column(
                     navController.navigate(Screen.SettingScreen.name)
                 }) {
                     Text("Continue")
+
+
                 }
+
             },
+
             dismissButton = {
                 Button(onClick = {
                     navController.navigate(Screen.SettingScreen.name)

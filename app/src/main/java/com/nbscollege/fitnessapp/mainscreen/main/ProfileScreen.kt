@@ -155,6 +155,14 @@ import kotlinx.coroutines.flow.asStateFlow
                                     modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                 )
 
+                                Text(
+                                    "Age: ${profile.age}",
+                                    color = Color.Black,
+                                    fontSize = 30.sp,
+                                    fontWeight = FontWeight.Thin,
+                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                )
+
                                 val height = profile.height
                                 val weight = profile.weight
 
