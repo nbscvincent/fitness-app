@@ -47,9 +47,9 @@ fun sendFeedbackViaGmail(
             confirmButton = {
                 Button(onClick = {
                     // Navigate the user to their email app
+
                     val intent = Intent(Intent.ACTION_SENDTO).apply {
-                        data = Uri.parse("mailto:$recipient")
-                        putExtra(Intent.EXTRA_SUBJECT, subject)
+                        data = Uri.parse("mailto:$recipient?subject=$subject")
                     }
                     startActivity(context, intent, null)
                 }) {
@@ -61,7 +61,7 @@ fun sendFeedbackViaGmail(
                     navController.navigate(Screen.SettingScreen.name)
                     openAlertDialog.value = false
                 }) {
-                    Text("No")
+                    Text("Go Back")
                 }
             }
         )
