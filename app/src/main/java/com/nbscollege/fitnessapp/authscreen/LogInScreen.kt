@@ -217,22 +217,6 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                         }
                         else {
 
-                            if (username.isEmpty()) {
-                                userError = username.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please input username",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            if (password.isEmpty()) {
-                                passwordError = password.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please input password",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
                             if(password.isEmpty() && username.isEmpty()){
                                 userError = username.isEmpty()
                                 passwordError = password.isEmpty()
@@ -240,6 +224,22 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) 
                                 Toast.makeText(
                                     context,
                                     "Please input your username and password",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            else if(username.isEmpty()) {
+                                userError = username.isEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please input username",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            else if (password.isEmpty()) {
+                                passwordError = password.isEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please input password",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
