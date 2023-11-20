@@ -53,7 +53,6 @@ import androidx.navigation.NavBackStackEntry
 @Composable
 fun settingscreen(context: Context, navController: NavController, backStackEntry: NavBackStackEntry) {
 
-
     Scaffold(
         topBar = {
             Box(
@@ -124,49 +123,14 @@ fun settingscreen(context: Context, navController: NavController, backStackEntry
 
                 items(settingsList) { general ->
                         SettingCard(general = general, navController)
-
                 }
             }
         }
 
-//        val recipient = "cevangelista@student.nbscollege.edu.ph"
-//        val subject = "Feedback on Your App"
-//        val openAlertDialog = remember { mutableStateOf(false) }
-        var openAlertDialog by remember { mutableStateOf(false) }
 
-        if (openAlertDialog) {
-            AlertDialog(
-                onDismissRequest = {  },
-                title = { Text("Confirmation") },
-                text = { Text("Would you like to send feedback via your email app?") },
-                confirmButton = {
-                    Button(onClick = {
-                        // Navigate the user to their email app
-                        val recipient = "cevangelista@student.nbscollege.edu.ph"
-                        val subject = "Feedback on Your App"
-                        val intent = Intent(Intent.ACTION_SENDTO).apply {
-                            data = Uri.parse("mailto:$recipient")
-                            putExtra(Intent.EXTRA_SUBJECT, subject)
-                        }
-                        ContextCompat.startActivity(context, intent, null)
 
-                    }) {
-                        Text("Yes")
-                    }
-                },
-                dismissButton = {
-                    Button(onClick = {
-                        // Handle dismissal if needed
-                        openAlertDialog = false
-                    }) {
-                        Text("No")
-                    }
-                }
-            )
-        }
-        else {
 
-        }
+
 
 
 
