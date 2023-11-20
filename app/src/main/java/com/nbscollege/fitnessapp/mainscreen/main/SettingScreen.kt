@@ -53,6 +53,7 @@ import androidx.navigation.NavBackStackEntry
 @Composable
 fun settingscreen(context: Context, navController: NavController, backStackEntry: NavBackStackEntry) {
 
+
     Scaffold(
         topBar = {
             Box(
@@ -131,10 +132,12 @@ fun settingscreen(context: Context, navController: NavController, backStackEntry
         val recipient = "cevangelista@student.nbscollege.edu.ph"
         val subject = "Feedback on Your App"
         val openAlertDialog = remember { mutableStateOf(true) }
+        var showFeedbackDialog by remember { mutableStateOf(false) }
+
 
         if (openAlertDialog.value) {
             AlertDialog(
-                onDismissRequest = { /* Handle dismiss if needed */ },
+                onDismissRequest = { openAlertDialog.value = false },
                 title = { Text("Confirmation") },
                 text = { Text("Would you like to send feedback via your email app?") },
                 confirmButton = {
@@ -145,6 +148,7 @@ fun settingscreen(context: Context, navController: NavController, backStackEntry
                             putExtra(Intent.EXTRA_SUBJECT, subject)
                         }
                         ContextCompat.startActivity(context, intent, null)
+                        openAlertDialog.value = false
                     }) {
                         Text("Yes")
                     }
