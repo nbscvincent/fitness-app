@@ -3,29 +3,47 @@ package com.nbscollege.fitnessapp
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat.startActivity
 
 @Composable
-fun sendFeedbackViaGmail(current: Context) {
-    val context = LocalContext.current
-
-    // Replace the following with your email address and subject
+fun sendFeedbackViaGmail(context: Context) {
     val recipient = "cevangelista@student.nbscollege.edu.ph"
     val subject = "Feedback on Your App"
+    val openAlertDialog = remember { mutableStateOf(true) }
 
-    val intent = Intent(Intent.ACTION_SENDTO).apply {
-        data = Uri.parse("mailto:$recipient")
-        putExtra(Intent.EXTRA_SUBJECT, subject)
+    if (openAlertDialog.value) {
+        AlertDialog(
+            onDismissRequest = { /* Handle dismiss if needed */ },
+            title = { Text("Confirmation") },
+            text = { Text("Would you like to send feedback via your email app?") },
+            confirmButton = {
+                Button(onClick = {
+                    // Navigate the user to their email app
+                    val intent = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:$recipient")
+                        putExtra(Intent.EXTRA_SUBJECT, subject)
+                    }
+                    startActivity(context, intent, null)
+                }) {
+                    Text("Yes")
+                }
+            },
+            dismissButton = {
+                Button(onClick = {
+                    // Handle dismissal if needed
+                    openAlertDialog.value = false
+                }) {
+                    Text("No")
+                }
+            }
+        )
     }
 
-    if (intent.resolveActivity(context.packageManager) != null) {
-        // Launch the Gmail app
-        startActivity(context, intent, null)
-    } else {
-        // Handle the case where the Gmail app is not installed
-        // You might want to show a Snackbar or Toast to inform the user
-        // that the Gmail app is not available.
-    }
 }

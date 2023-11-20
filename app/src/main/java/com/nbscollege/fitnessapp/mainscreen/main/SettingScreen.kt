@@ -1,8 +1,10 @@
 package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -36,6 +38,8 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
+import androidx.core.content.ContextCompat
+import androidx.navigation.NavBackStackEntry
 
 
 //enum class SelectedButton {
@@ -47,7 +51,8 @@ import androidx.compose.foundation.layout.*
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun settingscreen(navController: NavController, backStackEntry: String?) {
+fun settingscreen(context: Context, navController: NavController, backStackEntry: NavBackStackEntry) {
+
     Scaffold(
         topBar = {
             Box(
@@ -118,166 +123,46 @@ fun settingscreen(navController: NavController, backStackEntry: String?) {
 
                 items(settingsList) { general ->
                         SettingCard(general = general, navController)
+
                 }
-
-
             }
         }
+
+        val recipient = "cevangelista@student.nbscollege.edu.ph"
+        val subject = "Feedback on Your App"
+        val openAlertDialog = remember { mutableStateOf(true) }
+
+        if (openAlertDialog.value) {
+            AlertDialog(
+                onDismissRequest = { /* Handle dismiss if needed */ },
+                title = { Text("Confirmation") },
+                text = { Text("Would you like to send feedback via your email app?") },
+                confirmButton = {
+                    Button(onClick = {
+                        // Navigate the user to their email app
+                        val intent = Intent(Intent.ACTION_SENDTO).apply {
+                            data = Uri.parse("mailto:$recipient")
+                            putExtra(Intent.EXTRA_SUBJECT, subject)
+                        }
+                        ContextCompat.startActivity(context, intent, null)
+                    }) {
+                        Text("Yes")
+                    }
+                },
+                dismissButton = {
+                    Button(onClick = {
+                        // Handle dismissal if needed
+                        openAlertDialog.value = false
+                    }) {
+                        Text("No")
+                    }
+                }
+            )
+        }
+
 
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth(),
-//                    horizontalArrangement = Arrangement.Center
-//                ) {
-//                    Icon(
-//                            imageVector = Icons.Outlined.Settings,
-//                            modifier = Modifier.size(45.dp),
-//                            contentDescription = "Back"
-//                    )
-//                    Spacer(modifier = Modifier.width(5.dp))
-//                    Text(
-//                        text = "Settings",
-//                        color = Color.Black,
-//                        fontSize = 38.sp,
-//                        fontWeight = FontWeight.SemiBold
-//                    )
-//                }
-//                Spacer(modifier = Modifier.height(20.dp))
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                            text = "General Settings",
-//                    color = Color.Black,
-//                    fontSize = 30.sp,
-//                    fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                        Icon(
-//                            imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                            modifier = Modifier
-//                                .padding(start = 130.dp, top=15.dp)
-//                                .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                            contentDescription = "Arrow ForwardIos",
-//                            tint = Color.DarkGray
-//                        )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
-//
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                        text = "General Settings",
-//                        color = Color.Black,
-//                        fontSize = 30.sp,
-//                        fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                    Icon(
-//                        imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                        modifier = Modifier
-//                            .padding(start = 130.dp, top=15.dp)
-//                            .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                        contentDescription = "Arrow ForwardIos",
-//                        tint = Color.DarkGray
-//                    )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                        text = "General Settings",
-//                        color = Color.Black,
-//                        fontSize = 30.sp,
-//                        fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                    Icon(
-//                        imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                        modifier = Modifier
-//                            .padding(start = 130.dp, top=15.dp)
-//                            .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                        contentDescription = "Arrow ForwardIos",
-//                        tint = Color.DarkGray
-//                    )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
 

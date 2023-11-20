@@ -17,7 +17,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.example.model.LoginScreen
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
@@ -52,7 +51,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
         }
     }
 
-
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
@@ -76,15 +74,15 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 showBottomBar = true
             }
             composable(route = Screen.SettingScreen.name) { backStackEntry ->
-                settingscreen(navController, backStackEntry.arguments?.getString(Screen.SettingScreen.name))
+                settingscreen(context, navController, backStackEntry)
                 showBottomBar = true
             }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) {
                     GeneralSettings(navController)
                 }
-                composable(route = SettingsRoute.Feed.name) {
-                    GeneralSettings(navController)
+                composable(route = SettingsRoute.Feed.name) { backStackEntry ->
+                    settingscreen(context, navController, backStackEntry)
                 }
                 composable(route = SettingsRoute.Rate.name) {
                     GeneralSettings(navController)
@@ -136,6 +134,8 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
     }
 
 }
+
+
 
 
 

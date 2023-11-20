@@ -29,7 +29,7 @@ import com.nbscollege.fitnessapp.navigation.Screen
 @Composable
 fun BottomNavBar(navController: NavController) {
     val items = listOf(
-        BottomNavItem("Home", Icons.Filled.Home, Icons.Outlined.Home, Screen.HomeScreen.name),
+        BottomNavItem("Home", Icons.Default.Home, Icons.Outlined.Home, Screen.HomeScreen.name),
         BottomNavItem("Profile", Icons.Default.Person, Icons.Outlined.Person, Screen.ProfileScreen.name),
         BottomNavItem("Settings", Icons.Default.Settings, Icons.Outlined.Settings, Screen.SettingScreen.name)
     )
@@ -63,8 +63,8 @@ fun BottomNavBar(navController: NavController) {
 //                        // Restore state when reselecting a previously selected item
 //                        restoreState = true
 //                    }
-
                     navController.navigate(item.route) {
+                        selectedItem = index
                         launchSingleTop = true
                     }
                 },
