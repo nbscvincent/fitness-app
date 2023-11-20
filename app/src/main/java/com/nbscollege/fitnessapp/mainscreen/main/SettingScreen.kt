@@ -129,26 +129,27 @@ fun settingscreen(context: Context, navController: NavController, backStackEntry
             }
         }
 
-        val recipient = "cevangelista@student.nbscollege.edu.ph"
-        val subject = "Feedback on Your App"
-        val openAlertDialog = remember { mutableStateOf(true) }
-        var showFeedbackDialog by remember { mutableStateOf(false) }
+//        val recipient = "cevangelista@student.nbscollege.edu.ph"
+//        val subject = "Feedback on Your App"
+//        val openAlertDialog = remember { mutableStateOf(false) }
+        var openAlertDialog by remember { mutableStateOf(false) }
 
-
-        if (openAlertDialog.value) {
+        if (openAlertDialog) {
             AlertDialog(
-                onDismissRequest = { openAlertDialog.value = false },
+                onDismissRequest = {  },
                 title = { Text("Confirmation") },
                 text = { Text("Would you like to send feedback via your email app?") },
                 confirmButton = {
                     Button(onClick = {
                         // Navigate the user to their email app
+                        val recipient = "cevangelista@student.nbscollege.edu.ph"
+                        val subject = "Feedback on Your App"
                         val intent = Intent(Intent.ACTION_SENDTO).apply {
                             data = Uri.parse("mailto:$recipient")
                             putExtra(Intent.EXTRA_SUBJECT, subject)
                         }
                         ContextCompat.startActivity(context, intent, null)
-                        openAlertDialog.value = false
+
                     }) {
                         Text("Yes")
                     }
@@ -156,13 +157,20 @@ fun settingscreen(context: Context, navController: NavController, backStackEntry
                 dismissButton = {
                     Button(onClick = {
                         // Handle dismissal if needed
-                        openAlertDialog.value = false
+                        openAlertDialog = false
                     }) {
                         Text("No")
                     }
                 }
             )
         }
+        else {
+
+        }
+
+
+
+
 
 
     }
