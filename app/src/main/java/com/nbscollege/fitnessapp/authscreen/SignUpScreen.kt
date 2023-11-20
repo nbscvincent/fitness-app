@@ -56,6 +56,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Height
 import androidx.compose.material.icons.rounded.ImageAspectRatio
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.material.icons.rounded.PlusOne
 import androidx.compose.material.icons.rounded.Transgender
@@ -117,7 +118,7 @@ fun SignUpScreen(navController: NavController) {
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
             },
             dialogTitle = "Do you really want to create an account?",
-            icon = Icons.Rounded.CheckCircle,
+            icon = Icons.Rounded.Info,
         )
     }
 

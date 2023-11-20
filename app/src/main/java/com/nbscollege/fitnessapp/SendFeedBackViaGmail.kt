@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.activity.OnBackPressedCallback
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -28,6 +30,9 @@ import androidx.navigation.NavHostController
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import androidx.activity.OnBackPressedDispatcherOwner
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
+import androidx.compose.runtime.rememberUpdatedState
 
 @Composable
 fun sendFeedbackViaGmail(
@@ -39,6 +44,11 @@ fun sendFeedbackViaGmail(
     val subject = "Feedback on Your App"
     val openAlertDialog = remember { mutableStateOf(true) }
 
+
+
+Column(
+
+) {
     if (openAlertDialog.value) {
         AlertDialog(
             onDismissRequest = { /* Handle dismiss if needed */ },
@@ -54,7 +64,7 @@ fun sendFeedbackViaGmail(
                     startActivity(context, intent, null)
                     navController.navigate(Screen.SettingScreen.name)
                 }) {
-                    Text("Yes")
+                    Text("Continue")
                 }
             },
             dismissButton = {
@@ -67,6 +77,10 @@ fun sendFeedbackViaGmail(
             }
         )
     }
+
+}
+
+
 
 //    Box(
 //        modifier = Modifier.fillMaxSize(),

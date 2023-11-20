@@ -81,10 +81,9 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 composable(route = SettingsRoute.GeneralSettings.name) {
                     GeneralSettings(navController)
                 }
-                composable(route = SettingsRoute.Feed.name) { backStackEntry ->
-                    BackHandler(enabled = true) {
+                composable(route = SettingsRoute.Feed.name, ) {  backStackEntry ->
 
-                    }
+
                     sendFeedbackViaGmail(navController,context, backStackEntry)
                     showBottomBar = false
                 }
