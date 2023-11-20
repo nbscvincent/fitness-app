@@ -52,6 +52,7 @@ fun sendFeedbackViaGmail(
                         data = Uri.parse("mailto:$recipient?subject=$subject")
                     }
                     startActivity(context, intent, null)
+                    navController.navigate(Screen.SettingScreen.name)
                 }) {
                     Text("Yes")
                 }
