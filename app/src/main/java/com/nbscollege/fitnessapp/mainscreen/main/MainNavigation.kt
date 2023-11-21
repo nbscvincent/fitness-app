@@ -80,16 +80,17 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
             }
 
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
-                composable(route = SettingsRoute.GeneralSettings.name) {
-                    GeneralSettings(navController)
+                composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
+                    GeneralSettings(navController, backStackEntry)
+                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.Feed.name, ) {  backStackEntry ->
-
                     sendFeedbackViaGmail(navController,context, backStackEntry)
                     showBottomBar = false
                 }
                 composable(route = SettingsRoute.Rate.name) {
-                    GeneralSettings(navController)
+//                    GeneralSettings(navController, backStackEntry)
+//                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.LogOut.name) {
                     BackHandler(enabled = true) {
