@@ -17,8 +17,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.ArrowBackIos
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
@@ -35,24 +33,19 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.lifecycle.ViewModel
 
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.authscreen.model.User
-import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 
-    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun profilescreen(screenViewModel: ScreenViewModel,navController: NavController, backStackEntry: String?) {
+    fun profilescreen(
+    screenViewModel: ScreenViewModel,
+    navController: NavController, ) {
 
         val authenticationViewModel = viewModel<ScreenViewModel>()
 

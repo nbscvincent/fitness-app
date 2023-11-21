@@ -2,8 +2,6 @@ package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -38,7 +36,6 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavBackStackEntry
 
 
@@ -51,7 +48,7 @@ import androidx.navigation.NavBackStackEntry
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun settingscreen(context: Context, navController: NavController, backStackEntry: NavBackStackEntry) {
+fun settingscreen(context: Context, navController: NavController) {
 
     Scaffold(
         topBar = {

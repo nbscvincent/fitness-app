@@ -15,6 +15,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -33,23 +34,24 @@ fun BottomNavBar(navController: NavController) {
         BottomNavItem("Profile", Icons.Default.Person, Icons.Outlined.Person, Screen.ProfileScreen.name),
         BottomNavItem("Settings", Icons.Default.Settings, Icons.Outlined.Settings, Screen.SettingScreen.name)
     )
+//
+//    val navBackStackEntry by navController.currentBackStackEntryAsState()
+//    val currentDestination = navBackStackEntry?.destination
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentDestination = navBackStackEntry?.destination
-
-//    val navBackStackEntry by navController.currentBackStackEntryAsState()
-//    val currentRoute = navBackStackEntry?.destination?.route
+    val currentRoute = navBackStackEntry?.destination?.route
 
 //    val navBackStackEntry by navController.currentBackStackEntryAsState()
 //    val currentRoute = navBackStackEntry?.arguments?.getString(KEY_ROUTE)
 
 
-    var selectedItem by remember { mutableStateOf(0) }
+    var selectedItem by remember { mutableIntStateOf(0) }
     NavigationBar {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
 //                selected = currentRoute == item.route,
-                selected = selectedItem == index,
+//                selected = selectedItem == index,
+                selected = currentRoute == item.route,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
                     selectedItem = index
@@ -65,6 +67,18 @@ fun BottomNavBar(navController: NavController) {
                         restoreState = true
                     }
 
+//                    selectedItem = index
+//                    navController.navigate(item.route) {
+//                        // Pop up to the start destination of the graph to
+//                        // avoid building up a large stack of destinations
+//
+//                        popUpTo(navController.graph.startDestinationId)
+//                        // Avoid multiple copies of the same destination when
+//                        // reselecting the same item
+//                        launchSingleTop = true
+//                    }
+
+
 
 //                    navController.navigate(item.route) {
 //                        selectedItem = index
@@ -79,7 +93,9 @@ fun BottomNavBar(navController: NavController) {
                     Icon(
                         imageVector = if (index == selectedItem) {
                             item.selectedIcon
-                        } else item.unselectedIcon,
+
+                        } else item.selectedIcon,
+
                         contentDescription = item.title
                     )
                 }

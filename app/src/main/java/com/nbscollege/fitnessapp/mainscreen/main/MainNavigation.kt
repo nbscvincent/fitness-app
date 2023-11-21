@@ -65,18 +65,20 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 //            composable(route = Screen.HomeScreen.name){ homescreen(navController)}
 //            composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
 //        }
-            composable(route = Screen.HomeScreen.name) { backStackEntry ->
-                homescreen(navController, backStackEntry.arguments?.getString(Screen.HomeScreen.name))
+            composable(route = Screen.HomeScreen.name) {
+                homescreen(navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.ProfileScreen.name) { backStackEntry ->
-                profilescreen(screenViewModel ,navController,backStackEntry.arguments?.getString(Screen.ProfileScreen.name))
+
+            composable(route = Screen.ProfileScreen.name) {
+                profilescreen(screenViewModel ,navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.SettingScreen.name) { backStackEntry ->
-                settingscreen(context, navController, backStackEntry)
+            composable(route = Screen.SettingScreen.name) {
+                settingscreen(context, navController,)
                 showBottomBar = true
             }
+
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) {
                     GeneralSettings(navController)
