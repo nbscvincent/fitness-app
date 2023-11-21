@@ -62,50 +62,49 @@ import kotlinx.coroutines.flow.asStateFlow
                 topBar = {
                     Box(
                         modifier = Modifier
-                            .height(100.dp)
                             .padding(top = 10.dp)
-                            .background(Color.White)
+                            .background(Color.Red)
+                            .height(100.dp)
                             .fillMaxWidth()
 
                     ) {
-
-                        Row(
-                            modifier = Modifier
-                                .background(Color.White)
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            IconButton(onClick = { navController.navigateUp() }) {
-                                Icon(
-                                    imageVector = Icons.Rounded.ArrowBackIos,
-                                    modifier = Modifier.size(30.dp),
-                                    contentDescription = "Back",
-                                    tint = Color.DarkGray
-                                )
-                            }
                             Row(
                                 modifier = Modifier
                                     .background(Color.White)
                                     .fillMaxWidth(),
                                 horizontalArrangement = Arrangement.Center
                             ) {
+                                IconButton(onClick = { navController.navigateUp() }) {
+                                    Icon(
+                                        imageVector = Icons.Rounded.ArrowBackIos,
+                                        modifier = Modifier.size(30.dp),
+                                        contentDescription = "Back",
+                                        tint = Color.DarkGray
+                                    )
+                                }
+                                Row(
+                                    modifier = Modifier
+                                        .background(Color.White)
+                                        .fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.Center
+                                ) {
 
-                                Icon(
-                                    imageVector = Icons.Rounded.Person,
-                                    modifier = Modifier.size(45.dp),
-                                    contentDescription = "Back",
-                                    tint = Color.DarkGray
-                                )
-                                Spacer(modifier = Modifier.width(5.dp))
-                                Text(
-                                    "Profile",
-                                    color = Color.DarkGray,
-                                    fontSize = 38.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    modifier = Modifier.padding(end = 45.dp),
-                                )
+                                    Icon(
+                                        imageVector = Icons.Rounded.Person,
+                                        modifier = Modifier.size(45.dp),
+                                        contentDescription = "Back",
+                                        tint = Color.DarkGray
+                                    )
+                                    Spacer(modifier = Modifier.width(5.dp))
+                                    Text(
+                                        "Profile",
+                                        color = Color.DarkGray,
+                                        fontSize = 38.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        modifier = Modifier.padding(end = 45.dp),
+                                    )
+                                }
                             }
-                        }
 
                     }
                 },
