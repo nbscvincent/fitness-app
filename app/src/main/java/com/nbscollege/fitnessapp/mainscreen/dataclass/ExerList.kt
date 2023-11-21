@@ -15,11 +15,11 @@ data class ExerList(
 )
 
 val ExerciseList = listOf(
-    ExerList("JUMPING JACKS", "00:45", ExerRoute.ABS.name),
-    ExerList("ABDOMINAL CRUNCHES", "01:00", ExerRoute.ABS.name),
-    ExerList("RUSSIAN TWIST", "01:30", ExerRoute.ABS.name),
-    ExerList("MOUNTAIN CLIMBER", "01:45", ExerRoute.ABS.name),
-    ExerList("HEEL TOUCH", "01:45", ExerRoute.ABS.name),
-    ExerList("LEG RAISES", "01:45", ExerRoute.ABS.name),
-    ExerList("PLANK", "00:20", ExerRoute.ABS.name),
+    ExerList(title = "JUMPING JACKS", time = "00:45", route = ExerRoute.ABS.name),
+    ExerList(title = "ABDOMINAL CRUNCHES", time = "01:00",route = ExerRoute.ABS.name),
+    ExerList(title = "RUSSIAN TWIST",time = "01:30",route = ExerRoute.ABS.name),
+    ExerList(title = "MOUNTAIN CLIMBER",time = "01:45",route = ExerRoute.ABS.name),
+    ExerList(title = "HEEL TOUCH",time = "01:45",route = ExerRoute.ABS.name),
+    ExerList(title = "LEG RAISES",time = "01:45",route = ExerRoute.ABS.name),
+    ExerList(title = "PLANK",time = "00:20",route = ExerRoute.ABS.name),
 )
