@@ -46,14 +46,18 @@ import kotlin.math.round
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SettingCard(general: General, navController: NavController) {
+    Spacer(modifier = Modifier.height(5.dp))
     Card(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(start=20.dp, end = 20.dp)
-            .background(Color.White)
-            .clip(RoundedCornerShape(16.dp)),
+//            .fillMaxSize()
+            .padding(start = 20.dp, end = 20.dp)
+            .background(Color.White),
+//            .clip(RoundedCornerShape(16.dp)),
+//            colors = CardDefaults.cardColors(
+//            containerColor = Color.Black,
+//            ),
             elevation = CardDefaults.cardElevation(
-            defaultElevation = 15.dp,
+            defaultElevation = 7.dp,
             ),
         content = {
             Box(
@@ -86,7 +90,7 @@ fun SettingCard(general: General, navController: NavController) {
                     Icon(
                         imageVector = general.icon, // Replace with the desired icon
                         modifier = Modifier
-                            .padding(end = 30.dp, top = 14  .dp)
+                            .padding(end = 30.dp, top = 14.dp)
                             .size(20.dp),
 
                         contentDescription = "Arrow ForwardIos",
@@ -151,5 +155,7 @@ fun SettingCard(general: General, navController: NavController) {
 
         },
     )
-    Spacer(modifier = Modifier.height(8.dp).background(Color.White))
+    Spacer(modifier = Modifier
+        .height(8.dp)
+        .background(Color.White))
 }
