@@ -95,87 +95,22 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 //                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.LogOut.name) {
-//                    BackHandler(enabled = true) {
-//                        if (exit) {
-//                            context.startActivity(Intent(Intent.ACTION_MAIN).apply {
-//                                addCategory(Intent.CATEGORY_HOME)
-//                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-//                            })
-//                        } else {
-//                            exit = true
-//                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
-//
-//                        }
-//                    }
-//                    val openAlertDialog = remember { mutableStateOf(true) }
-//
-//                    SplashNav(screenViewModel = ScreenViewModel())
-//                    showBottomBar = false
+                    BackHandler(enabled = true) {
+                        if (exit) {
+                            context.startActivity(Intent(Intent.ACTION_MAIN).apply {
+                                addCategory(Intent.CATEGORY_HOME)
+                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                            })
+                        } else {
+                            exit = true
+                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
 
-                    var exit by remember { mutableStateOf(false) }
-                    var showLogoutDialog by remember { mutableStateOf(true) }
-
-                    if (showLogoutDialog) {
-                        // Show confirmation dialog
-                        AlertDialog(
-                            onDismissRequest = {
-                                // Handle dialog dismissal if needed
-                            },
-                            title = {
-                                Text("Logout Confirmation")
-                            },
-                            text = {
-                                Text("Are you sure you want to log out?")
-                            },
-                            confirmButton = {
-                                Button(onClick = {
-                                    // Perform logout
-                                    exit = false
-                                    // Close the dialog
-                                    showLogoutDialog = false
-                                }) {
-                                    Text("Yes")
-                                }
-                            },
-                            dismissButton = {
-                                Button(onClick = {
-                                    // Dismiss the dialog
-                                    showLogoutDialog = false
-                                }) {
-                                    Text("No")
-                                }
-                            }
-                        )
-                    }
-
-                    if (exit) {
-                        BackHandler(enabled = true) {
-                            if (exit) {
-                                // Handle exit actions here if needed
-                            } else {
-                                if (showLogoutDialog) {
-                                    // Dialog is already shown
-                                    return@BackHandler
-                                }
-
-                                showLogoutDialog = true
-
-                                Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
-                            }
                         }
-
-                    } else {
-                        // Your existing composable content
-
-                        if(showLogoutDialog) {
-                            SplashNav(screenViewModel = ScreenViewModel())
-                            showBottomBar = false
-                        }
-
-
-                        // Your existing code
-                        // ...
                     }
+                    val openAlertDialog = remember { mutableStateOf(true) }
+
+                    SplashNav(screenViewModel = ScreenViewModel())
+                    showBottomBar = false
 
 
 
