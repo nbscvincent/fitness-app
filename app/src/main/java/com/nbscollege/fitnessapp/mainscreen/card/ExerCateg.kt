@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.mainscreen.card
 
 
 import android.annotation.SuppressLint
+import android.os.CountDownTimer
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -28,6 +30,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -48,7 +55,8 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerList
 fun ExerCateg(
     exer: ExerList, navController: NavController
 ) {
-
+    var showDialog by remember { mutableStateOf(false) }
+    var timeRemaining by remember { mutableStateOf(10L) }
 //    Scaffold(
 //        topBar = {
 //            Box(
@@ -114,7 +122,7 @@ fun ExerCateg(
 
                     Button(
                         onClick = {
-                            navController.navigate(exer.route)
+                                showDialog = true
                         },
                         shape = RoundedCornerShape(1.dp),
                         modifier = Modifier
@@ -164,11 +172,86 @@ fun ExerCateg(
                             .fillMaxWidth()
                             .padding()
                     )
+                    if (showDialog) {
+                        TimerDialog(
+                            timeRemaining = timeRemaining,
+                            onDismiss = { showDialog = false },
+                            onFinish = { showDialog = false }
+                        )
+                    }
+
                 }
 
             },
         )
 
 
+}
 
+@Composable
+fun TimerDialog(
+    timeRemaining: Long,
+    onDismiss: () -> Unit,
+    onFinish: () -> Unit
+) {
+    var remainingTime by remember { mutableStateOf(timeRemaining) }
+
+    var timerRunning by remember { mutableStateOf(true) }
+
+    val timer = remember {
+        object : CountDownTimer(remainingTime * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                remainingTime = millisUntilFinished / 1000
+            }
+
+            override fun onFinish() {
+                timerRunning = false
+                onFinish()
+            }
+        }
+    }
+
+    DisposableEffect(Unit) {
+        if (timerRunning) {
+            timer.start()
+        }
+
+        onDispose {
+            timer.cancel()
+        }
+    }
+
+    AlertDialog(
+        onDismissRequest = {
+            onDismiss()
+            timer.cancel()
+        },
+        title = { Text("Exercise Timer") },
+        text = {
+            Column {
+                Text("Time remaining: $remainingTime seconds")
+
+                if (!timerRunning) {
+                    Text("Time's up!")
+                }
+            }
+        },
+        buttons = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Button(
+                    onClick = {
+                        onDismiss()
+                        timer.cancel()
+                    }
+                ) {
+                    Text("Dismiss")
+                }
+            }
+        }
+    )
 }

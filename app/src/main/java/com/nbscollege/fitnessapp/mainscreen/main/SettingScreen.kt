@@ -57,6 +57,7 @@ import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.rounded.ArrowBackIos
 import androidx.compose.material.icons.rounded.KeyboardArrowRight
 
 
@@ -82,7 +83,7 @@ fun settingscreen(navController : NavController) {
             ) {
                 IconButton(onClick = { navController.navigateUp() }) {
                     Icon(
-                        imageVector = Icons.Rounded.KeyboardArrowRight,
+                        imageVector = Icons.Rounded.ArrowBackIos,
                         modifier = Modifier.size(30.dp),
                         contentDescription = "Back",
                         tint = Color.DarkGray

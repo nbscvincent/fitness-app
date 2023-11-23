@@ -79,7 +79,6 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 
 
 
-
             }
         }
     }
