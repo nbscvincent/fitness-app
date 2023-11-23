@@ -84,16 +84,16 @@ fun settingscreen(context: Context, navController: NavController) {
 
                         Icon(
                             imageVector = Icons.Outlined.Settings,
-                            modifier = Modifier.size(40.dp),
+                            modifier = Modifier.size(45.dp),
                             contentDescription = "Back",
-                            tint = Color.DarkGray
+                            tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             "Settings",
-                            color = Color.DarkGray,
+                            color = Color.Black,
                             fontSize = 38.sp,
-                            fontWeight = FontWeight.SemiBold,
+                            fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(end=45.dp),
                         )
                     }

@@ -40,3 +40,17 @@ val settingsList = listOf(
 )
 
 
+//data class ProfileUser(
+//    val username: String,
+//    val height: String,
+//    val weight: String,
+//    val age: String,
+//    val bmi: String,
+//    val category: String,
+//    val tips: String
+//)
+//
+//val profileList = listOf(
+//    ProfileUser("Username", "Height", "Weight", "Age", "BMI", "Category", "Tips"),
+//
+//    )
