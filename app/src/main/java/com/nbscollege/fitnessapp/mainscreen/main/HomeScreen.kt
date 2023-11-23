@@ -29,24 +29,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
 
 import androidx.compose.foundation.lazy.items
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 
 import com.nbscollege.fitnessapp.mainscreen.card.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
-import com.nbscollege.fitnessapp.navigation.CategoryRoute
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun homescreen(navController: NavHostController, backStackEntry: String?) {
+    fun homescreen(navController: NavHostController,) {
 
 //    val navController = rememberNavController()
 //    NavHost(navController = navController, startDestination = Screen.HomeScreen.name){

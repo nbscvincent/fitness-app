@@ -1,9 +1,12 @@
 package com.nbscollege.fitnessapp
 
+import Auth
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -11,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
@@ -25,6 +29,7 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
+import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -52,7 +57,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
         }
     }
 
-
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
@@ -63,31 +67,32 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 
         NavHost(navController = navController, startDestination = Screen.HomeScreen.name) {
 
-//        navigation(startDestination = Routes.MAIN.name,route = Screen.HomeScreen.name) {
-//            composable(route = Screen.HomeScreen.name){ homescreen(navController)}
-//            composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
-//        }
-            composable(route = Screen.HomeScreen.name) { backStackEntry ->
-                homescreen(navController, backStackEntry.arguments?.getString(Screen.HomeScreen.name))
+            composable(route = Screen.HomeScreen.name) {
+                homescreen(navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.ProfileScreen.name) { backStackEntry ->
-                profilescreen(screenViewModel ,navController,backStackEntry.arguments?.getString(Screen.ProfileScreen.name))
+
+            composable(route = Screen.ProfileScreen.name) {
+                profilescreen(screenViewModel ,navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.SettingScreen.name) { backStackEntry ->
-                settingscreen(navController, backStackEntry.arguments?.getString(Screen.SettingScreen.name))
+            composable(route = Screen.SettingScreen.name) {
+                settingscreen(context, navController,)
                 showBottomBar = true
             }
+
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
-                composable(route = SettingsRoute.GeneralSettings.name) {
-                    GeneralSettings(navController)
+                composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
+                    GeneralSettings(navController, backStackEntry)
+                    showBottomBar = false
                 }
-                composable(route = SettingsRoute.Feed.name) {
-                    GeneralSettings(navController)
+                composable(route = SettingsRoute.Feed.name, ) {  backStackEntry ->
+                    sendFeedbackViaGmail(navController,context, backStackEntry)
+                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.Rate.name) {
-                    GeneralSettings(navController)
+//                    GeneralSettings(navController, backStackEntry)
+//                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.LogOut.name) {
                     BackHandler(enabled = true) {
@@ -99,13 +104,18 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                         } else {
                             exit = true
                             Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+
                         }
                     }
+                    val openAlertDialog = remember { mutableStateOf(true) }
 
                     SplashNav(screenViewModel = ScreenViewModel())
                     showBottomBar = false
 
+
+
                 }
+
 
             }
 
@@ -136,7 +146,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
     }
 
 }
-
 
 
 

@@ -88,6 +88,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
+
                     mainNavigation(navController, screenViewModel)
             }
 

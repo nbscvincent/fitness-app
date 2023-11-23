@@ -1,8 +1,11 @@
 package com.nbscollege.fitnessapp.model
 
+import Auth
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -36,6 +39,12 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavHostController
+import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 
 //enum class SelectedButton {
@@ -47,7 +56,8 @@ import androidx.compose.foundation.layout.*
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun settingscreen(navController: NavController, backStackEntry: String?) {
+fun settingscreen(context: Context, navController: NavController) {
+
     Scaffold(
         topBar = {
             Box(
@@ -84,14 +94,14 @@ fun settingscreen(navController: NavController, backStackEntry: String?) {
                             imageVector = Icons.Outlined.Settings,
                             modifier = Modifier.size(45.dp),
                             contentDescription = "Back",
-                            tint = Color.DarkGray
+                            tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             "Settings",
-                            color = Color.DarkGray,
+                            color = Color.Black,
                             fontSize = 38.sp,
-                            fontWeight = FontWeight.SemiBold,
+                            fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(end=45.dp),
                         )
                     }
@@ -119,165 +129,12 @@ fun settingscreen(navController: NavController, backStackEntry: String?) {
                 items(settingsList) { general ->
                         SettingCard(general = general, navController)
                 }
-
-
             }
         }
+
 
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-//                Row(
-//                    modifier = Modifier
-//                        .fillMaxWidth(),
-//                    horizontalArrangement = Arrangement.Center
-//                ) {
-//                    Icon(
-//                            imageVector = Icons.Outlined.Settings,
-//                            modifier = Modifier.size(45.dp),
-//                            contentDescription = "Back"
-//                    )
-//                    Spacer(modifier = Modifier.width(5.dp))
-//                    Text(
-//                        text = "Settings",
-//                        color = Color.Black,
-//                        fontSize = 38.sp,
-//                        fontWeight = FontWeight.SemiBold
-//                    )
-//                }
-//                Spacer(modifier = Modifier.height(20.dp))
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                            text = "General Settings",
-//                    color = Color.Black,
-//                    fontSize = 30.sp,
-//                    fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                        Icon(
-//                            imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                            modifier = Modifier
-//                                .padding(start = 130.dp, top=15.dp)
-//                                .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                            contentDescription = "Arrow ForwardIos",
-//                            tint = Color.DarkGray
-//                        )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
-//
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                        text = "General Settings",
-//                        color = Color.Black,
-//                        fontSize = 30.sp,
-//                        fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                    Icon(
-//                        imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                        modifier = Modifier
-//                            .padding(start = 130.dp, top=15.dp)
-//                            .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                        contentDescription = "Arrow ForwardIos",
-//                        tint = Color.DarkGray
-//                    )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                        text = "General Settings",
-//                        color = Color.Black,
-//                        fontSize = 30.sp,
-//                        fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                    Icon(
-//                        imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                        modifier = Modifier
-//                            .padding(start = 130.dp, top=15.dp)
-//                            .size(25.dp),
-////                                .clickable( onClick = {
-////                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-////                                }),
-//
-//                        contentDescription = "Arrow ForwardIos",
-//                        tint = Color.DarkGray
-//                    )
-////                            .clickable( onClick = {
-////                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
 

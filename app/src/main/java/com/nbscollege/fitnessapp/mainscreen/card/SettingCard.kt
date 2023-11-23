@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp.mainscreen.card
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,62 +22,75 @@ import androidx.compose.ui.unit.sp
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 
 import androidx.compose.foundation.layout.size
-
-import androidx.compose.material.icons.Icons
-
-import androidx.compose.material.icons.filled.ArrowForwardIos
-import androidx.compose.material.icons.filled.Settings
-
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.foundation.shape.RoundedCornerShape
 
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavController
-
-import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import kotlin.math.round
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun SettingCard(general: General, navController: NavController) {
+    Spacer(modifier = Modifier.height(5.dp))
     Card(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-            ,
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 10.dp,
-        ),
+//            .fillMaxSize()
+            .padding(start = 20.dp, end = 20.dp)
+            .background(Color.White),
+//            .clip(RoundedCornerShape(16.dp)),
+//            colors = CardDefaults.cardColors(
+//            containerColor = Color.Black,
+//            ),
+            elevation = CardDefaults.cardElevation(
+            defaultElevation = 7.dp,
+            ),
         content = {
-                Row(
+            Box(
+                modifier = Modifier.fillMaxSize()
+
+
+
+            ) {
+
+
+            Row(
                     modifier = Modifier
-                        .height(60.dp)
+                        .height(45.dp)
                         .background(Color.White)
                         .fillMaxWidth()
+                        .background(Color.LightGray.copy(alpha = 0.1f))
                         .clickable(onClick = {
-
                             navController.navigate(general.route)
                         }),
                 ) {
                     Text(
                         general.title,
                         color = Color.Black,
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Thin,
-                        modifier = Modifier.padding(start=40.dp, top=10.dp)
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(start=20.dp, top=10.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
 
                     Icon(
                         imageVector = general.icon, // Replace with the desired icon
                         modifier = Modifier
-                            .padding(end = 50.dp, top = 20.dp)
+                            .padding(end = 30.dp, top = 14.dp)
                             .size(20.dp),
 
                         contentDescription = "Arrow ForwardIos",
@@ -85,13 +99,17 @@ fun SettingCard(general: General, navController: NavController) {
 
 
                 }
-                Divider(
-                    color = Color.LightGray,
-                    thickness = 1.dp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding()
-                )
+            }
+
+
+
+//                Divider(
+//                    color = Color.LightGray,
+//                    thickness = 1.dp,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding()
+//                )
 //                Row(
 //                    modifier = Modifier
 //                        .height(60.dp)
@@ -137,4 +155,7 @@ fun SettingCard(general: General, navController: NavController) {
 
         },
     )
+    Spacer(modifier = Modifier
+        .height(8.dp)
+        .background(Color.White))
 }

@@ -13,6 +13,7 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.model.homescreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
@@ -24,6 +25,9 @@ class ScreenViewModel : ViewModel() {
 //    var isLoggedin = _isLoggedin.asStateFlow()
     private val _currentUser = MutableStateFlow<User?>(null)
     val currentUser = _currentUser.asStateFlow()
+
+    private val _isProgressVisible = MutableStateFlow(false)
+    val isProgressVisible: StateFlow<Boolean> = _isProgressVisible.asStateFlow()
 
     fun runSplashScreen() {
         viewModelScope.launch {
@@ -39,6 +43,7 @@ class ScreenViewModel : ViewModel() {
             val user = registeredUsers.find { it.username == username && it.password == password }
             _isLoggedin.value = true
             _currentUser.value = user
+
         }
     }
 
