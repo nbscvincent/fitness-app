@@ -113,7 +113,7 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 //                    showBottomBar = false
 
                     var exit by remember { mutableStateOf(false) }
-                    var showLogoutDialog by remember { mutableStateOf(false) }
+                    var showLogoutDialog by remember { mutableStateOf(true) }
 
                     if (showLogoutDialog) {
                         // Show confirmation dialog
@@ -130,7 +130,7 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                             confirmButton = {
                                 Button(onClick = {
                                     // Perform logout
-                                    exit = true
+                                    exit = false
                                     // Close the dialog
                                     showLogoutDialog = false
                                 }) {
@@ -149,12 +149,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                     }
 
                     if (exit) {
-                        // Perform exit actions here, e.g., navigate to splash screen
-                        SplashNav(screenViewModel = ScreenViewModel())
-                        showBottomBar = false
-                    } else {
-                        // Your existing composable content
-
                         BackHandler(enabled = true) {
                             if (exit) {
                                 // Handle exit actions here if needed
@@ -169,6 +163,15 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                                 Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                             }
                         }
+
+                    } else {
+                        // Your existing composable content
+
+                        if(showLogoutDialog) {
+                            SplashNav(screenViewModel = ScreenViewModel())
+                            showBottomBar = false
+                        }
+
 
                         // Your existing code
                         // ...
