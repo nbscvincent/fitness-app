@@ -1,7 +1,9 @@
 package com.nbscollege.fitnessapp
 
+import Auth
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
@@ -12,12 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.example.example.model.LoginScreen
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
@@ -25,6 +29,7 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
+import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -90,56 +95,86 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 //                    showBottomBar = false
                 }
                 composable(route = SettingsRoute.LogOut.name) {
-                    BackHandler(enabled = true) {
-                        if (exit) {
-                            context.startActivity(Intent(Intent.ACTION_MAIN).apply {
-                                addCategory(Intent.CATEGORY_HOME)
-                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                            })
-                        } else {
-                            exit = true
-                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                    val openAlertDialog = remember { mutableStateOf(true) }
-
-                    Column(
-
-                    ) {
-                        if (openAlertDialog.value) {
-                            AlertDialog(
-                                onDismissRequest = { navController.navigate(Screen.SettingScreen.name) },
-                                title = { Text("Confirmation") },
-                                text = { Text("Do you really want to sign out?") },
-                                confirmButton = {
-                                    Button(onClick = {
-
-
-                                        navController.navigate(Auth.LogInScreen.name)
-                                    }) {
-                                        Text("Continue")
-
-
-                                    }
-
-                                },
-
-                                dismissButton = {
-                                    Button(onClick = {
-                                        navController.navigate(Screen.SettingScreen.name)
-                                        openAlertDialog.value = false
-                                    }) {
-                                        Text("Go Back")
-                                    }
-                                }
-                            )
-                        }
-
-                    }
-//                    SplashNav(screenViewModel = ScreenViewModel())
+//                    BackHandler(enabled = true) {
+//                        if (exit) {
+//                            context.startActivity(Intent(Intent.ACTION_MAIN).apply {
+//                                addCategory(Intent.CATEGORY_HOME)
+//                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//                            })
+//                        } else {
+//                            exit = true
+//                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
 //
+//                        }
+//                    }
+//                    val openAlertDialog = remember { mutableStateOf(true) }
+//
+//                    SplashNav(screenViewModel = ScreenViewModel())
 //                    showBottomBar = false
+
+                    var exit by remember { mutableStateOf(false) }
+                    var showLogoutDialog by remember { mutableStateOf(false) }
+
+                    if (showLogoutDialog) {
+                        // Show confirmation dialog
+                        AlertDialog(
+                            onDismissRequest = {
+                                // Handle dialog dismissal if needed
+                            },
+                            title = {
+                                Text("Logout Confirmation")
+                            },
+                            text = {
+                                Text("Are you sure you want to log out?")
+                            },
+                            confirmButton = {
+                                Button(onClick = {
+                                    // Perform logout
+                                    exit = true
+                                    // Close the dialog
+                                    showLogoutDialog = false
+                                }) {
+                                    Text("Yes")
+                                }
+                            },
+                            dismissButton = {
+                                Button(onClick = {
+                                    // Dismiss the dialog
+                                    showLogoutDialog = false
+                                }) {
+                                    Text("No")
+                                }
+                            }
+                        )
+                    }
+
+                    if (exit) {
+                        // Perform exit actions here, e.g., navigate to splash screen
+                        SplashNav(screenViewModel = ScreenViewModel())
+                        showBottomBar = false
+                    } else {
+                        // Your existing composable content
+
+                        BackHandler(enabled = true) {
+                            if (exit) {
+                                // Handle exit actions here if needed
+                            } else {
+                                if (showLogoutDialog) {
+                                    // Dialog is already shown
+                                    return@BackHandler
+                                }
+
+                                showLogoutDialog = true
+
+                                Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                        // Your existing code
+                        // ...
+                    }
+
+
 
                 }
 
@@ -173,9 +208,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
     }
 
 }
-
-
-
 
 
 

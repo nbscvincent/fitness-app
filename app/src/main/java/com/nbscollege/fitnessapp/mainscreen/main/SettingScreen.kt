@@ -138,5 +138,3 @@ fun settingscreen(context: Context, navController: NavController) {
 
 
 
-
-
