@@ -16,7 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
@@ -27,18 +27,20 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -56,7 +58,9 @@ fun ExerCateg(
     exer: ExerList, navController: NavController
 ) {
     var showDialog by remember { mutableStateOf(false) }
-    var timeRemaining by remember { mutableStateOf(10L) }
+    var timerStarted by remember { mutableStateOf(false) }
+//    var timerRunning by remember { mutableStateOf(false) }
+
 //    Scaffold(
 //        topBar = {
 //            Box(
@@ -122,7 +126,8 @@ fun ExerCateg(
 
                     Button(
                         onClick = {
-                                showDialog = true
+                            showDialog = true
+//                            timerRunning = false
                         },
                         shape = RoundedCornerShape(1.dp),
                         modifier = Modifier
@@ -159,8 +164,6 @@ fun ExerCateg(
                                     color = Color.Black,
                                     fontSize = 16.sp
                                 )
-
-
                             }
 
                         }
@@ -173,30 +176,46 @@ fun ExerCateg(
                             .padding()
                     )
                     if (showDialog) {
-                        TimerDialog(
-                            timeRemaining = timeRemaining,
-                            onDismiss = { showDialog = false },
-                            onFinish = { showDialog = false }
+                        AlertDialogExample(
+                            onDismissRequest = {
+                                showDialog = false
+                                timerStarted = false
+                            },
+                            onConfirmation = {
+                                showDialog = false
+                                timerStarted = false
+                            },
+                            onStart = {
+                                timerStarted = true
+                            },
+                            onPause = {
+                                timerStarted = false
+                            },
+                            dialogTitle = "Exercise Timer",
+                            icon = Icons.Default.Timer,
+                            initialTime = 60L, // Set initial time to 1 minute (60 seconds)
+                            timerStarted = timerStarted
                         )
                     }
-
                 }
-
-            },
+            }
         )
-
-
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TimerDialog(
-    timeRemaining: Long,
-    onDismiss: () -> Unit,
-    onFinish: () -> Unit
+fun AlertDialogExample(
+    onDismissRequest: () -> Unit,
+    onConfirmation: () -> Unit,
+    onStart: () -> Unit,
+    onPause: () -> Unit,
+    dialogTitle: String,
+    icon: ImageVector,
+    initialTime: Long,
+    timerStarted: Boolean
 ) {
-    var remainingTime by remember { mutableStateOf(timeRemaining) }
-
-    var timerRunning by remember { mutableStateOf(true) }
+    var remainingTime by remember { mutableStateOf(initialTime) }
+    var timerRunning by remember { mutableStateOf(false) }
 
     val timer = remember {
         object : CountDownTimer(remainingTime * 1000, 1000) {
@@ -206,14 +225,15 @@ fun TimerDialog(
 
             override fun onFinish() {
                 timerRunning = false
-                onFinish()
+                onDismissRequest()
             }
         }
     }
 
     DisposableEffect(Unit) {
-        if (timerRunning) {
+        if (timerStarted && !timerRunning) {
             timer.start()
+            timerRunning = true
         }
 
         onDispose {
@@ -222,11 +242,12 @@ fun TimerDialog(
     }
 
     AlertDialog(
-        onDismissRequest = {
-            onDismiss()
-            timer.cancel()
+        icon = {
+            Icon(icon, contentDescription = "Example Icon")
         },
-        title = { Text("Exercise Timer") },
+        title = {
+            Text(text = dialogTitle)
+        },
         text = {
             Column {
                 Text("Time remaining: $remainingTime seconds")
@@ -236,22 +257,157 @@ fun TimerDialog(
                 }
             }
         },
-        buttons = {
+
+        confirmButton = {
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.End
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Button(
+                TextButton(
                     onClick = {
-                        onDismiss()
-                        timer.cancel()
+                        if (!timerRunning) {
+                            timerRunning = true
+                            onStart()
+                            timer.start()
+                        }
                     }
                 ) {
-                    Text("Dismiss")
+                    Text("Start")
                 }
+
+                TextButton(
+                    onClick = {
+                        timer.cancel()
+                        timerRunning = false
+                        onPause()
+                    }
+                ) {
+                    Text("Pause")
+                }
+            }
+        },
+        onDismissRequest = {
+            timer.cancel()
+            onDismissRequest()
+        },
+        dismissButton = {
+            TextButton(
+                onClick = {
+                    timer.cancel()
+                    onDismissRequest()
+                }
+            ) {
+                Text("Dismiss")
             }
         }
     )
 }
+
+//bakit ganto langya
+
+
+
+//                    if (showDialog) {
+//                        AlertDialogExample(
+//                            onDismissRequest = { showDialog = false },
+//                            onConfirmation = {
+//                                timerRunning = true // Start the countdown when Confirm is clicked
+//                                showDialog = false
+//                            },
+//                            onStopCountdown = {
+//                                timerRunning = false // Stop the countdown when Dismiss is clicked
+//                            },
+//                            dialogTitle = "Exercise Timer",
+//                            dialogText = "This is the exercise timer dialog.",
+//                            icon = Icons.Default.Timer,
+//                            initialTime = 10L, // Set initial time to 1 minute (60 seconds)
+//                            timerRunning = timerRunning
+//                        )
+//                    }
+//                }
+//            }
+//        )
+//}
+
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun AlertDialogExample(
+//    onDismissRequest: () -> Unit,
+//    onConfirmation: () -> Unit,
+//    onStopCountdown: () -> Unit,
+//    dialogTitle: String,
+//    dialogText: String,
+//    icon: ImageVector,
+//    initialTime: Long,
+//    timerRunning: Boolean
+//) {
+//    var remainingTime by remember { mutableStateOf(initialTime) }
+//
+//    val timer = remember {
+//        object : CountDownTimer(remainingTime * 1000, 1000) {
+//            override fun onTick(millisUntilFinished: Long) {
+//                remainingTime = millisUntilFinished / 1000
+//            }
+//
+//            override fun onFinish() {
+//                onStopCountdown()
+//            }
+//        }
+//    }
+//
+//    DisposableEffect(Unit) {
+//        if (timerRunning) {
+//            timer.start()
+//        } else {
+//            timer.cancel()
+//        }
+//
+//        onDispose {
+//            timer.cancel()
+//        }
+//    }
+//
+//    AlertDialog(
+//        icon = {
+//            Icon(icon, contentDescription = "Example Icon")
+//        },
+//        title = {
+//            Text(text = dialogTitle)
+//        },
+//        text = {
+//            Column {
+//                Text("Time remaining: $remainingTime seconds")
+//
+//                if (!timerRunning) {
+//                    Text("Time's up!")
+//                }
+//            }
+//        },
+//        onDismissRequest = {
+//            timer.cancel()
+//            onDismissRequest()
+//        },
+//        confirmButton = {
+//            TextButton(
+//                onClick = {
+//                    onConfirmation()
+//                    if (!timerRunning) {
+//                        timer.start()
+//                    }
+//                }
+//            ) {
+//                Text("Start")
+//            }
+//        },
+//        dismissButton = {
+//            TextButton(
+//                onClick = {
+//                    timer.cancel()
+//                    onStopCountdown()
+//                }
+//            ) {
+//                Text("Stop")
+//            }
+//        }
+//    )
+//}
