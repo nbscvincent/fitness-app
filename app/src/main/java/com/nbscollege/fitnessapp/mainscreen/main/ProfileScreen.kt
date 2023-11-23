@@ -122,7 +122,13 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                 items(listOfNotNull(screenViewModel.currentUser.value)) { profile ->
                     Column(
                     ) {
-
+                        Text(
+                            "Username",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
                         Card (
                             modifier = Modifier
@@ -141,7 +147,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     .background(Color.LightGray.copy(alpha = 0.1f))
                             ) {
                                 Text(
-                                    "Username: ${profile.username}",
+                                    "${profile.username}",
                                     color = Color.Black,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
@@ -149,6 +155,14 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            "Height",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
                         Card (
                             modifier = Modifier
@@ -167,7 +181,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     .background(Color.LightGray.copy(alpha = 0.1f))
                             ) {
                                 Text(
-                                    "Height: ${profile.height}",
+                                    "${profile.height}",
                                     color = Color.Black,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
@@ -175,6 +189,14 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            "Weight",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
                         Card (
                             modifier = Modifier
@@ -193,7 +215,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     .background(Color.LightGray.copy(alpha = 0.1f))
                             ) {
                                 Text(
-                                    "Weight: ${profile.weight}",
+                                    "${profile.weight}",
                                     color = Color.Black,
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
@@ -237,6 +259,13 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             }
                             // Display BMI
                             if (bmi < 18.5) {
+                                Text(
+                                    "BMI",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
                                 Spacer(modifier = Modifier.height(5.dp))
                                 Card (
                                     modifier = Modifier
