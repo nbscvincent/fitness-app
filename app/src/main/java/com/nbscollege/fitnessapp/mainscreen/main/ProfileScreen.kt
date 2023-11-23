@@ -259,6 +259,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             }
                             // Display BMI
                             if (bmi < 18.5) {
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
                                     "BMI",
                                     color = Color.Black,
@@ -286,14 +287,14 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                         Text(
                                             "BMI: %.2f".format(bmi),
                                             color = Color.Black,
-                                            fontSize = 30.sp,
-                                            fontWeight = FontWeight.Thin,
-                                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
                                         )
                                     }
                                 }
 
-                                Spacer(modifier = Modifier.height(5.dp))
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Card (
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp)
@@ -320,7 +321,6 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     }
                                 }
 
-
                                 Text(
                                     "Category: $bmiCategory",
                                     color = Color.Black,
@@ -336,6 +336,13 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                 )
                             } else if (bmi < 24.5) {
+                                Text(
+                                    "BMI",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
                                 Spacer(modifier = Modifier.height(5.dp))
                                 Card (
                                     modifier = Modifier
@@ -356,13 +363,21 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                         Text(
                                             "BMI: %.2f".format(bmi),
                                             color = Color.Black,
-                                            fontSize = 30.sp,
-                                            fontWeight = FontWeight.Thin,
-                                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
                                         )
                                     }
                                 }
 
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(
+                                    "Category",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
                                 Spacer(modifier = Modifier.height(5.dp))
                                 Card (
                                     modifier = Modifier
@@ -381,7 +396,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
                                         Text(
-                                            "Category: $bmiCategory",
+                                            "$bmiCategory",
                                             color = Color.Black,
                                             fontSize = 20.sp,
                                             fontWeight = FontWeight.Bold,
@@ -389,7 +404,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                         )
                                     }
                                 }
-
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
                                     "Please Maintain",
                                     color = Color.Red,
@@ -397,6 +412,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                 )
                             } else if (bmi < 29.9) {
+
                                 Text(
                                     "BMI: %.2f".format(bmi),
                                     color = Color.Black,
