@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -61,10 +62,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 
         NavHost(navController = navController, startDestination = Screen.HomeScreen.name) {
 
-//        navigation(startDestination = Routes.MAIN.name,route = Screen.HomeScreen.name) {
-//            composable(route = Screen.HomeScreen.name){ homescreen(navController)}
-//            composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
-//        }
             composable(route = Screen.HomeScreen.name) {
                 homescreen(navController,)
                 showBottomBar = true
@@ -105,10 +102,47 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                         }
                     }
 
-                    SplashNav(screenViewModel = ScreenViewModel())
-                    showBottomBar = false
+                    val openAlertDialog = remember { mutableStateOf(true) }
+
+                    Column(
+
+                    ) {
+                        if (openAlertDialog.value) {
+                            AlertDialog(
+                                onDismissRequest = { navController.navigate(Screen.SettingScreen.name) },
+                                title = { Text("Confirmation") },
+                                text = { Text("Do you really want to sign out?") },
+                                confirmButton = {
+                                    Button(onClick = {
+
+
+                                        navController.navigate(Auth.LogInScreen.name)
+                                    }) {
+                                        Text("Continue")
+
+
+                                    }
+
+                                },
+
+                                dismissButton = {
+                                    Button(onClick = {
+                                        navController.navigate(Screen.SettingScreen.name)
+                                        openAlertDialog.value = false
+                                    }) {
+                                        Text("Go Back")
+                                    }
+                                }
+                            )
+                        }
+
+                    }
+//                    SplashNav(screenViewModel = ScreenViewModel())
+//
+//                    showBottomBar = false
 
                 }
+
 
             }
 

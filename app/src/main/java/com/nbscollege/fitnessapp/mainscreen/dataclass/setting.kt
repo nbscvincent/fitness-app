@@ -28,7 +28,7 @@ data class General(
 
     val title: String,
     val icon: ImageVector,
-    val route: String
+    val route: String,
 )
 
 val settingsList = listOf(

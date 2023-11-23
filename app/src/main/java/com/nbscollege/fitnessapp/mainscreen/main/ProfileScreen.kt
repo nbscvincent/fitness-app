@@ -223,26 +223,6 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 )
                             }
                         }
-                        Spacer(modifier = Modifier.height(5.dp))
-                        Card (
-                            modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp)
-                                .background(Color.White)
-                                .fillMaxSize(),
-                            elevation = CardDefaults.cardElevation(
-                                defaultElevation = 7.dp,
-                            ),
-                        ) {
-                            Box(
-                                modifier = Modifier
-                                    .height(45.dp)
-                                    .background(Color.White)
-                                    .fillMaxWidth()
-                                    .background(Color.LightGray.copy(alpha = 0.1f))
-                            ) {
-
-                            }
-                        }
                         val height = profile.height
                         val weight = profile.weight
 
@@ -285,7 +265,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
                                         Text(
-                                            "BMI: %.2f".format(bmi),
+                                            "%.2f".format(bmi),
                                             color = Color.Black,
                                             fontSize = 20.sp,
                                             fontWeight = FontWeight.Bold,
@@ -295,6 +275,15 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 }
 
                                 Spacer(modifier = Modifier.height(10.dp))
+
+                                Text(
+                                    "Category",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                                Spacer(modifier = Modifier.height(5.dp))
                                 Card (
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp)
@@ -312,22 +301,15 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
                                         Text(
-                                            "Category: $bmiCategory",
+                                            "$bmiCategory",
                                             color = Color.Black,
-                                            fontSize = 30.sp,
-                                            fontWeight = FontWeight.Thin,
-                                            modifier = Modifier.padding(start = 40.dp, top = 10.dp),
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp),
                                         )
                                     }
                                 }
 
-                                Text(
-                                    "Category: $bmiCategory",
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp),
-                                )
 
                                 Text(
                                     "Tips: Try to avoid foods with a lot of added sugar, fat and salt, like cakes, takeaway foods and sugary drinks. You can put on weight by eating small meals frequently throughout the day. Try to snack on healthy, high energy foods like cheese, nuts, milk-based smoothies and dried fruit.",
@@ -336,6 +318,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                 )
                             } else if (bmi < 24.5) {
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
                                     "BMI",
                                     color = Color.Black,
@@ -361,7 +344,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
                                         Text(
-                                            "BMI: %.2f".format(bmi),
+                                            "%.2f".format(bmi),
                                             color = Color.Black,
                                             fontSize = 20.sp,
                                             fontWeight = FontWeight.Bold,
@@ -413,20 +396,76 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 )
                             } else if (bmi < 29.9) {
 
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
-                                    "BMI: %.2f".format(bmi),
+                                    "BMI",
                                     color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
                                 )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Card (
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp)
+                                        .background(Color.White)
+                                        .fillMaxSize(),
+                                    elevation = CardDefaults.cardElevation(
+                                        defaultElevation = 7.dp,
+                                    ),
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .height(45.dp)
+                                            .background(Color.White)
+                                            .fillMaxWidth()
+                                            .background(Color.LightGray.copy(alpha = 0.1f))
+                                    ) {
+                                        Text(
+                                            "%.2f".format(bmi),
+                                            color = Color.Black,
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                        )
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
-                                    "Category: $bmiCategory",
+                                    "Category",
                                     color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
                                 )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Card (
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp)
+                                        .background(Color.White)
+                                        .fillMaxSize(),
+                                    elevation = CardDefaults.cardElevation(
+                                        defaultElevation = 7.dp,
+                                    ),
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .height(45.dp)
+                                            .background(Color.White)
+                                            .fillMaxWidth()
+                                            .background(Color.LightGray.copy(alpha = 0.1f))
+                                    ) {
+                                        Text(
+                                            "$bmiCategory",
+                                            color = Color.Black,
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
                                     "Tips: eat a balanced, calorie-controlled diet as recommended by your GP or weight loss management health professional (such as a dietitian) join a local weight loss group. take up activities such as fast walking, jogging, swimming or tennis for 150 to 300 minutes (two-and-a-half to five hours) a week.",
                                     color = Color.Red,
@@ -434,20 +473,86 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                 )
                             } else {
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
-                                    "BMI: %.2f".format(bmi),
+                                    "BMI",
                                     color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
                                 )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Card (
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp)
+                                        .background(Color.White)
+                                        .fillMaxSize(),
+                                    elevation = CardDefaults.cardElevation(
+                                        defaultElevation = 7.dp,
+                                    ),
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .height(45.dp)
+                                            .background(Color.White)
+                                            .fillMaxWidth()
+                                            .background(Color.LightGray.copy(alpha = 0.1f))
+                                    ) {
+                                        Text(
+                                            "%.2f".format(bmi),
+                                            color = Color.Black,
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                        )
+                                    }
+                                }
+
+
+                                Spacer(modifier = Modifier.height(10.dp))
                                 Text(
-                                    "Category: $bmiCategory",
+                                    "Category",
                                     color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
                                 )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Card (
+                                    modifier = Modifier
+                                        .padding(start = 20.dp, end = 20.dp)
+                                        .background(Color.White)
+                                        .fillMaxSize(),
+                                    elevation = CardDefaults.cardElevation(
+                                        defaultElevation = 7.dp,
+                                    ),
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .height(45.dp)
+                                            .background(Color.White)
+                                            .fillMaxWidth()
+                                            .background(Color.LightGray.copy(alpha = 0.1f))
+                                    ) {
+                                        Text(
+                                            "$bmiCategory",
+                                            color = Color.Black,
+                                            fontSize = 20.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(10.dp))
+                                Text(
+                                    "Tips: ",
+                                    color = Color.Red,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                )
+
+
                             }
 
 //                            Text(
@@ -465,14 +570,42 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 //                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
 //                            )
                         } else {
-                            // Handle the case where height or weight couldn't be converted to numbers
+                            Spacer(modifier = Modifier.height(10.dp))
                             Text(
-                                "BMI: Invalid height or weight",
-                                color = Color.Red, // or any color you prefer for error messages
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Thin,
-                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                "BMI",
+                                color = Color.Black,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(start = 20.dp, top=10.dp)
                             )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Card (
+                                modifier = Modifier
+                                    .padding(start = 20.dp, end = 20.dp)
+                                    .background(Color.White)
+                                    .fillMaxSize(),
+                                elevation = CardDefaults.cardElevation(
+                                    defaultElevation = 7.dp,
+                                ),
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .height(45.dp)
+                                        .background(Color.White)
+                                        .fillMaxWidth()
+                                        .background(Color.LightGray.copy(alpha = 0.1f))
+                                ) {
+                                    Text(
+                                        "Invalid height or weight",
+                                        color = Color.Red, // or any color you prefer for error messages
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                                    )
+                                }
+                            }
+                            // Handle the case where height or weight couldn't be converted to numbers
+
                         }
 
 
