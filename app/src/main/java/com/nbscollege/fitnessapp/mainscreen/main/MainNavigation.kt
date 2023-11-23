@@ -77,8 +77,7 @@ var bottomBar by remember { mutableStateOf(true) }
             }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
-                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController)
-                    bottomBar = false  }
+                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
                 composable(route = CategoryRoute.CHEST.name) { ChestScreen(navController) }
                 composable(route = CategoryRoute.ARM.name) { ArmScreen(navController) }
                 composable(route = CategoryRoute.LEG.name) { LegScreen(navController) }
