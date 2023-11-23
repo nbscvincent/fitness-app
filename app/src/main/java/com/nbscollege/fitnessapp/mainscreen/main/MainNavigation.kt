@@ -37,7 +37,7 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 fun mainNavigation(navController: NavController) {
 
     val navController = rememberNavController()
-
+var bottomBar by remember { mutableStateOf(true) }
 
     Scaffold(
         bottomBar = {
@@ -77,7 +77,8 @@ fun mainNavigation(navController: NavController) {
             }
 
             navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
-                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController) }
+                composable(route = CategoryRoute.ABS.name) { AbsScreen(navController)
+                    bottomBar = false  }
                 composable(route = CategoryRoute.CHEST.name) { ChestScreen(navController) }
                 composable(route = CategoryRoute.ARM.name) { ArmScreen(navController) }
                 composable(route = CategoryRoute.LEG.name) { LegScreen(navController) }
@@ -94,6 +95,7 @@ fun mainNavigation(navController: NavController) {
         }
     }
 }
+
 
 
 

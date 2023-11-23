@@ -17,9 +17,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.rounded.ArrowBackIos
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
@@ -57,6 +59,17 @@ fun AbsScreen(navController: NavController) {
                     .fillMaxWidth()
             ) {
 
+//                IconButton(onClick = { navController.navigateUp() }) {
+//                    Icon(
+//                        imageVector = Icons.Rounded.ArrowBackIos,
+//                        modifier = Modifier
+//                            .size(30.dp)
+//                            .padding(start = 5.dp, end = 5.dp)
+//                            .zIndex(3f),
+//                        contentDescription = "Back",
+//                        tint = Color.White
+//                    )
+//                }
                 SmallFloatingActionButton(
                     onClick = {
                         navController.navigate("HomeScreen")
@@ -64,10 +77,13 @@ fun AbsScreen(navController: NavController) {
                     containerColor = Color.Transparent,
                     modifier = Modifier
                         .padding(start = 5.dp, end = 5.dp)
-                        .zIndex(1f)
+                        .zIndex(3f)
 
                 ) {
-                    Icon(Icons.Filled.KeyboardArrowLeft, "Back", modifier = Modifier.size(40.dp))
+                    Icon(Icons.Filled.KeyboardArrowLeft, "Back",
+                        modifier = Modifier.size(40.dp),
+                        tint = Color.White
+                    )
                 }
 
                 Image(
