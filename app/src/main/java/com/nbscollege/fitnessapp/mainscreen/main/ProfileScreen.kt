@@ -122,6 +122,13 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                 items(listOfNotNull(screenViewModel.currentUser.value)) { profile ->
                     Column(
                     ) {
+                        Text(
+                            "Username",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 25.dp, top = 10.dp)
+                        )
                         Card (
                             modifier = Modifier
                                 .padding(start = 20.dp, end = 20.dp)
@@ -131,12 +138,13 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 defaultElevation = 7.dp,
                             ),
                         ) {
+
                             Text(
-                                "Username: ${profile.username}",
+                                "${profile.username}",
                                 color = Color.Black,
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Thin,
-                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding()
                             )
                         }
                         Text(
