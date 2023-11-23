@@ -122,13 +122,8 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                 items(listOfNotNull(screenViewModel.currentUser.value)) { profile ->
                     Column(
                     ) {
-                        Text(
-                            "Username",
-                            color = Color.Black,
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(start = 25.dp, top = 10.dp)
-                        )
+
+                        Spacer(modifier = Modifier.height(5.dp))
                         Card (
                             modifier = Modifier
                                 .padding(start = 20.dp, end = 20.dp)
@@ -138,167 +133,254 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 defaultElevation = 7.dp,
                             ),
                         ) {
-
-                            Text(
-                                "${profile.username}",
-                                color = Color.Black,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding()
-                            )
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                Text(
+                                    "Username: ${profile.username}",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                            }
                         }
-                        Text(
-                            "Username: ${profile.username}",
-                            color = Color.Black,
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Thin,
-                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                        )
-
-                        Text(
-                            "Height: ${profile.height}",
-                            color = Color.Black,
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Thin,
-                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                        )
-                        Text(
-                            "Weight: ${profile.weight}",
-                            color = Color.Black,
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Thin,
-                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                        )
-
-                        Text(
-                            "Age: ${profile.age}",
-                            color = Color.Black,
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Thin,
-                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                        )
-
-                        val height = profile.height
-                        val weight = profile.weight
-
-
-                        if (height != null && weight != null) {
-
-                            val bmi = weight / (height * height) * 10000
-//                            val bmiText = String.format(Locale.getDefault(), "BMI: %.2f - $bmiCategory", bmi)
-                            val bmiCategory = when {
-                                bmi < 18.5 -> "Underweight"
-                                bmi < 24.9 -> "Normal Weight"
-                                bmi < 29.9 -> "Overweight"
-                                else -> "Obese"
-                            }
-                            // Display BMI
-                            if (bmi < 18.5) {
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Card (
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 7.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
                                 Text(
-                                    "BMI: %.2f".format(bmi),
+                                    "Height: ${profile.height}",
                                     color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-
-                                Text(
-                                    "Category: $bmiCategory",
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp),
-                                )
-
-                                Text(
-                                    "Tips: Try to avoid foods with a lot of added sugar, fat and salt, like cakes, takeaway foods and sugary drinks. You can put on weight by eating small meals frequently throughout the day. Try to snack on healthy, high energy foods like cheese, nuts, milk-based smoothies and dried fruit.",
-                                    color = Color.Red,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                            } else if (bmi < 24.5) {
-                                Text(
-                                    "BMI: %.2f".format(bmi),
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                                Text(
-                                    "Category: $bmiCategory",
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                                Text(
-                                    "Please Maintain",
-                                    color = Color.Red,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                            } else if (bmi < 29.9) {
-                                Text(
-                                    "BMI: %.2f".format(bmi),
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                                Text(
-                                    "Category: $bmiCategory",
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                                Text(
-                                    "Tips: eat a balanced, calorie-controlled diet as recommended by your GP or weight loss management health professional (such as a dietitian) join a local weight loss group. take up activities such as fast walking, jogging, swimming or tennis for 150 to 300 minutes (two-and-a-half to five hours) a week.",
-                                    color = Color.Red,
-                                    fontSize = 30.sp,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                            } else {
-                                Text(
-                                    "BMI: %.2f".format(bmi),
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                                )
-                                Text(
-                                    "Category: $bmiCategory",
-                                    color = Color.Black,
-                                    fontSize = 30.sp,
-                                    fontWeight = FontWeight.Thin,
-                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
                                 )
                             }
-
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Card (
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 7.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                Text(
+                                    "Weight: ${profile.weight}",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Card (
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 7.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                val height = profile.height
+                                val weight = profile.weight
+                                Text(
+                                    "BMI: ${profile.bmi}",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                            }
+                        }
+//                        Text(
+//                            "Username: ${profile.username}",
+//                            color = Color.Black,
+//                            fontSize = 30.sp,
+//                            fontWeight = FontWeight.Thin,
+//                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                        )
+//
+//                        Text(
+//                            "Height: ${profile.height}",
+//                            color = Color.Black,
+//                            fontSize = 30.sp,
+//                            fontWeight = FontWeight.Thin,
+//                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                        )
+//                        Text(
+//                            "Weight: ${profile.weight}",
+//                            color = Color.Black,
+//                            fontSize = 30.sp,
+//                            fontWeight = FontWeight.Thin,
+//                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                        )
+//
+//                        Text(
+//                            "Age: ${profile.age}",
+//                            color = Color.Black,
+//                            fontSize = 30.sp,
+//                            fontWeight = FontWeight.Thin,
+//                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                        )
+//
+//                        val height = profile.height
+//                        val weight = profile.weight
+//
+//
+//                        if (height != null && weight != null) {
+//
+//                            val bmi = weight / (height * height) * 10000
+////                            val bmiText = String.format(Locale.getDefault(), "BMI: %.2f - $bmiCategory", bmi)
+//                            val bmiCategory = when {
+//                                bmi < 18.5 -> "Underweight"
+//                                bmi < 24.9 -> "Normal Weight"
+//                                bmi < 29.9 -> "Overweight"
+//                                else -> "Obese"
+//                            }
+//                            // Display BMI
+//                            if (bmi < 18.5) {
+//                                Text(
+//                                    "BMI: %.2f".format(bmi),
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//
+//                                Text(
+//                                    "Category: $bmiCategory",
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp),
+//                                )
+//
+//                                Text(
+//                                    "Tips: Try to avoid foods with a lot of added sugar, fat and salt, like cakes, takeaway foods and sugary drinks. You can put on weight by eating small meals frequently throughout the day. Try to snack on healthy, high energy foods like cheese, nuts, milk-based smoothies and dried fruit.",
+//                                    color = Color.Red,
+//                                    fontWeight = FontWeight.Bold,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                            } else if (bmi < 24.5) {
+//                                Text(
+//                                    "BMI: %.2f".format(bmi),
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                                Text(
+//                                    "Category: $bmiCategory",
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                                Text(
+//                                    "Please Maintain",
+//                                    color = Color.Red,
+//                                    fontWeight = FontWeight.Bold,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                            } else if (bmi < 29.9) {
+//                                Text(
+//                                    "BMI: %.2f".format(bmi),
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                                Text(
+//                                    "Category: $bmiCategory",
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                                Text(
+//                                    "Tips: eat a balanced, calorie-controlled diet as recommended by your GP or weight loss management health professional (such as a dietitian) join a local weight loss group. take up activities such as fast walking, jogging, swimming or tennis for 150 to 300 minutes (two-and-a-half to five hours) a week.",
+//                                    color = Color.Red,
+//                                    fontSize = 30.sp,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                            } else {
+//                                Text(
+//                                    "BMI: %.2f".format(bmi),
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                                Text(
+//                                    "Category: $bmiCategory",
+//                                    color = Color.Black,
+//                                    fontSize = 30.sp,
+//                                    fontWeight = FontWeight.Thin,
+//                                    modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+//                                )
+//                            }
+//
+////                            Text(
+////                                "BMI: %.2f".format(bmi),
+////                                color = Color.Black,
+////                                fontSize = 30.sp,
+////                                fontWeight = FontWeight.Thin,
+////                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+////                            )
+////                            Text(
+////                                "Category: $bmiCategory",
+////                                color = Color.Black,
+////                                fontSize = 30.sp,
+////                                fontWeight = FontWeight.Thin,
+////                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+////                            )
+//                        } else {
+//                            // Handle the case where height or weight couldn't be converted to numbers
 //                            Text(
-//                                "BMI: %.2f".format(bmi),
-//                                color = Color.Black,
+//                                "BMI: Invalid height or weight",
+//                                color = Color.Red, // or any color you prefer for error messages
 //                                fontSize = 30.sp,
 //                                fontWeight = FontWeight.Thin,
 //                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
 //                            )
-//                            Text(
-//                                "Category: $bmiCategory",
-//                                color = Color.Black,
-//                                fontSize = 30.sp,
-//                                fontWeight = FontWeight.Thin,
-//                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-//                            )
-                        } else {
-                            // Handle the case where height or weight couldn't be converted to numbers
-                            Text(
-                                "BMI: Invalid height or weight",
-                                color = Color.Red, // or any color you prefer for error messages
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Thin,
-                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
-                            )
-                        }
+//                        }
                     }
 
                 }
