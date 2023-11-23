@@ -12,6 +12,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
@@ -21,13 +25,14 @@ import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 data class General(
+
     val title: String,
     val icon: ImageVector,
     val route: String
 )
 
-
 val settingsList = listOf(
+
     General("General Settings", Icons.Default.ArrowForwardIos, SettingsRoute.GeneralSettings.name),
     General("Send Feedback", Icons.Default.ArrowForwardIos, SettingsRoute.Feed.name),
     General("Rate Us", Icons.Default.ArrowForwardIos, SettingsRoute.Rate.name),
