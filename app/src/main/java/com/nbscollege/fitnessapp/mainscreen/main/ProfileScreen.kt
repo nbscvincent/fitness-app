@@ -71,14 +71,14 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    IconButton(onClick = { navController.navigateUp() }) {
-                        Icon(
-                            imageVector = Icons.Rounded.ArrowBackIos,
-                            modifier = Modifier.size(30.dp),
-                            contentDescription = "Back",
-                            tint = Color.DarkGray
-                        )
-                    }
+//                    IconButton(onClick = { navController.navigateUp() }) {
+//                        Icon(
+//                            imageVector = Icons.Rounded.ArrowBackIos,
+//                            modifier = Modifier.size(30.dp),
+//                            contentDescription = "Back",
+//                            tint = Color.DarkGray
+//                        )
+//                    }
                     Row(
                         modifier = Modifier
                             .background(Color.White)
@@ -98,7 +98,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             color = Color.Black,
                             fontSize = 38.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(end = 45.dp),
+                            modifier = Modifier.padding(),
                         )
 //                        Spacer(modifier = Modifier.width(5.dp))
 //                        IconButton(onClick = { navController.navigate(Screen.ProfileEdit.name) }) {
@@ -344,17 +344,17 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
                                     )
 
-                                        Icon(
-                                            imageVector = Icons.Rounded.Edit,
-                                            modifier = Modifier.size(30.dp)
-                                                .padding(top=15.dp)
-                                                .clickable( onClick = {
-
-                                                }
-                                                ),
-                                            contentDescription = "Edit",
-                                            tint = Color.DarkGray
-                                        )
+//                                        Icon(
+//                                            imageVector = Icons.Rounded.Edit,
+//                                            modifier = Modifier.size(30.dp)
+//                                                .padding(top=15.dp)
+//                                                .clickable( onClick = {
+//
+//                                                }
+//                                                ),
+//                                            contentDescription = "Edit",
+//                                            tint = Color.DarkGray
+//                                        )
 
                                     
 

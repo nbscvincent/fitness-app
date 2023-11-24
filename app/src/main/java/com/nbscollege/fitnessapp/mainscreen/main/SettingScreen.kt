@@ -37,6 +37,7 @@ import com.nbscollege.fitnessapp.mainscreen.settingscreen.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.platform.LocalContext
+import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardRateUs
 import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithLogoutDialog
 import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithSendFeedbackDialog
 
@@ -54,6 +55,7 @@ fun settingscreen(context: Context, navController: NavController) {
 
     var isLogoutDialogVisible by remember { mutableStateOf(false) }
     var isSendFeedBackDialogVisible by remember { mutableStateOf(false) }
+    var isRateUs by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -72,14 +74,14 @@ fun settingscreen(context: Context, navController: NavController) {
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    IconButton(onClick = { navController.navigateUp() }) {
-                        Icon(
-                            imageVector = Icons.Rounded.ArrowBackIos,
-                            modifier = Modifier.size(30.dp),
-                            contentDescription = "Back",
-                            tint = Color.DarkGray
-                        )
-                    }
+//                    IconButton(onClick = { navController.navigateUp() }) {
+//                        Icon(
+//                            imageVector = Icons.Rounded.ArrowBackIos,
+//                            modifier = Modifier.size(30.dp),
+//                            contentDescription = "Back",
+//                            tint = Color.DarkGray
+//                        )
+//                    }
                     Row(
                         modifier = Modifier
                             .background(Color.White)
@@ -99,7 +101,7 @@ fun settingscreen(context: Context, navController: NavController) {
                             color = Color.Black,
                             fontSize = 38.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(end = 45.dp),
+                            modifier = Modifier.padding(),
                         )
                     }
                 }
@@ -112,12 +114,17 @@ fun settingscreen(context: Context, navController: NavController) {
     ) { innerPadding ->
 
         Box(
-            modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .background(Color.White),
 
             ) {
 
             LazyColumn(
-                modifier = Modifier.padding(top = 10.dp).background(Color.White),
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
 
@@ -142,6 +149,17 @@ fun settingscreen(context: Context, navController: NavController) {
                                 isSendFeedBackDialogVisible
                             ) {
                                 isSendFeedBackDialogVisible = it
+                            }
+                        }
+                        "Rate Us" -> {
+                            SettingCardRateUs(
+                                general = general,
+                                context = LocalContext.current,
+                                navController,
+
+                                isRateUs
+                            ) {
+                                isRateUs = it
                             }
                         }
 

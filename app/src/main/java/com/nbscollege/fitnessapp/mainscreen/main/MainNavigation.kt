@@ -17,15 +17,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
-import com.nbscollege.fitnessapp.mainscreen.main.UserProfileScreen
-import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.sendFeedback
+import com.nbscollege.fitnessapp.mainscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen

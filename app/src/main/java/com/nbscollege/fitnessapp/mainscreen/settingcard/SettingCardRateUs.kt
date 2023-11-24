@@ -21,10 +21,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
-import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.SendFeedbackDialog
+import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.RateUsDialog
+import com.nbscollege.fitnessapp.navigation.Screen
 
 @Composable
-fun SettingCardWithSendFeedbackDialog(
+fun SettingCardRateUs(
     general: General,
     context: Context,
     navController: NavController,
@@ -77,10 +78,10 @@ fun SettingCardWithSendFeedbackDialog(
         .background(Color.White))
 
     if (isDialogVisible) {
-        SendFeedbackDialog(onDismiss = { onDialogDismiss(false) }) {
+        RateUsDialog(onDismiss = { onDialogDismiss(false) }) {
             // Handle the logic for sending feedback
             onDialogDismiss(false)
-            sendFeedback(navController,context)
+            navController.navigate(Screen.SettingScreen.name)
         }
     }
 }
