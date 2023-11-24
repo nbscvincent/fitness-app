@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.card
+package com.nbscollege.fitnessapp.mainscreen.categorycard
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image

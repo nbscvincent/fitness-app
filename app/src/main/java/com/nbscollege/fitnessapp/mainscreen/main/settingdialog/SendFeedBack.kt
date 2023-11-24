@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.main.settings
+package com.nbscollege.fitnessapp.mainscreen.main.settingdialog
 
 import android.content.Context
 import android.content.Intent

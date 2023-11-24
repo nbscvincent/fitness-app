@@ -29,10 +29,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.ui.Alignment
 
 import androidx.compose.foundation.lazy.items
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 
-import com.nbscollege.fitnessapp.mainscreen.card.CategoryCard
+import com.nbscollege.fitnessapp.mainscreen.categorycard.CategoryCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
 
 
@@ -40,17 +39,6 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun homescreen(navController: NavHostController,) {
-
-//    val navController = rememberNavController()
-//    NavHost(navController = navController, startDestination = Screen.HomeScreen.name){
-//        composable(route = CategoryRoute.ABS.name){
-//            AbsScreen(navController = navController)
-//        }
-//        composable(route = Screen.HomeScreen.name){
-//            homescreen(navController = navController)
-//        }
-//    }
-
     Scaffold(
         topBar = {
             Box(

@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp.viewmodel
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +46,13 @@ class ScreenViewModel : ViewModel() {
             _currentUser.value = user
 
         }
+    }
+
+    private val _loggedInUsername = mutableStateOf<String?>(null)
+    val loggedInUsername: State<String?> = _loggedInUsername
+
+    fun setLoggedInUser(username: String) {
+        _loggedInUsername.value = username
     }
 
 

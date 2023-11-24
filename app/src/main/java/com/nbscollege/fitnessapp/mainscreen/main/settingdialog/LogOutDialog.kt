@@ -1,28 +1,23 @@
-package com.nbscollege.fitnessapp.mainscreen.main.settings
+package com.nbscollege.fitnessapp.mainscreen.main.settingdialog
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.style.TextAlign
-import androidx.core.content.ContextCompat
-import com.nbscollege.fitnessapp.navigation.Screen
 
 @Composable
-fun SendFeedbackDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
+fun LogoutDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     AlertDialog(
         onDismissRequest = { onDismiss() },
-        title = { Text("Send Feedback", textAlign = TextAlign.Center) },
-        text = { Text("Choose an app to send feedback:") },
+        title = { Text("Log Out") },
+        text = { Text("Are you sure you want to log out?") },
         confirmButton = {
             Button(
                 onClick = {
                     onConfirm()
                 }
             ) {
-                Text("Send Email")
+                Text("Log Out")
             }
         },
         dismissButton = {

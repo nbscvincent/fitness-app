@@ -90,25 +90,25 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             imageVector = Icons.Rounded.Person,
                             modifier = Modifier.size(45.dp),
                             contentDescription = "Back",
-                            tint = Color.DarkGray
+                            tint = Color.Black
                         )
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             "Profile",
-                            color = Color.DarkGray,
+                            color = Color.Black,
                             fontSize = 38.sp,
-                            fontWeight = FontWeight.SemiBold,
+                            fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(end = 45.dp),
                         )
-                        Spacer(modifier = Modifier.width(5.dp))
-                        IconButton(onClick = { navController.navigate(Screen.ProfileEdit.name) }) {
-                            Icon(
-                                imageVector = Icons.Rounded.Edit,
-                                modifier = Modifier.size(30.dp),
-                                contentDescription = "Back",
-                                tint = Color.DarkGray
-                            )
-                        }
+//                        Spacer(modifier = Modifier.width(5.dp))
+//                        IconButton(onClick = { navController.navigate(Screen.ProfileEdit.name) }) {
+//                            Icon(
+//                                imageVector = Icons.Rounded.Edit,
+//                                modifier = Modifier.size(30.dp),
+//                                contentDescription = "Back",
+//                                tint = Color.DarkGray
+//                            )
+//                        }
                     }
                 }
             }

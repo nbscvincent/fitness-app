@@ -14,6 +14,10 @@ val registeredUsers = mutableListOf<User>(
     User("miguel", "c", 80f,174f, 21 ),
     User("azzel", "c", 40f,164f, 22 ),
 )
+
+val loggedInUsername = mutableListOf<User>(
+
+)
 //val account = listOf(
 //    User("cayce", "cayce213", "","" )
 //)

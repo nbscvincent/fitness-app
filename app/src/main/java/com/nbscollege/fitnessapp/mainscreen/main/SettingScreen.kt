@@ -33,12 +33,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.platform.LocalContext
-import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithLogoutDialog
-import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithSendFeedbackDialog
+import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithLogoutDialog
+import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithSendFeedbackDialog
 
 
 //enum class SelectedButton {

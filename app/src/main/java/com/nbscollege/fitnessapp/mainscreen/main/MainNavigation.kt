@@ -17,7 +17,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
@@ -26,7 +25,7 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.main.UserProfileScreen
-import com.nbscollege.fitnessapp.mainscreen.main.settings.sendFeedback
+import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
@@ -74,23 +73,23 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 profilescreen(screenViewModel ,navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.ProfileEdit.name) {
-                val loggedInUsername = "c" // Replace this with your actual mechanism to get the logged-in username
-                registeredUsers.firstOrNull { it.username == loggedInUsername }?.let { user ->
-                    UserProfileScreen(user) { updatedUser ->
-                        // Update the user in your data source (e.g., registeredUsers)
-                        val index = registeredUsers.indexOfFirst { it.username == user.username }
-                        if (index != -1) {
-                            registeredUsers[index] = updatedUser
-                        }
-                    }
-                }
-            }
+
             composable(route = Screen.SettingScreen.name) {
                 settingscreen(context, navController,)
                 showBottomBar = true
             }
-            
+//            composable(route = Screen.ProfileEdit.name) {
+//                val loggedInUsername = "c" // Replace this with your actual mechanism to get the logged-in username
+//                registeredUsers.firstOrNull { it.username == loggedInUsername }?.let { loggedInUser ->
+//                    UserProfileScreen(loggedInUser) { updatedUser ->
+//                        // Update the user in your data source (e.g., registeredUsers)
+//                        val index = registeredUsers.indexOfFirst { it.username == loggedInUser.username }
+//                        if (index != -1) {
+//                            registeredUsers[index] = updatedUser
+//                        }
+//                    }
+//                }
+//            }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
                     GeneralSettings(navController, backStackEntry)
