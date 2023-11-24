@@ -1,10 +1,7 @@
 package com.nbscollege.fitnessapp.model
 
-import Auth
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,12 +36,7 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.NavHostController
-import com.nbscollege.fitnessapp.navigation.Screen
-import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithLogoutDialog
 
 
 //enum class SelectedButton {
@@ -57,6 +49,8 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun settingscreen(context: Context, navController: NavController) {
+
+    var isLogoutDialogVisible by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -127,7 +121,14 @@ fun settingscreen(context: Context, navController: NavController) {
             ) {
 
                 items(settingsList) { general ->
+                    if (general.title == "Log out") {
+                        SettingCardWithLogoutDialog(general = general, navController, isLogoutDialogVisible) {
+                            isLogoutDialogVisible = it
+
+                        }
+                    } else {
                         SettingCard(general = general, navController)
+                    }
                 }
             }
         }
