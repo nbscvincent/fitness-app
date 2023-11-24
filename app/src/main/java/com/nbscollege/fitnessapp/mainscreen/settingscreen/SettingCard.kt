@@ -1,9 +1,8 @@
-package com.nbscollege.fitnessapp.mainscreen.card
+package com.nbscollege.fitnessapp.mainscreen.settingscreen
 
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,24 +22,16 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.navigation.NavController
-import kotlin.math.round
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -52,19 +43,12 @@ fun SettingCard(general: General, navController: NavController) {
 //            .fillMaxSize()
             .padding(start = 20.dp, end = 20.dp)
             .background(Color.White),
-//            .clip(RoundedCornerShape(16.dp)),
-//            colors = CardDefaults.cardColors(
-//            containerColor = Color.Black,
-//            ),
             elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp,
             ),
         content = {
             Box(
                 modifier = Modifier.fillMaxSize()
-
-
-
             ) {
 
 
@@ -96,63 +80,8 @@ fun SettingCard(general: General, navController: NavController) {
                         contentDescription = "Arrow ForwardIos",
                         tint = Color.DarkGray
                     )
-
-
                 }
             }
-
-
-
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .padding()
-//                )
-//                Row(
-//                    modifier = Modifier
-//                        .height(60.dp)
-//                        .fillMaxWidth()
-//                        .clickable( onClick = {
-//                            navController.navigate(SettingsRoute.GeneralSettings.name)
-//                        }),
-//                ) {
-//                    Text(
-//                        text = "General Settings",
-//                        color = Color.Black,
-//                        fontSize = 30.sp,
-//                        fontWeight = FontWeight.Light,
-//                        modifier = Modifier.padding(start=20.dp, top=10.dp)
-//                    )
-//                    Icon(
-//                        imageVector = Icons.Default.ArrowForwardIos, // Replace with the desired icon
-//                        modifier = Modifier
-//                            .padding(start = 130.dp, top=15.dp)
-//                            .size(25.dp),
-//                                .clickable( onClick = {
-//                                    navController.navigate(SettingsRoute.GeneralSettings.name)
-//                                }),
-//
-//                        contentDescription = "Arrow ForwardIos",
-//                        tint = Color.DarkGray
-//                    )
-//                            .clickable( onClick = {
-//                                navController.navigate(Auth.OTP.name)
-//
-//
-//
-//
-//
-//                }
-//                Divider(
-//                    color = Color.LightGray,
-//                    thickness = 1.dp,
-//                    modifier = Modifier.fillMaxWidth().padding()
-//                )
-
-
-
         },
     )
     Spacer(modifier = Modifier

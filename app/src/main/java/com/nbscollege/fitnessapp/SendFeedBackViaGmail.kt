@@ -38,7 +38,6 @@ import androidx.compose.runtime.rememberUpdatedState
 fun sendFeedbackViaGmail(
     navController: NavHostController,
     context: Context,
-    backStackEntry: NavBackStackEntry
 ) {
     val recipient = "cevangelista@student.nbscollege.edu.ph"
     val subject = "Feedback on Your App"
