@@ -85,7 +85,6 @@ fun SettingCardWithSendFeedbackDialog(
 
             onDialogDismiss(false)
             sendFeedback(navController,context)
-            navController.navigate(SettingsRoute.Feed.name)
         }
     }
 }

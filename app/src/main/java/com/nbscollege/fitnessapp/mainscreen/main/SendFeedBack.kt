@@ -10,7 +10,7 @@ import com.nbscollege.fitnessapp.navigation.Screen
 
 fun sendFeedback(navController: NavController, context: Context) {
     val recipient = "cevangelista@student.nbscollege.edu.ph"
-    val subject = "Feedback on Your App"
+    val subject = "Feedback on Fitness-App"
 
     val intent = Intent(Intent.ACTION_SENDTO).apply {
       data = Uri.parse("mailto:$recipient?subject=$subject")

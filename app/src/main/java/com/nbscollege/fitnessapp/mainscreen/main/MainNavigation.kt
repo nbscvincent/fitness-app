@@ -83,7 +83,7 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                     GeneralSettings(navController, backStackEntry)
                     showBottomBar = false
                 }
-                composable(route = SettingsRoute.Feed.name, ) {  backStackEntry ->
+                composable(route = SettingsRoute.Feed.name, ) {
                     sendFeedback(navController, context)
                     showBottomBar = true
                 }
@@ -104,7 +104,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 
                         }
                     }
-                    val openAlertDialog = remember { mutableStateOf(true) }
 
                     SplashNav(screenViewModel = ScreenViewModel())
                     showBottomBar = false
