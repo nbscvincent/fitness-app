@@ -16,9 +16,4 @@ fun sendFeedback(navController: NavController, context: Context) {
       data = Uri.parse("mailto:$recipient?subject=$subject")
     }
     ContextCompat.startActivity(context, intent, null)
-    navController.navigate(Screen.SettingScreen.name)
-
-
-
-
 }
