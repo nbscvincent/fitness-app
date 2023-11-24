@@ -52,10 +52,6 @@ fun SettingCard(general: General, navController: NavController) {
 //            .fillMaxSize()
             .padding(start = 20.dp, end = 20.dp)
             .background(Color.White),
-//            .clip(RoundedCornerShape(16.dp)),
-//            colors = CardDefaults.cardColors(
-//            containerColor = Color.Black,
-//            ),
             elevation = CardDefaults.cardElevation(
             defaultElevation = 7.dp,
             ),
@@ -93,8 +89,6 @@ fun SettingCard(general: General, navController: NavController) {
                         contentDescription = "Arrow ForwardIos",
                         tint = Color.DarkGray
                     )
-
-
                 }
             }
 
