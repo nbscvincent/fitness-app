@@ -94,7 +94,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                 val viewModel: ScreenViewModel = viewModel()
 
                 val navigateToAnotherDestination by viewModel.navigateToAnotherDestination.collectAsState()
-                
+
                 Button(onClick = {
                     viewModel.loginUser(updatedUser.username, updatedUser.password, updatedUser.confirmPassword)
                     // Assuming successful login, navigate to another destination
