@@ -1,12 +1,10 @@
-package com.nbscollege.fitnessapp.mainscreen.main
+package com.nbscollege.fitnessapp.mainscreen.main.settings
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.navigation.Screen
 
 fun sendFeedback(navController: NavController, context: Context) {
     val recipient = "cevangelista@student.nbscollege.edu.ph"

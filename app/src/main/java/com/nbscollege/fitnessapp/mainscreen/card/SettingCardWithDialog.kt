@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
-import com.nbscollege.fitnessapp.mainscreen.main.LogoutDialog
+import com.nbscollege.fitnessapp.mainscreen.main.settings.LogoutDialog
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @Composable
