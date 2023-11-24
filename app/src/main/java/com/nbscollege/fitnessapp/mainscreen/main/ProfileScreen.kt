@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp.model
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,7 +18,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.rounded.ArrowBackIos
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -328,7 +331,20 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Bold,
                                         modifier = Modifier.padding(start = 20.dp, top=10.dp)
+
                                     )
+
+                                        Icon(
+                                            imageVector = Icons.Default.Edit,
+                                            modifier = Modifier.size(20.dp)
+                                                .padding(bottom=3.dp)
+                                                .clickable( onClick = {
+
+                                                }
+                                                ),
+                                            contentDescription = "Edit",
+                                            tint = Color.DarkGray
+                                        )
 
                                     
 

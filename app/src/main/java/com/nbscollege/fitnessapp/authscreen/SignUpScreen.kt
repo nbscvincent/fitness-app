@@ -160,6 +160,7 @@ fun SignUpScreen(navController: NavController) {
                 value = newUsername,
                 onValueChange = {
                     newUsername = it
+
                 },
                 singleLine = true,
                 trailingIcon = {

@@ -21,7 +21,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.example.model.LoginScreen
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
@@ -29,7 +28,6 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
-import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -80,6 +78,7 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 settingscreen(context, navController,)
                 showBottomBar = true
             }
+
 
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
