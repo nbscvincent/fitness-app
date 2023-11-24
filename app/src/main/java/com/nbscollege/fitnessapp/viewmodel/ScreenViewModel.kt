@@ -48,13 +48,30 @@ class ScreenViewModel : ViewModel() {
         }
     }
 
-    private val _loggedInUsername = mutableStateOf<String?>(null)
-    val loggedInUsername: State<String?> = _loggedInUsername
+//    private val _loggedInUsername = mutableStateOf<String?>(null)
+//    val loggedInUsername: State<String?> = _loggedInUsername
+//
+//    fun setLoggedInUser(username: String) {
+//        _loggedInUsername.value = username
+//    }
 
-    fun setLoggedInUser(username: String) {
-        _loggedInUsername.value = username
+    fun loginUser(username: String, password: String, newPassword: String) {
+        viewModelScope.launch {
+            val user = registeredUsers.find { it.username == username && it.password == password }
+
+            if (user != null && newPassword == user.confirmPassword) {
+                user.password = newPassword
+                _isLoggedin.value = true
+                _currentUser.value = user
+                _navigateToAnotherDestination.value = true // Trigger navigation
+            } else {
+                // Handle login error
+            }
+        }
     }
 
+    private val _navigateToAnotherDestination = MutableStateFlow(false)
+    val navigateToAnotherDestination: StateFlow<Boolean> = _navigateToAnotherDestination.asStateFlow()
 
 
 

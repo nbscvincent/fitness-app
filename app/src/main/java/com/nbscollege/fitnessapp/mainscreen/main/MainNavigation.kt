@@ -11,14 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.authscreen.model.User
-import com.nbscollege.fitnessapp.authscreen.model.loggedInUsername
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
@@ -41,7 +40,7 @@ import kotlinx.coroutines.delay
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel) {
+fun mainNavigation(navController: NavController, screenViewModel: ScreenViewModel) {
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
@@ -80,22 +79,28 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 settingscreen(context, navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.ProfileEdit.name) {
-//                val Login = loggedInUsername // Replace this with your actual mechanism to get the logged-in username
-                val targetUsername = "desired_username"
-                val userToUpdate = registeredUsers.find { it.username == targetUsername }
+            composable(route = Screen.ProfileEdit.name) { navController ->
+////                val Login = loggedInUsername // Replace this with your actual mechanism to get the logged-in username
+//                val targetUsername = "desired_username"
+//                registeredUsers.find { it.username == it.username }?.let { loggedInUser ->
+//                    UserProfileScreen(loggedInUser) { updatedUser ->
+//                        // Update the user in your data source (e.g., registeredUsers)
+//                        val index = registeredUsers.indexOfFirst { it.username == it.username }
+//                        if (index != -1) {
+//                            registeredUsers[index] = updatedUser
+//                        }
+//                    }
+//                }
+                val viewModel: ScreenViewModel = viewModel()
 
-                registeredUsers.find { it.username == it.username }?.let { loggedInUser ->
-                    UserProfileScreen(loggedInUser) { updatedUser ->
-                        // Update the user in your data source (e.g., registeredUsers)
-                        val index = registeredUsers.indexOfFirst { it.username == it.username }
-                        if (index != -1) {
-                            registeredUsers[index] = updatedUser
-                        }
-                        if (index != -1) {
-                            registeredUsers[index] = updatedUser
-                        }
-                    }
+                val navigateToAnotherDestination by viewModel.navigateToAnotherDestination.collectAsState()
+                
+                Button(onClick = {
+                    viewModel.loginUser(updatedUser.username, updatedUser.password, updatedUser.confirmPassword)
+                    // Assuming successful login, navigate to another destination
+                    navController.navigate(Screen.AnotherDestination.name)
+                }) {
+                    Text("Save Changes")
                 }
             }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {

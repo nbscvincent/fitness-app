@@ -41,14 +41,14 @@ fun UserProfileScreen(user: User, onUserUpdated: (User) -> Unit) {
 
         // Editable fields
         OutlinedTextField(
-            value = updatedUser.username,
-            onValueChange = { updatedUser = updatedUser.copy(username = it) },
-            label = { Text("New Username") }
-        )
-        OutlinedTextField(
             value = updatedUser.password,
             onValueChange = { updatedUser = updatedUser.copy(password = it) },
             label = { Text("New Password") }
+        )
+        OutlinedTextField(
+            value = updatedUser.confirmPassword,
+            onValueChange = { updatedUser = updatedUser.copy(confirmPassword = it) },
+            label = { Text("Confirm New Password") }
         )
 
         // Add more OutlinedTextField components for other editable fields (weight, height, age)

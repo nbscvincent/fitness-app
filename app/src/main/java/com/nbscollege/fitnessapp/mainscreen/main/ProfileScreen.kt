@@ -101,14 +101,14 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             modifier = Modifier.padding(),
                         )
                         Spacer(modifier = Modifier.width(5.dp))
-                        IconButton(onClick = { navController.navigate(Screen.ProfileEdit.name) }) {
-                            Icon(
-                                imageVector = Icons.Rounded.Edit,
-                                modifier = Modifier.size(30.dp),
-                                contentDescription = "Back",
-                                tint = Color.DarkGray
-                            )
-                        }
+//                        IconButton(onClick = { navController.navigate(Screen.ProfileEdit.name) }) {
+//                            Icon(
+//                                imageVector = Icons.Rounded.Edit,
+//                                modifier = Modifier.size(30.dp),
+//                                contentDescription = "Back",
+//                                tint = Color.DarkGray
+//                            )
+//                        }
                     }
                 }
             }
