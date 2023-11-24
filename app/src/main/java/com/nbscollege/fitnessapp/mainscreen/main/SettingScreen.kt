@@ -132,10 +132,8 @@ fun settingscreen(context: Context, navController: NavController) {
                                 isLogoutDialogVisible
                             ) {
                                 isLogoutDialogVisible = it
-
                             }
                         }
-
                         "Send Feedback" -> {
                             SettingCardWithSendFeedbackDialog(
                                 general = general,

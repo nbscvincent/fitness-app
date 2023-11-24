@@ -82,7 +82,6 @@ fun SettingCardWithSendFeedbackDialog(
     if (isDialogVisible) {
         SendFeedbackDialog(onDismiss = { onDialogDismiss(false) }) {
             // Handle the logic for sending feedback
-
             onDialogDismiss(false)
             sendFeedback(navController,context)
         }
