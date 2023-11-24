@@ -335,9 +335,9 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     )
 
                                         Icon(
-                                            imageVector = Icons.Default.Edit,
+                                            imageVector = Icons.Rounded.Edit,
                                             modifier = Modifier.size(20.dp)
-                                                .padding(bottom=3.dp)
+                                                .padding(end =5.dp)
                                                 .clickable( onClick = {
 
                                                 }
