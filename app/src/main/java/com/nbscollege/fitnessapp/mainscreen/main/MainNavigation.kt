@@ -79,8 +79,8 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                 settingscreen(context, navController,)
                 showBottomBar = true
             }
-            composable(route = Screen.ProfileEdit.name) { navController ->
-////                val Login = loggedInUsername // Replace this with your actual mechanism to get the logged-in username
+//            composable(route = Screen.ProfileEdit.name) { navController ->
+//                val Login = loggedInUsername // Replace this with your actual mechanism to get the logged-in username
 //                val targetUsername = "desired_username"
 //                registeredUsers.find { it.username == it.username }?.let { loggedInUser ->
 //                    UserProfileScreen(loggedInUser) { updatedUser ->
@@ -91,18 +91,8 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 //                        }
 //                    }
 //                }
-                val viewModel: ScreenViewModel = viewModel()
-
-                val navigateToAnotherDestination by viewModel.navigateToAnotherDestination.collectAsState()
-
-                Button(onClick = {
-                    viewModel.loginUser(updatedUser.username, updatedUser.password, updatedUser.confirmPassword)
-                    // Assuming successful login, navigate to another destination
-                    navController.navigate(Screen.AnotherDestination.name)
-                }) {
-                    Text("Save Changes")
-                }
-            }
+//
+//            }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
                     GeneralSettings(navController, backStackEntry)
