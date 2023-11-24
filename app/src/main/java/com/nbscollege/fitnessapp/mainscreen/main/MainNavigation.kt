@@ -76,7 +76,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                 showBottomBar = true
             }
 
-
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
                     GeneralSettings(navController, backStackEntry)

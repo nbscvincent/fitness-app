@@ -99,6 +99,15 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.padding(end = 45.dp),
                         )
+                        Spacer(modifier = Modifier.weight(1f))
+                        Icon(
+                            imageVector = Icons.Rounded.Edit,
+                            modifier = Modifier.size(45.dp),
+                            contentDescription = "Back",
+                            tint = Color.DarkGray
+                        )
+
+                        
                     }
                 }
             }
