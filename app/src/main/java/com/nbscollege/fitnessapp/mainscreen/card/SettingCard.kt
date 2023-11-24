@@ -62,9 +62,6 @@ fun SettingCard(general: General, navController: NavController) {
         content = {
             Box(
                 modifier = Modifier.fillMaxSize()
-
-
-
             ) {
 
 

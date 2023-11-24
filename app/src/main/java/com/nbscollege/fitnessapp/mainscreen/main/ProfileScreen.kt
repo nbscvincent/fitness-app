@@ -319,19 +319,27 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                 )
                             } else if (bmi < 24.5) {
                                 Spacer(modifier = Modifier.height(10.dp))
-                                Text(
-                                    "BMI",
-                                    color = Color.Black,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
-                                )
+                                Row(
+
+                                ) {
+                                    Text(
+                                        "BMI",
+                                        color = Color.Black,
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                    )
+
+                                    
+
+                                }
+
                                 Spacer(modifier = Modifier.height(5.dp))
                                 Card (
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp)
-                                        .background(Color.White)
-                                        .fillMaxSize(),
+                                        .fillMaxSize()
+                                        .background(Color.White),
                                     elevation = CardDefaults.cardElevation(
                                         defaultElevation = 7.dp,
                                     ),
@@ -339,7 +347,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                                     Box(
                                         modifier = Modifier
                                             .height(45.dp)
-                                            .background(Color.White)
+                                            .background(Color.LightGray)
                                             .fillMaxWidth()
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
@@ -608,6 +616,18 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
                         }
 
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
 
 
 
@@ -764,12 +784,5 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 //                                modifier = Modifier.padding(start = 40.dp, top = 10.dp)
 //                            )
 //                        }
-                    }
-
-                }
-            }
-        }
-    }
-}
 
 
