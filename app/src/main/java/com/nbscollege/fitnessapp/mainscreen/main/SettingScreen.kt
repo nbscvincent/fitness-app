@@ -36,7 +36,9 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
+import androidx.compose.ui.platform.LocalContext
 import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithLogoutDialog
+import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithSendFeedbackDialog
 
 
 //enum class SelectedButton {
@@ -51,13 +53,14 @@ import com.nbscollege.fitnessapp.mainscreen.card.SettingCardWithLogoutDialog
 fun settingscreen(context: Context, navController: NavController) {
 
     var isLogoutDialogVisible by remember { mutableStateOf(false) }
+    var isSendFeedBackDialogVisible by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
             Box(
                 modifier = Modifier
                     .height(100.dp)
-                    .padding(top=10.dp)
+                    .padding(top = 10.dp)
                     .background(Color.White)
                     .fillMaxWidth()
 
@@ -69,14 +72,14 @@ fun settingscreen(context: Context, navController: NavController) {
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                     IconButton(onClick = { navController.navigateUp() }) {
-                         Icon(
-                             imageVector = Icons.Rounded.ArrowBackIos,
-                             modifier = Modifier.size(30.dp),
-                             contentDescription = "Back",
-                             tint = Color.DarkGray
-                         )
-                     }
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            imageVector = Icons.Rounded.ArrowBackIos,
+                            modifier = Modifier.size(30.dp),
+                            contentDescription = "Back",
+                            tint = Color.DarkGray
+                        )
+                    }
                     Row(
                         modifier = Modifier
                             .background(Color.White)
@@ -96,7 +99,7 @@ fun settingscreen(context: Context, navController: NavController) {
                             color = Color.Black,
                             fontSize = 38.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(end=45.dp),
+                            modifier = Modifier.padding(end = 45.dp),
                         )
                     }
                 }
@@ -111,29 +114,48 @@ fun settingscreen(context: Context, navController: NavController) {
         Box(
             modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
 
-        ) {
+            ) {
 
             LazyColumn(
-                modifier = Modifier.padding(top=10.dp).background(Color.White),
+                modifier = Modifier.padding(top = 10.dp).background(Color.White),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
 
             ) {
 
                 items(settingsList) { general ->
-                    if (general.title == "Log out") {
-                        SettingCardWithLogoutDialog(general = general, navController, isLogoutDialogVisible) {
-                            isLogoutDialogVisible = it
+                    when (general.title) {
+                        "Log out" -> {
+                            SettingCardWithLogoutDialog(
+                                general = general,
+                                navController,
+                                isLogoutDialogVisible
+                            ) {
+                                isLogoutDialogVisible = it
 
+                            }
                         }
-                    } else {
-                        SettingCard(general = general, navController)
+
+                        "Send Feedback" -> {
+                            SettingCardWithSendFeedbackDialog(
+                                general = general,
+                                context = LocalContext.current,
+                                navController,
+                                isSendFeedBackDialogVisible
+                            ) {
+                                isSendFeedBackDialogVisible = it
+                            }
+                        }
+
+                        else -> {
+                            SettingCard(general = general, navController)
+                        }
                     }
                 }
             }
+
+
         }
-
-
     }
 }
 

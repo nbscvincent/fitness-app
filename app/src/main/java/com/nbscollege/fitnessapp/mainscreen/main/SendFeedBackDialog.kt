@@ -1,9 +1,13 @@
 package com.nbscollege.fitnessapp.mainscreen.main
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.core.content.ContextCompat
+import com.nbscollege.fitnessapp.navigation.Screen
 
 @Composable
 fun SendFeedbackDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {

@@ -1,12 +1,9 @@
 package com.nbscollege.fitnessapp
 
-import Auth
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -14,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
 
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
@@ -27,6 +23,8 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
+import com.nbscollege.fitnessapp.mainscreen.main.SendFeedbackDialog
+import com.nbscollege.fitnessapp.mainscreen.main.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.profilescreen
@@ -86,8 +84,8 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
                     showBottomBar = false
                 }
                 composable(route = SettingsRoute.Feed.name, ) {  backStackEntry ->
-                    sendFeedbackViaGmail(navController,context, backStackEntry)
-                    showBottomBar = false
+                    sendFeedback(navController, context)
+                    showBottomBar = true
                 }
                 composable(route = SettingsRoute.Rate.name) {
 //                    GeneralSettings(navController, backStackEntry)
@@ -110,9 +108,6 @@ fun mainNavigation(navController: NavController,screenViewModel: ScreenViewModel
 
                     SplashNav(screenViewModel = ScreenViewModel())
                     showBottomBar = false
-
-
-
                 }
 
 
