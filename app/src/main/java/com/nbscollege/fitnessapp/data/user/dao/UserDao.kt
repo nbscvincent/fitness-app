@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp.data.user.dao
 
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -14,8 +15,8 @@ import kotlinx.coroutines.flow.Flow
 interface UserDao {
     @Query("SELECT * from user ORDER BY username ASC")
     fun getAllUser(): Flow<List<User>>
-    @Query("SELECT * from user WHERE username = username")
-    fun getUser(id: Int): Flow<User>
+//    @Query("SELECT * from user WHERE username = username")
+//    fun getUser(id: Int): Flow<User>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
     @Update

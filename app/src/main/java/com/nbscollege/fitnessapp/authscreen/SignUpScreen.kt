@@ -119,7 +119,7 @@ fun SignUpScreen(navController: NavController) {
                 confirmPasswordError = false
                 ageError = false
                 // Add the new user to the list of registered users
-                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull(), age.toInt()))
+                registeredUsers.add(User(newUsername, newPassword, weight.toFloat(), height.toFloat(), age.toInt()))
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
             },
             dialogTitle = "Do you really want to create an account?",
