@@ -3,7 +3,6 @@ package com.nbscollege.fitnessapp.authscreen.model
 data class User(
     val username: String,
     var password: String,
-
     val weight: Float?,
     val height: Float?,
     val age: Int
