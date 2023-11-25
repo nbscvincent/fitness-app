@@ -1,5 +1,8 @@
 package com.nbscollege.fitnessapp.authscreen.model
 
+import androidx.room.Entity
+
+@Entity(tableName = "user")
 data class User(
     val username: String,
     var password: String,
