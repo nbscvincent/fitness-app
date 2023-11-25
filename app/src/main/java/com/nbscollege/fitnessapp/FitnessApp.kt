@@ -1,5 +1,9 @@
 package com.nbscollege.fitnessapp
 
+import android.app.Application
+import com.nbscollege.fitnessapp.database.AppContainer
+import com.nbscollege.fitnessapp.database.AppDataContainer
+
 
 class FitnessApp: Application() {
 

@@ -6,8 +6,8 @@ import androidx.room.Entity
 data class User(
     val username: String,
     var password: String,
-    val weight: Float?,
-    val height: Float?,
+    val weight: Float,
+    val height: Float,
     val age: Int
 )
 
