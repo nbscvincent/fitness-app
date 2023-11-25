@@ -15,7 +15,7 @@ interface UserDao {
     @Query("SELECT * from user ORDER BY username ASC")
     fun getAllUser(): Flow<List<User>>
     @Query("SELECT * from user WHERE username = username")
-    fun getUser(id: Int): Flow<User>
+    fun getUser(): Flow<User>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
     @Update

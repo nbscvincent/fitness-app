@@ -29,7 +29,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -53,9 +52,7 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Height
-import androidx.compose.material.icons.rounded.ImageAspectRatio
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MonitorWeight
 import androidx.compose.material.icons.rounded.PlusOne
@@ -73,8 +70,9 @@ import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController) {
-    var newUsername by remember { mutableStateOf("") }
-    var newPassword by remember { mutableStateOf("") }
+    var id by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     var showPassword by remember {
         mutableStateOf(false)
@@ -101,7 +99,7 @@ fun SignUpScreen(navController: NavController) {
     val context = LocalContext.current
     var confirmPasswordColor =
         if (confirmPassword.isEmpty()) Color.Transparent
-        else if (newPassword == confirmPassword) Color.Green
+        else if (password == confirmPassword) Color.Green
         else Color.Red
 
     val darkGreen = colorResource(id = R.color.DarkGreen)
@@ -119,7 +117,8 @@ fun SignUpScreen(navController: NavController) {
                 confirmPasswordError = false
                 ageError = false
                 // Add the new user to the list of registered users
-                registeredUsers.add(User(newUsername, newPassword, weight.toFloatOrNull(), height.toFloatOrNull(), age.toInt()))
+                registeredUsers.add(User(username, password,
+                    weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()))
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
             },
             dialogTitle = "Do you really want to create an account?",
@@ -157,9 +156,9 @@ fun SignUpScreen(navController: NavController) {
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                 label = { Text("Username") },
-                value = newUsername,
+                value = username,
                 onValueChange = {
-                    newUsername = it
+                    username = it
 
                 },
                 singleLine = true,
@@ -184,8 +183,8 @@ fun SignUpScreen(navController: NavController) {
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
                 label = { Text("Password") },
-                value = newPassword,
-                onValueChange = { newPassword = it },
+                value = password,
+                onValueChange = { password = it },
                 singleLine = true,
                 trailingIcon = {
                     IconButton(onClick = { showPassword = showPassword != true }) {
@@ -362,9 +361,9 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
-                        if (newUsername.isNotEmpty() && newPassword.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()  && age.isNotEmpty() && newPassword == confirmPassword) {
+                        if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()  && age.isNotEmpty() && password == confirmPassword) {
                             // Check if the username is already taken
-                            if (registeredUsers.any { it.username == newUsername}) {
+                            if (registeredUsers.any { it.username == username}) {
                                 userError = true
                                 passwordError = false
                                 weightError = false
@@ -380,12 +379,12 @@ fun SignUpScreen(navController: NavController) {
 
 
 
-                        else if (confirmPassword != newPassword) {
+                        else if (confirmPassword != password) {
                             Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
                         }
                         else {
-                                userError = newUsername.isEmpty()
-                                passwordError = newPassword.isEmpty()
+                                userError = username.isEmpty()
+                                passwordError = password.isEmpty()
                                 weightError = weight.isEmpty()
                                 heightError = height.isEmpty()
                                 confirmPasswordError = confirmPassword.isEmpty()

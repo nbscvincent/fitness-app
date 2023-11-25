@@ -1,9 +1,13 @@
 package com.nbscollege.fitnessapp.authscreen.model
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
 data class User(
+    @PrimaryKey(autoGenerate = false)
+
+
     val username: String,
     var password: String,
     val weight: Float,
