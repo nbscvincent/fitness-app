@@ -44,7 +44,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArmScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
-    val navController = rememberNavController()
+//    val navController = rememberNavController()
 
     Scaffold(
         topBar = {
