@@ -39,6 +39,7 @@ import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -91,11 +92,11 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                 )
             }
         },
-        bottomBar = {
-            BottomAppBar {
-
-            }
-        }
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
     ) { innerPadding ->
         // Content of your screen goes here
 

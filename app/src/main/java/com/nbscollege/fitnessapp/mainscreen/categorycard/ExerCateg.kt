@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerList
+import kotlinx.coroutines.NonCancellable.start
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -265,7 +266,9 @@ fun AlertDialogExample(
     timerStarted: Boolean
 ) {
     var remainingTime by remember { mutableStateOf(initialTime) }
+    var originalRemainingTime by remember { mutableStateOf(remainingTime) }
     var timerRunning by remember { mutableStateOf(false) }
+    var timerPaused by remember { mutableStateOf(false) }
 
     val timer = remember {
         object : CountDownTimer(remainingTime * 1000, 1000) {
@@ -326,31 +329,43 @@ fun AlertDialogExample(
                 }
                 TextButton(
                     onClick = {
+                    if (timerRunning && !timerPaused) {
+                       timer.cancel()
+                       timerRunning = false
+                       timerPaused = true
+                        originalRemainingTime = remainingTime
+                       onPause()
+                }   else if (timerPaused) {
+                        timer.start()
+//                        originalRemainingTime.run {start()}
+                        timerRunning = true
+//                        remainingTime.run {start()}
+                        timerPaused = false
+                        onStart()
+                    }
+                }
+                ) {
+                    Text(if (timerPaused) "Resume" else "Pause")
+                }
+                TextButton(
+                    onClick = {
                         timer.cancel()
-                        timerRunning = false
-                        onPause()
+                        onDismissRequest()
                     }
                 ) {
-                    Text("Pause")
-                }
+                    Text("Dismiss")
             }
+                }
         },
         onDismissRequest = {
             timer.cancel()
             onDismissRequest()
         },
-        dismissButton = {
-            TextButton(
-                onClick = {
-                    timer.cancel()
-                    onDismissRequest()
-                }
-            ) {
-                Text("Dismiss")
-            }
-        }
-    )
-}
+        dismissButton = {         }
+
+            )
+    }
+
 
 //
 

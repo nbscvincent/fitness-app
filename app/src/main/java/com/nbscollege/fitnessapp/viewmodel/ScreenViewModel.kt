@@ -1,7 +1,5 @@
 package com.nbscollege.fitnessapp.viewmodel
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,7 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 
-class ScreenViewModel : ViewModel() {
+class ScreenViewModel() : ViewModel() {
     private val _splashLoaded = MutableStateFlow(false)
     private val _isLoggedin = MutableStateFlow(false)
     val splashLoaded = _splashLoaded.asStateFlow()
@@ -44,7 +42,6 @@ class ScreenViewModel : ViewModel() {
             val user = registeredUsers.find { it.username == username && it.password == password }
             _isLoggedin.value = true
             _currentUser.value = user
-
         }
     }
 
