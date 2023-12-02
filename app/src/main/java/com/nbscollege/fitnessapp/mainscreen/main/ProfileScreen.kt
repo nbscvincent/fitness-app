@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.model
 
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,8 +18,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.rounded.ArrowBackIos
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.rounded.Person
@@ -36,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
 import androidx.navigation.NavController
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nbscollege.fitnessapp.navigation.Screen
@@ -87,7 +91,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                     ) {
 
                         Icon(
-                            imageVector = Icons.Rounded.Person,
+                            imageVector = Icons.Outlined.Person,
                             modifier = Modifier.size(45.dp),
                             contentDescription = "Back",
                             tint = Color.Black
@@ -119,6 +123,25 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
             }
         }
     ) { innerPadding ->
+        Box(
+            modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
+        ) {
+            // Add a button to pick an image from the gallery
+            IconButton(
+                onClick = { pickImageFromGallery(navController) },
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(top = 20.dp)
+            ) {
+                // Display the profile picture
+                Image(
+                    painter = painterResource(R.drawable.ic_default_profile), // You can set a default image
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(CircleShape)
+                )
+            }
 
         Box(
             modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),

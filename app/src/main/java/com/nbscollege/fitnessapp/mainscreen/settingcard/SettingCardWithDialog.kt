@@ -9,8 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.Logout
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,17 +38,17 @@ fun SettingCardWithLogoutDialog(general: General, navController: NavController, 
             .padding(start = 20.dp, end = 20.dp)
             .background(Color.White),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp,
+            defaultElevation = 4.dp,
         ),
         content = {
             Box(
                 modifier = Modifier.fillMaxSize()
-            ) {
 
+            ) {
 
                 Row(
                     modifier = Modifier
-                        .height(45.dp)
+                        .height(60.dp)
                         .background(Color.White)
                         .fillMaxWidth()
                         .background(Color.LightGray.copy(alpha = 0.1f))
@@ -55,12 +60,18 @@ fun SettingCardWithLogoutDialog(general: General, navController: NavController, 
                             }
                         }),
                 ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Logout, // You can use any other icon
+                        contentDescription = null,
+                        tint = Color.Red,
+                        modifier = Modifier.padding(start = 20.dp, top = 17.dp)
+                    )
                     Text(
                         general.title,
                         color = Color.Black,
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start=20.dp, top=10.dp)
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(start=10.dp, top=17.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
                 }

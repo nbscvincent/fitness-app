@@ -33,7 +33,7 @@ data class General(
 
 val settingsList = listOf(
 
-    General("General Settings", Icons.Default.ArrowForwardIos, SettingsRoute.GeneralSettings.name),
+    General("Change Password", Icons.Default.ArrowForwardIos, SettingsRoute.GeneralSettings.name),
     General("Send Feedback", Icons.Default.ArrowForwardIos, SettingsRoute.Feed.name),
     General("Rate Us", Icons.Default.ArrowForwardIos, SettingsRoute.Rate.name),
     General("Log out", Icons.Default.ArrowForwardIos, SettingsRoute.LogOut.name),
