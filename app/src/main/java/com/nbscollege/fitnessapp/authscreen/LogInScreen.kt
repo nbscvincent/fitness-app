@@ -51,6 +51,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
@@ -59,6 +60,7 @@ import com.nbscollege.fitnessapp.model.SplashScreen
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.util.StringUtil
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
@@ -69,7 +71,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {

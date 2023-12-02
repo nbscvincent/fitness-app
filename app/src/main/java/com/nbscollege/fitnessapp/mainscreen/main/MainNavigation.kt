@@ -38,7 +38,7 @@ import kotlinx.coroutines.delay
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun mainNavigation(navController: NavController, screenViewModel: ScreenViewModel, registrationViewModel: RegistrationViewModel) {
+fun mainNavigation(navController: NavController, screenViewModel: ScreenViewModel) {
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
@@ -119,7 +119,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                         }
                     }
 
-                    SplashNav(screenViewModel, registrationViewModel)
+                    SplashNav(screenViewModel)
                     showBottomBar = false
                 }
 

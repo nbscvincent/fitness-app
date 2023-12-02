@@ -70,7 +70,6 @@ import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.ui.user.UserDetails
-import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.launch
 
 
@@ -127,10 +126,21 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 heightError = false
                 confirmPasswordError = false
                 ageError = false
+
+                coroutineScope.launch {
+                    var userUiState = viewModel.userUiState
+                    userUiState.userDetails = UserDetails(username = username, password = password)
+                    viewModel.saveUser()
+                    Log.i("userUiState", userUiState.userDetails.toString())
+
+                }
+
                 // Add the new user to the list of registered users
                 registeredUsers.add(User(username, password,
                     weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()))
                 navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
+
+
             },
             dialogTitle = "Do you really want to create an account?",
             icon = Icons.Rounded.Info,
@@ -388,13 +398,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                 heightError = false
                                 ageError = false
 
-                                coroutineScope.launch {
-                                    var userUiState = viewModel.userUiState
-                                    userUiState.userDetails
-                                    UserDetails(username = username, password = password)
-                                    viewModel.saveUser()
-                                    Log.i("userUiState", userUiState.userDetails.toString())
-                                }
+
 
                                 Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
                             }

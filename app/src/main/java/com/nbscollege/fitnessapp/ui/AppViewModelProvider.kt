@@ -25,8 +25,8 @@ object AppViewModelProvider {
     }
 }
 /**
- * Extension function to queries for [Application] object and returns an instance of
- * [NBSApplication].
+ * Extension function to queries for [FitnessApp] object and returns an instance of
+ * [FitnessApp].
  */
 fun CreationExtras.FitnessApp(): FitnessApp =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as FitnessApp)
