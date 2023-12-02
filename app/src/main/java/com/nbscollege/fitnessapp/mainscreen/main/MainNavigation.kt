@@ -135,6 +135,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     ChestScreen(navController, backStackEntry)
                     showBottomBar = false
                 }
+
                 composable(route = CategoryRoute.ARM.name) { backStackEntry ->
                     ArmScreen(navController,backStackEntry)
                     showBottomBar = false
