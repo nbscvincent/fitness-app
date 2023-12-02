@@ -21,6 +21,7 @@ import com.example.example.model.SignUpScreen
 import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -28,7 +29,7 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SplashNav(screenViewModel: ScreenViewModel) {
+fun SplashNav(screenViewModel: ScreenViewModel, registrationViewModel: RegistrationViewModel) {
     val navController: NavHostController = rememberNavController()
 
     var showToast by remember { mutableStateOf(false) }
@@ -67,7 +68,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                LoginScreen(navController, screenViewModel)
+                LoginScreen(navController, screenViewModel, registrationViewModel)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
@@ -88,7 +89,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                     }
                 }
 
-                    mainNavigation(navController, screenViewModel)
+                    mainNavigation(navController, screenViewModel, registrationViewModel)
             }
 
         }

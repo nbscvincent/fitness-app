@@ -6,7 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 class MainActivity : ComponentActivity() {
@@ -15,6 +16,7 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val screenViewModel: ScreenViewModel by viewModels()
+        val registrationViewModel: RegistrationViewModel by viewModels()
 
         screenViewModel.runSplashScreen()
 
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
 
-            SplashNav(screenViewModel)
+            SplashNav(screenViewModel, registrationViewModel)
 
 
         }

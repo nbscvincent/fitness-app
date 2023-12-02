@@ -1,5 +1,6 @@
 package com.example.example.model
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -60,16 +61,26 @@ import androidx.compose.material.icons.rounded.Transgender
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.dialog.AlertDialogExample
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
+import com.nbscollege.fitnessapp.ui.user.UserDetails
+import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(navController: NavController) {
+fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
+
+    val coroutineScope = rememberCoroutineScope()
+
+
     var id by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -361,6 +372,13 @@ fun SignUpScreen(navController: NavController) {
             ) {
                 Button(
                     onClick = {
+//                        coroutineScope.launch {
+//                            var userUiState = viewModel.userUiState
+//                            userUiState.userDetails
+//                                UserDetails(username = username, password = password)
+//                            viewModel.saveUser()
+//                            Log.i("userUiState", userUiState.userDetails.toString())
+//                        }
                         if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()  && age.isNotEmpty() && password == confirmPassword) {
                             // Check if the username is already taken
                             if (registeredUsers.any { it.username == username}) {
@@ -369,6 +387,14 @@ fun SignUpScreen(navController: NavController) {
                                 weightError = false
                                 heightError = false
                                 ageError = false
+
+                                coroutineScope.launch {
+                                    var userUiState = viewModel.userUiState
+                                    userUiState.userDetails
+                                    UserDetails(username = username, password = password)
+                                    viewModel.saveUser()
+                                    Log.i("userUiState", userUiState.userDetails.toString())
+                                }
 
                                 Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
                             }

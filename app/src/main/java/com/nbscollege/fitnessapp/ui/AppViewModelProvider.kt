@@ -1,0 +1,30 @@
+package com.nbscollege.fitnessapp.ui
+
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.nbscollege.fitnessapp.FitnessApp
+import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
+import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
+
+object AppViewModelProvider {
+    val Factory = viewModelFactory {
+        // Initializer for RegistrationViewModel
+        initializer {
+            RegistrationViewModel(
+                FitnessApp().container.userRepository
+            )
+        }
+        // Initializer for RegistrationViewModel
+        initializer {
+            RegistrationViewModel(FitnessApp().container.userRepository)
+        }
+    }
+}
+/**
+ * Extension function to queries for [Application] object and returns an instance of
+ * [NBSApplication].
+ */
+fun CreationExtras.FitnessApp(): FitnessApp =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as FitnessApp)

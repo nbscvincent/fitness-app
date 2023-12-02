@@ -59,6 +59,7 @@ import com.nbscollege.fitnessapp.model.SplashScreen
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.navigation.Screen
+import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.util.StringUtil
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
@@ -68,7 +69,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
