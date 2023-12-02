@@ -24,6 +24,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.StarOutline
 
 
 import androidx.compose.material3.*
@@ -43,18 +46,18 @@ fun SettingCard(general: General, navController: NavController) {
 //            .fillMaxSize()
             .padding(start = 20.dp, end = 20.dp)
             .background(Color.White),
-            elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp,
-            ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 4.dp,
+        ),
         content = {
             Box(
                 modifier = Modifier.fillMaxSize()
+
             ) {
 
-
-            Row(
+                Row(
                     modifier = Modifier
-                        .height(45.dp)
+                        .height(60.dp)
                         .background(Color.White)
                         .fillMaxWidth()
                         .background(Color.LightGray.copy(alpha = 0.1f))
@@ -62,28 +65,26 @@ fun SettingCard(general: General, navController: NavController) {
                             navController.navigate(general.route)
                         }),
                 ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Lock, // You can use any other icon
+                        contentDescription = null,
+                        tint = Color.Red,
+                        modifier = Modifier.padding(start = 20.dp, top = 17.dp)
+                    )
                     Text(
                         general.title,
                         color = Color.Black,
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start=20.dp, top=10.dp)
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(start=10.dp, top=17.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
-
-                    Icon(
-                        imageVector = general.icon, // Replace with the desired icon
-                        modifier = Modifier
-                            .padding(end = 30.dp, top = 14.dp)
-                            .size(20.dp),
-
-                        contentDescription = "Arrow ForwardIos",
-                        tint = Color.DarkGray
-                    )
                 }
+
             }
         },
     )
+
     Spacer(modifier = Modifier
         .height(8.dp)
         .background(Color.White))

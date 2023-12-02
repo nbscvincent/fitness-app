@@ -10,8 +10,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Feedback
+import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material.icons.outlined.StarOutline
+import androidx.compose.material.icons.outlined.StarRate
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -33,7 +39,6 @@ fun SettingCardRateUs(
     onDialogDismiss: (Boolean) -> Unit
 ) {
 
-
     Spacer(modifier = Modifier.height(5.dp))
     Card(
         modifier = Modifier
@@ -41,17 +46,17 @@ fun SettingCardRateUs(
             .padding(start = 20.dp, end = 20.dp)
             .background(Color.White),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 7.dp,
+            defaultElevation = 4.dp,
         ),
         content = {
             Box(
                 modifier = Modifier.fillMaxSize()
-            ) {
 
+            ) {
 
                 Row(
                     modifier = Modifier
-                        .height(45.dp)
+                        .height(60.dp)
                         .background(Color.White)
                         .fillMaxWidth()
                         .background(Color.LightGray.copy(alpha = 0.1f))
@@ -61,18 +66,26 @@ fun SettingCardRateUs(
                             }
                         }),
                 ) {
+                    Icon(
+                        imageVector = Icons.Outlined.StarOutline, // You can use any other icon
+                        contentDescription = null,
+                        tint = Color.Red,
+                        modifier = Modifier.padding(start = 20.dp, top = 17.dp)
+                    )
                     Text(
                         general.title,
                         color = Color.Black,
                         fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(start=20.dp, top=10.dp)
+                        fontWeight = FontWeight.Medium,
+                        modifier = Modifier.padding(start=10.dp, top=17.dp)
                     )
                     Spacer(modifier = Modifier.weight(1f))
                 }
+
             }
         },
     )
+
     Spacer(modifier = Modifier
         .height(8.dp)
         .background(Color.White))

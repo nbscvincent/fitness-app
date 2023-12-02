@@ -100,7 +100,7 @@ fun settingscreen(context: Context, navController: NavController) {
                             "Settings",
                             color = Color.Black,
                             fontSize = 38.sp,
-                            fontWeight = FontWeight.Bold,
+                            fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
                     }
