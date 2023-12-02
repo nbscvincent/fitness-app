@@ -334,7 +334,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
             
             Row(
                 horizontalArrangement = Arrangement.End,
-                modifier = Modifier.padding(end=300.dp)
+                modifier = Modifier.padding(end=225.dp)
             ) {
                 TextField(
                     isError = ageError,
@@ -465,7 +465,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Text("Already a member?", fontSize = 16.sp)
+                        Text("Already a member?", fontSize = 16.sp , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Black))
                         Box(Modifier.width(7.dp))
                             Text("Login here", fontSize = 16.sp, color = Color.Red,modifier = Modifier.clickable( onClick = {
                                 navController.navigate(Auth.LogInScreen.name)
