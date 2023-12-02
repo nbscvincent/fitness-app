@@ -187,7 +187,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Username" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                label = { Text("Username" , fontWeight = FontWeight.Medium) },
                 value = username,
                 onValueChange = {
                     username = it
@@ -214,7 +214,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                label = { Text("Password" , fontWeight = FontWeight.Medium) },
                 value = password,
                 onValueChange = { password = it },
                 singleLine = true,
@@ -246,7 +246,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .border(1.dp, color = confirmPasswordColor, shape = RoundedCornerShape(16.dp)
                     ),
 
-                label = { Text("Confirm Password" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                label = { Text("Confirm Password" , fontWeight = FontWeight.Medium) },
                 value = confirmPassword,
                 onValueChange = { confirmPassword = it
                                 },
@@ -284,7 +284,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                             isError = weightError,
                             modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight(lb)" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                            label = { Text("Weight(lb)" , fontWeight = FontWeight.Medium) },
                             value = weight,
                             onValueChange = { weight = it },
                             singleLine = true,
@@ -309,7 +309,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                 width(300.dp)
                                 .clip(CircleShape)
                                 .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-                            label = { Text("Height(cm)" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                            label = { Text("Height(cm)" , fontWeight = FontWeight.Medium) },
                             value = height,
                             onValueChange = { height = it },
                             singleLine = true,
@@ -340,7 +340,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     isError = ageError,
                     modifier = Modifier.width(200.dp)
                         .absolutePadding(left = 40.dp, bottom = 11.dp),
-                    label = { Text("Age" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                    label = { Text("Age" , fontWeight = FontWeight.Medium) },
                     value = age,
                     onValueChange = { age = it },
                     singleLine = true,
@@ -451,7 +451,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     Row(
 //                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text("Register", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
+                        Text("Register", fontSize = 19.sp,fontWeight = FontWeight.Medium, modifier = Modifier.padding(1.dp))
                     }
                 }
 
@@ -465,9 +465,9 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Text("Already a member?", fontSize = 16.sp , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Black))
+                        Text("Already a member?", fontSize = 16.sp , fontWeight = FontWeight.Medium)
                         Box(Modifier.width(7.dp))
-                            Text("Login here", fontSize = 16.sp, color = Color.Red,modifier = Modifier.clickable( onClick = {
+                            Text("Login here", fontSize = 16.sp, color = Color.Red,fontWeight = FontWeight.Medium,modifier = Modifier.clickable( onClick = {
                                 navController.navigate(Auth.LogInScreen.name)
                             }, ) )
 

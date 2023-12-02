@@ -126,7 +126,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Username", fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                label = { Text("Username", fontWeight = FontWeight.Medium) },
                 value = username,
                 singleLine = true,
                 onValueChange = { username = it },
@@ -150,7 +150,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password", fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
+                label = { Text("Password", fontWeight = FontWeight.Medium) },
                 value = password,
                 onValueChange = { password = it },
                 singleLine = true,
@@ -179,7 +179,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                 verticalArrangement = Arrangement.SpaceBetween
 
             ) {
-                Text(text = "Forgot Password?", color = Color.Red, modifier = Modifier.clickable( onClick = {
+                Text(text = "Forgot Password?", color = Color.Red, fontWeight = FontWeight.Medium, modifier = Modifier.clickable( onClick = {
                     navController.navigate(Auth.OTP.name)
                 }, ) )
             }
@@ -268,7 +268,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text("Login", fontSize = 19.sp, modifier = Modifier.padding(1.dp))
+                        Text("Login", fontSize = 19.sp, fontWeight = FontWeight.Medium, modifier = Modifier.padding(1.dp))
                     }
                 }
 //                if (isLoginSuccessful) {
@@ -286,10 +286,10 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Text("New Member?", fontSize = 16.sp)
+                        Text("New Member?", fontSize = 16.sp, fontWeight = FontWeight.Medium)
                         Box(Modifier.width(7.dp))
                         TextButton(onClick = { navController.navigate(Auth.SignUpScreen.name) }) {
-                            Text("Register here", fontSize = 16.sp, color = Color.Red)
+                            Text("Register here", fontSize = 16.sp, color = Color.Red, fontWeight = FontWeight.Medium)
                         }
                     }
                 }
