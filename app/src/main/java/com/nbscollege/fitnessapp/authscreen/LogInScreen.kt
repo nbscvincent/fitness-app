@@ -46,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -110,10 +111,12 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
             )
             Text(
                 "Welcome back",
+                fontWeight = FontWeight.Medium,
                 style = TextStyle(fontSize = 25.sp, color = Color.Black)
             )
             Text(
                 "sign in to access your account",
+                fontWeight = FontWeight.Medium,
                 style = TextStyle(fontSize = 18.sp, color = Color.Gray)
             )
             Box(Modifier.height(25.dp))
@@ -123,7 +126,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Username") },
+                label = { Text("Username", fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                 value = username,
                 singleLine = true,
                 onValueChange = { username = it },
@@ -147,7 +150,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password") },
+                label = { Text("Password", fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                 value = password,
                 onValueChange = { password = it },
                 singleLine = true,

@@ -61,6 +61,7 @@ import androidx.compose.material.icons.rounded.Transgender
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
@@ -167,14 +168,16 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
             Image(
                 modifier = Modifier.size(300.dp),
                 painter = painterResource(id = R.drawable.fitness_logo),
-                contentDescription = "NBS LOGO"
+                contentDescription = "Fitness LOGO"
             )
             Text(
                 "Register an account",
+                fontWeight = FontWeight.Medium,
                 style = TextStyle(fontSize = 25.sp, color = Color.Black)
             )
             Text(
                 "Fill out the following details to create a new a account",
+                fontWeight = FontWeight.Medium,
                 style = TextStyle(fontSize = 18.sp, color = Color.Gray, textAlign = TextAlign.Center)
             )
             Box(Modifier.height(25.dp))
@@ -184,7 +187,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .fillMaxWidth()
                     .clip(CircleShape)
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                label = { Text("Username") },
+                label = { Text("Username" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                 value = username,
                 onValueChange = {
                     username = it
@@ -211,7 +214,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .fillMaxWidth()
                     .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
 
-                label = { Text("Password") },
+                label = { Text("Password" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                 value = password,
                 onValueChange = { password = it },
                 singleLine = true,
@@ -243,7 +246,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     .border(1.dp, color = confirmPasswordColor, shape = RoundedCornerShape(16.dp)
                     ),
 
-                label = { Text("Confirm Password") },
+                label = { Text("Confirm Password" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                 value = confirmPassword,
                 onValueChange = { confirmPassword = it
                                 },
@@ -281,7 +284,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                             isError = weightError,
                             modifier = Modifier.width(200.dp)
                                 .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight(lb)") },
+                            label = { Text("Weight(lb)" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                             value = weight,
                             onValueChange = { weight = it },
                             singleLine = true,
@@ -306,7 +309,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                 width(300.dp)
                                 .clip(CircleShape)
                                 .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-                            label = { Text("Height(cm)") },
+                            label = { Text("Height(cm)" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                             value = height,
                             onValueChange = { height = it },
                             singleLine = true,
@@ -330,14 +333,14 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 }
             
             Row(
-                horizontalArrangement = Arrangement.SpaceEvenly
-
+                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.padding(end=300.dp)
             ) {
                 TextField(
                     isError = ageError,
                     modifier = Modifier.width(200.dp)
                         .absolutePadding(left = 40.dp, bottom = 11.dp),
-                    label = { Text("Age") },
+                    label = { Text("Age" , fontWeight = FontWeight.Medium, style = TextStyle(color= Color.Gray)) },
                     value = age,
                     onValueChange = { age = it },
                     singleLine = true,
@@ -356,30 +359,30 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                         errorIndicatorColor = Color.Transparent
                     )
                 )
-                TextField(
-                    modifier = Modifier.
-                    width(300.dp)
-                        .clip(CircleShape)
-                        .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-                    label = { Text("Gender") },
-                    value = height,
-                    onValueChange = { height = it },
-                    singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    trailingIcon = {
-                        Icon(
-                            Icons.Rounded.Transgender,
-                            contentDescription = "height"
-                        )
-                    },
-                    shape = RoundedCornerShape(12.dp),
-                    colors = TextFieldDefaults.textFieldColors(
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        errorIndicatorColor = Color.Transparent
-                    )
-                )
+//                TextField(
+//                    modifier = Modifier.
+//                    width(300.dp)
+//                        .clip(CircleShape)
+//                        .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+//                    label = { Text("Gender") },
+//                    value = height,
+//                    onValueChange = { height = it },
+//                    singleLine = true,
+//                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+//                    trailingIcon = {
+//                        Icon(
+//                            Icons.Rounded.Transgender,
+//                            contentDescription = "height"
+//                        )
+//                    },
+//                    shape = RoundedCornerShape(12.dp),
+//                    colors = TextFieldDefaults.textFieldColors(
+//                        focusedIndicatorColor = Color.Transparent,
+//                        unfocusedIndicatorColor = Color.Transparent,
+//                        disabledIndicatorColor = Color.Transparent,
+//                        errorIndicatorColor = Color.Transparent
+//                    )
+//                )
             }
 
             Column(

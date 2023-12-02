@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.model
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.provider.MediaStore
 import androidx.compose.foundation.Image
@@ -57,7 +58,8 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
     @Composable
     fun profilescreen(
     screenViewModel: ScreenViewModel,
-    navController: NavController, ) {
+    navController: NavController
+) {
 
     val authenticationViewModel = viewModel<ScreenViewModel>()
 
@@ -107,7 +109,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                             "Profile",
                             color = Color.Black,
                             fontSize = 38.sp,
-                            fontWeight = FontWeight.Bold,
+                            fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
                         Spacer(modifier = Modifier.width(5.dp))
@@ -129,25 +131,6 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
             }
         }
     ) { innerPadding ->
-        Box(
-            modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
-        ) {
-            // Add a button to pick an image from the gallery
-            IconButton(
-                onClick = { pickImageFromGallery(navController) },
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(top = 20.dp)
-            ) {
-                // Display the profile picture
-                Image(
-                    painter = painterResource(R.drawable.interabs), // You can set a default image
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(120.dp)
-                        .clip(CircleShape)
-                )
-            }
 
             Box(
                 modifier = Modifier.fillMaxSize().padding(innerPadding).background(Color.White),
@@ -769,28 +752,8 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
             }
         }
     }
-}
 
-// Function to pick an image from the gallery
-private fun pickImageFromGallery(navController: NavController) {
-    val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-    // You may want to use startActivityForResult if you need to handle the result
-    navController.currentBackStackEntry?.let {
-        it.lifecycle.addObserver(object : DefaultLifecycleObserver {
-            override fun onDestroy(owner: LifecycleOwner) {
-                it.lifecycle.removeObserver(this)
-                // Handle the result here if needed
-            }
-        })
-    }
-    navController.navigate(Screen.ImagePickerScreen.route) {
-        launchSingleTop = true
-        popUpTo(navController.graph.startDestinationId) {
-            saveState = true
-        }
-        // Include the ImagePickerScreen in your navigation graph
-        // to handle the image selection logic
-    }
-}
+
+
 
 
