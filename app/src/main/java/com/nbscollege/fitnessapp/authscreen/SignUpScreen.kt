@@ -129,7 +129,15 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
 
                 coroutineScope.launch {
                     var userUiState = viewModel.userUiState
-                    userUiState.userDetails = UserDetails(username = username, password = password)
+
+                    userUiState.userDetails = UserDetails(
+                        username = username,
+                        password = password,
+                        height = height.toFloatOrNull()!!,
+                        weight = weight.toFloatOrNull()!!,
+                        age = age.toInt()
+                    )
+
                     viewModel.saveUser()
                     Log.i("userUiState", userUiState.userDetails.toString())
 
