@@ -25,7 +25,6 @@ import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @Composable
 fun SettingCardWithLogoutDialog(general: General, navController: NavController, isDialogVisible: Boolean, onDialogDismiss: (Boolean) -> Unit) {
-    // Existing code...
 
     Spacer(modifier = Modifier.height(5.dp))
     Card(

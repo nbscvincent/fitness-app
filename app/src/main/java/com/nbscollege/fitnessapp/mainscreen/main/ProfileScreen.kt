@@ -170,6 +170,74 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
                         }
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
+                            "Age",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Card (
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 7.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                Text(
+                                    "${profile.age}",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            "Weight",
+                            color = Color.Black,
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Card (
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color.White)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 7.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(45.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                Text(
+                                    "${profile.weight}",
+                                    color = Color.Black,
+                                    fontSize = 20.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    modifier = Modifier.padding(start = 20.dp, top=10.dp)
+                                )
+                            }
+                        }
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
                             "Height",
                             color = Color.Black,
                             fontSize = 20.sp,

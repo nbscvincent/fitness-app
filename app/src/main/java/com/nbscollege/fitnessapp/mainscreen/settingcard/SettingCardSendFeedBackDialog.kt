@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.SendFeedbackDialog
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @Composable
 fun SettingCardWithSendFeedbackDialog(
