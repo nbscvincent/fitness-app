@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val screenViewModel: ScreenViewModel by viewModels()
-        val registrationViewModel: RegistrationViewModel by viewModels()
+        val viewModel: RegistrationViewModel by viewModels()
 
         screenViewModel.runSplashScreen()
 
@@ -25,9 +25,11 @@ class MainActivity : ComponentActivity() {
                 screenViewModel.splashLoaded.value
             }
         }
+
+
         setContent {
 
-            SplashNav(screenViewModel, registrationViewModel)
+            SplashNav(screenViewModel, viewModel)
 
 
         }

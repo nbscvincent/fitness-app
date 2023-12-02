@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 
-class ScreenViewModel(userRepository: Any?) : ViewModel() {
+class ScreenViewModel() : ViewModel() {
     private val _splashLoaded = MutableStateFlow(false)
     private val _isLoggedin = MutableStateFlow(false)
     val splashLoaded = _splashLoaded.asStateFlow()
@@ -42,7 +42,6 @@ class ScreenViewModel(userRepository: Any?) : ViewModel() {
             val user = registeredUsers.find { it.username == username && it.password == password }
             _isLoggedin.value = true
             _currentUser.value = user
-
         }
     }
 

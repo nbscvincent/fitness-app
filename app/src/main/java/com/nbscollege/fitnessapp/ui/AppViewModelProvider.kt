@@ -9,17 +9,19 @@ import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 object AppViewModelProvider {
+
     val Factory = viewModelFactory {
         // Initializer for RegistrationViewModel
         initializer {
-            RegistrationViewModel(
-                FitnessApp().container.userRepository
-            )
+            RegistrationViewModel(FitnessApp().container.userRepository)
         }
         // Initializer for RegistrationViewModel
         initializer {
             RegistrationViewModel(FitnessApp().container.userRepository)
         }
+
+
+
     }
 }
 /**

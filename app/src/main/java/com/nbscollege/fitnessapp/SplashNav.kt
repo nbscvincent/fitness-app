@@ -29,7 +29,7 @@ import kotlinx.coroutines.delay
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SplashNav(screenViewModel: ScreenViewModel, registrationViewModel: RegistrationViewModel) {
+fun SplashNav(screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel) {
     val navController: NavHostController = rememberNavController()
 
     var showToast by remember { mutableStateOf(false) }
@@ -68,7 +68,7 @@ fun SplashNav(screenViewModel: ScreenViewModel, registrationViewModel: Registrat
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-                LoginScreen(navController, screenViewModel, registrationViewModel)
+                LoginScreen(navController, screenViewModel, viewModel)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
@@ -89,7 +89,7 @@ fun SplashNav(screenViewModel: ScreenViewModel, registrationViewModel: Registrat
                     }
                 }
 
-                    mainNavigation(navController, screenViewModel, registrationViewModel)
+                    mainNavigation(navController, screenViewModel, viewModel)
             }
 
         }

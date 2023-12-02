@@ -4,10 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
 
-class RegistrationViewModel(private val usersRepository: UserRepository) : ViewModel() {
+class RegistrationViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     /**
      * Holds current user ui state
@@ -27,7 +28,7 @@ class RegistrationViewModel(private val usersRepository: UserRepository) : ViewM
      */
     suspend fun saveUser() {
         if (validateInput()) {
-            usersRepository.insertUser(userUiState.userDetails.toUser())
+            userRepository.insertUser(userUiState.userDetails.toUser())
         }
     }
     private fun validateInput(uiState: UserDetails = userUiState.userDetails): Boolean {
