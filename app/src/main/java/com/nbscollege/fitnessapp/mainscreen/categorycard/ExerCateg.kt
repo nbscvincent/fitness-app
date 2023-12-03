@@ -123,7 +123,7 @@ fun ExerCateg(
 
                 Button(
                     onClick = {
-                        showDialog = true
+//                        showDialog = true
 //kasama ng current dialog
                                showDialog = true
                             timerRunning = false
@@ -176,7 +176,7 @@ fun ExerCateg(
                 )
 // kasama ng current dialog
                     if (showDialog) {
-                        AlertDialogExample(
+                        AlertDialogtimer(
                             onDismissRequest = {
                                 showDialog = false
                                 timerStarted = false
@@ -255,7 +255,7 @@ fun ExerCateg(
 //current dialog
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AlertDialogExample(
+fun AlertDialogtimer(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     onStart: () -> Unit,
@@ -365,6 +365,10 @@ fun AlertDialogExample(
 
             )
     }
+
+
+
+
 
 
 //
