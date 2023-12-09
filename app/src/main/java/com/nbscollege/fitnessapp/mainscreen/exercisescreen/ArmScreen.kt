@@ -39,6 +39,7 @@ import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
+import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseListt
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -131,7 +132,7 @@ fun ArmScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                         )
                     }
 
-                    items(ExerciseList) { ExerList ->
+                    items(ExerciseListt) { ExerList ->
                         ExerCateg(exer = ExerList, navController)
                     }
 
