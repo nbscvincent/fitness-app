@@ -70,7 +70,7 @@ fun LegScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
             )
         }
                 Image(
-                painter = painterResource(id = R.drawable.abs),
+                painter = painterResource(id = R.drawable.leg),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier

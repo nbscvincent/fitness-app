@@ -9,16 +9,17 @@ data class Category(
     val subTitle: String,
     val backgroundImageResourceId: Int,
     val route: String,
-    val exerList: List<ExerList>
+    val exerList: List<ExerList>?,
+    val exerListt: List<eme>?
 )
 
 
 val categoryExercise = listOf(
-    Category("ABS WORKOUT", "7", "Exercise", R.drawable.abs, CategoryRoute.ABS.name, ExerciseList),
-    Category("CHEST WORKOUT", "11", "Exercise", R.drawable.interchest, CategoryRoute.CHEST.name, ExerciseList ),
-    Category("ARM WORKOUT", "19", "Exercise", R.drawable.arm, CategoryRoute.ARM.name, ExerciseList),
-    Category("LEG WORKOUT", "23", "Exercise", R.drawable.leg, CategoryRoute.LEG.name, ExerciseList),
-    Category("SHOULDER & BACK WORKOUT", "17", "Exercise", R.drawable.shoulderback, CategoryRoute.SHOULDER.name, ExerciseList),
+    Category("ABS WORKOUT", "7", "Exercise", R.drawable.abs, CategoryRoute.ABS.name, ExerciseList,null),
+    Category("CHEST WORKOUT", "11", "Exercise", R.drawable.interchest, CategoryRoute.CHEST.name, ExerciseList ,null),
+    Category("ARM WORKOUT", "19", "Exercise", R.drawable.arm, CategoryRoute.ARM.name, ExerciseList,null),
+    Category("LEG WORKOUT", "23", "Exercise", R.drawable.leg, CategoryRoute.LEG.name, null , emee),
+    Category("SHOULDER & BACK WORKOUT", "17", "Exercise", R.drawable.shoulderback, CategoryRoute.SHOULDER.name,null, emee),
 )
 
 
