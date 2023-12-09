@@ -28,6 +28,6 @@ interface UserRepository {
      * Update user in the data source
      */
     suspend fun updateUser(user: User)
-    suspend fun loginUser(username: String, password: String): User?
+
 }
 
