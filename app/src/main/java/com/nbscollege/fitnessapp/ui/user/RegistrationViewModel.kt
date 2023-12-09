@@ -4,7 +4,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
 

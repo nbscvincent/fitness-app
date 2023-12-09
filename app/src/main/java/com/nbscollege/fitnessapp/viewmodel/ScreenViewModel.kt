@@ -31,8 +31,10 @@ class ScreenViewModel() : ViewModel() {
     fun runSplashScreen() {
         viewModelScope.launch {
             // show splash screen for 2 seconds
-            delay(1500)
-            _splashLoaded.value = true
+            //delay(1500)
+
+            //_splashLoaded.value = true
+
         }
     }
 
