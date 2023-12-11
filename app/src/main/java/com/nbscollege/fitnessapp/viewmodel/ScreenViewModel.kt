@@ -1,15 +1,9 @@
 package com.nbscollege.fitnessapp.viewmodel
 
-import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.example.model.LoginScreen
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
-import com.nbscollege.fitnessapp.model.homescreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,9 +26,12 @@ class ScreenViewModel() : ViewModel() {
         viewModelScope.launch {
             // show splash screen for 2 seconds
             delay(1500)
+
             _splashLoaded.value = true
+
         }
     }
+
 
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
@@ -43,6 +40,7 @@ class ScreenViewModel() : ViewModel() {
             _isLoggedin.value = true
             _currentUser.value = user
         }
+
     }
 
 //    private val _loggedInUsername = mutableStateOf<String?>(null)

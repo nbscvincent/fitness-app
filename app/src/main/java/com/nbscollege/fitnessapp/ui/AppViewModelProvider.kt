@@ -6,7 +6,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.nbscollege.fitnessapp.FitnessApp
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
-import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 object AppViewModelProvider {
 
@@ -19,6 +18,8 @@ object AppViewModelProvider {
         initializer {
             RegistrationViewModel(FitnessApp().container.userRepository)
         }
+
+
 
 
 

@@ -1,33 +1,33 @@
 package com.nbscollege.fitnessapp.database.repository
 
 import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
 import kotlinx.coroutines.flow.Flow
 
-interface UserRepository {
+interface CategoryRepository {
     /**
      * Retrieve all the users from the the given data source.
      */
-    fun getAllUsersStream(): Flow<List<User>>
+    fun getAllCategoryStream(): Flow<List<Category>>
 
     /**
      * Retrieve an user from the given data source that matches with the [id].
      */
-    fun getUserStream(id: Int): Flow<User?>
+    fun getCategoryStream(id: Int): Flow<Category?>
 
     /**
      * Insert user in the data source
      */
-    suspend fun insertUser(user: User)
+    suspend fun insertCategory(category: Category)
 
     /**
      * Delete user from the data source
      */
-    suspend fun deleteUser(user: User)
+    suspend fun deleteCategory(category: Category)
 
     /**
      * Update user in the data source
      */
-    suspend fun updateUser(user: User)
-
+    suspend fun updateCategory(category: Category)
 }
 

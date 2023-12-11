@@ -81,7 +81,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
     val coroutineScope = rememberCoroutineScope()
 
 
-    var id by remember { mutableStateOf("") }
+    var userId by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
