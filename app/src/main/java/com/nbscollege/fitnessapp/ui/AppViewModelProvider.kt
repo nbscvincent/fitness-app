@@ -19,11 +19,6 @@ object AppViewModelProvider {
             RegistrationViewModel(FitnessApp().container.userRepository)
         }
 
-
-
-
-
-
     }
 }
 /**

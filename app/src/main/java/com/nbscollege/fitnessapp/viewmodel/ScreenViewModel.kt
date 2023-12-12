@@ -32,7 +32,6 @@ class ScreenViewModel() : ViewModel() {
         }
     }
 
-
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
             // set status to loggedIn after 2 seconds
