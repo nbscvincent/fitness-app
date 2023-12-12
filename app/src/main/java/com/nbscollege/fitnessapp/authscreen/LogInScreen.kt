@@ -58,6 +58,7 @@ import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -66,7 +67,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
@@ -206,6 +207,8 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                     .show()
                                 // Update the state to reflect the login success
                                 screenViewModel.loginUser(username, password)
+
+                                val login = loginViewModel.loginUser(username, password)
 
 
                                 navController.navigate(Routes.MAIN.name)

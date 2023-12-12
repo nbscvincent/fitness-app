@@ -29,5 +29,8 @@ interface UserRepository {
      */
     suspend fun updateUser(user: User)
 
+    suspend fun loginUser(user: User)
+
+
 }
 

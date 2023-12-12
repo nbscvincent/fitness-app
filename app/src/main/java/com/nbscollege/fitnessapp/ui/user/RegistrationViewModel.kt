@@ -3,9 +3,14 @@ package com.nbscollege.fitnessapp.ui.user
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegistrationViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -30,11 +35,14 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
             userRepository.insertUser(userUiState.userDetails.toUser())
         }
     }
+
     private fun validateInput(uiState: UserDetails = userUiState.userDetails): Boolean {
         return with(uiState) {
             username.isNotBlank() && password.isNotBlank()
         }
     }
+
+
 }
 /**
  * Represents Ui State for an User.
