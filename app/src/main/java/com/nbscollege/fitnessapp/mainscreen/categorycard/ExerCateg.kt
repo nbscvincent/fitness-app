@@ -42,6 +42,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.dialog.AlertDialogExample
+import com.nbscollege.fitnessapp.dialog.alertdialog
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerList
 import kotlinx.coroutines.NonCancellable.start
 
@@ -54,9 +56,9 @@ fun ExerCateg(
 //    var showDialog by remember { mutableStateOf(false) }
 
 //kasama ng current dialog
-//    var showDialog by remember { mutableStateOf(false) }
-//    var timerStarted by remember { mutableStateOf(false) }
-//    var timerRunning by remember { mutableStateOf(false) }
+    var showDialog by remember { mutableStateOf(false) }
+    var timerStarted by remember { mutableStateOf(false) }
+    var timerRunning by remember { mutableStateOf(false) }
 
 //    Scaffold(
 //        topBar = {
@@ -126,8 +128,8 @@ fun ExerCateg(
 
 //                        showDialog = true
 ////kasama ng current dialog
-//                               showDialog = true
-//                            timerRunning = false
+                        showDialog = true
+                        timerRunning = false
                     },
                     shape = RoundedCornerShape(1.dp),
                     modifier = Modifier
@@ -175,31 +177,32 @@ fun ExerCateg(
             }
         }
     )
-}
+
 // kasama ng current dialog
-//                    if (showDialog) {
-//                        AlertDialogExample(
-//                            onDismissRequest = {
-//                                showDialog = false
-//                                timerStarted = false
-//                            },
-//                            onConfirmation = {
-//                                showDialog = false
-//                                timerStarted = false
-//                            },
-//                            onStart = {
-//                                timerStarted = true
-//                            },
-//                            onPause = {
-//                                timerStarted = false
-//                            },
-//                            dialogTitle = "Exercise Timer",
-//                            icon = Icons.Default.Timer,
-//                            initialTime = 10L, // Set initial time to 1 minute (60 seconds)
-//                            timerStarted = timerStarted
-//                        )
-//                    }
-//            }
+    if (showDialog) {
+        alertdialog(
+            onDismissRequest = {
+                showDialog = false
+                timerStarted = false
+            },
+            onConfirmation = {
+                showDialog = false
+                timerStarted = false
+            },
+            onStart = {
+                timerStarted = true
+            },
+            onPause = {
+                timerStarted = false
+            },
+            dialogTitle = "Exercise Timer",
+            icon = Icons.Default.Timer,
+            initialTime = 10L, // Set initial time to 1 minute (60 seconds)
+            timerStarted = timerStarted
+        )
+    }
+}
+    //            }
 //        }
 //    )
 //====================================================================
@@ -257,118 +260,119 @@ fun ExerCateg(
 //    }
 //====================================================================
 //current dialog
-//@OptIn(ExperimentalMaterial3Api::class)
-//@Composable
-//fun AlertDialogExample(
-//    onDismissRequest: () -> Unit,
-//    onConfirmation: () -> Unit,
-//    onStart: () -> Unit,
-//    onPause: () -> Unit,
-//    dialogTitle: String,
-//    icon: ImageVector,
-//    initialTime: Long,
-//    timerStarted: Boolean
-//) {
-//    var remainingTime by remember { mutableStateOf(initialTime) }
-//    var originalRemainingTime by remember { mutableStateOf(remainingTime) }
-//    var timerRunning by remember { mutableStateOf(false) }
-//    var timerPaused by remember { mutableStateOf(false) }
+//    @OptIn(ExperimentalMaterial3Api::class)
+//    @Composable
+//    fun AlertDialogExample(
+//        onDismissRequest: () -> Unit,
+//        onConfirmation: () -> Unit,
+//        onStart: () -> Unit,
+//        onPause: () -> Unit,
+//        dialogTitle: String,
+//        icon: ImageVector,
+//        initialTime: Long,
+//        timerStarted: Boolean
+//    ) {
+//        var remainingTime by remember { mutableStateOf(initialTime) }
+//        var originalRemainingTime by remember { mutableStateOf(remainingTime) }
+//        var timerRunning by remember { mutableStateOf(false) }
+//        var timerPaused by remember { mutableStateOf(false) }
 //
-//    val timer = remember {
-//        object : CountDownTimer(remainingTime * 1000, 1000) {
-//            override fun onTick(millisUntilFinished: Long) {
-//                remainingTime = millisUntilFinished / 1000
+//        val timer = remember {
+//            object : CountDownTimer(remainingTime * 1000, 1000) {
+//                override fun onTick(millisUntilFinished: Long) {
+//                    remainingTime = millisUntilFinished / 1000
+//                }
+//
+//                override fun onFinish() {
+//                    timerRunning = false
+//                    onDismissRequest()
+//                }
+//            }
+//        }
+//
+//        DisposableEffect(Unit) {
+//            if (timerStarted && !timerRunning) {
+//                timer.start()
+//                timerRunning = true
 //            }
 //
-//            override fun onFinish() {
-//                timerRunning = false
-//                onDismissRequest()
+//            onDispose {
+//                timer.cancel()
 //            }
 //        }
-//    }
 //
-//    DisposableEffect(Unit) {
-//        if (timerStarted && !timerRunning) {
-//            timer.start()
-//            timerRunning = true
-//        }
-//
-//        onDispose {
-//            timer.cancel()
-//        }
-//    }
-//
-//    AlertDialog(
-//        icon = {
-//            Icon(icon, contentDescription = "Example Icon")
-//        },
-//        title = {
-//            Text(text = dialogTitle)
-//        },
-//        text = {
-//            Column {
-//                Text("Time remaining: $remainingTime seconds")
+//        AlertDialog(
+//            icon = {
+//                Icon(icon, contentDescription = "Example Icon")
+//            },
+//            title = {
+//                Text(text = dialogTitle)
+//            },
+//            text = {
+//                Column {
+//                    Text("Time remaining: $remainingTime seconds")
 //
 ////                if (!timerRunning) {
 ////                    Text("Time's up!")
 ////                }
-//            }
-//        },
+//                }
+//            },
 //
-//        confirmButton = {
-//            Row(
-//                horizontalArrangement = Arrangement.SpaceBetween,
-//                modifier = Modifier.fillMaxWidth()
-//            ) {
-//                TextButton(
-//                    onClick = {
-//                        if (!timerRunning) {
-//                            timerRunning = true
-//                            onStart()
-//                            timer.start()
+//            confirmButton = {
+//                Row(
+//                    horizontalArrangement = Arrangement.SpaceBetween,
+//                    modifier = Modifier.fillMaxWidth()
+//                ) {
+//                    TextButton(
+//                        onClick = {
+//                            if (!timerRunning) {
+//                                timerRunning = true
+//                                onStart()
+//                                timer.start()
+//                            }
 //                        }
+//                    ) {
+//                        Text("Start")
 //                    }
-//                ) {
-//                    Text("Start")
-//                }
-//                TextButton(
-//                    onClick = {
-//                    if (timerRunning && !timerPaused) {
-//                       timer.cancel()
-//                       timerRunning = false
-//                       timerPaused = true
-//                        originalRemainingTime = remainingTime
-//                       onPause()
-//                }   else if (timerPaused) {
-//                        timer.start()
+//                    TextButton(
+//                        onClick = {
+//                            if (timerRunning && !timerPaused) {
+//                                timer.cancel()
+//                                timerRunning = false
+//                                timerPaused = true
+//                                originalRemainingTime = remainingTime
+//                                onPause()
+//                            } else if (timerPaused) {
+//                                timer.start()
 ////                        originalRemainingTime.run {start()}
-//                        timerRunning = true
+//                                timerRunning = true
 ////                        remainingTime.run {start()}
-//                        timerPaused = false
-//                        onStart()
+//                                timerPaused = false
+//                                onStart()
+//                            }
+//                        }
+//                    ) {
+//                        Text(if (timerPaused) "Resume" else "Pause")
+//                    }
+//                    TextButton(
+//                        onClick = {
+//                            timer.cancel()
+//                            onDismissRequest()
+//                        }
+//                    ) {
+//                        Text("Dismiss")
 //                    }
 //                }
-//                ) {
-//                    Text(if (timerPaused) "Resume" else "Pause")
-//                }
-//                TextButton(
-//                    onClick = {
-//                        timer.cancel()
-//                        onDismissRequest()
-//                    }
-//                ) {
-//                    Text("Dismiss")
-//            }
-//                }
-//        },
-//        onDismissRequest = {
-//            timer.cancel()
-//            onDismissRequest()
-//        },
-//        dismissButton = {         }
+//            },
+//            onDismissRequest = {
+//                timer.cancel()
+//                onDismissRequest()
+//            },
+//            dismissButton = { }
 //
-//            )
+//        )
 //    }
+//}
 //====================================================================
 
 //
