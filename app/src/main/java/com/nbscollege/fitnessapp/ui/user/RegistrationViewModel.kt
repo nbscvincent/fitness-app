@@ -3,14 +3,9 @@ package com.nbscollege.fitnessapp.ui.user
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class RegistrationViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -38,12 +33,19 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
 
     private fun validateInput(uiState: UserDetails = userUiState.userDetails): Boolean {
         return with(uiState) {
-            username.isNotBlank() && password.isNotBlank()
+                     username.length >= 8 &&
+                    password.length >= 8 &&
+                    password.any { it.isDigit() } &&
+                    weight.isNaN()&&
+                    height.isNaN() &&
+                    age >= 0
         }
     }
 
-
 }
+
+
+
 /**
  * Represents Ui State for an User.
  */
@@ -52,6 +54,7 @@ data class UserUiState(
     val isEntryValid: Boolean = false
 )
 data class UserDetails(
+    val id: Int = 0,
     val username: String = "",
     val password: String = "",
     val weight: Float = 0.00f,
@@ -64,6 +67,7 @@ data class UserDetails(
  * [UserUiState] is not a valid [Int], then the quantity will be set to 0
  */
 fun UserDetails.toUser(): User = User(
+    userId = id,
     username = username,
     password = password,
     weight = weight,
@@ -81,6 +85,7 @@ fun User.toUserUiState(isEntryValid: Boolean = false): UserUiState = UserUiState
  * Extension function to convert [Item] to [ItemDetails]
  */
 fun User.toUserDetails(): UserDetails = UserDetails(
+    id = userId,
     username = username,
     password = password,
     weight = weight,

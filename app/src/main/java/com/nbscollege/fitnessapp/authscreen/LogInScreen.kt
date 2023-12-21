@@ -1,8 +1,7 @@
 package com.example.example.model
 
+//import com.nbscollege.fitnessapp.authscreen.model.account
 import Auth
-import android.app.Application
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -54,19 +53,18 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
-//import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
-import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
@@ -198,58 +196,79 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
 //                            passwordError = true
 //                            return@Button
 //                        }
+//
+//                        if (password.isNotEmpty() && username.isNotEmpty()) {
+//                            if (registeredUsers.any { it.username == username && it.password == password }) {
+//                                // Authentication successful
+//                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
+//                                    .show()
+//                                // Update the state to reflect the login success
+//                                screenViewModel.loginUser(username, password)
+//                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
+//                                    .show()
+//                                // Update the state to reflect the login success
+//                                screenViewModel.loginUser(username, password)
+//
+//                                coroutineScope.launch {
+//                                    val loginSuccess = loginViewModel.loginUser(username, password)
+//                                    if (loginSuccess) {
+//
+//                                        navController.navigate(Routes.MAIN.name)
+//                                    }
+//                                }
+//
+//
+//
+//
+//                            } else {
+//                                // Authentication failed
+//                                Toast.makeText(
+//                                    context,
+//                                    "Incorrect username or password.",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                        }
+//                        else {
+//
+//                            if(password.isEmpty() && username.isEmpty()){
+//                                userError = username.isEmpty()
+//                                passwordError = password.isEmpty()
+//
+//                                Toast.makeText(
+//                                    context,
+//                                    "Please input your username and password",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                            else if(username.isEmpty()) {
+//                                userError = username.isEmpty()
+//                                Toast.makeText(
+//                                    context,
+//                                    "Please input username",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                            else if (password.isEmpty()) {
+//                                passwordError = password.isEmpty()
+//                                Toast.makeText(
+//                                    context,
+//                                    "Please input password",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                        }
 
-                        if (password.isNotEmpty() && username.isNotEmpty()) {
-                            if (registeredUsers.any { it.username == username && it.password == password }) {
-                                // Authentication successful
-                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
-                                    .show()
-                                // Update the state to reflect the login success
-                                screenViewModel.loginUser(username, password)
+                        coroutineScope.launch {
+                                    val loginSuccess = loginViewModel.loginUser(username, password)
+                                    if (loginSuccess) {
+
+                                        navController.navigate(Routes.LOGIN.name)
+                                    }
+                                }
 
 
 
-
-                                navController.navigate(Routes.MAIN.name)
-
-                            } else {
-                                // Authentication failed
-                                Toast.makeText(
-                                    context,
-                                    "Incorrect username or password.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                        else {
-
-                            if(password.isEmpty() && username.isEmpty()){
-                                userError = username.isEmpty()
-                                passwordError = password.isEmpty()
-
-                                Toast.makeText(
-                                    context,
-                                    "Please input your username and password",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            else if(username.isEmpty()) {
-                                userError = username.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please input username",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                            else if (password.isEmpty()) {
-                                passwordError = password.isEmpty()
-                                Toast.makeText(
-                                    context,
-                                    "Please input password",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
 
 
                     },

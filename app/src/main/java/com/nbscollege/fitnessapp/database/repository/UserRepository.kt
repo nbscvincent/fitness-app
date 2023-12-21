@@ -15,6 +15,22 @@ interface UserRepository {
     fun getUserStream(id: Int): Flow<User?>
 
     /**
+     * Retrieve an user from the given data source that matches with the [username].
+     */
+
+    suspend fun getUserByUsername(username: String): User?
+
+    /**
+     * Retrieve a user from the given data source that matches with the [email].
+     */
+
+    /**
+     * Retrieve a user from the given data source that matches with the [userId].
+     */
+    suspend fun getUserById(userId: Int): User?
+
+
+    /**
      * Insert user in the data source
      */
     suspend fun insertUser(user: User)
@@ -28,7 +44,5 @@ interface UserRepository {
      * Update user in the data source
      */
     suspend fun updateUser(user: User)
-
-
 }
 

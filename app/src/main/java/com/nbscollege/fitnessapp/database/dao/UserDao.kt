@@ -12,15 +12,25 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface UserDao {
-    @Query("SELECT * from user ORDER BY username ASC")
-    fun getAllUser(): Flow<List<User>>
-    @Query("SELECT * from user WHERE username = username")
-    fun getUser(): Flow<User>
+    @Query("SELECT * from User ORDER BY userId ASC")
+    fun getAllUsers(): Flow<List<User>>
 
+    @Query("SELECT * from User WHERE userId = :id")
+    fun getUser(id: Int): Flow<User>
+
+    @Query("SELECT * FROM User WHERE username = :username")
+    suspend fun getUserByUsername(username: String): User?
+
+
+
+    // Specify the conflict strategy as REPLACE, when the user tries to add an
+    // existing User into the database Room REPLACES the conflict.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
+
     @Update
     suspend fun update(user: User)
+
     @Delete
     suspend fun delete(user: User)
 

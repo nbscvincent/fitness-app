@@ -3,9 +3,13 @@ package com.nbscollege.fitnessapp.authscreen.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "current_user")
+
+@Entity(tableName = "currentUser")
 data class CurrentUser(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey val userId: Int,
     val username: String,
-    val password: String
+    var password: String,
+    val weight: Float,
+    val height: Float,
+    val age: Int
 )

@@ -1,17 +1,14 @@
 package com.nbscollege.fitnessapp
 
 import Auth
-
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,9 +16,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.example.model.LoginScreen
 import com.example.example.model.SignUpScreen
 import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
+import com.nbscollege.fitnessapp.authscreen.model.LoginSplashScreen
+import com.nbscollege.fitnessapp.authscreen.model.LoginSplashViewModel
 import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.navigation.Routes
-import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -50,6 +49,8 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
         }
     }
 
+    val loginSplashViewModel: LoginSplashViewModel = viewModel(factory = AppViewModelProvider.Factory)
+
 
     Scaffold {
         NavHost(navController = navController, startDestination = Auth.Splash.name) {
@@ -69,6 +70,9 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                     }
                 }
                 LoginScreen(navController, screenViewModel)
+            }
+            composable(route = Routes.LOGIN.name) {
+                LoginSplashScreen(navController, loginSplashViewModel)
             }
             composable(route = Auth.SignUpScreen.name) {
                 SignUpScreen(navController)
