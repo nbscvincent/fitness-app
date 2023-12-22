@@ -5,15 +5,16 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
 data class User(
-    @PrimaryKey val userId: Int,
+    @PrimaryKey(autoGenerate = true)
+    val userId: Int,
     val username: String,
     var password: String,
     val weight: Float,
     val height: Float,
     val age: Int
-) {
+)
 
-}
+
 
 val registeredUsers = mutableListOf<User>(
 
