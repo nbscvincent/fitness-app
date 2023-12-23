@@ -1,7 +1,8 @@
 package com.example.example.model
 
+//import com.nbscollege.fitnessapp.authscreen.model.account
 import Auth
-import android.app.Application
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -55,18 +56,20 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.authscreen.model.registeredUsers
-//import com.nbscollege.fitnessapp.authscreen.model.account
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
-import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
+import com.nbscollege.fitnessapp.ui.user.LoginState
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: RegistrationViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
+fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var showPassword by remember {
@@ -208,7 +211,39 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                 screenViewModel.loginUser(username, password)
 
 
-                                navController.navigate(Routes.MAIN.name)
+//                                coroutineScope.launch {
+//                                    viewModel.login(username, password)
+//                                    navController.navigate(Routes.MAIN.name)
+//                                }
+
+                                coroutineScope.launch {
+                                    // Assuming viewModel is an instance of LoginViewModel
+                                    viewModel.login(username, password)
+
+                                    // Observe the loginState to get the updated state after the login function
+                                    viewModel.loginState.collect { loginState ->
+                                        when (loginState) {
+                                            is LoginState.Success -> {
+                                                // Handle successful login
+                                                val user = loginState.user
+                                                Log.i("LoginState", "Success: ${user.username}")
+                                                navController.navigate(Routes.MAIN.name)
+                                            }
+                                            is LoginState.Error -> {
+                                                // Handle login error
+                                                val error = loginState.error
+                                                Log.i("LoginState", "Error: $error")
+                                                // Handle the error, for example, display an error message to the user
+                                            }
+                                            else -> {
+                                                // Handle other states if needed
+                                            }
+                                        }
+                                    }
+                                }
+
+
+//                                navController.navigate(Routes.MAIN.name)
 
                             } else {
                                 // Authentication failed
