@@ -14,13 +14,19 @@ import kotlinx.coroutines.flow.Flow
 interface UserDao {
     @Query("SELECT * from user ORDER BY username ASC")
     fun getAllUser(): Flow<List<User>>
-    @Query("SELECT * from user WHERE username = username")
-    fun getUser(): Flow<User>
+
+    @Query("SELECT * from user WHERE username = :username") // Fix the parameter here
+    fun getUser(username: String): Flow<User?> // Fix the parameter here
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
+
+    @Query("SELECT * FROM user WHERE username = :username")
+    fun getUserByUsername(username: String): Flow<User?>
+
     @Update
     suspend fun update(user: User)
+
     @Delete
     suspend fun delete(user: User)
 }

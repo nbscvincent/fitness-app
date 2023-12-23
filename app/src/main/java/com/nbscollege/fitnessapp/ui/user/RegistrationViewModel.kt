@@ -44,6 +44,7 @@ data class UserUiState(
     val isEntryValid: Boolean = false
 )
 data class UserDetails(
+    val id: Int = 0,
     val username: String = "",
     val password: String = "",
     val weight: Float = 0.00f,
@@ -56,6 +57,7 @@ data class UserDetails(
  * [UserUiState] is not a valid [Int], then the quantity will be set to 0
  */
 fun UserDetails.toUser(): User = User(
+    id = id,
     username = username,
     password = password,
     weight = weight,
@@ -73,6 +75,7 @@ fun User.toUserUiState(isEntryValid: Boolean = false): UserUiState = UserUiState
  * Extension function to convert [Item] to [ItemDetails]
  */
 fun User.toUserDetails(): UserDetails = UserDetails(
+    id = id,
     username = username,
     password = password,
     weight = weight,
