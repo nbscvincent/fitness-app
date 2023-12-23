@@ -3,6 +3,7 @@ package com.example.example.model
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import Auth
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -89,6 +90,10 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
     }
 
     val coroutineScope = rememberCoroutineScope()
+
+
+
+    // Observe the showToast state and show a toast when it changes
 
 
 
@@ -200,29 +205,129 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
 //                            return@Button
 //                        }
 
-                        coroutineScope.launch {
-                            // Assuming viewModel is an instance of LoginViewModel
-                            viewModel.login(username, password)
+//                        coroutineScope.launch {
+//                            // Assuming viewModel is an instance of LoginViewModel
+//                            viewModel.login(username, password)
+//
+//                            // Observe the loginState to get the updated state after the login function
+//                            viewModel.loginState.collect { loginState ->
+//                                when (loginState) {
+//                                    is LoginState.Success -> {
+//                                        // Handle successful login
+//                                        val user = loginState.user
+//                                        Log.i("LoginState", "Success: ${user.username}")
+//
+//                                        navController.navigate(Routes.MAIN.name)
+//                                    }
+//                                    is LoginState.Error -> {
+//                                        // Handle login error
+//
+//                                        val error = loginState.error
+//                                        Log.i("LoginState", "Error: $error")
+//                                        // Handle the error, for example, display an error message to the user
+//                                    }
+//                                    else -> {
+//                                        // Handle other states if needed
+//                                    }
+//                                }
+//                            }
+//                        }
+                if (password.isNotEmpty() && username.isNotEmpty()) {
 
-                            // Observe the loginState to get the updated state after the login function
-                            viewModel.loginState.collect { loginState ->
-                                when (loginState) {
-                                    is LoginState.Success -> {
-                                        // Handle successful login
-                                        val user = loginState.user
-                                        Log.i("LoginState", "Success: ${user.username}")
-                                        navController.navigate(Routes.MAIN.name)
-                                    }
-                                    is LoginState.Error -> {
-                                        // Handle login error
-                                        val error = loginState.error
-                                        Log.i("LoginState", "Error: $error")
-                                        // Handle the error, for example, display an error message to the user
-                                    }
-                                    else -> {
-                                        // Handle other states if needed
-                                    }
+                                // Authentication successful
+
+                                // Update the state to reflect the login success
+//                                screenViewModel.loginUser(username, password)
+
+
+
+                    coroutineScope.launch {
+                        // Assuming viewModel is an instance of LoginViewModel
+                        viewModel.login(username, password)
+
+                        // Observe the loginState to get the updated state after the login function
+                        viewModel.loginState.collect { loginState ->
+                            when (loginState) {
+                                is LoginState.Success -> {
+                                    // Handle successful login
+                                    val user = loginState.user
+                                    Log.i("LoginState", "Success: ${user.username}")
+                                    Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
+                                        .show()
+                                    navController.navigate(Routes.MAIN.name)
                                 }
+                                is LoginState.Error -> {
+                                    // Handle login error
+
+                                    val error = loginState.error
+                                    Log.i("LoginState", "Error: $error")
+                                    Toast.makeText(context,"Error: $error", Toast.LENGTH_SHORT).show()
+                                    // Handle the error, for example, display an error message to the user
+                                }
+                                else -> {
+//                                    if(password.isEmpty() && username.isEmpty()){
+//                                        userError = username.isEmpty()
+//                                        passwordError = password.isEmpty()
+//
+//                                        Toast.makeText(
+//                                            context,
+//                                            "Please input your username and password",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
+//                                    }
+//                                    else if(username.isEmpty()) {
+//                                        userError = username.isEmpty()
+//                                        Toast.makeText(
+//                                            context,
+//                                            "Please input username",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
+//                                    }
+//                                    else if (password.isEmpty()) {
+//                                        passwordError = password.isEmpty()
+//                                        Toast.makeText(
+//                                            context,
+//                                            "Please input password",
+//                                            Toast.LENGTH_SHORT
+//                                        ).show()
+//                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+//                                navController.navigate(Routes.MAIN.name)
+
+
+                        }
+                        else {
+
+                            if(password.isEmpty() && username.isEmpty()){
+                                userError = username.isEmpty()
+                                passwordError = password.isEmpty()
+
+                                Toast.makeText(
+                                    context,
+                                    "Please input your username and password",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            else if(username.isEmpty()) {
+                                userError = username.isEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please input username",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                            else if (password.isEmpty()) {
+                                passwordError = password.isEmpty()
+                                Toast.makeText(
+                                    context,
+                                    "Please input password",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
 
@@ -309,7 +414,8 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
 //                        }
 
 
-                    },
+                    }
+                    ,
                     modifier = Modifier
                         .absolutePadding(
                             left = 40.dp,
@@ -339,6 +445,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
+
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
@@ -352,6 +459,8 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                 }
             }
         }
+
+
 
     }
 }

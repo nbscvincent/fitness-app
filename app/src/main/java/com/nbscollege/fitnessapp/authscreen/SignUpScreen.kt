@@ -139,13 +139,14 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
 
                     viewModel.saveUser()
                     Log.i("userUiState", userUiState.userDetails.toString())
+                    navController.navigate(Auth.LogInScreen.name)
 
                 }
 
                 // Add the new user to the list of registered users
                 registeredUsers.add(User(id, username, password,
                     weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()))
-                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
+//                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
 
 
             },

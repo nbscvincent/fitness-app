@@ -23,6 +23,9 @@ object AppViewModelProvider {
         initializer {
             LoginViewModel(FitnessApp().container.userRepository)
         }
+        initializer {
+            LoginViewModel(FitnessApp().container.userRepository)
+        }
 
 
 
