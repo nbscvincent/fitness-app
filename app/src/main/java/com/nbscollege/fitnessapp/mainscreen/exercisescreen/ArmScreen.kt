@@ -16,7 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -26,7 +25,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -35,10 +33,9 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
+import com.nbscollege.fitnessapp.mainscreen.dataclass.ArmExerciseList
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -131,7 +128,7 @@ fun ArmScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                         )
                     }
 
-                    items(ExerciseList) { ExerList ->
+                    items(ArmExerciseList) { ExerList ->
                         ExerCateg(exer = ExerList, navController)
                     }
 
