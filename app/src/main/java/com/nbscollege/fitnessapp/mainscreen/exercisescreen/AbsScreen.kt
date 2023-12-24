@@ -118,7 +118,7 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                 ) {
 
                     item {
-                        Spacer(modifier = Modifier.height(0.dp))
+                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
                             text = "EXERCISES",
                             fontWeight = FontWeight.Bold,
