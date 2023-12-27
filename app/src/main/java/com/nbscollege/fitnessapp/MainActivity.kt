@@ -7,7 +7,9 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.model.ProfileScreen
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
+
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
@@ -35,8 +37,6 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             SplashNav(screenViewModel)
-
-
         }
 
     }
