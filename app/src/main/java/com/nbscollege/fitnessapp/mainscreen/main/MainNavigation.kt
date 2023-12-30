@@ -63,7 +63,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
             }
 
             composable(route = Screen.ProfileScreen.name) {
-                ProfileScreen(screenViewModel ,navController,)
+                ProfileScreen(screenViewModel, navController,)
                 showBottomBar = true
             }
 

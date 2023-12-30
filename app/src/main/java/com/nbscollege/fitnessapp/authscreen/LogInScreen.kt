@@ -196,42 +196,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
 
                 Button(
                     onClick = {
-//                        if (StringUtil().isEmptyString(username)) {
-//                            userError = true
-//                            return@Button
-//                        }
-//                        if (StringUtil().isEmptyString(password)) {
-//                            passwordError = true
-//                            return@Button
-//                        }
 
-//                        coroutineScope.launch {
-//                            // Assuming viewModel is an instance of LoginViewModel
-//                            viewModel.login(username, password)
-//
-//                            // Observe the loginState to get the updated state after the login function
-//                            viewModel.loginState.collect { loginState ->
-//                                when (loginState) {
-//                                    is LoginState.Success -> {
-//                                        // Handle successful login
-//                                        val user = loginState.user
-//                                        Log.i("LoginState", "Success: ${user.username}")
-//
-//                                        navController.navigate(Routes.MAIN.name)
-//                                    }
-//                                    is LoginState.Error -> {
-//                                        // Handle login error
-//
-//                                        val error = loginState.error
-//                                        Log.i("LoginState", "Error: $error")
-//                                        // Handle the error, for example, display an error message to the user
-//                                    }
-//                                    else -> {
-//                                        // Handle other states if needed
-//                                    }
-//                                }
-//                            }
-//                        }
                 if (password.isNotEmpty() && username.isNotEmpty()) {
 
                                 // Authentication successful
@@ -243,7 +208,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
 
                     coroutineScope.launch {
                         // Assuming viewModel is an instance of LoginViewModel
-                        viewModel.login(username, password)
+                        viewModel.login(username,password)
 
                         // Observe the loginState to get the updated state after the login function
                         viewModel.loginState.collect { loginState ->
@@ -265,39 +230,11 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                     // Handle the error, for example, display an error message to the user
                                 }
                                 else -> {
-//                                    if(password.isEmpty() && username.isEmpty()){
-//                                        userError = username.isEmpty()
-//                                        passwordError = password.isEmpty()
-//
-//                                        Toast.makeText(
-//                                            context,
-//                                            "Please input your username and password",
-//                                            Toast.LENGTH_SHORT
-//                                        ).show()
-//                                    }
-//                                    else if(username.isEmpty()) {
-//                                        userError = username.isEmpty()
-//                                        Toast.makeText(
-//                                            context,
-//                                            "Please input username",
-//                                            Toast.LENGTH_SHORT
-//                                        ).show()
-//                                    }
-//                                    else if (password.isEmpty()) {
-//                                        passwordError = password.isEmpty()
-//                                        Toast.makeText(
-//                                            context,
-//                                            "Please input password",
-//                                            Toast.LENGTH_SHORT
-//                                        ).show()
-//                                    }
+
                                 }
                             }
                         }
                     }
-
-
-//                                navController.navigate(Routes.MAIN.name)
 
 
                         }
@@ -331,87 +268,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                             }
                         }
 
-//                        if (password.isNotEmpty() && username.isNotEmpty()) {
-//                            if (registeredUsers.any { it.username == username && it.password == password }) {
-//                                // Authentication successful
-//                                Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
-//                                    .show()
-//                                // Update the state to reflect the login success
-//                                screenViewModel.loginUser(username, password)
-//
-//
-////                                coroutineScope.launch {
-////                                    viewModel.login(username, password)
-////                                    navController.navigate(Routes.MAIN.name)
-////                                }
-//
-//                                coroutineScope.launch {
-//                                    // Assuming viewModel is an instance of LoginViewModel
-//                                    viewModel.login(username, password)
-//
-//                                    // Observe the loginState to get the updated state after the login function
-//                                    viewModel.loginState.collect { loginState ->
-//                                        when (loginState) {
-//                                            is LoginState.Success -> {
-//                                                // Handle successful login
-//                                                val user = loginState.user
-//                                                Log.i("LoginState", "Success: ${user.username}")
-//                                                navController.navigate(Routes.MAIN.name)
-//                                            }
-//                                            is LoginState.Error -> {
-//                                                // Handle login error
-//                                                val error = loginState.error
-//                                                Log.i("LoginState", "Error: $error")
-//                                                // Handle the error, for example, display an error message to the user
-//                                            }
-//                                            else -> {
-//                                                // Handle other states if needed
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//
-//
-////                                navController.navigate(Routes.MAIN.name)
-//
-//                            } else {
-//                                // Authentication failed
-//                                Toast.makeText(
-//                                    context,
-//                                    "Incorrect username or password.",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                        }
-//                        else {
-//
-//                            if(password.isEmpty() && username.isEmpty()){
-//                                userError = username.isEmpty()
-//                                passwordError = password.isEmpty()
-//
-//                                Toast.makeText(
-//                                    context,
-//                                    "Please input your username and password",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                            else if(username.isEmpty()) {
-//                                userError = username.isEmpty()
-//                                Toast.makeText(
-//                                    context,
-//                                    "Please input username",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                            else if (password.isEmpty()) {
-//                                passwordError = password.isEmpty()
-//                                Toast.makeText(
-//                                    context,
-//                                    "Please input password",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                        }
+
 
 
                     }
