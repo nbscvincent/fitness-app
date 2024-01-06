@@ -16,6 +16,11 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
     val loginState: StateFlow<LoginState> = _loginState
 
+
+    // Property to store the current logged-in user
+    private var _currentUser: User? = null
+    val currentUser: User? get() = _currentUser
+
     // Function to perform login
     fun login(username: String, password: String) {
         viewModelScope.launch {
@@ -23,6 +28,8 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
             val user = userRepository.getUserStream(username).firstOrNull()
 
             if (user != null && user.password == password) {
+                _loginState.value = LoginState.Success(user)
+                _currentUser = user
                 _loginState.value = LoginState.Success(user)
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")
