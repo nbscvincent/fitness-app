@@ -82,33 +82,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Text("Current Password")
 
             OutlinedTextField(
-                value = "",
-                onValueChange = { currentPassword = it },
-                label = { Text("Current Password") }
-            )
 
-            Text("New Password")
+                modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
 
-            OutlinedTextField(
-                value = "",
-                onValueChange = { newPassword = it},
-                singleLine = true,
-                label = { Text("New Password") }
-            )
-
-            Text("Confirm New Password")
-
-            OutlinedTextField(
-                value = "",
-                onValueChange = { confirmPassword = it },
-                label = { Text("Confirm New Password") }
-            )
-
-            OutlinedTextField(
-
-                modifier = Modifier
-                    ,
-                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                label = { Text("Current User", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
@@ -118,10 +95,49 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                         contentDescription = "Username"
                     )
                 },
-              
+                shape = RoundedCornerShape(12.dp),
 
-            )
+                )
 
+            Text("New Password")
+
+            OutlinedTextField(
+
+                modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
+
+                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                value = newPassword,
+                singleLine = true,
+                onValueChange = { newPassword = it },
+                trailingIcon = {
+                    Icon(
+                        Icons.Rounded.Email,
+                        contentDescription = "Username"
+                    )
+                },
+                shape = RoundedCornerShape(12.dp),
+
+                )
+
+            Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 5.dp, bottom = 5.dp))
+
+            OutlinedTextField(
+
+                modifier = Modifier
+                    .absolutePadding(left = 20.dp, bottom = 11.dp),
+                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                value = confirmPassword,
+                singleLine = true,
+                onValueChange = { confirmPassword = it },
+                trailingIcon = {
+                    Icon(
+                        Icons.Rounded.Email,
+                        contentDescription = "Username"
+                    )
+                },
+                shape = RoundedCornerShape(12.dp),
+
+                )
 
             Button(
                onClick = {
