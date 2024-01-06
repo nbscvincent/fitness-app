@@ -123,7 +123,7 @@ fun ExerCateg(
 
                 Button(
                     onClick = {
-                        showDialog = true
+//                        showDialog = true
 //kasama ng current dialog
                                showDialog = true
                             timerRunning = false

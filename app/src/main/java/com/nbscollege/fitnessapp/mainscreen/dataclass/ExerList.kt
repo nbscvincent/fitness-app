@@ -37,7 +37,7 @@ val ExerciseList = listOf(
 )
 
 val ChestExerciseList = listOf(
-    ExerList(title ="JUMPING JACKS", time ="", route = CategoryRoute.CHEST.name ),
+    ExerList(title ="JUMPING JACKS", time ="01:00", route = CategoryRoute.CHEST.name ),
     ExerList(title ="INCLINE PUSH-UPS", time ="", route = CategoryRoute.CHEST.name ),
     ExerList(title ="PUSH-UPS", time ="", route = CategoryRoute.CHEST.name ),
     ExerList(title ="WIDE ARM PUSH-UPS", time ="", route = CategoryRoute.CHEST.name ),
