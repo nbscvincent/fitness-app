@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
 
         val screenViewModel: ScreenViewModel by viewModels()
 
-        val viewModel: LoginViewModel by viewModels()
+
 
 
         screenViewModel.runSplashScreen()

@@ -2,6 +2,7 @@ package com.example.example.model
 
 //import com.nbscollege.fitnessapp.authscreen.model.account
 import Auth
+import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -66,6 +67,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 
+@SuppressLint("CommitPrefEdits")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
@@ -199,6 +201,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                 Button(
                     onClick = {
 
+
                 if (password.isNotEmpty() && username.isNotEmpty()) {
 
                                 // Authentication successful
@@ -216,12 +219,17 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                         viewModel.loginState.collect { loginState ->
                             when (loginState) {
                                 is LoginState.Success -> {
-                                    // Handle successful login
+
+
+
                                     val user = loginState.user
                                     Log.i("LoginState", "Success: ${user.username}")
                                     Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
                                         .show()
+
                                     navController.navigate(Routes.MAIN.name)
+                                    return@collect
+
                                 }
                                 is LoginState.Error -> {
                                     // Handle login error
