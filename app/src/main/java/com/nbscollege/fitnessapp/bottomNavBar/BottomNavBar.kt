@@ -1,6 +1,5 @@
 package com.nbscollege.fitnessapp.bottomNavBar
 
-import androidx.compose.foundation.background
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -17,7 +16,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -43,17 +41,20 @@ fun BottomNavBar(navController: NavController) {
 
 
     var selectedItem by remember { mutableIntStateOf(0) }
-    NavigationBar (
-        modifier = Modifier.background(color = Color.Red)
+    NavigationBar(
+        containerColor =  Color.Transparent,
     ) {
 
         items.forEachIndexed { index, item ->
             NavigationBarItem(
+
+
 //                selected = currentRoute == item.route,
 //                selected = selectedItem == index,
                 selected = currentRoute == item.route,
 //                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
+                   
                     selectedItem = index
                     navController.navigate(item.route) {
                         // Pop up to the start destination of the graph to
