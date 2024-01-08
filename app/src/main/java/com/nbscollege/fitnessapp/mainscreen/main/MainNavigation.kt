@@ -36,9 +36,12 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
+    val context = LocalContext.current
+
+
 
     var exit by remember { mutableStateOf(false) }
-    val context = LocalContext.current
+
 
     LaunchedEffect(key1 = exit) {
         if (exit) {

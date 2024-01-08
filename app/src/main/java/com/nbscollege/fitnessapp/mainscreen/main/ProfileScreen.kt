@@ -22,10 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -105,34 +101,14 @@ fun ProfileScreen(
         }
     ) { innerPadding ->
 
-        val username = remember { loginViewModel.currentUser?.username }
-
-        // Observe the userDetails StateFlow from the ViewModel
-        val user by viewModel.userDetails.collectAsState()
-
-        LaunchedEffect(Unit) {
-            username?.let {
-                viewModel.loadUserDetails(it)
-            }
-        }
-
-        // UI for ProfileScreen
         Column(
-            modifier = Modifier.padding(innerPadding).fillMaxSize()
+            modifier = Modifier.fillMaxSize().padding(innerPadding).background(color = Color.White)
         ) {
-            // Inside ProfileScreen composable
-            if (user != null) {
-                // Populate UI with user details
-                Text("Username: ${user!!.username}")
-                Text("Weight: ${user!!.weight} kg")
-                Text("Height: ${user!!.height} cm")
-                // Add other user details as needed
-            } else {
-                // Handle the case when user details are not available
-                Text("User details not available.")
-            }
 
         }
+
+
+
 
 
 
