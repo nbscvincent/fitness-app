@@ -14,6 +14,23 @@ data class User(
     val age: Int
 )
 
+object UserHolder {
+    private var user: User? = null
+
+    fun setUser(users: User) {
+        user = users
+    }
+
+    fun getUser() : User? {
+        return user
+    }
+
+    fun clearUser() {
+        user = null
+    }
+
+}
+
 val registeredUsers = mutableListOf<User>(
 //    User("c", "c", 52f,152f, 5 ),
 //    User("cayce", "c", 70f,164f, 22 ),
