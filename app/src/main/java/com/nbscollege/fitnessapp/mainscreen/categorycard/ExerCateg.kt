@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,111 +48,84 @@ fun ExerCateg(
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var timerStarted by remember { mutableStateOf(false) }
-    var timerRunning by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
             .fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 10.dp,
-        ),
-        content = {
-            Box(
+        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(90.dp)
+                .clip(RoundedCornerShape(16.dp))
+        ) {
+            Button(
+                onClick = {
+                    showDialog = true
+                    timerStarted = false
+                },
+                shape = RoundedCornerShape(1.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(90.dp)
                     .clip(RoundedCornerShape(16.dp))
+                    .height(90.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
             ) {
-                // Background image
-
-                Button(
-                    onClick = {
-                        showDialog = true
-//kasama ng current dialog
-                               showDialog = true
-                            timerRunning = false
-                    },
-                    shape = RoundedCornerShape(1.dp),
+                Column(
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .height(90.dp),
-
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent
-                    )
-
+                        .fillMaxSize()
+                        .padding(1.dp),
+                    verticalArrangement = Arrangement.Center
                 ) {
+                    Text(
+                        exerList.title,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    TextRange(
+                        exerList.time,
 
-                    // Content overlay
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(1.dp),
-                        verticalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            exerList.title,
-                            color = Color.Black,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
-
-                        Row(
-
-                        ) {
-                            Text(
-                                exerList.time,
-                                color = Color.Black,
-                                fontSize = 16.sp
-                            )
-                        }
-
-                    }
+                    )
                 }
-                Divider(
-                    color = Color.LightGray,
-                    thickness = 1.dp,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding()
-                )
+            }
+            Divider(
+                color = Color.LightGray,
+                thickness = 1.dp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding()
+            )
 
-                    if (showDialog) {
-                        AlertDialogExample(
-                            onDismissRequest = {
-                                showDialog = false
-                                timerStarted = false
-                            },
-                            onConfirmation = {
-                                showDialog = false
-                                timerStarted = false
-                            },
-                            onStart = {
-                                timerStarted = true
-                            },
-                            onPause = {
-                                timerStarted = false
-                            },
-                            dialogTitle = "Exercise Timer",
-                            icon = Icons.Default.Timer,
-                            initialTime = 10L, // Set initial time to 1 minute (60 seconds)
-                            timerStarted = timerStarted
-                        )
-                    }
+            if (showDialog) {
+                AlertDialogExample(
+                    onDismissRequest = {
+                        showDialog = false
+                        timerStarted = false
+                    },
+                    onStart = {
+                        timerStarted = true
+                    },
+                    onPause = {
+                        timerStarted = false
+                    },
+                    dialogTitle = exerList.title,
+                    icon = Icons.Default.Timer,
+                    initialTime = exerList.time.toLong(),
+                    timerStarted = timerStarted
+                )
             }
         }
-    )
-
     }
 
-//current dialog
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlertDialogExample(
     onDismissRequest: () -> Unit,
-    onConfirmation: () -> Unit,
     onStart: () -> Unit,
     onPause: () -> Unit,
     dialogTitle: String,
@@ -160,9 +134,7 @@ fun AlertDialogExample(
     timerStarted: Boolean
 ) {
     var remainingTime by remember { mutableStateOf(initialTime) }
-    var originalRemainingTime by remember { mutableStateOf(remainingTime) }
     var timerRunning by remember { mutableStateOf(false) }
-    var timerPaused by remember { mutableStateOf(false) }
 
     val timer = remember {
         object : CountDownTimer(remainingTime * 1000, 1000) {
@@ -198,10 +170,8 @@ fun AlertDialogExample(
         text = {
             Column {
                 Text("Time remaining: $remainingTime seconds")
-                
             }
         },
-
         confirmButton = {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -220,23 +190,14 @@ fun AlertDialogExample(
                 }
                 TextButton(
                     onClick = {
-                    if (timerRunning && !timerPaused) {
-                       timer.cancel()
-                       timerRunning = false
-                       timerPaused = true
-                        originalRemainingTime = remainingTime
-                       onPause()
-                }   else if (timerPaused) {
-                        timer.start()
-
-                        timerRunning = true
-
-                        timerPaused = false
-                        onStart()
+                        if (timerRunning) {
+                            timer.cancel()
+                            timerRunning = false
+                            onPause()
+                        }
                     }
-                }
                 ) {
-                    Text(if (timerPaused) "Resume" else "Pause")
+                    Text("Pause")
                 }
                 TextButton(
                     onClick = {
@@ -245,16 +206,14 @@ fun AlertDialogExample(
                     }
                 ) {
                     Text("Dismiss")
-            }
                 }
+            }
         },
         onDismissRequest = {
             timer.cancel()
             onDismissRequest()
         },
-        dismissButton = {         }
-
-            )
-    }
-
+        dismissButton = {}
+    )
+}
 
