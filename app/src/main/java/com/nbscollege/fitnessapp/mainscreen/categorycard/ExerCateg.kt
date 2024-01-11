@@ -117,7 +117,7 @@ fun ExerCateg(
                         .fillMaxWidth()
                         .padding()
                 )
-// kasama ng current dialog
+
                     if (showDialog) {
                         AlertDialogExample(
                             onDismissRequest = {
