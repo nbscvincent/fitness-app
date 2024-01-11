@@ -129,7 +129,7 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                     }
 
                     items(ExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                        ExerCateg(exerList = ExerList, navController)
                     }
 
                 }

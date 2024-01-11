@@ -129,7 +129,7 @@ fun ArmScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                     }
 
                     items(ArmExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                        ExerCateg(exerList = ExerList, navController)
                     }
 
                 }

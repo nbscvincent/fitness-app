@@ -128,7 +128,7 @@ fun ShoulderScreen(navController: NavController, backStackEntry: NavBackStackEnt
                     }
 
                     items(ChestExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                        ExerCateg(exerList = ExerList, navController)
                     }
 
                 }

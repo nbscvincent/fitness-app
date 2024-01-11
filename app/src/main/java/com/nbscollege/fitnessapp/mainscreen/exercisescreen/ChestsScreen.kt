@@ -128,7 +128,7 @@ fun ChestScreen(navController: NavController, backStackEntry: NavBackStackEntry)
                     }
 
                     items(ChestExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                        ExerCateg(exerList = ExerList, navController)
                     }
 
                 }
