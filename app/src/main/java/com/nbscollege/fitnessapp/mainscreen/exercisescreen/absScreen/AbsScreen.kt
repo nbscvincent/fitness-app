@@ -119,7 +119,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                 ) {
 
                     Button(
-                        modifier = Modifier.fillMaxWidth().height(100.dp),
+                        modifier = Modifier.fillMaxWidth().height(50.dp),
                         onClick = {
 
                             if (!isTimerRunning) {
