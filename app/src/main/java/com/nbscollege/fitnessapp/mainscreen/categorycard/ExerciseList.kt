@@ -34,7 +34,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -162,8 +161,12 @@ fun ExerciseList (navController: NavController) {
                                                     .padding(16.dp),
                                                 textAlign = TextAlign.Center
                                             )
-                                            TextRange(
-                                                exercise.time,
+                                            Text(
+                                                "${exercise.time}",
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                    .padding(16.dp),
+                                                textAlign = TextAlign.Center
                                             )
 
 

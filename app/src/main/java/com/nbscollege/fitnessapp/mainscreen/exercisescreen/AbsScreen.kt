@@ -43,23 +43,7 @@ fun AbsScreen(navController: NavController, index: Int) {
     var isPauseButtonVisible by remember { mutableStateOf(false) }
     var buttonColor by remember { mutableStateOf(Color.Red) }
 
-    var isSplashScreenVisible by remember { mutableStateOf(false) }
-    val splashScreenCountdownTimer = remember {
-        object : CountDownTimer(5000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                // You can update UI for countdown display if needed
-            }
 
-            override fun onFinish() {
-                if (index < ExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
-
-                } else {
-                    navController.navigate("ExerciseList")
-                }
-            }
-        }
-    }
 
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
@@ -77,11 +61,7 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
-    LaunchedEffect(isSplashScreenVisible) {
-        if (isSplashScreenVisible) {
-            splashScreenCountdownTimer.start()
-        }
-    }
+
 
     // Start or pause the timer
     LaunchedEffect(isTimerRunning) {
@@ -95,25 +75,37 @@ fun AbsScreen(navController: NavController, index: Int) {
 
             // ... (TopBar)
         },
-        bottomBar = {
-            BottomAppBar(modifier = Modifier.height(150.dp)) {
+        bottomBar  = {
 
-                Button(
-                    modifier = Modifier.fillMaxWidth().height(150.dp),
-                    onClick = {
-                        isSplashScreenVisible = true
-                        if (!isTimerRunning) {
-                            countDownTimer.start()
-                            isTimerRunning = true
-                            buttonColor = Color.Gray
-                        }
+            BottomAppBar(
+                modifier = Modifier
+                    .height(150.dp)
+                    .fillMaxSize()
+                    .background(Color.Green),
+                containerColor = Color.White
+            ) {
 
-                    },
-                    enabled = !isTimerRunning,
-                    colors = ButtonDefaults.buttonColors(buttonColor)
-                ) {
-                    Text("Start")
-                }
+
+                    Button(
+                        modifier = Modifier.fillMaxWidth().height(100.dp),
+                        onClick = {
+
+                            if (!isTimerRunning) {
+                                countDownTimer.start()
+                                isTimerRunning = true
+                                buttonColor = Color.Gray
+                            }
+
+                        },
+                        enabled = !isTimerRunning,
+                        colors = ButtonDefaults.buttonColors(buttonColor)
+                    ) {
+                        Text("Start")
+                    }
+
+
+
+
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
@@ -134,6 +126,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                     modifier = Modifier.padding(0.dp),
                 ) {
                     item {
+
                         Text(
                             text = ExerciseList[index].title,
                             fontWeight = FontWeight.Bold,
