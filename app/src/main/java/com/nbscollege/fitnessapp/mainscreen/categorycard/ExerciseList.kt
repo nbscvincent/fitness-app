@@ -156,18 +156,21 @@ fun ExerciseList (navController: NavController) {
                                         ) {
                                             Text(
                                                 text = exercise.title,
+                                                color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier
-                                                    .padding(16.dp),
+                                               ,
                                                 textAlign = TextAlign.Center
                                             )
 
                                             Text(
-                                                "Exercise: ${com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList[index].time}",
-                                                fontWeight = FontWeight.Bold,
+
+                                                "${exercise.time} Seconds",
+                                                        color = Color.Black,
+                                                        fontWeight = FontWeight.Bold,
                                                 modifier = Modifier
-                                                    .padding(16.dp),
-                                                textAlign = TextAlign.Center
+                                             ,
+                                                textAlign = TextAlign.Center,
 
                                             )
 
