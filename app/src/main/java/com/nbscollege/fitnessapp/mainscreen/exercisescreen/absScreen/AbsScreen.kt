@@ -100,6 +100,47 @@ fun AbsScreen(navController: NavController, index: Int) {
     Scaffold(
         topBar = {
 
+            Column(
+                modifier = Modifier.height(150.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+
+                Box(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .padding(16.dp)
+                        .drawBehind {
+                            // Draw circular progress
+                            drawArc(
+                                color = Color.Black,
+                                startAngle = 0f,
+                                sweepAngle = 360 * progress,
+                                useCenter = false,
+                                style = Stroke(width = 8.dp.toPx())
+                            )
+
+                            // Draw timer text
+                            drawIntoCanvas { canvas ->
+                                val text = "${remainingTime / 1000}"
+                                val paint = Paint().asFrameworkPaint().apply {
+                                    color = Color(0xFF800000).toArgb()
+                                    textAlign = android.graphics.Paint.Align.CENTER
+                                    textSize = 50.sp.toPx()
+                                }
+                                canvas.nativeCanvas.drawText(
+                                    text,
+                                    size.width / 2,
+                                    size.height / 2 + paint.textSize / 4, // Adjusted Y-coordinate
+                                    paint
+                                )
+                            }
+                        }
+
+
+                )
+            }
+
 
 
         }, // END OF TOPBAR
