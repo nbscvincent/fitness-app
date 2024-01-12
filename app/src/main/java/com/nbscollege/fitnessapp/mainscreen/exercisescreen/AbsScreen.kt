@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -40,6 +41,25 @@ fun AbsScreen(navController: NavController, index: Int) {
     var remainingTime by remember { mutableStateOf(originalTime) }
     var isTimerRunning by remember { mutableStateOf(false) }
     var isPauseButtonVisible by remember { mutableStateOf(false) }
+    var buttonColor by remember { mutableStateOf(Color.Red) }
+
+    var isSplashScreenVisible by remember { mutableStateOf(false) }
+    val splashScreenCountdownTimer = remember {
+        object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // You can update UI for countdown display if needed
+            }
+
+            override fun onFinish() {
+                if (index < ExerciseList.size - 1) {
+                    navController.navigate("CategoryDetails/${index + 1}")
+
+                } else {
+                    navController.navigate("ExerciseList")
+                }
+            }
+        }
+    }
 
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
@@ -57,6 +77,11 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
+    LaunchedEffect(isSplashScreenVisible) {
+        if (isSplashScreenVisible) {
+            splashScreenCountdownTimer.start()
+        }
+    }
 
     // Start or pause the timer
     LaunchedEffect(isTimerRunning) {
@@ -67,65 +92,27 @@ fun AbsScreen(navController: NavController, index: Int) {
 
     Scaffold(
         topBar = {
+
             // ... (TopBar)
         },
         bottomBar = {
             BottomAppBar(modifier = Modifier.height(150.dp)) {
 
-                // Pause/Resume button
-                if (isPauseButtonVisible) {
-                    Button(
-                        modifier = Modifier.fillMaxWidth().height(150.dp),
-                        onClick = {
-                            if (isTimerRunning) {
-                                countDownTimer.cancel()
-                                isTimerRunning = false
-                            } else {
-                                // Adjust remainingTime based on elapsed time when resuming
-                                originalTime = remainingTime
-                                countDownTimer.start()
-                                isTimerRunning = true
-                            }
+                Button(
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    onClick = {
+                        if (!isTimerRunning) {
+                            countDownTimer.start()
+                            isTimerRunning = true
+                            buttonColor = Color.Gray
                         }
-                    ) {
-                        Text(if (isTimerRunning) "Pause" else "Resume")
-                    }
-                } else {
-                    // Start button
-                    Button(
-                        modifier = Modifier.fillMaxWidth().height(150.dp),
-                        onClick = {
-                            if (!isTimerRunning) {
-                                countDownTimer.start()
-                                isTimerRunning = true
-                            }
-                            isPauseButtonVisible = true
-                        }
-                    ) {
-                        Text("Start")
-                    }
+                        isSplashScreenVisible = true
+                    },
+                    enabled = !isTimerRunning,
+                    colors = ButtonDefaults.buttonColors(buttonColor)
+                ) {
+                    Text("Start")
                 }
-
-                // Add a new Pause button
-                if (isPauseButtonVisible) {
-                    Button(
-                        modifier = Modifier.fillMaxWidth().height(150.dp),
-                        onClick = {
-                            if (isTimerRunning) {
-                                countDownTimer.cancel()
-                                isTimerRunning = false
-                            } else {
-                                // Adjust remainingTime based on elapsed time when resuming
-                                originalTime = remainingTime
-                                countDownTimer.start()
-                                isTimerRunning = true
-                            }
-                        }
-                    ) {
-                        Text(if (isTimerRunning) "Pause" else "Resume")
-                    }
-                }
-
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
