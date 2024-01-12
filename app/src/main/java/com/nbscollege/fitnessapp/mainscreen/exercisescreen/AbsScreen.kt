@@ -6,16 +6,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -28,12 +28,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
 
@@ -53,7 +52,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
                 SmallFloatingActionButton(
                     onClick = {
-                        navController.navigate("HomeScreen")
+                        navController.popBackStack()
                     },
                     containerColor = Color.Transparent,
                     modifier = Modifier
@@ -78,11 +77,20 @@ fun AbsScreen(navController: NavController, index: Int) {
                 )
             }
         },
-//        bottomBar = {
-//            BottomAppBar {
-//
-//            }
-//        }
+        bottomBar = {
+            BottomAppBar (modifier = Modifier.height(150.dp)) {
+
+
+                Button(
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
+
+                    onClick = {}
+                ) {
+                    Text("Start")
+                }
+
+            }
+        }
     ) { innerPadding ->
         // Content of your screen goes here
 
@@ -101,24 +109,30 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 //                Spacer(modifier = Modifier.height(20.dp))
                 LazyColumn(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.padding(0.dp),
+
                 ) {
 
                     item {
-                        Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "EXERCISES",
+                            text = ExerciseList[index].title,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
+
+                            textAlign = TextAlign.Center,
+                            color = Color(0xFF6562DF),
                         )
+                        Text(
+                            text = "${ExerciseList[index].time} seconds",
+                            fontWeight = FontWeight.Bold,
+
+                            textAlign = TextAlign.Center,
+                            color = Color(0xFF6562DF),
+                        )
+
+
                     }
 
-                    items(ExerciseList) { ExerList ->
-                        ExerCateg(exerList = ExerList, navController)
-                    }
+
 
                 }
             }
