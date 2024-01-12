@@ -4,12 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.CategoryRepository
-import com.nbscollege.fitnessapp.database.repository.UserRepository
 import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerList
 
 class CategoryViewModel(private val categoryRepository: CategoryRepository) : ViewModel() {
 
@@ -31,6 +28,7 @@ data class CategoryDetails(
     val exerciseCount: String = "",
     val subTitle: String = "",
     val backgroundImageResourceId: Int = 0,
+    val gif: Int = 0,
     val route: String = "",
 )
 /**
@@ -43,6 +41,7 @@ fun CategoryDetails.toCategory(): Category = Category (
     exerciseCount = exerciseCount,
     subTitle = subTitle,
     backgroundImageResourceId = backgroundImageResourceId,
+    gif = gif,
     route = route,
 )
 /**
@@ -60,5 +59,6 @@ fun Category.toCategoryDetails(): CategoryDetails = CategoryDetails(
     exerciseCount = exerciseCount,
     subTitle = subTitle,
     backgroundImageResourceId = backgroundImageResourceId,
+    gif = gif,
     route = route,
 )

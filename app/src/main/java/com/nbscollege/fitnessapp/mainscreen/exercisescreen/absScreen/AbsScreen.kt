@@ -131,7 +131,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                                 canvas.nativeCanvas.drawText(
                                     text,
                                     size.width / 2,
-                                    size.height / 2 + paint.textSize / 4, // Adjusted Y-coordinate
+                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
                                     paint
                                 )
                             }
