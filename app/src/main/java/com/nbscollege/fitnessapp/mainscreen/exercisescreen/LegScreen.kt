@@ -128,7 +128,7 @@ fun LegScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                     }
 
                     items(LegExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                        ExerCateg(exerList = ExerList, navController)
                     }
 
                 }

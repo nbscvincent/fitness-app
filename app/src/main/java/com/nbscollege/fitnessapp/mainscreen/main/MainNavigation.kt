@@ -13,7 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
+import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
@@ -123,10 +124,19 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
             }
 
-            navigation(startDestination = CategoryRoute.ABS.name, route = CategoryRoute.CATEGORY.name) {
+
                 composable(route = CategoryRoute.ABS.name) { backStackEntry ->
-                    AbsScreen(navController, backStackEntry)
+
+                    ExerciseList(navController)
                     showBottomBar = false
+                }
+
+                composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                    val bid = navBackStackEntry.arguments?.getString("bid")
+
+                    bid?.let {
+                        AbsScreen(navController = navController, index = bid.toInt())
+                    }
                 }
                 composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
                     ChestScreen(navController, backStackEntry)
@@ -144,7 +154,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     ShoulderScreen(navController,backStackEntry)
                     showBottomBar = false
                 }
-            }
+
 
         }
     }

@@ -36,7 +36,9 @@ import com.nbscollege.fitnessapp.ui.user.ProfileViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "CoroutineCreationDuringComposition")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "CoroutineCreationDuringComposition",
+    "StateFlowValueCalledInComposition"
+)
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
 fun ProfileScreen(
@@ -104,6 +106,9 @@ fun ProfileScreen(
         Column(
             modifier = Modifier.fillMaxSize().padding(innerPadding).background(color = Color.White)
         ) {
+
+
+
 
         }
 

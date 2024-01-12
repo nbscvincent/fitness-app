@@ -31,10 +31,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
 
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun CategoryCard(category: Category, navController: NavController) {
+
+
 
 
 
@@ -83,6 +87,7 @@ fun CategoryCard(category: Category, navController: NavController) {
                                 .padding(1.dp),
                             verticalArrangement = Arrangement.Center
                         ) {
+
                             Text(
                                 category.title,
                                 color = Color.White,
@@ -115,3 +120,5 @@ fun CategoryCard(category: Category, navController: NavController) {
             },
         )
 }
+
+

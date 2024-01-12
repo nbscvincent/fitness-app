@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.exercisescreen
+package com.nbscollege.fitnessapp.mainscreen.categorycard
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -13,35 +13,43 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
+fun ExerciseList (navController: NavController) {
+
+    val state = rememberScrollState()
+    LaunchedEffect(Unit) { state.animateScrollTo(100) }
 
     Scaffold(
         topBar = {
@@ -52,17 +60,6 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                     .fillMaxWidth()
             ) {
 
-//                IconButton(onClick = { navController.navigateUp() }) {
-//                    Icon(
-//                        imageVector = Icons.Rounded.ArrowBackIos,
-//                        modifier = Modifier
-//                            .size(30.dp)
-//                            .padding(start = 5.dp, end = 5.dp)
-//                            .zIndex(3f),
-//                        contentDescription = "Back",
-//                        tint = Color.White
-//                    )
-//                }
                 SmallFloatingActionButton(
                     onClick = {
                         navController.navigate("HomeScreen")
@@ -96,8 +93,6 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
 //            }
 //        }
     ) { innerPadding ->
-        // Content of your screen goes here
-
         Column(
             modifier = Modifier
                 .background(Color.White)
@@ -111,7 +106,6 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                 verticalArrangement = Arrangement.Center
             ) {
 
-//                Spacer(modifier = Modifier.height(20.dp))
                 LazyColumn(
                     modifier = Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -127,17 +121,87 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                             modifier = Modifier
                         )
                     }
+                    item {
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList.forEachIndexed { index, exercise ->
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
 
-                    items(ExerciseList) { ExerList ->
-                        ExerCateg(exer = ExerList, navController)
+                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                            ) {
+
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(Color.White)
+                                        .height(90.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                ) {
+
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("CategoryDetails/$index")
+                                        },
+                                        shape = RoundedCornerShape(1.dp),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .height(90.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .padding(1.dp),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = exercise.title,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                               ,
+                                                textAlign = TextAlign.Center
+                                            )
+
+                                            Text(
+
+                                                "${exercise.time} Seconds",
+                                                        color = Color.Black,
+                                                        fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                             ,
+                                                textAlign = TextAlign.Center,
+
+                                            )
+
+                                        }
+
+
+
+                                    }
+
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
+
+
                     }
 
                 }
+
+
+
             }
-
         }
-    }
 
     }
+
+}
+
 
 
