@@ -126,12 +126,14 @@ fun ExerciseList (navController: NavController) {
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
+
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
 
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
+                                        .background(Color.White)
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
