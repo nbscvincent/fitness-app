@@ -19,8 +19,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -53,7 +54,7 @@ fun AbsScreen(navController: NavController, index: Int) {
     var isPauseButtonVisible by remember { mutableStateOf(false) }
     var buttonColor by remember { mutableStateOf(Color.Red) }
 
-    var progress by remember { mutableStateOf(1f) }
+    var progress by remember { mutableFloatStateOf(1f) }
 
 
 
@@ -84,9 +85,15 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
     // Start or pause the timer
-    LaunchedEffect(isTimerRunning) {
+    DisposableEffect(isTimerRunning) {
         if (isTimerRunning) {
             countDownTimer.start()
+        } else {
+            countDownTimer.cancel()
+        }
+
+        onDispose {
+            countDownTimer.cancel()
         }
     }
 
@@ -207,9 +214,9 @@ fun AbsScreen(navController: NavController, index: Int) {
                                 .drawBehind {
                                     // Draw circular progress
                                     drawArc(
-                                        color = Color(0xFF6562DF),
+                                        color = Color(0xFF800000),
                                         startAngle = 0f,
-                                        sweepAngle = (remainingTime.toFloat() / originalTime.toFloat()) *360 ,
+                                        sweepAngle = 360 * progress,
                                         useCenter = false,
                                         style = Stroke(width = 8.dp.toPx())
                                     )
