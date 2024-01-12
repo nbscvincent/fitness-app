@@ -101,12 +101,13 @@ fun AbsScreen(navController: NavController, index: Int) {
                 Button(
                     modifier = Modifier.fillMaxWidth().height(150.dp),
                     onClick = {
+                        isSplashScreenVisible = true
                         if (!isTimerRunning) {
                             countDownTimer.start()
                             isTimerRunning = true
                             buttonColor = Color.Gray
                         }
-                        isSplashScreenVisible = true
+
                     },
                     enabled = !isTimerRunning,
                     colors = ButtonDefaults.buttonColors(buttonColor)
