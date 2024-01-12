@@ -31,7 +31,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
@@ -41,7 +40,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
+fun AbsScreen(navController: NavController, index: Int) {
 
     Scaffold(
         topBar = {
@@ -52,17 +51,6 @@ fun AbsScreen(navController: NavController, backStackEntry: NavBackStackEntry) {
                     .fillMaxWidth()
             ) {
 
-//                IconButton(onClick = { navController.navigateUp() }) {
-//                    Icon(
-//                        imageVector = Icons.Rounded.ArrowBackIos,
-//                        modifier = Modifier
-//                            .size(30.dp)
-//                            .padding(start = 5.dp, end = 5.dp)
-//                            .zIndex(3f),
-//                        contentDescription = "Back",
-//                        tint = Color.White
-//                    )
-//                }
                 SmallFloatingActionButton(
                     onClick = {
                         navController.navigate("HomeScreen")

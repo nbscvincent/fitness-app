@@ -62,6 +62,7 @@ fun ExerCateg(
         ) {
             Button(
                 onClick = {
+                    navController.navigate("CategoryDetails/{bid}")
                     showDialog = true
                     timerStarted = false
                 },
