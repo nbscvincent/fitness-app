@@ -28,6 +28,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -93,86 +94,104 @@ fun ExerciseList (navController: NavController) {
 //            }
 //        }
     ) { innerPadding ->
-
-        LazyColumn(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
         ) {
 
-            item {
-                Spacer(modifier = Modifier.height(20.dp))
-                Text(
-                    text = "EXERCISES",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp,
-                    color = Color.Black,
-                    modifier = Modifier
-                )
-            }
-        item {
-                com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList.forEachIndexed { index, exercise ->
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
-                    ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
 
-                        Box(
+                LazyColumn(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+
+                    item {
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            text = "EXERCISES",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .height(90.dp)
-                                .clip(RoundedCornerShape(16.dp))
-                        ) {
-
-                            Button(
-                                onClick = {
-                                    navController.navigate("CategoryDetails/$index")
-                                },
-                                shape = RoundedCornerShape(1.dp),
+                        )
+                    }
+                    item {
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList.forEachIndexed { index, exercise ->
+                            Card(
                                 modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(RoundedCornerShape(16.dp))
-                                    .height(90.dp),
-                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    .fillMaxWidth(),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
 
-                                Column(
+                                Box(
                                     modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(1.dp),
-                                    verticalArrangement = Arrangement.Center
+                                        .fillMaxWidth()
+                                        .height(90.dp)
+                                        .clip(RoundedCornerShape(16.dp))
                                 ) {
-                                    Text(
-                                        text = exercise.title,
-                                        fontWeight = FontWeight.Bold,
+
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("CategoryDetails/$index")
+                                        },
+                                        shape = RoundedCornerShape(1.dp),
                                         modifier = Modifier
-                                            .padding(16.dp),
-                                        textAlign = TextAlign.Center
-                                    )
-                                    TextRange(
-                                        exercise.time,
-                                    )
+                                            .fillMaxWidth()
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .height(90.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .padding(1.dp),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = exercise.title,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                    .padding(16.dp),
+                                                textAlign = TextAlign.Center
+                                            )
+                                            TextRange(
+                                                exercise.time,
+                                            )
+
+
+                                        }
+
+
+                                    }
 
 
                                 }
 
-
                             }
-
-
-
-
+                            Spacer(modifier = Modifier.height(20.dp))
                         }
 
+
                     }
+
                 }
+
+
+
             }
-
         }
 
-
-        }
     }
+
+}
 
 
 

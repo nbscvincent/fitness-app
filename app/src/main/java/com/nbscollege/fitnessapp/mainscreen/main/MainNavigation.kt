@@ -130,6 +130,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     ExerciseList(navController)
                     showBottomBar = false
                 }
+
                 composable("CategoryDetails/{bid}") { navBackStackEntry ->
                     val bid = navBackStackEntry.arguments?.getString("bid")
 
