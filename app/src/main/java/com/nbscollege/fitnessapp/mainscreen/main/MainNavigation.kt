@@ -14,7 +14,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.AbsScreen
+import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen

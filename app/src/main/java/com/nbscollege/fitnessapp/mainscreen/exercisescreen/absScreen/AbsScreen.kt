@@ -1,9 +1,10 @@
-package com.nbscollege.fitnessapp.mainscreen.exercisescreen
+package com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen
 
 import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,11 +30,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.wear.compose.material.ExperimentalWearMaterialApi
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalWearMaterialApi::class)
 @Composable
 fun AbsScreen(navController: NavController, index: Int) {
 
@@ -45,22 +47,29 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
 
+
+
+
+
+
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
+            override  fun onTick(millisUntilFinished: Long) {
                 remainingTime = millisUntilFinished
+
             }
 
             override fun onFinish() {
                 if (index < ExerciseList.size - 1) {
                     navController.navigate("CategoryDetails/${index + 1}")
-
                 } else {
                     navController.navigate("ExerciseList")
                 }
             }
         }
     }
+
+
 
 
     // Start or pause the timer
@@ -73,8 +82,9 @@ fun AbsScreen(navController: NavController, index: Int) {
     Scaffold(
         topBar = {
 
-            // ... (TopBar)
-        },
+
+
+        }, // END OF TOPBAR
         bottomBar  = {
 
             BottomAppBar(
@@ -84,7 +94,11 @@ fun AbsScreen(navController: NavController, index: Int) {
                     .background(Color.Green),
                 containerColor = Color.White
             ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
 
+                ) {
 
                     Button(
                         modifier = Modifier.fillMaxWidth().height(100.dp),
@@ -102,6 +116,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                     ) {
                         Text("Start")
                     }
+                }
 
 
 
@@ -180,5 +195,6 @@ fun AbsScreen(navController: NavController, index: Int) {
         }
     }
 }
+
 
 
