@@ -14,21 +14,24 @@ data class User(
     val age: Int
 )
 
-object UserHolder {
-    private var user: User? = null
+object LoggedInUserHolder {
+    private var loggedInUser: User? = null
 
-    fun setUser(users: User) {
-        user = users
+    fun setLoggedInUser(user: User) {
+        loggedInUser = user
     }
 
-    fun getUser() : User? {
-        return user
+    fun getLoggedInUser(): User? {
+        return loggedInUser
     }
 
-    fun clearUser() {
-        user = null
+    fun clearLoggedInUser() {
+        loggedInUser = null
     }
 
+    fun isLoggedIn(): Boolean {
+        return loggedInUser != null
+    }
 }
 
 val registeredUsers = mutableListOf<User>(

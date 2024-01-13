@@ -14,11 +14,11 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
-import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
+import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.ProfileScreen
@@ -27,6 +27,7 @@ import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import com.nbscollege.fitnessapp.viewmodel.LogoutSplashScreen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -117,7 +118,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                         }
                     }
 
-                    SplashNav(screenViewModel)
+                    LogoutSplashScreen(navController,screenViewModel)
                     showBottomBar = false
                 }
 

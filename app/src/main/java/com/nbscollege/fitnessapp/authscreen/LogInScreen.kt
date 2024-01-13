@@ -6,7 +6,6 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -179,17 +178,17 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                     errorIndicatorColor = Color.Transparent
                 )
             )
-
-            Column(
-                modifier = Modifier.padding(start=220.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween
-
-            ) {
-                Text(text = "Forgot Password?", color = Color.Red, fontWeight = FontWeight.Medium, modifier = Modifier.clickable( onClick = {
-                    navController.navigate(Auth.OTP.name)
-                }, ) )
-            }
+                // forgotpassword
+//            Column(
+//                modifier = Modifier.padding(start=220.dp),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.SpaceBetween
+//
+//            ) {
+//                Text(text = "Forgot Password?", color = Color.Red, fontWeight = FontWeight.Medium, modifier = Modifier.clickable( onClick = {
+//                    navController.navigate(Auth.OTP.name)
+//                }, ) )
+//            }
 
 
 
