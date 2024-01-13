@@ -11,11 +11,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val userRepository: UserRepository, private val sharedPreferencesManager: SharedPreferencesManager) : ViewModel() {
+class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     // State for UI to observe
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
     val loginState: StateFlow<LoginState> = _loginState
+
+
+
 
 
     // Property to store the current logged-in user
@@ -38,12 +41,13 @@ class LoginViewModel(private val userRepository: UserRepository, private val sha
                     height = user.height,
                     age = user.age
                 )
+
                 _currentUser = user
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
                 _loginState.value = LoginState.Success(user)
 
-                sharedPreferencesManager.username = username
-                sharedPreferencesManager.password = password
+
+
 
 
                 // Save user session in SharedPreferences
