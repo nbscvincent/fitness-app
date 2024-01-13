@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp.ui.user
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +18,9 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     val loginState: StateFlow<LoginState> = _loginState
 
 
+
+
+
     // Property to store the current logged-in user
     private var _currentUser: User? = null
     val currentUser: User? get() = _currentUser
@@ -29,13 +33,32 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
             if (user != null && user.password == password) {
                 _loginState.value = LoginState.Success(user)
+                val loggedInUser = User(
+                    id = user.id,
+                    username = user.username,
+                    password = user.password,
+                    weight = user.weight,
+                    height = user.height,
+                    age = user.age
+                )
+
                 _currentUser = user
+                LoggedInUserHolder.setLoggedInUser(loggedInUser)
                 _loginState.value = LoginState.Success(user)
+
+
+
+
+
+                // Save user session in SharedPreferences
+
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")
             }
         }
     }
+
+
 
 }
 

@@ -19,8 +19,22 @@ class ScreenViewModel() : ViewModel() {
     private val _currentUser = MutableStateFlow<User?>(null)
     val currentUser = _currentUser.asStateFlow()
 
+    private val _isLoggedOut = MutableStateFlow(false)
+    val isLoggedOut = _isLoggedOut.asStateFlow()
+
     private val _isProgressVisible = MutableStateFlow(false)
     val isProgressVisible: StateFlow<Boolean> = _isProgressVisible.asStateFlow()
+
+    fun resetLogoutUser() {
+        _isLoggedOut.value = false
+    }
+
+    fun logoutUser() {
+        viewModelScope.launch {
+            delay(2000)
+            _isLoggedOut.value = true
+        }
+    }
 
     fun runSplashScreen() {
         viewModelScope.launch {
