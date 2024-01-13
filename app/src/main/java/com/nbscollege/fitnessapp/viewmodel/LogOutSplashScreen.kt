@@ -30,7 +30,7 @@ fun LogoutSplashScreen(
     screenViewModel.logoutUser()
 
     if (state.value) {
-        SplashNav(screenViewModel)
+         SplashNav(screenViewModel)
     } else {
         Column(
             verticalArrangement = Arrangement.Center,
