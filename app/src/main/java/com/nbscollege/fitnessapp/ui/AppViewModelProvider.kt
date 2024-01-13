@@ -22,10 +22,12 @@ object AppViewModelProvider {
         }
 
         initializer {
-            LoginViewModel(FitnessApp().container.userRepository)
+            LoginViewModel(FitnessApp().container.userRepository, FitnessApp().container.sharedPreferencesManager)
+
         }
         initializer {
-            LoginViewModel(FitnessApp().container.userRepository)
+            LoginViewModel(FitnessApp().container.userRepository, FitnessApp().container.sharedPreferencesManager)
+
         }
         initializer {
             ProfileViewModel(FitnessApp().container.userRepository)

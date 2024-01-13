@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel(private val userRepository: UserRepository, private val sharedPreferencesManager: SharedPreferencesManager) : ViewModel() {
 
     // State for UI to observe
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
@@ -41,11 +41,20 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 _currentUser = user
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
                 _loginState.value = LoginState.Success(user)
+
+                sharedPreferencesManager.username = username
+                sharedPreferencesManager.password = password
+
+
+                // Save user session in SharedPreferences
+
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")
             }
         }
     }
+
+
 
 }
 
