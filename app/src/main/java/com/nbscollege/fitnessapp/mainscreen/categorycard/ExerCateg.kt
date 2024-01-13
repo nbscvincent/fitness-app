@@ -193,7 +193,7 @@ fun ExerCateg(
                             },
                             dialogTitle = "Exercise Timer",
                             icon = Icons.Default.Timer,
-                            initialTime = 10L, // Set initial time to 1 minute (60 seconds)
+                            initialTime = 20L, // Set initial time to 1 minute (60 seconds)
                             timerStarted = timerStarted
                         )
                     }
