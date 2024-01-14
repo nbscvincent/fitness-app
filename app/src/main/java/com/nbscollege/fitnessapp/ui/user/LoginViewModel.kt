@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp.ui.user
 
 
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
@@ -10,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -24,6 +26,8 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     // Property to store the current logged-in user
     private var _currentUser: User? = null
     val currentUser: User? get() = _currentUser
+
+
 
     // Function to perform login
     fun login(username: String, password: String) {
@@ -42,6 +46,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                     age = user.age
                 )
 
+
                 _currentUser = user
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
                 _loginState.value = LoginState.Success(user)
@@ -57,6 +62,8 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
             }
         }
     }
+
+
 
 
 
