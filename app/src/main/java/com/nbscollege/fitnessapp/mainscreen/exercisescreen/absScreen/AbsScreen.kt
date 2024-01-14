@@ -106,39 +106,39 @@ fun AbsScreen(navController: NavController, index: Int) {
                 verticalArrangement = Arrangement.Center
             ) {
 
-                Box(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(16.dp)
-                        .drawBehind {
-                            // Draw circular progress
-                            drawArc(
-                                color = Color.Black,
-                                startAngle = 0f,
-                                sweepAngle = 360 * progress,
-                                useCenter = false,
-                                style = Stroke(width = 8.dp.toPx())
-                            )
-
-                            // Draw timer text
-                            drawIntoCanvas { canvas ->
-                                val text = "${remainingTime / 1000}"
-                                val paint = Paint().asFrameworkPaint().apply {
-                                    color = Color(0xFF800000).toArgb()
-                                    textAlign = android.graphics.Paint.Align.CENTER
-                                    textSize = 50.sp.toPx()
-                                }
-                                canvas.nativeCanvas.drawText(
-                                    text,
-                                    size.width / 2,
-                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
-                                    paint
-                                )
-                            }
-                        }
-
-
-                )
+//                Box(
+//                    modifier = Modifier
+//                        .size(150.dp)
+//                        .padding(16.dp)
+//                        .drawBehind {
+//                            // Draw circular progress
+//                            drawArc(
+//                                color = Color.Black,
+//                                startAngle = 0f,
+//                                sweepAngle = 360 * progress,
+//                                useCenter = false,
+//                                style = Stroke(width = 8.dp.toPx())
+//                            )
+//
+//                            // Draw timer text
+//                            drawIntoCanvas { canvas ->
+//                                val text = "${remainingTime / 1000}"
+//                                val paint = Paint().asFrameworkPaint().apply {
+//                                    color = Color(0xFF800000).toArgb()
+//                                    textAlign = android.graphics.Paint.Align.CENTER
+//                                    textSize = 50.sp.toPx()
+//                                }
+//                                canvas.nativeCanvas.drawText(
+//                                    text,
+//                                    size.width / 2,
+//                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
+//                                    paint
+//                                )
+//                            }
+//                        }
+//
+//
+//                )
             }
 
 
@@ -185,6 +185,39 @@ fun AbsScreen(navController: NavController, index: Int) {
     ) { innerPadding ->
         // Content of your screen goes here
 
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxSize()
+//                .padding(innerPadding)
+//        ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                LazyColumn(
+//                    modifier = Modifier.padding(0.dp),
+//                ) {
+//                    item {
+//
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                        Text(
+//                            text = "${ExerciseList[index].time} seconds",
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                    }
+//                }
+//            }
+//        }
+
         Column(
             modifier = Modifier
                 .background(Color.White)
@@ -196,39 +229,6 @@ fun AbsScreen(navController: NavController, index: Int) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                LazyColumn(
-                    modifier = Modifier.padding(0.dp),
-                ) {
-                    item {
-
-                        Text(
-                            text = ExerciseList[index].title,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-                        Text(
-                            text = "${ExerciseList[index].time} seconds",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-                    }
-                }
-            }
-        }
-
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
 
                 LazyColumn(
                     modifier = Modifier.padding(0.dp),
@@ -242,7 +242,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                             color = Color(0xFF6562DF),
                         )
                         Text(
-                            text = "${remainingTime / 1000} seconds",
+                            text = "${remainingTime / 1000} seconds left",
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center,
                             color = Color(0xFF6562DF),
