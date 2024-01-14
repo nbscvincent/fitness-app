@@ -45,6 +45,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
     val coroutineScope = rememberCoroutineScope()
 
+
+
     Scaffold(
         topBar = {
 
@@ -142,7 +144,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Button(
                onClick = {
 
-
+                 
 
 
                } // end of onclick button
@@ -153,5 +155,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
         }
     }
 }
+
 
 
