@@ -19,7 +19,7 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
-import com.nbscollege.fitnessapp.mainscreen.settingcard.sendFeedback
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.ProfileScreen
 import com.nbscollege.fitnessapp.model.homescreen

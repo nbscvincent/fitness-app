@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.main.settingdialog
+package com.nbscollege.fitnessapp.mainscreen.settingscreen.settingdialog
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons

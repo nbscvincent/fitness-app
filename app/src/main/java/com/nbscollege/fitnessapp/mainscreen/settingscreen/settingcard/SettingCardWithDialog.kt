@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.settingcard
+package com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
-import com.nbscollege.fitnessapp.mainscreen.main.settingdialog.LogoutDialog
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingdialog.LogoutDialog
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @Composable

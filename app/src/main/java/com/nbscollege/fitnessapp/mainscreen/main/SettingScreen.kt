@@ -37,9 +37,9 @@ import com.nbscollege.fitnessapp.mainscreen.settingscreen.SettingCard
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.platform.LocalContext
-import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardRateUs
-import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithLogoutDialog
-import com.nbscollege.fitnessapp.mainscreen.settingcard.SettingCardWithSendFeedbackDialog
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardRateUs
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardWithLogoutDialog
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardWithSendFeedbackDialog
 
 
 //enum class SelectedButton {
