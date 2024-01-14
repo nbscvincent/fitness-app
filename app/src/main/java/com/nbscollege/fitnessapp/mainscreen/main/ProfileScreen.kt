@@ -109,72 +109,81 @@ fun ProfileScreen(
             }
         }
     ) { innerPadding ->
-        Card(
-            modifier = Modifier
+
+
+        Box(
+            modifier = Modifier.fillMaxSize()
+
+        ) {
+            Card(
+                modifier = Modifier
 //            .fillMaxSize()
-                .padding(innerPadding)
-                .padding(top = 10.dp,start = 20.dp, end = 20.dp)
-                .background(Color.White),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = 4.dp,),
-            content  = {
-                LazyColumn(
-                    modifier = Modifier
-                        .height(500.dp)
-                        .fillMaxWidth()
-                        .background(Color.White)
-                        .padding()
-                        .background(color = Color.White)
-                        .clip(RoundedCornerShape(16.dp))
-                ) {
+                    .padding(innerPadding)
+                    .padding(top = 10.dp,start = 20.dp, end = 20.dp)
+                    .background(Color.White),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 4.dp,),
+                content  = {
+                    LazyColumn(
+                        modifier = Modifier
+                            .height(500.dp)
+                            .fillMaxWidth()
+                            .background(Color.White)
+                            .padding()
+                            .background(color = Color.White)
+                            .clip(RoundedCornerShape(16.dp))
+                    ) {
 
 
 
-                    item {
-                        loggedInUser?.let {
+                        item {
+                            loggedInUser?.let {
 
-                            Text(
-                                text = "Username: ${it.username}",
-                                style = TextStyle(fontSize = 20.sp),
-                                modifier = Modifier.padding(8.dp)
-                            )
+                                Text(
+                                    text = "Username: ${it.username}",
+                                    style = TextStyle(fontSize = 20.sp),
+                                    modifier = Modifier.padding(8.dp)
+                                )
 
-                            Text(
-                                text = "Weight: ${it.weight}",
-                                style = TextStyle(fontSize = 16.sp),
-                                modifier = Modifier.padding(8.dp)
-                            )
-
-
-                            Text(
-                                text = "Height: ${it.height}",
-                                style = TextStyle(fontSize = 16.sp),
-                                modifier = Modifier.padding(8.dp)
-                            )
+                                Text(
+                                    text = "Weight: ${it.weight}",
+                                    style = TextStyle(fontSize = 16.sp),
+                                    modifier = Modifier.padding(8.dp)
+                                )
 
 
+                                Text(
+                                    text = "Height: ${it.height}",
+                                    style = TextStyle(fontSize = 16.sp),
+                                    modifier = Modifier.padding(8.dp)
+                                )
 
-                            Text(
-                                text = "Age: ${it.age}",
-                                style = TextStyle(fontSize = 16.sp),
-                                modifier = Modifier.padding(8.dp)
-                            )
 
-                        } ?: run {
-                            Text(
-                                text = "User not logged in",
-                                style = TextStyle(fontSize = 20.sp),
-                                color = Color.Red
-                            )
+
+                                Text(
+                                    text = "Age: ${it.age}",
+                                    style = TextStyle(fontSize = 16.sp),
+                                    modifier = Modifier.padding(8.dp)
+                                )
+
+                            } ?: run {
+                                Text(
+                                    text = "User not logged in",
+                                    style = TextStyle(fontSize = 20.sp),
+                                    color = Color.Red
+                                )
+                            }
                         }
+
+
+
+
                     }
-
-
-
-
                 }
-            }
-        )
+            )
+
+        }
+
 
 
 
