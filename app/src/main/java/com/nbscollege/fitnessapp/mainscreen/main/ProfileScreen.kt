@@ -64,7 +64,7 @@ fun ProfileScreen(
                 modifier = Modifier
                     .padding(top = 5.dp)
                     .background(Color.White)
-                    .height(100.dp)
+                    .height(75.dp)
                     .fillMaxWidth()
 
             ) {
@@ -113,12 +113,15 @@ fun ProfileScreen(
 
         Box(
             modifier = Modifier.fillMaxSize()
+                .padding(innerPadding)
+
 
         ) {
             Card(
+
                 modifier = Modifier
 //            .fillMaxSize()
-                    .padding(innerPadding)
+                    .padding()
                     .padding(top = 10.dp,start = 20.dp, end = 20.dp)
                     .background(Color.White),
                 elevation = CardDefaults.cardElevation(
@@ -126,34 +129,33 @@ fun ProfileScreen(
                 content  = {
                     LazyColumn(
                         modifier = Modifier
-                            .height(500.dp)
+                            .height(790.dp)
                             .fillMaxWidth()
                             .background(Color.White)
                             .padding()
-                            .background(color = Color.White)
-                            .clip(RoundedCornerShape(16.dp))
+                            .clip(RoundedCornerShape(32.dp))
                     ) {
 
 
 
                         item {
-                            loggedInUser?.let {
+                            loggedInUser?.let { user ->
 
                                 Text(
-                                    text = "Username: ${it.username}",
+                                    text = "Username: ${user.username}",
                                     style = TextStyle(fontSize = 20.sp),
                                     modifier = Modifier.padding(8.dp)
                                 )
 
                                 Text(
-                                    text = "Weight: ${it.weight}",
+                                    text = "Weight: ${user.weight}",
                                     style = TextStyle(fontSize = 16.sp),
                                     modifier = Modifier.padding(8.dp)
                                 )
 
 
                                 Text(
-                                    text = "Height: ${it.height}",
+                                    text = "Height: ${user.height}",
                                     style = TextStyle(fontSize = 16.sp),
                                     modifier = Modifier.padding(8.dp)
                                 )
@@ -161,10 +163,13 @@ fun ProfileScreen(
 
 
                                 Text(
-                                    text = "Age: ${it.age}",
+                                    text = "Age: ${user.age}",
                                     style = TextStyle(fontSize = 16.sp),
                                     modifier = Modifier.padding(8.dp)
                                 )
+
+
+
 
                             } ?: run {
                                 Text(
@@ -183,18 +188,6 @@ fun ProfileScreen(
             )
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
         }
     }
