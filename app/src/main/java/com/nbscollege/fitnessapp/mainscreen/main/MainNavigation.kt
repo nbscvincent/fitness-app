@@ -12,15 +12,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
+import com.nbscollege.fitnessapp.database.dao.UserDao
+import com.nbscollege.fitnessapp.database.repository.OfflineUserRepository
+import com.nbscollege.fitnessapp.database.repository.UserRepository
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
-import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.model.ProfileScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -39,6 +43,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
     val context = LocalContext.current
+
 
 
 
@@ -92,6 +97,15 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 //            }
             navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
+
+
+
+
+
+// Now, create an instance of OfflineUserRepository with the userDao
+
+
+
                     GeneralSettings(navController, backStackEntry)
                     showBottomBar = false
                 }

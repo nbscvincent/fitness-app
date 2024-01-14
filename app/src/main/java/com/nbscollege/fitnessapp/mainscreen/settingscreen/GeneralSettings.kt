@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,21 +30,20 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
-import com.nbscollege.fitnessapp.ui.AppViewModelProvider
-import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 
 
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
+fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry) {
 
     var currentPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -142,13 +141,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             Button(
                onClick = {
-                   if (validateInputs()) {
-                       // Call the function to change the password
-                       viewModel.changePassword(currentPassword, newPassword)
-                       // Optionally, you can navigate to another screen or show a success message.
-                   } else {
-                       // Show an error message or handle the validation failure
-                   }
+
 
 
 
@@ -161,20 +154,4 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     }
 }
 
-private fun validateInputs(): Boolean {
-    return when {
-        currentPassword.isEmpty() -> {
-            // Show an error message for empty current password
-            false
-        }
-        newPassword.isEmpty() -> {
-            // Show an error message for empty new password
-            false
-        }
-        confirmPassword.isEmpty() || confirmPassword != newPassword -> {
-            // Show an error message for mismatched or empty confirmed password
-            false
-        }
-        else -> true
-    }
-}
+
