@@ -17,6 +17,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -25,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -105,52 +107,59 @@ fun ProfileScreen(
             }
         }
     ) { innerPadding ->
+        Card(
+            content  = {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize().padding(innerPadding).background(color = Color.White)
+                ) {
 
-        LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(innerPadding).background(color = Color.White)
-        ) {
+                    item {
+                        loggedInUser?.let {
 
-            item {
-                loggedInUser?.let {
+                            Text(
+                                text = "Username: ${it.username}",
+                                style = TextStyle(fontSize = 20.sp),
+                                modifier = Modifier.padding(8.dp)
+                            )
+
+                            Text(
+                                text = "Weight: ${it.weight}",
+                                style = TextStyle(fontSize = 16.sp),
+                                modifier = Modifier.padding(8.dp)
+                            )
 
 
-                    Text(
-                        text = "Username: ${it.username}",
-                        style = androidx.compose.ui.text.TextStyle(fontSize = 20.sp),
-                        modifier = Modifier.padding(8.dp)
-                    )
+                            Text(
+                                text = "Height: ${it.height}",
+                                style = TextStyle(fontSize = 16.sp),
+                                modifier = Modifier.padding(8.dp)
+                            )
 
-                    Text(
-                        text = "Weight: ${it.weight}",
-                        style = androidx.compose.ui.text.TextStyle(fontSize = 16.sp),
-                        modifier = Modifier.padding(8.dp)
-                    )
 
-                    Text(
-                        text = "Height: ${it.height}",
-                        style = androidx.compose.ui.text.TextStyle(fontSize = 16.sp),
-                        modifier = Modifier.padding(8.dp)
-                    )
 
-                    Text(
-                        text = "Age: ${it.age}",
-                        style = androidx.compose.ui.text.TextStyle(fontSize = 16.sp),
-                        modifier = Modifier.padding(8.dp)
-                    )
+                            Text(
+                                text = "Age: ${it.age}",
+                                style = TextStyle(fontSize = 16.sp),
+                                modifier = Modifier.padding(8.dp)
+                            )
 
-                } ?: run {
-                    Text(
-                        text = "User not logged in",
-                        style = androidx.compose.ui.text.TextStyle(fontSize = 20.sp),
-                        color = Color.Red
-                    )
+                        } ?: run {
+                            Text(
+                                text = "User not logged in",
+                                style = TextStyle(fontSize = 20.sp),
+                                color = Color.Red
+                            )
+                        }
+                    }
+
+
+
+
                 }
             }
+        )
 
 
-
-
-        }
 
 
 
