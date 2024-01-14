@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -84,14 +85,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier.fillMaxWidth().padding(start=20.dp, end=20.dp),
 
-                label = { Text("Current User", fontWeight = FontWeight.Medium) },
+                label = { Text("Current Password", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
                 leadingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "current password"
                     )
 
                 },
@@ -105,14 +106,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
 
-                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                label = { Text("New Password", fontWeight = FontWeight.Medium) },
                 value = newPassword,
                 singleLine = true,
                 onValueChange = { newPassword = it },
                 trailingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "new password"
                     )
                 },
                 shape = RoundedCornerShape(12.dp),
@@ -125,14 +126,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier
                     .absolutePadding(left = 20.dp, bottom = 11.dp),
-                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                label = { Text("Confirm Password", fontWeight = FontWeight.Medium) },
                 value = confirmPassword,
                 singleLine = true,
                 onValueChange = { confirmPassword = it },
                 trailingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "confirm password"
                     )
                 },
                 shape = RoundedCornerShape(12.dp),
@@ -141,6 +142,13 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             Button(
                onClick = {
+                   if (validateInputs()) {
+                       // Call the function to change the password
+                       viewModel.changePassword(currentPassword, newPassword)
+                       // Optionally, you can navigate to another screen or show a success message.
+                   } else {
+                       // Show an error message or handle the validation failure
+                   }
 
 
 
@@ -150,5 +158,23 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             }
 
         }
+    }
+}
+
+private fun validateInputs(): Boolean {
+    return when {
+        currentPassword.isEmpty() -> {
+            // Show an error message for empty current password
+            false
+        }
+        newPassword.isEmpty() -> {
+            // Show an error message for empty new password
+            false
+        }
+        confirmPassword.isEmpty() || confirmPassword != newPassword -> {
+            // Show an error message for mismatched or empty confirmed password
+            false
+        }
+        else -> true
     }
 }
