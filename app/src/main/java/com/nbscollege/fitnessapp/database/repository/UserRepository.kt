@@ -29,7 +29,7 @@ interface UserRepository {
      */
     suspend fun updateUser(user: User)
 
-    suspend fun changePassword(username: String, currentPassword: String, newPassword: String): Boolean
+
 
 }
 
