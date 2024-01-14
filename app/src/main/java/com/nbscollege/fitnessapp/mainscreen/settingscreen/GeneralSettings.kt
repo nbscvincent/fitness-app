@@ -18,7 +18,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,14 +29,17 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 
 
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry) {
+fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
 
     var currentPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
@@ -94,11 +96,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 },
                 shape = RoundedCornerShape(12.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Gray,
-                    unfocusedBorderColor = Color.Gray,
-                    textColor = Color.Black
-                ),
+
             )
 
             Text("New Password")
@@ -144,7 +142,9 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Button(
                onClick = {
 
-               }
+
+
+               } // end of onclick button
             ) {
                 Text("Change Password")
             }
