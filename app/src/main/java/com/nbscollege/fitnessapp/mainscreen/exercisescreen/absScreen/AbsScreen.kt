@@ -59,10 +59,6 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
 
-
-
-
-
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
             override  fun onTick(millisUntilFinished: Long) {
@@ -80,9 +76,6 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
-
-
-
 
     // Start or pause the timer
     DisposableEffect(isTimerRunning) {
@@ -162,19 +155,37 @@ fun AbsScreen(navController: NavController, index: Int) {
                     Button(
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         onClick = {
-
                             if (!isTimerRunning) {
                                 countDownTimer.start()
                                 isTimerRunning = true
                                 buttonColor = Color.Gray
                             }
-
                         },
                         enabled = !isTimerRunning,
                         colors = ButtonDefaults.buttonColors(buttonColor)
                     ) {
                         Text("Start")
                     }
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//
+//                    ) {
+//                        Button(
+//                            modifier = Modifier.fillMaxWidth().height(50.dp),
+//                            onClick = {
+//                                if (index < ExerciseList.size - 1) {
+//                                    navController.navigate("CategoryDetails/${index + 1}")
+//                                } else {
+//                                    navController.navigate("ExerciseList")
+//                                }
+//                            },
+//                            enabled = !isTimerRunning,
+//                            colors = ButtonDefaults.buttonColors(Color.Blue)
+//                        ) {
+//                            Text("Next")
+//                        }
+//                    }
                 }
 
 
