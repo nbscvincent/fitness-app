@@ -205,22 +205,22 @@ fun AbsScreen(navController: NavController, index: Int) {
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
 
                 LazyColumn(
                     modifier = Modifier.padding(0.dp),
                 ) {
 
                     item {
-
-                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                            ExerciseList[index].animation))
+                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(ExerciseList[index].animation))
 
                         val preloaderProgress by animateLottieCompositionAsState(
                             composition,
@@ -228,29 +228,18 @@ fun AbsScreen(navController: NavController, index: Int) {
                             isPlaying = true
                         )
 
-                 
-
-
                         LottieAnimation(
                             modifier = Modifier.size(300.dp),
                             progress = preloaderProgress,
                             composition =  composition,
 
                             )
-                        Text(
-                            text = ExerciseList[index].title,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-                        Text(
-                            text = "${remainingTime / 1000} seconds",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+
+
+
 
                         Box(
+                            
                             modifier = Modifier
                                 .size(150.dp)
                                 .padding(16.dp)
@@ -279,13 +268,15 @@ fun AbsScreen(navController: NavController, index: Int) {
                                             paint
                                         )
                                     }
-                                }
+                                },
+
+
                         )
                     }
 
                 }
 
-            }
+//            }
         }
     }
 }
