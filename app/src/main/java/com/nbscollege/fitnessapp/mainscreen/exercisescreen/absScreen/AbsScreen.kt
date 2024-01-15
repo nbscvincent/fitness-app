@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
@@ -40,6 +41,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.wear.compose.material.ExperimentalWearMaterialApi
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
 
@@ -57,15 +63,9 @@ fun AbsScreen(navController: NavController, index: Int) {
     var progress by remember { mutableFloatStateOf(1f) }
 
 
-
-
-
-
-
-
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
-            override  fun onTick(millisUntilFinished: Long) {
+            override fun onTick(millisUntilFinished: Long) {
                 remainingTime = millisUntilFinished
                 progress = millisUntilFinished.toFloat() / originalTime.toFloat()
 
@@ -80,8 +80,6 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
-
-
 
 
     // Start or pause the timer
@@ -101,50 +99,70 @@ fun AbsScreen(navController: NavController, index: Int) {
         topBar = {
 
             Column(
-                modifier = Modifier.height(150.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                modifier = Modifier.padding(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
             ) {
 
-                Box(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(16.dp)
-                        .drawBehind {
-                            // Draw circular progress
-                            drawArc(
-                                color = Color.Black,
-                                startAngle = 0f,
-                                sweepAngle = 360 * progress,
-                                useCenter = false,
-                                style = Stroke(width = 8.dp.toPx())
-                            )
+                Box (
+                    modifier = Modifier.fillMaxWidth(1f),
+                    contentAlignment = Alignment.Center
 
-                            // Draw timer text
-                            drawIntoCanvas { canvas ->
-                                val text = "${remainingTime / 1000}"
-                                val paint = Paint().asFrameworkPaint().apply {
-                                    color = Color(0xFF800000).toArgb()
-                                    textAlign = android.graphics.Paint.Align.CENTER
-                                    textSize = 50.sp.toPx()
-                                }
-                                canvas.nativeCanvas.drawText(
-                                    text,
-                                    size.width / 2,
-                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
-                                    paint
-                                )
-                            }
-                        }
+                ) {
+
+                    Text(
+
+                        ExerciseList[index].title,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 50.sp,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                    )
+
+                }
 
 
-                )
+
+//                Box(
+//                    modifier = Modifier
+//                        .size(150.dp)
+//                        .padding(16.dp)
+//                        .drawBehind {
+//                            // Draw circular progress
+//                            drawArc(
+//                                color = Color.Black,
+//                                startAngle = 0f,
+//                                sweepAngle = 360 * progress,
+//                                useCenter = false,
+//                                style = Stroke(width = 8.dp.toPx())
+//                            )
+//
+//                            // Draw timer text
+//                            drawIntoCanvas { canvas ->
+//                                val text = "${remainingTime / 1000}"
+//                                val paint = Paint().asFrameworkPaint().apply {
+//                                    color = Color(0xFF800000).toArgb()
+//                                    textAlign = android.graphics.Paint.Align.CENTER
+//                                    textSize = 50.sp.toPx()
+//                                }
+//                                canvas.nativeCanvas.drawText(
+//                                    text,
+//                                    size.width / 2,
+//                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
+//                                    paint
+//                                )
+//                            }
+//                        }
+//
+//
+//                )
             }
 
 
-
         }, // END OF TOPBAR
-        bottomBar  = {
+        bottomBar = {
 
             BottomAppBar(
                 modifier = Modifier
@@ -177,78 +195,51 @@ fun AbsScreen(navController: NavController, index: Int) {
                     }
                 }
 
-
-
-
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
-        // Content of your screen goes here
+
+
 
         Column(
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                LazyColumn(
-                    modifier = Modifier.padding(0.dp),
-                ) {
-                    item {
-
-                        Text(
-                            text = ExerciseList[index].title,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-                        Text(
-                            text = "${ExerciseList[index].time} seconds",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-                    }
-                }
-            }
-        }
-
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
 
                 LazyColumn(
                     modifier = Modifier.padding(0.dp),
                 ) {
 
                     item {
-                        Text(
-                            text = ExerciseList[index].title,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
+                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(ExerciseList[index].animation))
+
+                        val preloaderProgress by animateLottieCompositionAsState(
+                            composition,
+                            iterations = LottieConstants.IterateForever,
+                            isPlaying = true
                         )
-                        Text(
-                            text = "${remainingTime / 1000} seconds",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+
+                        LottieAnimation(
+                            modifier = Modifier.size(300.dp),
+                            progress = preloaderProgress,
+                            composition =  composition,
+
+                            )
+
+
+
 
                         Box(
+                            
                             modifier = Modifier
                                 .size(150.dp)
                                 .padding(16.dp)
@@ -277,16 +268,19 @@ fun AbsScreen(navController: NavController, index: Int) {
                                             paint
                                         )
                                     }
-                                }
+                                },
+
+
                         )
                     }
 
                 }
 
-            }
+//            }
         }
     }
 }
+
 
 
 
