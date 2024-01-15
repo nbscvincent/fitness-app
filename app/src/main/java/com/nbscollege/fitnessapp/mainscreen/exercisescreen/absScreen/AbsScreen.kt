@@ -40,6 +40,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.wear.compose.material.ExperimentalWearMaterialApi
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 
 
@@ -207,6 +212,21 @@ fun AbsScreen(navController: NavController, index: Int) {
                             textAlign = TextAlign.Center,
                             color = Color(0xFF6562DF),
                         )
+                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                            ExerciseList[index].animation))
+
+                        val preloaderProgress by animateLottieCompositionAsState(
+                            composition,
+                            iterations = LottieConstants.IterateForever,
+                            isPlaying = true
+                        )
+
+                        LottieAnimation(
+                            modifier = Modifier.size(500.dp),
+                            progress = preloaderProgress,
+                            composition =  composition,
+
+                            )
                         Text(
                             text = "${ExerciseList[index].time} seconds",
                             fontWeight = FontWeight.Bold,

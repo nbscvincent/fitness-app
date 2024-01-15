@@ -156,9 +156,6 @@ fun ExerciseList (navController: NavController) {
                                 progress = preloaderProgress,
                                 composition =  composition,
 
-
-
-
                             )
 
 
