@@ -28,6 +28,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,6 +41,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 
 
@@ -48,8 +54,20 @@ import com.nbscollege.fitnessapp.R
 @Composable
 fun ExerciseList (navController: NavController) {
 
+
+
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
+
+
+
+
+
+
+
+
+
+
 
     Scaffold(
         topBar = {
@@ -121,14 +139,39 @@ fun ExerciseList (navController: NavController) {
                             modifier = Modifier
                         )
                     }
+
                     item {
                         com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList.forEachIndexed { index, exercise ->
+
+                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(exercise.animation))
+
+                            val preloaderProgress by animateLottieCompositionAsState(
+                                composition,
+                                iterations = LottieConstants.IterateForever,
+                                isPlaying = true
+                            )
+
+                            LottieAnimation(
+                                modifier = Modifier.size(500.dp),
+                                progress = preloaderProgress,
+                                composition =  composition,
+
+
+
+
+                            )
+
+
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
 
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
+
+
+
+
 
                                 Box(
                                     modifier = Modifier
@@ -149,6 +192,8 @@ fun ExerciseList (navController: NavController) {
                                             .height(90.dp),
                                         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                     ) {
+
+
 
                                         Column(
                                             modifier = Modifier

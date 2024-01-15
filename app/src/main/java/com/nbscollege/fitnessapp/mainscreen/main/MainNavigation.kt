@@ -12,11 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import com.nbscollege.fitnessapp.database.dao.UserDao
-import com.nbscollege.fitnessapp.database.repository.OfflineUserRepository
-import com.nbscollege.fitnessapp.database.repository.UserRepository
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
