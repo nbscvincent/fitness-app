@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
@@ -98,44 +99,55 @@ fun AbsScreen(navController: NavController, index: Int) {
         topBar = {
 
             Column(
-                modifier = Modifier.height(150.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                modifier = Modifier.padding(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
             ) {
 
-                Box(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(16.dp)
-                        .drawBehind {
-                            // Draw circular progress
-                            drawArc(
-                                color = Color.Black,
-                                startAngle = 0f,
-                                sweepAngle = 360 * progress,
-                                useCenter = false,
-                                style = Stroke(width = 8.dp.toPx())
-                            )
+                Text(
 
-                            // Draw timer text
-                            drawIntoCanvas { canvas ->
-                                val text = "${remainingTime / 1000}"
-                                val paint = Paint().asFrameworkPaint().apply {
-                                    color = Color(0xFF800000).toArgb()
-                                    textAlign = android.graphics.Paint.Align.CENTER
-                                    textSize = 50.sp.toPx()
-                                }
-                                canvas.nativeCanvas.drawText(
-                                    text,
-                                    size.width / 2,
-                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
-                                    paint
-                                )
-                            }
-                        }
-
-
+                    ExerciseList[index].title,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    color = Color.Black,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
+
+//                Box(
+//                    modifier = Modifier
+//                        .size(150.dp)
+//                        .padding(16.dp)
+//                        .drawBehind {
+//                            // Draw circular progress
+//                            drawArc(
+//                                color = Color.Black,
+//                                startAngle = 0f,
+//                                sweepAngle = 360 * progress,
+//                                useCenter = false,
+//                                style = Stroke(width = 8.dp.toPx())
+//                            )
+//
+//                            // Draw timer text
+//                            drawIntoCanvas { canvas ->
+//                                val text = "${remainingTime / 1000}"
+//                                val paint = Paint().asFrameworkPaint().apply {
+//                                    color = Color(0xFF800000).toArgb()
+//                                    textAlign = android.graphics.Paint.Align.CENTER
+//                                    textSize = 50.sp.toPx()
+//                                }
+//                                canvas.nativeCanvas.drawText(
+//                                    text,
+//                                    size.width / 2,
+//                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
+//                                    paint
+//                                )
+//                            }
+//                        }
+//
+//
+//                )
             }
 
 
