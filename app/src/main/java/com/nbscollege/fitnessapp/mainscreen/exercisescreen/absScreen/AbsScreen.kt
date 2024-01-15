@@ -105,15 +105,25 @@ fun AbsScreen(navController: NavController, index: Int) {
 
             ) {
 
-                Text(
+                Box (
+                    modifier = Modifier.fillMaxWidth(1f),
+                    contentAlignment = Alignment.Center
 
-                    ExerciseList[index].title,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
-                    color = Color.Black,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
-                )
+                ) {
+
+                    Text(
+
+                        ExerciseList[index].title,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 50.sp,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                    )
+
+                }
+
+
 
 //                Box(
 //                    modifier = Modifier
