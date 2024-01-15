@@ -210,7 +210,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
                         LottieAnimation(
-                            modifier = Modifier.size(100.dp),
+                            modifier = Modifier.size(300.dp),
                             progress = preloaderProgress,
                             composition =  composition,
 
