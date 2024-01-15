@@ -86,8 +86,13 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation ("io.coil-kt:coil:1.3.0")
-    implementation ("io.coil-kt:coil-compose:1.3.0")
 
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
+    implementation("io.coil-kt:coil:2.0.0-rc02")
+    implementation("io.coil-kt:coil-gif:2.0.0-rc02")
+    implementation("io.coil-kt:coil-compose:2.0.0-rc02")
+
+    //lotie
+    implementation ("com.airbnb.android:lottie-compose:6.0.0")
 }

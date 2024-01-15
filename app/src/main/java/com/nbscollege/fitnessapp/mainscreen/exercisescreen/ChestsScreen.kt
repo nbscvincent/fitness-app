@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -34,8 +33,6 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.R
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -127,9 +124,9 @@ fun ChestScreen(navController: NavController, backStackEntry: NavBackStackEntry)
                         )
                     }
 
-                    items(ChestExerciseList) { ExerList ->
-                        ExerCateg(exerList = ExerList, navController)
-                    }
+//                    items(ChestExerciseList) { ExerList ->
+//                        ExerCateg(exerList = ExerList, navController)
+//                    }
 
                 }
             }

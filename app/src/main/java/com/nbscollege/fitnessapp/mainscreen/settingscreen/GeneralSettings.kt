@@ -11,18 +11,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,6 +42,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     var currentPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+
+    val coroutineScope = rememberCoroutineScope()
+
+
 
     Scaffold(
         topBar = {
@@ -82,23 +86,19 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier.fillMaxWidth().padding(start=20.dp, end=20.dp),
 
-                label = { Text("Current User", fontWeight = FontWeight.Medium) },
+                label = { Text("Current Password", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
                 leadingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "current password"
                     )
 
                 },
                 shape = RoundedCornerShape(12.dp),
-                colors = TextFieldDefaults.outlinedTextFieldColors(
-                    focusedBorderColor = Color.Gray,
-                    unfocusedBorderColor = Color.Gray,
-                    textColor = Color.Black
-                ),
+
             )
 
             Text("New Password")
@@ -107,14 +107,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
 
-                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                label = { Text("New Password", fontWeight = FontWeight.Medium) },
                 value = newPassword,
                 singleLine = true,
                 onValueChange = { newPassword = it },
                 trailingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "new password"
                     )
                 },
                 shape = RoundedCornerShape(12.dp),
@@ -127,14 +127,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier
                     .absolutePadding(left = 20.dp, bottom = 11.dp),
-                label = { Text("Username", fontWeight = FontWeight.Medium) },
+                label = { Text("Confirm Password", fontWeight = FontWeight.Medium) },
                 value = confirmPassword,
                 singleLine = true,
                 onValueChange = { confirmPassword = it },
                 trailingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = "Username"
+                        Icons.Rounded.Lock,
+                        contentDescription = "confirm password"
                     )
                 },
                 shape = RoundedCornerShape(12.dp),
@@ -144,7 +144,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Button(
                onClick = {
 
-               }
+                 
+
+
+               } // end of onclick button
             ) {
                 Text("Change Password")
             }
@@ -152,3 +155,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
         }
     }
 }
+
+
+

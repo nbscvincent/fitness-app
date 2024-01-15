@@ -42,7 +42,7 @@ fun BottomNavBar(navController: NavController) {
 
     var selectedItem by remember { mutableIntStateOf(0) }
     NavigationBar(
-        containerColor =  Color.Transparent,
+        containerColor =  Color(0xFFE6E6FA),
     ) {
 
         items.forEachIndexed { index, item ->
