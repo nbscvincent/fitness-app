@@ -12,32 +12,44 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
     navController: NavHostController,
-    screenViewModel: ScreenViewModel,
+
     loginViewModel: LoginViewModel
 ) {
-    val state = screenViewModel.splashLoaded.collectAsState()
-    screenViewModel.runSplashScreen()
+//    val state = screenViewModel.splashLoaded.collectAsState()
+//    screenViewModel.runSplashScreen()
 
-    if (state.value) {
-        
-        navController.navigate(Auth.LogInScreen.name)
-    } else {
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
+    var appearSplash by remember {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(key1 = appearSplash){
+        delay(5000)
+        appearSplash = true
+    }
+
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.fillMaxSize()
         ) {
             Image(
@@ -51,6 +63,34 @@ fun SplashScreen(
                 color = MaterialTheme.colorScheme.surfaceVariant,
             )
         }
+    if(appearSplash){
+        if(!loginViewModel.status){
+            navController.navigate(Routes.AUTH.name)
+        }else {
+            navController.navigate(Auth.LogInScreen.name)
+        }
     }
+
+//    if (state.value) {
+//
+//        navController.navigate(Auth.LogInScreen.name)
+//    } else {
+//        Column(
+//            verticalArrangement = Arrangement.Center,
+//            horizontalAlignment = Alignment.CenterHorizontally,
+//            modifier = Modifier.fillMaxSize()
+//        ) {
+//            Image(
+//                modifier = Modifier.size(300.dp),
+//                painter = painterResource(id = R.drawable.fitness_logo),
+//                contentDescription = "NBS LOGO"
+//            )
+//            Box(Modifier.height(25.dp))
+//            CircularProgressIndicator(
+//                modifier = Modifier.width(64.dp),
+//                color = MaterialTheme.colorScheme.surfaceVariant,
+//            )
+//        }
+//    }
 }
 

@@ -67,7 +67,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
     Scaffold {
         NavHost(navController = navController, startDestination = Auth.Splash.name) {
             composable(route = Auth.Splash.name) {
-                SplashScreen(navController, screenViewModel)
+                SplashScreen(navController, loginViewModel)
             }
             composable(route = Auth.LogInScreen.name) {
                 BackHandler(enabled = true) {
