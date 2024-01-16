@@ -90,4 +90,8 @@ dependencies {
     implementation ("io.coil-kt:coil-compose:1.3.0")
 
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
+    //lottie
+    implementation ("com.airbnb.android:lottie-compose:6.0.0")
+
 }
