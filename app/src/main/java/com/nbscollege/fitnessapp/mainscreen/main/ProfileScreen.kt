@@ -57,7 +57,7 @@ fun ProfileScreen(
     val coroutineScope = rememberCoroutineScope()
 
     val loggedInUser = LoggedInUserHolder.getLoggedInUser()
-
+    println("aklasdlkasjlkda$loggedInUser")
     Scaffold(
         topBar = {
             Box(
@@ -126,11 +126,13 @@ fun ProfileScreen(
                             .padding()
                             .clip(RoundedCornerShape(32.dp))
                     ) {
-
+                        
                         item {
                             loggedInUser?.let { user ->
 
                                 Spacer(modifier = Modifier.height(10.dp))
+
+                                println()
 
                                 Text(
                                     "Username",

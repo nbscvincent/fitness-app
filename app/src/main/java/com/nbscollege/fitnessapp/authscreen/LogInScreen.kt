@@ -235,6 +235,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                         .putString("password", viewModel.password)
                                         .apply()
 
+
                                     val user = loginState.user
                                     Log.i("LoginState", "Success: ${user.username}")
                                     Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)

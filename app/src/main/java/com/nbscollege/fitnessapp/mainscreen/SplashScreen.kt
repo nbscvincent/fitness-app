@@ -65,9 +65,12 @@ fun SplashScreen(
         }
     if(appearSplash){
         if(!loginViewModel.status){
-            navController.navigate(Auth.Splash.name)
-         
+
+            navController.navigate(Auth.LogInScreen.name)
+
         }else {
+
+            navController.navigate(Routes.MAIN.name)
             
         }
     }

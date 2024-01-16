@@ -23,6 +23,7 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.model.ProfileScreen
+import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
@@ -148,7 +149,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                         }
                     }
 
-                    LogoutSplashScreen(navController,screenViewModel)
+                    SplashNav(screenViewModel)
                     showBottomBar = false
                 }
 

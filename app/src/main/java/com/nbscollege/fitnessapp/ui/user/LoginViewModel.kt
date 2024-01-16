@@ -52,10 +52,10 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                     height = user.height,
                     age = user.age
                 )
+                LoggedInUserHolder.setLoggedInUser(loggedInUser)
 
 
                 _currentUser = user
-                LoggedInUserHolder.setLoggedInUser(loggedInUser)
                 _loginState.value = LoginState.Success(user)
 
 
