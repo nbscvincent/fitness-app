@@ -248,6 +248,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
                 LazyColumn(
                     modifier = Modifier.padding(0.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     item {
@@ -286,7 +287,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                             modifier = Modifier
                                 .size(150.dp)
                                 .padding(16.dp)
-                                .drawBehind {
+                                .drawBehind{
                                     // Draw circular progress
                                     drawArc(
                                         color = Color(0xFF800000),
