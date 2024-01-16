@@ -8,6 +8,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,6 +18,8 @@ import com.example.example.model.SignUpScreen
 import com.nbscollege.fitnessapp.authscreen.AuthenticationScreen
 import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.navigation.Routes
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -30,7 +33,19 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
     var showToast by remember { mutableStateOf(false) }
 
     var exit by remember { mutableStateOf(false) }
+    val loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val context = LocalContext.current
+
+
+
+    val preferences = remember { context.getSharedPreferences("prefs", 0)}
+
+    if (preferences.getBoolean("status", false)){
+        loginViewModel.status = true
+        loginViewModel.username = preferences.getString("username", "") ?: ""
+        loginViewModel.password = preferences.getString("password", "") ?: ""
+
+    }
 
 
 
@@ -86,7 +101,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
                         Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
                     }
                 }
-
+                    println(preferences.all)
                     mainNavigation(navController, screenViewModel)
             }
 

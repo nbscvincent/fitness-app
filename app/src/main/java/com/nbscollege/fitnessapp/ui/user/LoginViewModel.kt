@@ -2,6 +2,9 @@ package com.nbscollege.fitnessapp.ui.user
 
 
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
@@ -26,6 +29,10 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     // Property to store the current logged-in user
     private var _currentUser: User? = null
     val currentUser: User? get() = _currentUser
+
+    var status by mutableStateOf(false)
+    var username by mutableStateOf("")
+    var password by mutableStateOf("")
 
 
 

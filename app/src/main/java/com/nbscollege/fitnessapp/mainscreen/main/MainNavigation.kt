@@ -7,6 +7,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,6 +28,8 @@ import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.LogoutSplashScreen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
@@ -38,7 +41,11 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
+
+    val loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val context = LocalContext.current
+
+
 
 
 

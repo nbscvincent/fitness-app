@@ -19,17 +19,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.nbscollege.fitnessapp.R
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 @Composable
 fun SplashScreen(
     navController: NavHostController,
     screenViewModel: ScreenViewModel,
+    loginViewModel: LoginViewModel
 ) {
     val state = screenViewModel.splashLoaded.collectAsState()
     screenViewModel.runSplashScreen()
 
     if (state.value) {
+        
         navController.navigate(Auth.LogInScreen.name)
     } else {
         Column(

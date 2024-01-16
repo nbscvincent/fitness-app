@@ -224,6 +224,16 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                 is LoginState.Success -> {
 
 
+                                    viewModel.status = true
+                                    viewModel.username = username
+                                    viewModel.password = password
+
+                                    val preferences = context.getSharedPreferences("prefs", 0)
+                                    preferences.edit()
+                                        .putBoolean("status", true)
+                                        .putString("username", viewModel.username)
+                                        .putString("password", viewModel.password)
+                                        .apply()
 
                                     val user = loginState.user
                                     Log.i("LoginState", "Success: ${user.username}")
