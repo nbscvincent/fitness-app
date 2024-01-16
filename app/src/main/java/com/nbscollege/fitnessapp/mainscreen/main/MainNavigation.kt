@@ -42,8 +42,21 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
 
+
+
     val loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val context = LocalContext.current
+
+
+
+    val preferences = remember { context.getSharedPreferences("prefs", 0)}
+
+    if (preferences.getBoolean("status", false)){
+        loginViewModel.status = true
+        loginViewModel.username = preferences.getString("username", "") ?: ""
+        loginViewModel.password = preferences.getString("password", "") ?: ""
+
+    }
 
 
 

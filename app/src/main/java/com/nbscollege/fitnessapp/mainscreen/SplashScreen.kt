@@ -43,7 +43,7 @@ fun SplashScreen(
     }
 
     LaunchedEffect(key1 = appearSplash){
-        delay(5000)
+        delay(2000)
         appearSplash = true
     }
 
@@ -65,9 +65,10 @@ fun SplashScreen(
         }
     if(appearSplash){
         if(!loginViewModel.status){
-            navController.navigate(Routes.AUTH.name)
+            navController.navigate(Auth.Splash.name)
+         
         }else {
-            navController.navigate(Auth.LogInScreen.name)
+            
         }
     }
 
