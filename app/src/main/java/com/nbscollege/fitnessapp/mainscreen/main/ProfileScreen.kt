@@ -126,7 +126,7 @@ fun ProfileScreen(
                             .padding()
                             .clip(RoundedCornerShape(32.dp))
                     ) {
-                        
+
                         item {
                             loggedInUser?.let { user ->
 
@@ -673,7 +673,7 @@ fun ProfileScreen(
                                 }
 
 
-                                } ?: run {
+                                } ?: run {  ->
                                 Text(
                                     text = "User not logged in",
                                     style = TextStyle(fontSize = 20.sp),

@@ -3,6 +3,7 @@ package com.nbscollege.fitnessapp.ui.user
 
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -36,6 +37,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
 
 
+
     // Function to perform login
     fun login(username: String, password: String) {
         viewModelScope.launch {
@@ -54,15 +56,10 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 )
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
 
-
                 _currentUser = user
                 _loginState.value = LoginState.Success(user)
 
 
-
-
-
-                // Save user session in SharedPreferences
 
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")

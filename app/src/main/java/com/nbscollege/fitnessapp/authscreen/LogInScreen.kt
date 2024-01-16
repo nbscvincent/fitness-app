@@ -228,6 +228,8 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                     viewModel.username = username
                                     viewModel.password = password
 
+
+
                                     val preferences = context.getSharedPreferences("prefs", 0)
                                     preferences.edit()
                                         .putBoolean("status", true)
