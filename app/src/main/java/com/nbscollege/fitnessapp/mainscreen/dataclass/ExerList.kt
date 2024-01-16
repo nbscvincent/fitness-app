@@ -12,7 +12,7 @@ data class ExerList(
 
 val ExerciseList = listOf(
     //for abs workout
-    ExerList(title = "PLANK", R.raw.incline, time = 45, route = CategoryRoute.ABS.name),
+    ExerList(title = "PLANK", R.raw.plank, time = 45, route = CategoryRoute.ABS.name),
     ExerList(title = "ABDOMINAL CRUNCHES", R.raw.abdominal, time = 60,route = CategoryRoute.ABS.name),
     ExerList(title = "RUSSIAN TWIST", R.raw.russian, time = 160,route = CategoryRoute.ABS.name),
     ExerList(title = "BURPEES", R.raw.burpee, time = 70,route = CategoryRoute.ABS.name),
@@ -24,12 +24,12 @@ val ExerciseList = listOf(
 
 val ChestExerciseList = listOf(
     ExerList(title ="JUMPING JACKS", R.raw.jumping, time =0, route = CategoryRoute.CHEST.name ),
-    ExerList(title ="INCLINE PUSH-UPS", R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="DECLINE PUSH-UPS", R.raw.declinepush, time =0, route = CategoryRoute.CHEST.name ),
     ExerList(title ="PUSH-UPS", R.raw.pushup, time =0, route = CategoryRoute.CHEST.name ),
-    ExerList(title ="WIDE ARM PUSH-UPS", R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
-    ExerList(title ="TRICEPS DIPS", R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="WIDE ARM PUSH-UPS", R.raw.widepush, time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="TRICEPS DIPS", R.raw.tricepsdip, time =0, route = CategoryRoute.CHEST.name ),
     ExerList(title ="COBRA STRETCH", R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
-    ExerList(title ="CHEST STRETCH", R.raw.plank,  time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="CHEST STRETCH", R.raw.cheststretch,  time =0, route = CategoryRoute.CHEST.name ),
     )
 
 val ArmExerciseList = listOf(
@@ -39,7 +39,7 @@ val ArmExerciseList = listOf(
     ExerList(title ="CHEST PRESS PULSE", R.raw.plank,  time =0, route = CategoryRoute.ARM.name ),
     ExerList(title ="DIAGONAL PLANK", R.raw.plank,  time =0, route = CategoryRoute.ARM.name ),
     ExerList(title ="WALL PUSH-UPS", R.raw.plank,  time =0, route = CategoryRoute.ARM.name ),
-    ExerList(title ="STANDING BIECEPS STRETCH LEFT", R.raw.plank,  time =0, route = CategoryRoute.ARM.name ),
+    ExerList(title ="STANDING BICEPS STRETCH LEFT", R.raw.plank,  time =0, route = CategoryRoute.ARM.name ),
 
 )
 
