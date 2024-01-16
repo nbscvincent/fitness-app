@@ -40,7 +40,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
     var showBottomBar by remember { mutableStateOf(true) }
     val context = LocalContext.current
 
-
+    
 
     var exit by remember { mutableStateOf(false) }
 
