@@ -13,7 +13,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
@@ -128,7 +129,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
                 composable(route = CategoryRoute.ABS.name) { backStackEntry ->
 
-                    ExerciseList(navController)
+                    AbsExerciseList(navController)
                     showBottomBar = false
                 }
 
@@ -143,10 +144,23 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     ChestScreen(navController, backStackEntry)
                     showBottomBar = false
                 }
-                composable(route = CategoryRoute.ARM.name) { backStackEntry ->
-                    ArmScreen(navController,backStackEntry)
-                    showBottomBar = false
+            composable(route = CategoryRoute.ARM.name) { backStackEntry ->
+
+                ArmExerciseList(navController)
+                showBottomBar = false
+            }
+
+            composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ArmScreen(navController = navController, index = bid.toInt())
                 }
+            }
+//                composable(route = CategoryRoute.ARM.name) { backStackEntry ->
+//                    ArmScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
                 composable(route = CategoryRoute.LEG.name) { backStackEntry ->
                     LegScreen(navController,backStackEntry)
                     showBottomBar = false

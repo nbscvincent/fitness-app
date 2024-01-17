@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
@@ -103,6 +104,21 @@ fun AbsScreen(navController: NavController, index: Int) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
+                Box (
+                    modifier = Modifier.fillMaxWidth(1f),
+                    contentAlignment = Alignment.Center,
+
+                ) {
+                    Text(
+                        ExerciseList[index].title,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 50.sp,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.graphicsLayer(translationY = 0f, translationX = 0f)
+                    )
+
+                }
 
 //                Box(
 //                    modifier = Modifier
@@ -270,12 +286,12 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
 
-                        Text(
-                            text = ExerciseList[index].title,
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
                         Text(
                             text = "${remainingTime / 1000} seconds left",
                             fontWeight = FontWeight.Bold,
