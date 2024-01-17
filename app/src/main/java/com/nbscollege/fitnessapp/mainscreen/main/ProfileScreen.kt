@@ -37,9 +37,9 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
+import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
-import com.nbscollege.fitnessapp.ui.user.ProfileViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 
 
@@ -59,8 +59,23 @@ fun ProfileScreen(
 
 
 
+
+
     val preferences = LocalContext.current.getSharedPreferences("prefs", 0)
     val isLoggedIn = preferences.getBoolean("status", false)
+
+    val loggedInUser = if (isLoggedIn) {
+        User(
+            id = "",  // Modify with the actual user ID if available
+            username = preferences.getString("username", "") ?: "",
+            password = preferences.getString("password", "") ?: "",
+            weight = preferences.getString("weight", "") ?: "",
+            height = preferences.getString("height", "") ?: "",
+            age = preferences.getString("age", "") ?: ""
+        )
+    } else {
+        null
+    }
 
 
 
@@ -143,7 +158,7 @@ fun ProfileScreen(
                         item {
                             loggedInUser?.let { user ->
 
-                               
+
 
 
 

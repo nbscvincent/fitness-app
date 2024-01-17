@@ -6,7 +6,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.nbscollege.fitnessapp.FitnessApp
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
-import com.nbscollege.fitnessapp.ui.user.ProfileViewModel
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 
 object AppViewModelProvider {
