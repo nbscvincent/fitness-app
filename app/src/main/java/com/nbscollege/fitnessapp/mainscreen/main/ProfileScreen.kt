@@ -30,14 +30,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
-import com.nbscollege.fitnessapp.authscreen.model.User
+import com.nbscollege.fitnessapp.mainscreen.main.SplashLoading
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
@@ -56,23 +55,22 @@ fun ProfileScreen(
 
 ) {
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
 
 
+    val loggedInUser = LoggedInUserHolder.getLoggedInUser() ?: run {
+        val preferences = context.getSharedPreferences("prefs", 0)
+        if (preferences.getBoolean("status", false)) {
+            val username = preferences.getString("username", "") ?: ""
+            val password = preferences.getString("password", "") ?: ""
+            loginViewModel.login(username, password)
+            LoggedInUserHolder.getLoggedInUser()
+        } else {
+            null
+        }
+    }
 
 
-
-    val preferences = LocalContext.current.getSharedPreferences("prefs", 0)
-    val isLoggedIn = preferences.getBoolean("status", false)
-
-
-
-
-
-
-
-
-    val loggedInUser = LoggedInUserHolder.getLoggedInUser()
-    println("aklasdlkasjlkda$loggedInUser")
     Scaffold(
         topBar = {
             Box(
@@ -127,7 +125,8 @@ fun ProfileScreen(
 
 
         Box(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .padding(innerPadding)
 
 
@@ -144,11 +143,10 @@ fun ProfileScreen(
 
 
 
+
+
                         item {
                             loggedInUser?.let { user ->
-
-
-
 
 
                                 Spacer(modifier = Modifier.height(10.dp))
@@ -694,12 +692,16 @@ fun ProfileScreen(
                                 }
 
 
-                                } ?: run {  ->
-                                Text(
-                                    text = "User not logged in",
-                                    style = TextStyle(fontSize = 20.sp),
-                                    color = Color.Red
-                                )
+                                } ?: run {
+
+                                SplashLoading(navController)
+//                                Text(
+//                                    text = "Please Wait",
+//                                    style = TextStyle(fontSize = 20.sp),
+//                                    color = Color.Red
+//                                )
+
+
                             }
                         }
 
