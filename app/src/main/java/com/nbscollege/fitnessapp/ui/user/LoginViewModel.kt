@@ -22,24 +22,9 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
     val loginState: StateFlow<LoginState> = _loginState
 
-
-
-
-
-
-
     var status by mutableStateOf(false)
     var username by mutableStateOf("")
     var password by mutableStateOf("")
-
-
-
-
-
-
-
-
-
 
 
     // Function to perform login

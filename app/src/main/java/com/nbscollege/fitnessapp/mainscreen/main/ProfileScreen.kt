@@ -51,7 +51,7 @@ import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 fun ProfileScreen(
     screenViewModel: ScreenViewModel,
     navController: NavController,
-    viewModel: ProfileViewModel = viewModel(factory = AppViewModelProvider.Factory),
+
     loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
 
 ) {
@@ -64,18 +64,7 @@ fun ProfileScreen(
     val preferences = LocalContext.current.getSharedPreferences("prefs", 0)
     val isLoggedIn = preferences.getBoolean("status", false)
 
-    val loggedInUser = if (isLoggedIn) {
-        User(
-            id = "",  // Modify with the actual user ID if available
-            username = preferences.getString("username", "") ?: "",
-            password = preferences.getString("password", "") ?: "",
-            weight = preferences.getString("weight", "") ?: "",
-            height = preferences.getString("height", "") ?: "",
-            age = preferences.getString("age", "") ?: ""
-        )
-    } else {
-        null
-    }
+
 
 
 

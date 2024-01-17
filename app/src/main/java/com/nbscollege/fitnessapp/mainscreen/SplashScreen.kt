@@ -13,7 +13,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -26,7 +25,6 @@ import androidx.navigation.NavHostController
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.navigation.Routes
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
-import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
 @Composable
@@ -71,6 +69,7 @@ fun SplashScreen(
         }else {
 
             navController.navigate(Routes.MAIN.name)
+
             
         }
     }

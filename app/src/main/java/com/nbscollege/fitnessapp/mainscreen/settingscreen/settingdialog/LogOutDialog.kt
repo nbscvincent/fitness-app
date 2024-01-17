@@ -2,7 +2,6 @@ package com.nbscollege.fitnessapp.mainscreen.settingscreen.settingdialog
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -22,6 +21,7 @@ import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 fun LogoutDialog(onDismiss: () -> Unit, onConfirm: () -> Unit) {
     val navController = rememberNavController()
     val loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
+
     AlertDialog(
         onDismissRequest = { onDismiss() },
         icon = {
