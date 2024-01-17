@@ -25,6 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -55,6 +56,16 @@ fun ProfileScreen(
 
 ) {
     val coroutineScope = rememberCoroutineScope()
+
+    LaunchedEffect(loginViewModel) {
+        // Retrieve the login status from the ViewModel
+        val loggedInUser = loginViewModel.currentUser
+
+        // If the user is logged in, set the LoggedInUserHolder
+        if (loggedInUser != null) {
+            LoggedInUserHolder.setLoggedInUser(loggedInUser)
+        }
+    }
 
     val loggedInUser = LoggedInUserHolder.getLoggedInUser()
     println("aklasdlkasjlkda$loggedInUser")

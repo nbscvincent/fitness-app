@@ -56,6 +56,8 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
 
 
 
+
+
     LaunchedEffect(key1 = exit) {
         if (exit) {
             delay(2000)
