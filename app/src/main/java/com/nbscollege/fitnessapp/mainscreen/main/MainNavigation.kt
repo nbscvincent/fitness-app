@@ -7,6 +7,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,11 +23,14 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.model.ProfileScreen
+import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
 import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import com.nbscollege.fitnessapp.viewmodel.LogoutSplashScreen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
@@ -38,7 +42,24 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
     val navController = rememberNavController()
     var showBottomBar by remember { mutableStateOf(true) }
+
+
+
+    val loginViewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)
     val context = LocalContext.current
+
+
+
+    val preferences = remember { context.getSharedPreferences("prefs", 0)}
+
+    if (preferences.getBoolean("status", false)){
+        loginViewModel.status = true
+        loginViewModel.username = preferences.getString("username", "") ?: ""
+        loginViewModel.password = preferences.getString("password", "") ?: ""
+
+    }
+
+
 
 
 
@@ -128,7 +149,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                         }
                     }
 
-                    LogoutSplashScreen(navController,screenViewModel)
+                    SplashNav(screenViewModel)
                     showBottomBar = false
                 }
 

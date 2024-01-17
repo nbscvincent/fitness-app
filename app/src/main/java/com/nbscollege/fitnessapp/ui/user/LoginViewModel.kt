@@ -2,6 +2,11 @@ package com.nbscollege.fitnessapp.ui.user
 
 
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
@@ -19,13 +24,14 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
     val loginState: StateFlow<LoginState> = _loginState
 
+    var status by mutableStateOf(false)
+    var username by mutableStateOf("")
+    var password by mutableStateOf("")
 
 
 
 
-    // Property to store the current logged-in user
-    private var _currentUser: User? = null
-    val currentUser: User? get() = _currentUser
+
 
 
 
@@ -45,23 +51,29 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                     height = user.height,
                     age = user.age
                 )
-
-
-                _currentUser = user
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
+
                 _loginState.value = LoginState.Success(user)
 
 
-
-
-
-                // Save user session in SharedPreferences
 
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")
             }
         }
     }
+@Composable
+    private fun SaveUserCredentials(username: String, password: String) {
+        val context = LocalContext.current
+        val preferences = context.getSharedPreferences("prefs", 0)
+        val editor = preferences.edit()
+        editor.putBoolean("status", true)
+        editor.putString("username", username)
+        editor.putString("password", password)
+        editor.apply()
+    }
+
+
 
 
 
