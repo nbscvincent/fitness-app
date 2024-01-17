@@ -26,13 +26,14 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
 
 
-    // Property to store the current logged-in user
-    private var _currentUser: User? = null
-    val currentUser: User? get() = _currentUser
+
 
     var status by mutableStateOf(false)
     var username by mutableStateOf("")
     var password by mutableStateOf("")
+
+
+
 
 
 
@@ -59,7 +60,6 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 )
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
 
-                _currentUser = user
                 _loginState.value = LoginState.Success(user)
 
 
