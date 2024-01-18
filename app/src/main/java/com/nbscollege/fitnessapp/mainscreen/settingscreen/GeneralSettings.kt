@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,6 +37,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -49,43 +51,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
     val coroutineScope = rememberCoroutineScope()
     var showDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
-    if (showDialog) {
-        AlertDialog(
-            onDismissRequest = {
-                // Handle dialog dismissal if needed
-                showDialog = false
-            },
-            title = {
-                Text(text = "Confirm Password Change")
-            },
-            text = {
-                Text(text = "Do you really want to change the password?")
-            },
-            confirmButton = {
-                Button(
-                    onClick = {
-                        // Call your ViewModel function to change the password
-                        viewModel.changePassword(currentPassword, newPassword)
-                        showDialog = false
-                    }
-                ) {
-                    Text("Yes")
-                }
-            },
-            dismissButton = {
-                Button(
-                    onClick = {
-                        // Handle cancellation if needed
-                        showDialog = false
-                    }
-                ) {
-                    Text("No")
-                }
-            },
-
-            )
-    }
+    // Dialog state
+    var showDialogConfirmation by remember { mutableStateOf(false) }
 
 
 
@@ -126,7 +95,9 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             OutlinedTextField(
 
-                modifier = Modifier.fillMaxWidth().padding(start=20.dp, end=20.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp),
 
                 label = { Text("Current Password", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
@@ -186,13 +157,23 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Button(
                onClick = {
 
-                   if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() &&
-                       newPassword == confirmPassword
-                   ) {
-                       showDialog = true
-                   } else {
-                       // Handle incorrect input or show an error message
+
+                   coroutineScope.launch {
+                       if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() &&
+                           newPassword == confirmPassword
+                       ) {
+                           // Call your ViewModel function to change the password
+                           viewModel.changePassword(currentPassword, newPassword, navController)
+                           viewModel.status = false
+                           val prefer = context.getSharedPreferences("prefs", 0)
+                           prefer.edit()
+                               .clear()
+                               .apply()
+                       } else {
+                           // Handle validation error or mismatched passwords
+                       }
                    }
+
 
 
                } // end of onclick button
@@ -201,8 +182,50 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             }
 
             if (!viewModel.oldPasswordCorrect) {
-                Text("Old password is incorrect", color = Color.Red)
+                Text("Current password is incorrect", color = Color.Red)
             }
+
+            if (showDialogConfirmation) {
+                AlertDialog(
+                    onDismissRequest = {
+                        showDialogConfirmation = false
+                    },
+                    title = {
+                        Text("Confirm Password Change")
+                    },
+                    text = {
+                        Text("Are you sure you want to change the password?")
+                    },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                showDialogConfirmation = false
+                                // Call your ViewModel function to change the password
+                                viewModel.changePassword(currentPassword, newPassword, navController)
+                                viewModel.status = false
+                                val prefer = context.getSharedPreferences("prefs", 0)
+                                prefer.edit()
+                                    .clear()
+                                    .apply()
+                            }
+                        ) {
+                            Text("Yes")
+                        }
+                    },
+                    dismissButton = {
+                        Button(
+                            onClick = {
+                                showDialogConfirmation = false
+                            }
+                        ) {
+                            Text("No")
+                        }
+                    }
+                )
+            }
+
+
+
 
 
 
