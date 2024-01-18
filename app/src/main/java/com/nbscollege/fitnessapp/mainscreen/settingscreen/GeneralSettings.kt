@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,6 +36,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -61,6 +68,16 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     var confirmPasswordColor =
         if (!viewModel.oldPasswordCorrect) Color.Red
         else Color.Black
+
+    var currentPasswordError by remember { mutableStateOf(false) }
+    var newPasswordError by remember { mutableStateOf(false) }
+    var confirmPasswordError by remember { mutableStateOf(false) }
+
+    var showPassword by remember {
+        mutableStateOf(false)
+    }
+
+
 
 
 
@@ -104,18 +121,24 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp),
+                isError = currentPasswordError,
 
                 label = { Text("Current Password", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
-                leadingIcon = {
-                    Icon(
-                        Icons.Rounded.Lock,
-                        contentDescription = "current password"
-                    )
+                trailingIcon = {
+
+                    IconButton(onClick = { showPassword = showPassword != true }) {
+                        Icon(
+                            if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = "currentPassword"
+                        )
+                    }
 
                 },
+                visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 shape = RoundedCornerShape(12.dp),
 
             )
@@ -131,7 +154,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             OutlinedTextField(
 
                 modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
-
+                isError = newPasswordError,
                 label = { Text("New Password", fontWeight = FontWeight.Medium) },
                 value = newPassword,
                 singleLine = true,
@@ -155,6 +178,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 modifier = Modifier
                     .absolutePadding(left = 20.dp, bottom = 11.dp),
+                isError = confirmPasswordError,
                 label = { Text("Confirm Password", fontWeight = FontWeight.Medium) },
                 value = confirmPassword,
                 singleLine = true,
@@ -176,8 +200,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
 
                    coroutineScope.launch {
-                       if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() &&
-                           newPassword == confirmPassword && confirmPassword.isNotEmpty()
+                       if (currentPassword.isNotEmpty() && newPassword.isNotEmpty()  && confirmPassword.isNotEmpty() &&
+                           newPassword == confirmPassword
                                ) {
                            // Call your ViewModel function to change the password
 //                           viewModel.changePassword(currentPassword, newPassword, navController)
@@ -190,8 +214,17 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                                 showDialogConfirmation = true
 
-                       } else {
+                       } else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
+                           currentPasswordError = currentPassword.isEmpty()
+                           newPasswordError = newPassword.isEmpty()
+                           confirmPasswordError = confirmPassword.isEmpty()
+
                            Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
+
+                       }
+                       else if (newPassword != confirmPassword){
+                           Toast.makeText(context,"please input the same password", Toast.LENGTH_SHORT).show()
+
                        }
                    }
 
