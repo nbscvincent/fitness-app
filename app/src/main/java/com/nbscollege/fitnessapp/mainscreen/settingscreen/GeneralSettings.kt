@@ -99,7 +99,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp),
 
-                label = { Text("Current Password", fontWeight = FontWeight.Medium) },
+                label = { Text("Current Password", fontWeight = FontWeight.Medium, color = if (viewModel.status) Color.Red else Color.Black ) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
@@ -163,14 +163,20 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                            newPassword == confirmPassword
                        ) {
                            // Call your ViewModel function to change the password
-                           viewModel.changePassword(currentPassword, newPassword, navController)
-                           viewModel.status = false
-                           val prefer = context.getSharedPreferences("prefs", 0)
-                           prefer.edit()
-                               .clear()
-                               .apply()
-                       } else {
-                           // Handle validation error or mismatched passwords
+//                           viewModel.changePassword(currentPassword, newPassword, navController)
+//                           viewModel.status = false
+//                           val prefer = context.getSharedPreferences("prefs", 0)
+//                           prefer.edit()
+//                               .clear()
+//                               .apply()
+
+                           if (viewModel.checkOldPassword(currentPassword)) {
+                               // If the current password is correct, show the confirmation dialog
+                               showDialogConfirmation = true
+                           }
+                           showDialogConfirmation = true
+                       } else if (newPassword != confirmPassword) {
+
                        }
                    }
 
