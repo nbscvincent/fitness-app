@@ -28,6 +28,26 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     var username by mutableStateOf("")
     var password by mutableStateOf("")
 
+    var oldPasswordCorrect by mutableStateOf(true)
+
+    fun changePassword(oldPassword: String, newPassword: String) {
+        viewModelScope.launch {
+            val loggedInUser = LoggedInUserHolder.getLoggedInUser()
+
+            if (loggedInUser != null && loggedInUser.password == oldPassword) {
+                // Old password is correct, perform password change logic
+                userRepository.changePassword(loggedInUser.username, newPassword)
+                oldPasswordCorrect = true
+                // Optionally, you can update the state or perform any other action
+
+
+            } else {
+                // Old password is incorrect, update the state
+                oldPasswordCorrect = false
+            }
+        }
+    }
+
 
 
 

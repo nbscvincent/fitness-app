@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -30,20 +31,61 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.ui.AppViewModelProvider
+import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 
 
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry) {
+fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEntry, viewModel: LoginViewModel = viewModel(factory = AppViewModelProvider.Factory)) {
 
     var currentPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
 
     val coroutineScope = rememberCoroutineScope()
+    var showDialog by remember { mutableStateOf(false) }
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {
+                // Handle dialog dismissal if needed
+                showDialog = false
+            },
+            title = {
+                Text(text = "Confirm Password Change")
+            },
+            text = {
+                Text(text = "Do you really want to change the password?")
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        // Call your ViewModel function to change the password
+                        viewModel.changePassword(currentPassword, newPassword)
+                        showDialog = false
+                    }
+                ) {
+                    Text("Yes")
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        // Handle cancellation if needed
+                        showDialog = false
+                    }
+                ) {
+                    Text("No")
+                }
+            },
+
+            )
+    }
 
 
 
@@ -144,7 +186,13 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Button(
                onClick = {
 
-                 
+                   if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() &&
+                       newPassword == confirmPassword
+                   ) {
+                       showDialog = true
+                   } else {
+                       // Handle incorrect input or show an error message
+                   }
 
 
                } // end of onclick button
@@ -152,9 +200,16 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text("Change Password")
             }
 
+            if (!viewModel.oldPasswordCorrect) {
+                Text("Old password is incorrect", color = Color.Red)
+            }
+
+
+
         }
     }
 }
+
 
 
 

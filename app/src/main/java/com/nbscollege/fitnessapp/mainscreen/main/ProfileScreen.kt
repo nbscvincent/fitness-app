@@ -70,7 +70,6 @@ fun ProfileScreen(
         }
     }
 
-
     Scaffold(
         topBar = {
             Box(
@@ -140,10 +139,6 @@ fun ProfileScreen(
                             .padding()
                             .clip(RoundedCornerShape(32.dp))
                     ) {
-
-
-
-
 
                         item {
                             loggedInUser?.let { user ->
