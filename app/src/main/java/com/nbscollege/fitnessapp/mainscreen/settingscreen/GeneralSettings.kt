@@ -16,7 +16,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -73,7 +72,13 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     var newPasswordError by remember { mutableStateOf(false) }
     var confirmPasswordError by remember { mutableStateOf(false) }
 
-    var showPassword by remember {
+    var showCurrent by remember {
+        mutableStateOf(false)
+    }
+    var showNew by remember {
+        mutableStateOf(false)
+    }
+    var showConfirm by remember {
         mutableStateOf(false)
     }
 
@@ -119,8 +124,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             OutlinedTextField(
 
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp),
+                    .absolutePadding(left = 20.dp, bottom = 11.dp),
                 isError = currentPasswordError,
 
                 label = { Text("Current Password", fontWeight = FontWeight.Medium) },
@@ -129,15 +133,15 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 onValueChange = { currentPassword = it },
                 trailingIcon = {
 
-                    IconButton(onClick = { showPassword = showPassword != true }) {
+                    IconButton(onClick = { showCurrent = showCurrent != true }) {
                         Icon(
-                            if (showPassword) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            if (showCurrent) Icons.Default.Visibility else Icons.Default.VisibilityOff,
                             contentDescription = "currentPassword"
                         )
                     }
 
                 },
-                visualTransformation = if (showPassword) VisualTransformation.None else PasswordVisualTransformation(),
+                visualTransformation = if (showCurrent) VisualTransformation.None else PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 shape = RoundedCornerShape(12.dp),
 
@@ -160,11 +164,15 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 singleLine = true,
                 onValueChange = { newPassword = it },
                 trailingIcon = {
-                    Icon(
-                        Icons.Rounded.Lock,
-                        contentDescription = "new password"
-                    )
+                    IconButton(onClick = { showNew = showNew != true }) {
+                        Icon(
+                            if (showNew) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = "currentPassword"
+                        )
+                    }
                 },
+                visualTransformation = if (showNew) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 shape = RoundedCornerShape(12.dp),
 
                 )
@@ -184,11 +192,15 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 singleLine = true,
                 onValueChange = { confirmPassword = it },
                 trailingIcon = {
-                    Icon(
-                        Icons.Rounded.Lock,
-                        contentDescription = "confirm password"
-                    )
+                    IconButton(onClick = { showConfirm = showConfirm != true }) {
+                        Icon(
+                            if (showConfirm) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+                            contentDescription = "confirm password"
+                        )
+                    }
                 },
+                visualTransformation = if (showConfirm) VisualTransformation.None else PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 shape = RoundedCornerShape(12.dp),
 
                 )
@@ -210,9 +222,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                           prefer.edit()
 //                               .clear()
 //                               .apply()
+                           if(newPassword == currentPassword) {
+                               Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
+                           } else {
+                               showDialogConfirmation = true
+                           }
 
 
-                                showDialogConfirmation = true
+
 
                        } else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
                            currentPasswordError = currentPassword.isEmpty()
@@ -226,6 +243,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                            Toast.makeText(context,"please input the same password", Toast.LENGTH_SHORT).show()
 
                        }
+
                    }
 
 

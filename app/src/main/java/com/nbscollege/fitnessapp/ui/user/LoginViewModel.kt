@@ -47,7 +47,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                 navController.navigate(SettingsRoute.LogOut.name)
 
             } else {
-                // Old password is incorrect, update the state
+
                 oldPasswordCorrect = false
             }
         }
