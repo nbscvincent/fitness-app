@@ -226,9 +226,11 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                           prefer.edit()
 //                               .clear()
 //                               .apply()
-                           if(newPassword == currentPassword && !viewModel.oldPasswordCorrect) {
+                           if(newPassword == currentPassword && viewModel.oldPasswordCorrect) {
                                Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
-                           } else {
+                           }
+
+                           else {
                                showDialogConfirmation = true
                            }
 
