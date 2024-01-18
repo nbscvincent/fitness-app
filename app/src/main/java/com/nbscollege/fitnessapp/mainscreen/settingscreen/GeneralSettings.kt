@@ -160,8 +160,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                    coroutineScope.launch {
                        if (currentPassword.isNotEmpty() && newPassword.isNotEmpty() &&
-                           newPassword == confirmPassword
-                       ) {
+                           newPassword == confirmPassword && confirmPassword.isNotEmpty()
+                               ) {
                            // Call your ViewModel function to change the password
 //                           viewModel.changePassword(currentPassword, newPassword, navController)
 //                           viewModel.status = false
@@ -170,12 +170,9 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                               .clear()
 //                               .apply()
 
-                           if (viewModel.checkOldPassword(currentPassword)) {
-                               // If the current password is correct, show the confirmation dialog
-                               showDialogConfirmation = true
-                           }
+                           viewModel.changePassword(currentPassword, newPassword, navController)
                            showDialogConfirmation = true
-                       } else if (newPassword != confirmPassword) {
+                       } else {
 
                        }
                    }
@@ -205,14 +202,15 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     confirmButton = {
                         Button(
                             onClick = {
-                                showDialogConfirmation = false
+
                                 // Call your ViewModel function to change the password
-                                viewModel.changePassword(currentPassword, newPassword, navController)
+
                                 viewModel.status = false
                                 val prefer = context.getSharedPreferences("prefs", 0)
                                 prefer.edit()
                                     .clear()
                                     .apply()
+                                showDialogConfirmation = false
                             }
                         ) {
                             Text("Yes")
