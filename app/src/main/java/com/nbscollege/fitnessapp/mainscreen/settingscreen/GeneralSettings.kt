@@ -149,7 +149,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             )
             if (!viewModel.oldPasswordCorrect) {
                 Text("Current password is incorrect", color = Color.Red)
+            } else {
+                Text("")
             }
+
 
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -223,7 +226,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                           prefer.edit()
 //                               .clear()
 //                               .apply()
-                           if(newPassword == currentPassword) {
+                           if(newPassword == currentPassword && !viewModel.oldPasswordCorrect) {
                                Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
                            } else {
                                showDialogConfirmation = true
