@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -56,6 +57,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     // Dialog state
     var showDialogConfirmation by remember { mutableStateOf(false) }
 
+    var confirmPasswordColor =
+        if (!viewModel.oldPasswordCorrect) Color.Red
+        else Color.Black
+
 
 
     Scaffold(
@@ -91,7 +96,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 .padding(innerPadding)
         ) {
 
-            Text("Current Password")
+            Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
             OutlinedTextField(
 
@@ -99,7 +104,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     .fillMaxWidth()
                     .padding(start = 20.dp, end = 20.dp),
 
-                label = { Text("Current Password", fontWeight = FontWeight.Medium, color = if (viewModel.status) Color.Red else Color.Black ) },
+                label = { Text("Current Password", fontWeight = FontWeight.Medium) },
                 value = currentPassword,
                 singleLine = true,
                 onValueChange = { currentPassword = it },
@@ -114,7 +119,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             )
 
-            Text("New Password")
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text("New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
             OutlinedTextField(
 
@@ -134,7 +142,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 )
 
-            Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 5.dp, bottom = 5.dp))
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
             OutlinedTextField(
 
@@ -154,6 +165,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 )
 
+            Spacer(modifier = Modifier.height(20.dp))
+
             Button(
                onClick = {
 
@@ -170,7 +183,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                               .clear()
 //                               .apply()
 
-                           viewModel.changePassword(currentPassword, newPassword, navController)
+
                            showDialogConfirmation = true
                        } else {
 
