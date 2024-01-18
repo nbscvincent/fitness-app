@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp.mainscreen.settingscreen
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -118,6 +119,9 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 shape = RoundedCornerShape(12.dp),
 
             )
+            if (!viewModel.oldPasswordCorrect) {
+                Text("Current password is incorrect", color = Color.Red)
+            }
 
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -184,9 +188,10 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                               .apply()
 
 
-                           showDialogConfirmation = true
-                       } else {
+                                showDialogConfirmation = true
 
+                       } else {
+                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
                        }
                    }
 
@@ -197,9 +202,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text("Change Password")
             }
 
-            if (!viewModel.oldPasswordCorrect) {
-                Text("Current password is incorrect", color = Color.Red)
-            }
+
 
             if (showDialogConfirmation) {
                 AlertDialog(
@@ -207,7 +210,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                         showDialogConfirmation = false
                     },
                     title = {
-                        Text("Confirm Password Change")
+                        Text("Change Password")
                     },
                     text = {
                         Text("Are you sure you want to change the password?")
@@ -217,13 +220,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                             onClick = {
 
                                 // Call your ViewModel function to change the password
-
+                                viewModel.changePassword(currentPassword, newPassword, navController)
                                 viewModel.status = false
                                 val prefer = context.getSharedPreferences("prefs", 0)
                                 prefer.edit()
                                     .clear()
                                     .apply()
                                 showDialogConfirmation = false
+
                             }
                         ) {
                             Text("Yes")
