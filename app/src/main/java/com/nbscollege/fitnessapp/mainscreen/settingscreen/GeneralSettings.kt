@@ -38,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -231,17 +232,24 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
 
 
-                       } else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
-                           currentPasswordError = currentPassword.isEmpty()
-                           newPasswordError = newPassword.isEmpty()
-                           confirmPasswordError = confirmPassword.isEmpty()
-
-                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
-
                        }
+//                       else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
+//                           currentPasswordError = currentPassword.isEmpty()
+//                           newPasswordError = newPassword.isEmpty()
+//                           confirmPasswordError = confirmPassword.isEmpty()
+//
+//                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
+//
+//                       }
                        else if (newPassword != confirmPassword){
                            Toast.makeText(context,"please input the same password", Toast.LENGTH_SHORT).show()
 
+                       }
+                       else {
+                           currentPasswordError = currentPassword.isEmpty()
+                           newPasswordError = newPassword.isEmpty()
+                           confirmPasswordError = confirmPassword.isEmpty()
+                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
                        }
 
                    }
@@ -257,14 +265,15 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             if (showDialogConfirmation) {
                 AlertDialog(
+
                     onDismissRequest = {
                         showDialogConfirmation = false
                     },
                     title = {
-                        Text("Change Password")
+                        Text("Change Password", textAlign = TextAlign.Center)
                     },
                     text = {
-                        Text("Are you sure you want to change the password?")
+                        Text("Are you sure you want to change the password?", textAlign = TextAlign.Center)
                     },
                     confirmButton = {
                         Button(
@@ -292,8 +301,11 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                         ) {
                             Text("No")
                         }
-                    }
+                    },
+
+
                 )
+
             }
 
 
