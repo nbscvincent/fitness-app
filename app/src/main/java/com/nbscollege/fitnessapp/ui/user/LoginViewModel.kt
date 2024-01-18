@@ -9,9 +9,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
@@ -27,6 +29,29 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     var status by mutableStateOf(false)
     var username by mutableStateOf("")
     var password by mutableStateOf("")
+
+
+
+    var oldPasswordCorrect by mutableStateOf(true)
+
+    fun changePassword(oldPassword: String, newPassword: String, navController: NavController) {
+        viewModelScope.launch {
+            val loggedInUser = LoggedInUserHolder.getLoggedInUser()
+
+            if (loggedInUser != null && loggedInUser.password == oldPassword) {
+                // Old password is correct, perform password change logic
+                userRepository.changePassword(loggedInUser.username, newPassword)
+                oldPasswordCorrect = true
+                // Optionally, you can update the state or perform any other action
+
+                navController.navigate(SettingsRoute.LogOut.name)
+
+            } else {
+
+                oldPasswordCorrect = false
+            }
+        }
+    }
 
 
 
