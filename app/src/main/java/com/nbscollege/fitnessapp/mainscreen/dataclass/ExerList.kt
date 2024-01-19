@@ -19,18 +19,17 @@ val ExerciseList = listOf(
     ExerList(title = "HEEL TOUCH",R.raw.plank, time = 50, route = CategoryRoute.ABS.name),
     ExerList(title = "LEG RAISES",R.raw.plank, time = 30, route = CategoryRoute.ABS.name),
     ExerList(title = "BICYCLE CRUNCHES",R.raw.plank, time = 40, route = CategoryRoute.ABS.name),
-
 )
 
-//val ChestExerciseList = listOf(
-//    ExerList(title ="JUMPING JACKS", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="INCLINE PUSH-UPS", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="PUSH-UPS", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="WIDE ARM PUSH-UPS", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="TRICEPS DIPS", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="COBRA STRETCH", time =0, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="CHEST STRETCH", time =0, route = CategoryRoute.CHEST.name ),
-//    )
+val ChestExerciseList = listOf(
+    ExerList(title ="JUMPING JACKS", R.raw.plank,time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="INCLINE PUSH-UPS",R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="PUSH-UPS", R.raw.plank,time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="WIDE ARM PUSH-UPS",R.raw.plank, time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="TRICEPS DIPS", R.raw.plank,time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="COBRA STRETCH", R.raw.plank,time =0, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="CHEST STRETCH", R.raw.plank,time =0, route = CategoryRoute.CHEST.name ),
+    )
 //
 //val ArmExerciseList = listOf(
 //    ExerList(title ="ARM RAISES", time =0, route = CategoryRoute.ARM.name ),
