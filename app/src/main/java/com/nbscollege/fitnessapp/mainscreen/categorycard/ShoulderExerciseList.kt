@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp.mainscreen.categorycard
 
+
 //ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -47,7 +48,7 @@ import com.nbscollege.fitnessapp.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AbsExerciseList (navController: NavController) {
+fun ShoulderExerciseList (navController: NavController) {
 
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
@@ -141,7 +142,7 @@ fun AbsExerciseList (navController: NavController) {
 
                                     Button(
                                         onClick = {
-                                            navController.navigate("AbsDetails/$index")
+                                            navController.navigate("ShoulderDetails/$index")
                                         },
                                         shape = RoundedCornerShape(1.dp),
                                         modifier = Modifier
@@ -162,20 +163,20 @@ fun AbsExerciseList (navController: NavController) {
                                                 color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier
-                                               ,
+                                                ,
                                                 textAlign = TextAlign.Center
                                             )
 
                                             Text(
 
                                                 "${exercise.time} Seconds",
-                                                        color = Color.Black,
-                                                        fontWeight = FontWeight.Bold,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
                                                 modifier = Modifier
-                                             ,
+                                                ,
                                                 textAlign = TextAlign.Center,
 
-                                            )
+                                                )
 
                                         }
 

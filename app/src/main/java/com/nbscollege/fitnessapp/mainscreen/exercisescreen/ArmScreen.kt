@@ -74,7 +74,7 @@ fun ArmScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < ArmExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
+                    navController.navigate("ArmDetails/${index + 1}")
                 } else {
                     navController.navigate("ExerciseList")
                 }
@@ -285,20 +285,6 @@ fun ArmScreen(navController: NavController, index: Int) {
 
                             )
 
-
-
-//                        Text(
-//                            text = ExerciseList[index].title,
-//                            fontWeight = FontWeight.Bold,
-//                            textAlign = TextAlign.Center,
-//                            color = Color(0xFF6562DF),
-//                        )
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
 
                         Box(
                             modifier = Modifier

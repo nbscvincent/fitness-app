@@ -74,7 +74,7 @@ fun ChestScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < ChestExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
+                    navController.navigate("ChestDetails/${index + 1}")
                 } else {
                     navController.navigate("ExerciseList")
                 }

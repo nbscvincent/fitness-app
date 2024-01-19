@@ -74,7 +74,7 @@ fun LegScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < LegExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
+                    navController.navigate("LegDetails/${index + 1}")
                 } else {
                     navController.navigate("ExerciseList")
                 }
@@ -198,12 +198,7 @@ fun LegScreen(navController: NavController, index: Int) {
 
                             )
 
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+
 
                         Box(
                             modifier = Modifier
