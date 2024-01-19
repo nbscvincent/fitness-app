@@ -28,7 +28,7 @@ data class CategoryDetails(
     val exerciseCount: String = "",
     val subTitle: String = "",
     val backgroundImageResourceId: Int = 0,
-    val gif: Int = 0,
+    val gif: Float = 0f,
     val route: String = "",
 )
 /**
@@ -43,6 +43,7 @@ fun CategoryDetails.toCategory(): Category = Category (
     backgroundImageResourceId = backgroundImageResourceId,
     gif = gif,
     route = route,
+
 )
 /**
  * Extension function to convert [Item] to [ItemUiState]
