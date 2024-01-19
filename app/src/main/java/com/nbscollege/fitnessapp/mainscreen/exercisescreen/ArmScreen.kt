@@ -58,7 +58,7 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ArmExerciseList
+//import com.nbscollege.fitnessapp.mainscreen.dataclass.ArmExerciseList
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -66,170 +66,203 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.ArmExerciseList
 @Composable
 fun ArmScreen(navController: NavController, index: Int) {
 //    val navController = rememberNavController()
-
-    var originalTime by remember { mutableStateOf(ArmExerciseList[index].time.toLong() * 1000) }
-    var remainingTime by remember { mutableStateOf(originalTime) }
-    var isTimerRunning by remember { mutableStateOf(false) }
-    var isPauseButtonVisible by remember { mutableStateOf(false) }
-    var buttonColor by remember { mutableStateOf(Color.Red) }
-
-    var progress by remember { mutableFloatStateOf(1f) }
-
-
-
-
-    val countDownTimer = remember {
-        object : CountDownTimer(remainingTime, 1000) {
-            override  fun onTick(millisUntilFinished: Long) {
-                remainingTime = millisUntilFinished
-                progress = millisUntilFinished.toFloat() / originalTime.toFloat()
-
-            }
-
-            override fun onFinish() {
-                if (index < ArmExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
-                } else {
-                    navController.navigate("ExerciseList")
-                }
-            }
-        }
-    }
-
-    // Start or pause the timer
-    DisposableEffect(isTimerRunning) {
-        if (isTimerRunning) {
-            countDownTimer.start()
-        } else {
-            countDownTimer.cancel()
-        }
-
-        onDispose {
-            countDownTimer.cancel()
-        }
-    }
-
-    Scaffold(
-        topBar = {
-
-            Column(
-                modifier = Modifier.height(150.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Box (
-                    modifier = Modifier.fillMaxWidth(1f),
-                    contentAlignment = Alignment.Center,
-
-                    ) {
-                    Text(
-                        ArmExerciseList[index].title,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 50.sp,
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.graphicsLayer(translationY = 0f, translationX = 0f)
-                    )
-
-                }
-
-//                Box(
-//                    modifier = Modifier
-//                        .size(150.dp)
-//                        .padding(16.dp)
-//                        .drawBehind {
-//                            // Draw circular progress
-//                            drawArc(
-//                                color = Color.Black,
-//                                startAngle = 0f,
-//                                sweepAngle = 360 * progress,
-//                                useCenter = false,
-//                                style = Stroke(width = 8.dp.toPx())
-//                            )
 //
-//                            // Draw timer text
-//                            drawIntoCanvas { canvas ->
-//                                val text = "${remainingTime / 1000}"
-//                                val paint = Paint().asFrameworkPaint().apply {
-//                                    color = Color(0xFF800000).toArgb()
-//                                    textAlign = android.graphics.Paint.Align.CENTER
-//                                    textSize = 50.sp.toPx()
-//                                }
-//                                canvas.nativeCanvas.drawText(
-//                                    text,
-//                                    size.width / 2,
-//                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
-//                                    paint
-//                                )
-//                            }
-//                        }
+//    var originalTime by remember { mutableStateOf(ArmExerciseList[index].time.toLong() * 1000) }
+//    var remainingTime by remember { mutableStateOf(originalTime) }
+//    var isTimerRunning by remember { mutableStateOf(false) }
+//    var isPauseButtonVisible by remember { mutableStateOf(false) }
+//    var buttonColor by remember { mutableStateOf(Color.Red) }
+//
+//    var progress by remember { mutableFloatStateOf(1f) }
 //
 //
-//                )
-            }
-
-
-
-        }, // END OF TOPBAR
-        bottomBar  = {
-
-            BottomAppBar(
-                modifier = Modifier
-                    .height(150.dp)
-                    .fillMaxSize()
-                    .background(Color.Green),
-                containerColor = Color.White
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-
-                ) {
-
-                    Button(
-                        modifier = Modifier.fillMaxWidth().height(50.dp),
-                        onClick = {
-                            if (!isTimerRunning) {
-                                countDownTimer.start()
-                                isTimerRunning = true
-                                buttonColor = Color.Gray
-                            }
-                        },
-                        enabled = !isTimerRunning,
-                        colors = ButtonDefaults.buttonColors(buttonColor)
-                    ) {
-                        Text("Start")
-                    }
-//                    Box(
-//                        modifier = Modifier
-//                            .fillMaxWidth()
+//
+//
+//    val countDownTimer = remember {
+//        object : CountDownTimer(remainingTime, 1000) {
+//            override  fun onTick(millisUntilFinished: Long) {
+//                remainingTime = millisUntilFinished
+//                progress = millisUntilFinished.toFloat() / originalTime.toFloat()
+//
+//            }
+//
+//            override fun onFinish() {
+//                if (index < ArmExerciseList.size - 1) {
+//                    navController.navigate("CategoryDetails/${index + 1}")
+//                } else {
+//                    navController.navigate("ExerciseList")
+//                }
+//            }
+//        }
+//    }
+//
+//    // Start or pause the timer
+//    DisposableEffect(isTimerRunning) {
+//        if (isTimerRunning) {
+//            countDownTimer.start()
+//        } else {
+//            countDownTimer.cancel()
+//        }
+//
+//        onDispose {
+//            countDownTimer.cancel()
+//        }
+//    }
+//
+//    Scaffold(
+//        topBar = {
+//
+//            Column(
+//                modifier = Modifier.height(150.dp),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                Box (
+//                    modifier = Modifier.fillMaxWidth(1f),
+//                    contentAlignment = Alignment.Center,
 //
 //                    ) {
-//                        Button(
-//                            modifier = Modifier.fillMaxWidth().height(50.dp),
-//                            onClick = {
-//                                if (index < ExerciseList.size - 1) {
-//                                    navController.navigate("CategoryDetails/${index + 1}")
-//                                } else {
-//                                    navController.navigate("ExerciseList")
-//                                }
-//                            },
-//                            enabled = !isTimerRunning,
-//                            colors = ButtonDefaults.buttonColors(Color.Blue)
-//                        ) {
-//                            Text("Next")
-//                        }
+//                    Text(
+//                        ArmExerciseList[index].title,
+//                        fontWeight = FontWeight.Bold,
+//                        fontSize = 50.sp,
+//                        color = Color.Black,
+//                        textAlign = TextAlign.Center,
+//                        modifier = Modifier.graphicsLayer(translationY = 0f, translationX = 0f)
+//                    )
+//
+//                }
+//
+////                Box(
+////                    modifier = Modifier
+////                        .size(150.dp)
+////                        .padding(16.dp)
+////                        .drawBehind {
+////                            // Draw circular progress
+////                            drawArc(
+////                                color = Color.Black,
+////                                startAngle = 0f,
+////                                sweepAngle = 360 * progress,
+////                                useCenter = false,
+////                                style = Stroke(width = 8.dp.toPx())
+////                            )
+////
+////                            // Draw timer text
+////                            drawIntoCanvas { canvas ->
+////                                val text = "${remainingTime / 1000}"
+////                                val paint = Paint().asFrameworkPaint().apply {
+////                                    color = Color(0xFF800000).toArgb()
+////                                    textAlign = android.graphics.Paint.Align.CENTER
+////                                    textSize = 50.sp.toPx()
+////                                }
+////                                canvas.nativeCanvas.drawText(
+////                                    text,
+////                                    size.width / 2,
+////                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
+////                                    paint
+////                                )
+////                            }
+////                        }
+////
+////
+////                )
+//            }
+//
+//
+//
+//        }, // END OF TOPBAR
+//        bottomBar  = {
+//
+//            BottomAppBar(
+//                modifier = Modifier
+//                    .height(150.dp)
+//                    .fillMaxSize()
+//                    .background(Color.Green),
+//                containerColor = Color.White
+//            ) {
+//                Box(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//
+//                ) {
+//
+//                    Button(
+//                        modifier = Modifier.fillMaxWidth().height(50.dp),
+//                        onClick = {
+//                            if (!isTimerRunning) {
+//                                countDownTimer.start()
+//                                isTimerRunning = true
+//                                buttonColor = Color.Gray
+//                            }
+//                        },
+//                        enabled = !isTimerRunning,
+//                        colors = ButtonDefaults.buttonColors(buttonColor)
+//                    ) {
+//                        Text("Start")
 //                    }
-                }
-
-
-
-
-            } // END BOTTOMBAR
-        }
-    ) { innerPadding ->
-        // Content of your screen goes here
-
+////                    Box(
+////                        modifier = Modifier
+////                            .fillMaxWidth()
+////
+////                    ) {
+////                        Button(
+////                            modifier = Modifier.fillMaxWidth().height(50.dp),
+////                            onClick = {
+////                                if (index < ExerciseList.size - 1) {
+////                                    navController.navigate("CategoryDetails/${index + 1}")
+////                                } else {
+////                                    navController.navigate("ExerciseList")
+////                                }
+////                            },
+////                            enabled = !isTimerRunning,
+////                            colors = ButtonDefaults.buttonColors(Color.Blue)
+////                        ) {
+////                            Text("Next")
+////                        }
+////                    }
+//                }
+//
+//
+//
+//
+//            } // END BOTTOMBAR
+//        }
+//    ) { innerPadding ->
+//        // Content of your screen goes here
+//
+////        Column(
+////            modifier = Modifier
+////                .background(Color.White)
+////                .fillMaxSize()
+////                .padding(innerPadding)
+////        ) {
+////            Column(
+////                modifier = Modifier.fillMaxSize(),
+////                horizontalAlignment = Alignment.CenterHorizontally,
+////                verticalArrangement = Arrangement.Center
+////            ) {
+////                LazyColumn(
+////                    modifier = Modifier.padding(0.dp),
+////                ) {
+////                    item {
+////
+////                        Text(
+////                            text = ExerciseList[index].title,
+////                            fontWeight = FontWeight.Bold,
+////                            textAlign = TextAlign.Center,
+////                            color = Color(0xFF6562DF),
+////                        )
+////                        Text(
+////                            text = "${ExerciseList[index].time} seconds",
+////                            fontWeight = FontWeight.Bold,
+////                            textAlign = TextAlign.Center,
+////                            color = Color(0xFF6562DF),
+////                        )
+////                    }
+////                }
+////            }
+////        }
+//
 //        Column(
 //            modifier = Modifier
 //                .background(Color.White)
@@ -241,114 +274,81 @@ fun ArmScreen(navController: NavController, index: Int) {
 //                horizontalAlignment = Alignment.CenterHorizontally,
 //                verticalArrangement = Arrangement.Center
 //            ) {
+//
 //                LazyColumn(
 //                    modifier = Modifier.padding(0.dp),
+//                    horizontalAlignment = Alignment.CenterHorizontally
 //                ) {
+//
 //                    item {
 //
+//                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+//                            ArmExerciseList[index].animation))
+//
+//                        val preloaderProgress by animateLottieCompositionAsState(
+//                            composition,
+//                            iterations = LottieConstants.IterateForever,
+//                            isPlaying = true
+//                        )
+//
+//                        LottieAnimation(
+//                            modifier = Modifier.size(300.dp),
+//                            progress = preloaderProgress,
+//                            composition =  composition,
+//
+//                            )
+//
+//
+//
+////                        Text(
+////                            text = ExerciseList[index].title,
+////                            fontWeight = FontWeight.Bold,
+////                            textAlign = TextAlign.Center,
+////                            color = Color(0xFF6562DF),
+////                        )
 //                        Text(
-//                            text = ExerciseList[index].title,
+//                            text = "${remainingTime / 1000} seconds left",
 //                            fontWeight = FontWeight.Bold,
 //                            textAlign = TextAlign.Center,
 //                            color = Color(0xFF6562DF),
 //                        )
-//                        Text(
-//                            text = "${ExerciseList[index].time} seconds",
-//                            fontWeight = FontWeight.Bold,
-//                            textAlign = TextAlign.Center,
-//                            color = Color(0xFF6562DF),
+//
+//                        Box(
+//                            modifier = Modifier
+//                                .size(150.dp)
+//                                .padding(16.dp)
+//                                .drawBehind{
+//                                    // Draw circular progress
+//                                    drawArc(
+//                                        color = Color(0xFF800000),
+//                                        startAngle = 0f,
+//                                        sweepAngle = 360 * progress,
+//                                        useCenter = false,
+//                                        style = Stroke(width = 8.dp.toPx())
+//                                    )
+//
+//                                    // Draw timer text
+//                                    drawIntoCanvas { canvas ->
+//                                        val text = "${remainingTime / 1000}"
+//                                        val paint = Paint().asFrameworkPaint().apply {
+//                                            color = Color(0xFF6562DF).toArgb()
+//                                            textAlign = android.graphics.Paint.Align.CENTER
+//                                            textSize = 50.sp.toPx()
+//                                        }
+//                                        canvas.nativeCanvas.drawText(
+//                                            text,
+//                                            size.width / 2,
+//                                            size.height / 2 + paint.textSize / 3,
+//                                            paint
+//                                        )
+//                                    }
+//                                }
 //                        )
 //                    }
+//
 //                }
+//
 //            }
 //        }
-
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-
-                LazyColumn(
-                    modifier = Modifier.padding(0.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-
-                    item {
-
-                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                            ArmExerciseList[index].animation))
-
-                        val preloaderProgress by animateLottieCompositionAsState(
-                            composition,
-                            iterations = LottieConstants.IterateForever,
-                            isPlaying = true
-                        )
-
-                        LottieAnimation(
-                            modifier = Modifier.size(300.dp),
-                            progress = preloaderProgress,
-                            composition =  composition,
-
-                            )
-
-
-
-//                        Text(
-//                            text = ExerciseList[index].title,
-//                            fontWeight = FontWeight.Bold,
-//                            textAlign = TextAlign.Center,
-//                            color = Color(0xFF6562DF),
-//                        )
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
-
-                        Box(
-                            modifier = Modifier
-                                .size(150.dp)
-                                .padding(16.dp)
-                                .drawBehind{
-                                    // Draw circular progress
-                                    drawArc(
-                                        color = Color(0xFF800000),
-                                        startAngle = 0f,
-                                        sweepAngle = 360 * progress,
-                                        useCenter = false,
-                                        style = Stroke(width = 8.dp.toPx())
-                                    )
-
-                                    // Draw timer text
-                                    drawIntoCanvas { canvas ->
-                                        val text = "${remainingTime / 1000}"
-                                        val paint = Paint().asFrameworkPaint().apply {
-                                            color = Color(0xFF6562DF).toArgb()
-                                            textAlign = android.graphics.Paint.Align.CENTER
-                                            textSize = 50.sp.toPx()
-                                        }
-                                        canvas.nativeCanvas.drawText(
-                                            text,
-                                            size.width / 2,
-                                            size.height / 2 + paint.textSize / 3,
-                                            paint
-                                        )
-                                    }
-                                }
-                        )
-                    }
-
-                }
-
-            }
-        }
-    }
+//    }
 }

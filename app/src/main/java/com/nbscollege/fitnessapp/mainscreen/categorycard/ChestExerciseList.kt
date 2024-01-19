@@ -47,134 +47,134 @@ import com.nbscollege.fitnessapp.R
 @Composable
 fun ChestExerciseList (navController: NavController) {
 
-    val state = rememberScrollState()
-    LaunchedEffect(Unit) { state.animateScrollTo(100) }
-
-    Scaffold(
-        topBar = {
-            Box(
-                modifier = Modifier
-                    .background(Color.White)
-                    .fillMaxWidth()
-            ) {
-                SmallFloatingActionButton(
-                    onClick = {
-                        navController.navigate("HomeScreen")
-                    },
-                    containerColor = Color.Transparent,
-                    modifier = Modifier
-                        .padding(start = 5.dp, end = 5.dp)
-                        .zIndex(3f)
-                ) {
-                    Icon(
-                        Icons.Filled.KeyboardArrowLeft, "Back",
-                        modifier = Modifier.size(40.dp),
-                        tint = Color.White
-                    )
-                }
-                Image(
-                    painter = painterResource(id = R.drawable.arm),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(150.dp),
-                )
-            }
-        },
-//        bottomBar = {
-//            BottomAppBar {
+//    val state = rememberScrollState()
+//    LaunchedEffect(Unit) { state.animateScrollTo(100) }
+//
+//    Scaffold(
+//        topBar = {
+//            Box(
+//                modifier = Modifier
+//                    .background(Color.White)
+//                    .fillMaxWidth()
+//            ) {
+//                SmallFloatingActionButton(
+//                    onClick = {
+//                        navController.navigate("HomeScreen")
+//                    },
+//                    containerColor = Color.Transparent,
+//                    modifier = Modifier
+//                        .padding(start = 5.dp, end = 5.dp)
+//                        .zIndex(3f)
+//                ) {
+//                    Icon(
+//                        Icons.Filled.KeyboardArrowLeft, "Back",
+//                        modifier = Modifier.size(40.dp),
+//                        tint = Color.White
+//                    )
+//                }
+//                Image(
+//                    painter = painterResource(id = R.drawable.arm),
+//                    contentDescription = null,
+//                    contentScale = ContentScale.Crop,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .height(150.dp),
+//                )
+//            }
+//        },
+////        bottomBar = {
+////            BottomAppBar {
+////
+////            }
+////        }
+//    ) { innerPadding ->
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxSize()
+//                .padding(innerPadding)
+//        ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                LazyColumn(
+//                    modifier = Modifier.padding(16.dp),
+//                    verticalArrangement = Arrangement.spacedBy(10.dp),
+//                ) {
+//                    item {
+//                        Spacer(modifier = Modifier.height(20.dp))
+//                        Text(
+//                            text = "CHEST EXERCISES",
+//                            fontWeight = FontWeight.Bold,
+//                            fontSize = 20.sp,
+//                            color = Color.Black,
+//                            modifier = Modifier
+//                        )
+//                    }
+//                    item {
+//                        com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList.forEachIndexed { index, exercise ->
+//                            Card(
+//                                modifier = Modifier
+//                                    .fillMaxWidth(),
+//                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+//                            ) {
+//                                Box(
+//                                    modifier = Modifier
+//                                        .fillMaxWidth()
+//                                        .background(Color.White)
+//                                        .height(90.dp)
+//                                        .clip(RoundedCornerShape(16.dp))
+//                                ) {
+//                                    Button(
+//                                        onClick = {
+//                                            navController.navigate("CategoryDetails/$index")
+//                                        },
+//                                        shape = RoundedCornerShape(1.dp),
+//                                        modifier = Modifier
+//                                            .fillMaxWidth()
+//                                            .clip(RoundedCornerShape(16.dp))
+//                                            .height(90.dp),
+//                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+//                                    ) {
+//                                        Column(
+//                                            modifier = Modifier
+//                                                .fillMaxSize()
+//                                                .padding(1.dp),
+//                                            verticalArrangement = Arrangement.Center
+//                                        ) {
+//                                            Text(
+//                                                text = exercise.title,
+//                                                color = Color.Black,
+//                                                fontWeight = FontWeight.Bold,
+//                                                modifier = Modifier
+//                                                ,
+//                                                textAlign = TextAlign.Center
+//                                            )
+//                                            Text(
+//                                                "${exercise.time} Seconds",
+//                                                color = Color.Black,
+//                                                fontWeight = FontWeight.Bold,
+//                                                modifier = Modifier
+//                                                ,
+//                                                textAlign = TextAlign.Center,
+//                                            )
+//                                        }
+//                                    }
+//
+//                                }
+//
+//                            }
+//                            Spacer(modifier = Modifier.height(20.dp))
+//                        }
+//
+//                    }
+//
+//                }
 //
 //            }
 //        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                LazyColumn(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp),
-                ) {
-                    item {
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Text(
-                            text = "EXERCISES",
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                        )
-                    }
-                    item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList.forEachIndexed { index, exercise ->
-                            Card(
-                                modifier = Modifier
-                                    .fillMaxWidth(),
-                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .background(Color.White)
-                                        .height(90.dp)
-                                        .clip(RoundedCornerShape(16.dp))
-                                ) {
-                                    Button(
-                                        onClick = {
-                                            navController.navigate("CategoryDetails/$index")
-                                        },
-                                        shape = RoundedCornerShape(1.dp),
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .clip(RoundedCornerShape(16.dp))
-                                            .height(90.dp),
-                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
-                                    ) {
-                                        Column(
-                                            modifier = Modifier
-                                                .fillMaxSize()
-                                                .padding(1.dp),
-                                            verticalArrangement = Arrangement.Center
-                                        ) {
-                                            Text(
-                                                text = exercise.title,
-                                                color = Color.Black,
-                                                fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
-                                                textAlign = TextAlign.Center
-                                            )
-                                            Text(
-                                                "${exercise.time} Seconds",
-                                                color = Color.Black,
-                                                fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
-                                                textAlign = TextAlign.Center,
-                                            )
-                                        }
-                                    }
-
-                                }
-
-                            }
-                            Spacer(modifier = Modifier.height(20.dp))
-                        }
-
-                    }
-
-                }
-
-            }
-        }
-
-    }
+//
+//    }
 }

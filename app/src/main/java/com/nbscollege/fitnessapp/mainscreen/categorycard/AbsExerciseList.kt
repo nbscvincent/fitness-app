@@ -107,7 +107,6 @@ fun AbsExerciseList (navController: NavController) {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -130,10 +129,7 @@ fun AbsExerciseList (navController: NavController) {
                         )
                     }
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed { index, exercise ->
-                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                                com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList[index].animation))
-
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed() { index, exercise ->
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
@@ -153,7 +149,8 @@ fun AbsExerciseList (navController: NavController) {
                                             .padding(start = 12.dp),
                                         horizontalArrangement = Arrangement.Start
                                     ) {
-
+                                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                                            com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList[index].animation))
 
                                         val preloaderProgress by animateLottieCompositionAsState(
                                             composition,
@@ -170,7 +167,7 @@ fun AbsExerciseList (navController: NavController) {
 
                                         Button(
                                             onClick = {
-                                                navController.navigate("CategoryDetails/$index")
+                                                navController.navigate("AbsDetails/$index")
                                             },
                                             shape = RoundedCornerShape(1.dp),
                                             modifier = Modifier
@@ -203,31 +200,18 @@ fun AbsExerciseList (navController: NavController) {
                                                     textAlign = TextAlign.Center,
 
                                                     )
-
                                             }
-
-
                                         }
-
                                     }
                                 }
-
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-
-
                     }
-
                 }
-
-
-
             }
         }
-
     }
-
 }
 
 

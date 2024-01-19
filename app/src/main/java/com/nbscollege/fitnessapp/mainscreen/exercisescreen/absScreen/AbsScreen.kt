@@ -217,38 +217,6 @@ fun AbsScreen(navController: NavController, index: Int) {
     ) { innerPadding ->
         // Content of your screen goes here
 
-//        Column(
-//            modifier = Modifier
-//                .background(Color.White)
-//                .fillMaxSize()
-//                .padding(innerPadding)
-//        ) {
-//            Column(
-//                modifier = Modifier.fillMaxSize(),
-//                horizontalAlignment = Alignment.CenterHorizontally,
-//                verticalArrangement = Arrangement.Center
-//            ) {
-//                LazyColumn(
-//                    modifier = Modifier.padding(0.dp),
-//                ) {
-//                    item {
-//
-//                        Text(
-//                            text = ExerciseList[index].title,
-//                            fontWeight = FontWeight.Bold,
-//                            textAlign = TextAlign.Center,
-//                            color = Color(0xFF6562DF),
-//                        )
-//                        Text(
-//                            text = "${ExerciseList[index].time} seconds",
-//                            fontWeight = FontWeight.Bold,
-//                            textAlign = TextAlign.Center,
-//                            color = Color(0xFF6562DF),
-//                        )
-//                    }
-//                }
-//            }
-//        }
 
         Column(
             modifier = Modifier
