@@ -143,12 +143,7 @@ fun ChestExerciseList (navController: NavController) {
                                 isPlaying = true
                             )
 
-                            LottieAnimation(
-                                modifier = Modifier.size(500.dp),
-                                progress = preloaderProgress,
-                                composition =  composition,
 
-                                )
 
 
                             Card(

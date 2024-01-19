@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,6 +43,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 
 
@@ -131,6 +138,7 @@ fun AbsExerciseList (navController: NavController) {
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
 
+
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -141,7 +149,7 @@ fun AbsExerciseList (navController: NavController) {
 
                                     Button(
                                         onClick = {
-                                            navController.navigate("CategoryDetails/$index")
+                                            navController.navigate("AbsDetails/$index")
                                         },
                                         shape = RoundedCornerShape(1.dp),
                                         modifier = Modifier
@@ -157,35 +165,65 @@ fun AbsExerciseList (navController: NavController) {
                                                 .padding(1.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
-                                            Text(
-                                                text = exercise.title,
-                                                color = Color.Black,
-                                                fontWeight = FontWeight.Bold,
+
+                                            Row(
                                                 modifier = Modifier
-                                               ,
-                                                textAlign = TextAlign.Center
-                                            )
+                                                    .padding(start = 1.dp),
+                                                horizontalArrangement = Arrangement.Start
+                                            ) {
+                                                val composition by rememberLottieComposition(
+                                                    spec = LottieCompositionSpec.RawRes(
+                                                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList[index].animation
+                                                    )
+                                                )
 
-                                            Text(
+                                                val preloaderProgress by animateLottieCompositionAsState(
+                                                    composition,
+                                                    iterations = LottieConstants.IterateForever,
+                                                    isPlaying = true
+                                                )
 
-                                                "${exercise.time} Seconds",
-                                                        color = Color.Black,
-                                                        fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                             ,
-                                                textAlign = TextAlign.Center,
+                                                LottieAnimation(
+                                                    modifier = Modifier.size(80.dp),
+                                                    progress = preloaderProgress,
+                                                    composition = composition,
 
-                                            )
+                                                    )
+
+                                            Column(
+                                                modifier = Modifier.fillMaxWidth()
+                                                    .padding(top = 15.dp, start=20.dp)
+                                            ) {
+                                                Text(
+                                                    text = exercise.title,
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center
+                                                )
+
+                                                Text(
+
+                                                    "${exercise.time} Seconds",
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center,
+
+                                                    )
+
+                                            }
+
+
+                                            }
+
 
                                         }
 
 
-
                                     }
 
-
                                 }
-
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }

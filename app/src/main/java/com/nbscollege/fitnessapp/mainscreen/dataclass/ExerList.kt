@@ -22,15 +22,15 @@ val AbsExerciseList = listOf(
 
 )
 
-//val ChestExerciseList = listOf(
-//    ExerList(title ="JUMPING JACKS", R.raw.jumping, time =90, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="DECLINE PUSH-UPS", R.raw.declinepush, time =60, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="PUSH-UPS", R.raw.pushup, time =60, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="WIDE ARM PUSH-UPS", R.raw.widepush, time =60, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="TRICEPS DIPS", R.raw.tricepsdip, time =120, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="COBRA STRETCH", R.raw.cobrastretch, time =60, route = CategoryRoute.CHEST.name ),
-//    ExerList(title ="CHEST STRETCH", R.raw.cheststretch,  time =60, route = CategoryRoute.CHEST.name ),
-//    )
+val ChestExerciseList = listOf(
+    ExerList(title ="JUMPING JACKS", R.raw.jumping, time =90, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="DECLINE PUSH-UPS", R.raw.declinepush, time =60, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="PUSH-UPS", R.raw.pushup, time =60, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="WIDE ARM PUSH-UPS", R.raw.widepush, time =60, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="TRICEPS DIPS", R.raw.tricepsdip, time =120, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="COBRA STRETCH", R.raw.cobrastretch, time =60, route = CategoryRoute.CHEST.name ),
+    ExerList(title ="CHEST STRETCH", R.raw.cheststretch,  time =60, route = CategoryRoute.CHEST.name ),
+    )
 //
 //val ArmExerciseList = listOf(
 //    ExerList(title ="ARM RAISES", R.raw.armraises,  time =60, route = CategoryRoute.ARM.name ),
