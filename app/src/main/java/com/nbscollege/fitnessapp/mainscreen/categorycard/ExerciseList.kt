@@ -61,14 +61,6 @@ fun ExerciseList (navController: NavController) {
 
 
 
-
-
-
-
-
-
-
-
     Scaffold(
         topBar = {
             Box(
