@@ -39,9 +39,6 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
 fun CategoryCard(category: Category, navController: NavController) {
 
 
-
-
-
         Card(
             modifier = Modifier
                 .fillMaxWidth(),

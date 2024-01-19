@@ -1,15 +1,22 @@
 package com.nbscollege.fitnessapp.ui.user
 
 
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.navigation.SettingsRoute
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+
 
 class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
@@ -17,13 +24,33 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
     val loginState: StateFlow<LoginState> = _loginState
 
+    var status by mutableStateOf(false)
+    var username by mutableStateOf("")
+    var password by mutableStateOf("")
 
 
 
+    var oldPasswordCorrect by mutableStateOf(true)
 
-    // Property to store the current logged-in user
-    private var _currentUser: User? = null
-    val currentUser: User? get() = _currentUser
+    fun changePassword(oldPassword: String, newPassword: String, navController: NavController) {
+        viewModelScope.launch {
+            val loggedInUser = LoggedInUserHolder.getLoggedInUser()
+
+            if (loggedInUser != null && loggedInUser.password == oldPassword) {
+                // Old password is correct, perform password change logic
+                userRepository.changePassword(loggedInUser.username, newPassword)
+                oldPasswordCorrect = true
+                // Optionally, you can update the state or perform any other action
+
+                navController.navigate(SettingsRoute.LogOut.name)
+
+            } else {
+
+                oldPasswordCorrect = false
+            }
+        }
+    }
+
 
     // Function to perform login
     fun login(username: String, password: String) {
@@ -41,16 +68,11 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                     height = user.height,
                     age = user.age
                 )
-
-                _currentUser = user
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
+
                 _loginState.value = LoginState.Success(user)
 
 
-
-
-
-                // Save user session in SharedPreferences
 
             } else {
                 _loginState.value = LoginState.Error("Invalid credentials")
@@ -61,6 +83,8 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
 
 
 }
+
+
 
 sealed class LoginState {
     data object Initial : LoginState()
