@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp
 
+import LegExerciseList
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
@@ -16,8 +17,9 @@ import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
-import com.nbscollege.fitnessapp.mainscreen.categorycard.LegExerciseList
+
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ShoulderExerciseList
+//import com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
@@ -136,7 +138,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     showBottomBar = false
                 }
 
-                composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                composable("AbsDetails/{bid}") { navBackStackEntry ->
                     val bid = navBackStackEntry.arguments?.getString("bid")
 
                     bid?.let {
