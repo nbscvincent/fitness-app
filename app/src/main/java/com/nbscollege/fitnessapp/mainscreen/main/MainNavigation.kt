@@ -179,7 +179,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                 bid?.let {
                     ChestScreen(navController = navController, index = bid.toInt())
                 }
-            }
+                  }
 
                 composable(route = CategoryRoute.ARM.name) { backStackEntry ->
                     ArmScreen(navController,backStackEntry)
