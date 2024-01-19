@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -167,9 +168,6 @@ fun ExerciseList (navController: NavController) {
                             ) {
 
 
-
-
-
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -177,6 +175,26 @@ fun ExerciseList (navController: NavController) {
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
+
+                                        Row(
+
+                                        ) {
+                                            val preloaderProgress by animateLottieCompositionAsState(
+                                                composition,
+                                                iterations = LottieConstants.IterateForever,
+                                                isPlaying = true
+                                            )
+
+                                            LottieAnimation(
+                                                modifier = Modifier.size(100.dp).padding(bottom=20.dp),
+                                                progress = preloaderProgress,
+                                                composition =  composition,
+
+                                                )
+
+                                        }
+
+
 
                                     Button(
                                         onClick = {
@@ -195,7 +213,7 @@ fun ExerciseList (navController: NavController) {
                                         Column(
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .padding(1.dp),
+                                                .padding(start = 100.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
                                             Text(

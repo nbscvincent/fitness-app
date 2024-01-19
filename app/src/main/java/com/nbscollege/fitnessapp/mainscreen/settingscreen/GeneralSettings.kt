@@ -235,8 +235,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                            }
 
 
-
-
                        }
 //                       else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
 //                           currentPasswordError = currentPassword.isEmpty()

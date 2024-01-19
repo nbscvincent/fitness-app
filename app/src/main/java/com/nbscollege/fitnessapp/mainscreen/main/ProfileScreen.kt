@@ -321,7 +321,7 @@ fun ProfileScreen(
                                         else -> "Obese"
                                     }
                                     // Display BMI
-                                    if (bmi < 18.5) {
+                                    if (bmi < 18.5 ) {
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
                                             "BMI",
@@ -401,7 +401,9 @@ fun ProfileScreen(
 
 
                                         Text(
-                                            "Tips: Try to avoid foods with a lot of added sugar, fat and salt, like cakes, takeaway foods and sugary drinks. You can put on weight by eating small meals frequently throughout the day. Try to snack on healthy, high energy foods like cheese, nuts, milk-based smoothies and dried fruit.",
+                                            "Tis: Focus on a balanced and nutritious diet to ensure you are getting enough calories and essential nutrients.\n" +
+                                                    "Include protein-rich foods, healthy fats, and complex carbohydrates in your meals.\n" +
+                                                    "Consider consulting with a healthcare professional or a nutritionist to develop a healthy weight gain plan",
                                             color = Color.Red,
                                             fontWeight = FontWeight.Bold,
                                             modifier = Modifier.padding(start = 40.dp, top = 10.dp)
@@ -512,6 +514,15 @@ fun ProfileScreen(
                                             fontWeight = FontWeight.Bold,
                                             modifier = Modifier.padding(start = 40.dp, top = 10.dp)
                                         )
+
+                                        Text(
+                                            "Tips: Maintain a balanced diet that includes a variety of fruits, vegetables, lean proteins, whole grains, and healthy fats.\n" +
+                                                    "Engage in regular physical activity to support overall health and well-being.\n" +
+                                                    "Monitor your weight to ensure it stays within the normal BMI range.",
+                                            color = Color.Red,
+                                            fontWeight = FontWeight.Bold,
+                                            modifier = Modifier.padding(start = 40.dp, top = 10.dp)
+                                        )
                                     } else if (bmi < 29.9) {
 
                                         Spacer(modifier = Modifier.height(10.dp))
@@ -591,7 +602,9 @@ fun ProfileScreen(
                                         }
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
-                                            "Tips: eat a balanced, calorie-controlled diet as recommended by your GP or weight loss management health professional (such as a dietitian) join a local weight loss group. take up activities such as fast walking, jogging, swimming or tennis for 150 to 300 minutes (two-and-a-half to five hours) a week.",
+                                            "Tips: Adopt a well-balanced and portion-controlled diet to manage calorie intake.\n" +
+                                                    "Increase physical activity levels with a mix of cardiovascular exercise and strength training.\n" +
+                                                    "Consult with a healthcare professional or a registered dietitian for personalized advice and guidance.",
                                             color = Color.Red,
                                             fontSize = 30.sp,
                                             modifier = Modifier.padding(start = 40.dp, top = 10.dp)
@@ -675,7 +688,9 @@ fun ProfileScreen(
                                         }
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Text(
-                                            "Tips: ",
+                                            "Tips: Seek professional guidance for a comprehensive weight management plan that includes dietary changes and increased physical activity.\n" +
+                                                    "Consider working with a healthcare provider, nutritionist, or weight loss specialist to develop a sustainable and effective approach.\n" +
+                                                    "Focus on gradual, sustainable changes rather than extreme or fad diets.",
                                             color = Color.Red,
                                             fontSize = 20.sp,
                                             fontWeight = FontWeight.Bold,
