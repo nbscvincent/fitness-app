@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,6 +29,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,6 +42,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 //ExerciseList is now = to AbsExerciseList
 import com.nbscollege.fitnessapp.R
 
@@ -342,4 +349,468 @@ fun ArmExerciseList (navController: NavController) {
 
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ChestExerciseList (navController: NavController) {
 
+    val state = rememberScrollState()
+    LaunchedEffect(Unit) { state.animateScrollTo(100) }
+
+    Scaffold(
+        topBar = {
+            Box(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
+            ) {
+                SmallFloatingActionButton(
+                    onClick = {
+                        navController.navigate("HomeScreen")
+                    },
+                    containerColor = Color.Transparent,
+                    modifier = Modifier
+                        .padding(start = 5.dp, end = 5.dp)
+                        .zIndex(3f)
+                ) {
+                    Icon(
+                        Icons.Filled.KeyboardArrowLeft, "Back",
+                        modifier = Modifier.size(40.dp),
+                        tint = Color.White
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.arm),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                )
+            }
+        },
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                LazyColumn(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            text = "EXERCISES",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                        )
+                    }
+                    item {
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList.forEachIndexed { index, exercise ->
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(Color.White)
+                                        .height(90.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("CategoryDetails/$index")
+                                        },
+                                        shape = RoundedCornerShape(1.dp),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .height(90.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .padding(1.dp),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = exercise.title,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                ,
+                                                textAlign = TextAlign.Center
+                                            )
+                                            Text(
+                                                "${exercise.time} Seconds",
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                ,
+                                                textAlign = TextAlign.Center,
+                                            )
+                                        }
+                                    }
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LegExerciseList (navController: NavController) {
+
+    val state = rememberScrollState()
+    LaunchedEffect(Unit) { state.animateScrollTo(100) }
+
+    Scaffold(
+        topBar = {
+            Box(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
+            ) {
+                SmallFloatingActionButton(
+                    onClick = {
+                        navController.navigate("HomeScreen")
+                    },
+                    containerColor = Color.Transparent,
+                    modifier = Modifier
+                        .padding(start = 5.dp, end = 5.dp)
+                        .zIndex(3f)
+                ) {
+                    Icon(
+                        Icons.Filled.KeyboardArrowLeft, "Back",
+                        modifier = Modifier.size(40.dp),
+                        tint = Color.White
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.leg),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                )
+            }
+        },
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                LazyColumn(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            text = "LEG EXERCISES",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                        )
+                    }
+                    item {
+                        Row(
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Column(horizontalAlignment = Alignment.Start) {
+                                val legExerciseList = com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
+//                                val currentIndex = 6
+//                                if (currentIndex >= 0 && currentIndex < legExerciseList.size) {
+//                                    val precedingAnimations = legExerciseList.subList(0, currentIndex)
+//
+//                                    // Now you have a list containing all the preceding animations up to the specified index
+//                                    // You can use this list as needed
+//                                    for (animation in precedingAnimations) {
+//                                        // Do something with each animation
+//                                    }
+//                                } else {
+//                                    // Handle the case where the index is out of bounds
+//                                    // (less than 0 or greater/equal to the size of the list)
+//                                }
+
+
+
+//                                val legExerciseList = // your list of leg exercises
+                                val currentIndex = 0 // Replace with the index you are interested in
+
+//                                if (currentIndex > 0 && currentIndex < legExerciseList.size) {
+//                                    val precedingAnimation = legExerciseList[currentIndex + 1].animation
+//
+//                                    // Now you can use the precedingAnimation as needed
+//                                    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(precedingAnimation))
+//                                } else {
+//                                    // Handle the case where the index is out of bounds or equal to 0
+//                                }
+//                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+//                                    legExerciseList.getOrNull(0)?.animation!! ))
+
+                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                                    legExerciseList.getOrNull(0)?.animation!! ))
+
+//                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+//                                    com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.lastIndex))
+
+                                val preloaderProgress by animateLottieCompositionAsState(
+                                    composition,
+                                    iterations = LottieConstants.IterateForever,
+                                    isPlaying = true
+                                )
+
+                                LottieAnimation(
+                                    modifier = Modifier.size(105.dp),
+                                    progress = preloaderProgress,
+                                    composition =  composition,
+
+                                    )
+                            }
+
+                            Column(horizontalAlignment = Alignment.End) {
+                                com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
+                                    Card(
+                                        modifier = Modifier
+                                            .fillMaxWidth(),
+                                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                                    ) {
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .background(Color.White)
+                                                .height(90.dp)
+                                                .clip(RoundedCornerShape(16.dp))
+                                        ) {
+                                            Button(
+                                                onClick = {
+                                                    navController.navigate("CategoryDetails/$index")
+                                                },
+                                                shape = RoundedCornerShape(1.dp),
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .clip(RoundedCornerShape(16.dp))
+                                                    .height(90.dp),
+                                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                            ) {
+                                                Column(
+                                                    modifier = Modifier
+                                                        .fillMaxSize()
+                                                        .padding(1.dp),
+                                                    verticalArrangement = Arrangement.Center
+                                                ) {
+                                                    Text(
+                                                        text = exercise.title,
+                                                        color = Color.Black,
+                                                        fontWeight = FontWeight.Bold,
+                                                        modifier = Modifier,
+                                                        textAlign = TextAlign.Center
+                                                    )
+                                                    Text(
+                                                        "${exercise.time} Seconds",
+                                                        color = Color.Black,
+                                                        fontWeight = FontWeight.Bold,
+                                                        modifier = Modifier,
+                                                        textAlign = TextAlign.Center,
+                                                    )
+                                                }
+                                            }
+
+                                        }
+
+                                    }
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}
+
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ShoulderExerciseList (navController: NavController) {
+
+    val state = rememberScrollState()
+    LaunchedEffect(Unit) { state.animateScrollTo(100) }
+
+    Scaffold(
+        topBar = {
+            Box(
+                modifier = Modifier
+                    .background(Color.White)
+                    .fillMaxWidth()
+            ) {
+                SmallFloatingActionButton(
+                    onClick = {
+                        navController.navigate("HomeScreen")
+                    },
+                    containerColor = Color.Transparent,
+                    modifier = Modifier
+                        .padding(start = 5.dp, end = 5.dp)
+                        .zIndex(3f)
+                ) {
+                    Icon(
+                        Icons.Filled.KeyboardArrowLeft, "Back",
+                        modifier = Modifier.size(40.dp),
+                        tint = Color.White
+                    )
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.shoulderback),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                )
+            }
+        },
+//        bottomBar = {
+//            BottomAppBar {
+//
+//            }
+//        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
+                LazyColumn(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Text(
+                            text = "EXERCISES",
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                        )
+                    }
+                    item {
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.ShoulderExerciseList.forEachIndexed { index, exercise ->
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(Color.White)
+                                        .height(90.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                ) {
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("CategoryDetails/$index")
+                                        },
+                                        shape = RoundedCornerShape(1.dp),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .height(90.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+                                        Column(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .padding(1.dp),
+                                            verticalArrangement = Arrangement.Center
+                                        ) {
+                                            Text(
+                                                text = exercise.title,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                ,
+                                                textAlign = TextAlign.Center
+                                            )
+                                            Text(
+                                                "${exercise.time} Seconds",
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier
+                                                ,
+                                                textAlign = TextAlign.Center,
+                                            )
+                                        }
+                                    }
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(20.dp))
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+    }
+}

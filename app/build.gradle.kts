@@ -94,4 +94,9 @@ dependencies {
     //lottie
     implementation ("com.airbnb.android:lottie-compose:6.0.0")
 
+
+//    lottie ulit pero animation view
+//    implementation ("com.airbnb.android:lottie:4.2.0")
+
+
 }

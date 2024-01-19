@@ -15,6 +15,9 @@ import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.LegExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ShoulderExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
@@ -140,10 +143,28 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                         AbsScreen(navController = navController, index = bid.toInt())
                     }
                 }
-                composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
-                    ChestScreen(navController, backStackEntry)
-                    showBottomBar = false
+//            end of absscreen
+
+
+            composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
+
+                ChestExerciseList(navController)
+                showBottomBar = false
+            }
+
+            composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ChestScreen(navController = navController, index = bid.toInt())
                 }
+            }
+//                composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
+//                    ChestScreen(navController, backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of chestscreen
+
             composable(route = CategoryRoute.ARM.name) { backStackEntry ->
 
                 ArmExerciseList(navController)
@@ -161,15 +182,46 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 //                    ArmScreen(navController,backStackEntry)
 //                    showBottomBar = false
 //                }
-                composable(route = CategoryRoute.LEG.name) { backStackEntry ->
-                    LegScreen(navController,backStackEntry)
-                    showBottomBar = false
-                }
-                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
-                    ShoulderScreen(navController,backStackEntry)
-                    showBottomBar = false
-                }
 
+//            end of arm screen
+            composable(route = CategoryRoute.LEG.name) { backStackEntry ->
+
+                LegExerciseList(navController)
+                showBottomBar = false
+            }
+
+            composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    LegScreen(navController = navController, index = bid.toInt())
+                }
+            }
+
+//                composable(route = CategoryRoute.LEG.name) { backStackEntry ->
+//                    LegScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of legscreen
+
+            composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
+
+                ShoulderExerciseList(navController)
+                showBottomBar = false
+            }
+
+            composable("CategoryDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ShoulderScreen(navController = navController, index = bid.toInt())
+                }
+            }
+//                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
+//                    ShoulderScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of shoulderscreen
 
         }
     }
