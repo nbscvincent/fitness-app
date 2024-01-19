@@ -43,6 +43,7 @@ fun CategoryDetails.toCategory(): Category = Category (
     backgroundImageResourceId = backgroundImageResourceId,
     gif = gif,
     route = route,
+
 )
 /**
  * Extension function to convert [Item] to [ItemUiState]

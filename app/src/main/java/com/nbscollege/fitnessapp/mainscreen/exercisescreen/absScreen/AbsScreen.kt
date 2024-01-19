@@ -63,9 +63,11 @@ fun AbsScreen(navController: NavController, index: Int) {
     var progress by remember { mutableFloatStateOf(1f) }
 
 
+
+
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
+            override  fun onTick(millisUntilFinished: Long) {
                 remainingTime = millisUntilFinished
                 progress = millisUntilFinished.toFloat() / originalTime.toFloat()
 
@@ -80,7 +82,6 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
-
 
     // Start or pause the timer
     DisposableEffect(isTimerRunning) {
@@ -99,31 +100,25 @@ fun AbsScreen(navController: NavController, index: Int) {
         topBar = {
 
             Column(
-                modifier = Modifier.padding(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-
+                modifier = Modifier.height(150.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-
                 Box (
                     modifier = Modifier.fillMaxWidth(1f),
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center,
 
                 ) {
-
                     Text(
-
                         ExerciseList[index].title,
                         fontWeight = FontWeight.Bold,
                         fontSize = 50.sp,
                         color = Color.Black,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                        modifier = Modifier.graphicsLayer(translationY = 0f, translationX = 0f)
                     )
 
                 }
-
-
 
 //                Box(
 //                    modifier = Modifier
@@ -161,8 +156,9 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
 
 
+
         }, // END OF TOPBAR
-        bottomBar = {
+        bottomBar  = {
 
             BottomAppBar(
                 modifier = Modifier
@@ -180,47 +176,102 @@ fun AbsScreen(navController: NavController, index: Int) {
                     Button(
                         modifier = Modifier.fillMaxWidth().height(50.dp),
                         onClick = {
-
                             if (!isTimerRunning) {
                                 countDownTimer.start()
                                 isTimerRunning = true
                                 buttonColor = Color.Gray
                             }
-
                         },
                         enabled = !isTimerRunning,
                         colors = ButtonDefaults.buttonColors(buttonColor)
                     ) {
                         Text("Start")
                     }
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//
+//                    ) {
+//                        Button(
+//                            modifier = Modifier.fillMaxWidth().height(50.dp),
+//                            onClick = {
+//                                if (index < ExerciseList.size - 1) {
+//                                    navController.navigate("CategoryDetails/${index + 1}")
+//                                } else {
+//                                    navController.navigate("ExerciseList")
+//                                }
+//                            },
+//                            enabled = !isTimerRunning,
+//                            colors = ButtonDefaults.buttonColors(Color.Blue)
+//                        ) {
+//                            Text("Next")
+//                        }
+//                    }
                 }
+
+
+
 
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
+        // Content of your screen goes here
 
-
-
-        Column(
-            modifier = Modifier
-                .background(Color.White)
-                .fillMaxSize()
-                .padding(innerPadding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxSize()
+//                .padding(innerPadding)
+//        ) {
 //            Column(
 //                modifier = Modifier.fillMaxSize(),
 //                horizontalAlignment = Alignment.CenterHorizontally,
 //                verticalArrangement = Arrangement.Center
 //            ) {
+//                LazyColumn(
+//                    modifier = Modifier.padding(0.dp),
+//                ) {
+//                    item {
+//
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                        Text(
+//                            text = "${ExerciseList[index].time} seconds",
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                    }
+//                }
+//            }
+//        }
+
+        Column(
+            modifier = Modifier
+                .background(Color.White)
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
 
                 LazyColumn(
                     modifier = Modifier.padding(0.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     item {
-                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(ExerciseList[index].animation))
+
+                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                            ExerciseList[index].animation
+                        ))
 
                         val preloaderProgress by animateLottieCompositionAsState(
                             composition,
@@ -237,13 +288,24 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
 
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+                        Text(
+                            text = "${remainingTime / 1000} seconds left",
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center,
+                            color = Color(0xFF6562DF),
+                        )
 
                         Box(
-                            
                             modifier = Modifier
                                 .size(150.dp)
                                 .padding(16.dp)
-                                .drawBehind {
+                                .drawBehind{
                                     // Draw circular progress
                                     drawArc(
                                         color = Color(0xFF800000),
@@ -268,19 +330,16 @@ fun AbsScreen(navController: NavController, index: Int) {
                                             paint
                                         )
                                     }
-                                },
-
-
+                                }
                         )
                     }
 
                 }
 
-//            }
+            }
         }
     }
 }
-
 
 
 

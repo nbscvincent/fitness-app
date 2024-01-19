@@ -1,12 +1,12 @@
 package com.nbscollege.fitnessapp.mainscreen.categorycard
 
+//ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,7 +29,6 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,33 +41,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
-import com.airbnb.lottie.compose.LottieAnimation
-import com.airbnb.lottie.compose.LottieCompositionSpec
-import com.airbnb.lottie.compose.LottieConstants
-import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ExerciseList (navController: NavController) {
-
-
+fun AbsExerciseList (navController: NavController) {
 
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
-
-
-
-
-
-
-
-
-
-
 
     Scaffold(
         topBar = {
@@ -133,40 +115,21 @@ fun ExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "EXERCISES",
+                            text = "ABS EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier
                         )
                     }
-
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList.forEachIndexed { index, exercise ->
-
-                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(exercise.animation))
-
-                            val preloaderProgress by animateLottieCompositionAsState(
-                                composition,
-                                iterations = LottieConstants.IterateForever,
-                                isPlaying = true
-                            )
-
-                            LottieAnimation(
-                                modifier = Modifier.size(500.dp),
-                                progress = preloaderProgress,
-                                composition =  composition,
-
-                            )
-
-
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed { index, exercise ->
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
 
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
-
 
                                 Box(
                                     modifier = Modifier
@@ -175,26 +138,6 @@ fun ExerciseList (navController: NavController) {
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
-
-                                        Row(
-
-                                        ) {
-                                            val preloaderProgress by animateLottieCompositionAsState(
-                                                composition,
-                                                iterations = LottieConstants.IterateForever,
-                                                isPlaying = true
-                                            )
-
-                                            LottieAnimation(
-                                                modifier = Modifier.size(100.dp).padding(bottom=20.dp),
-                                                progress = preloaderProgress,
-                                                composition =  composition,
-
-                                                )
-
-                                        }
-
-
 
                                     Button(
                                         onClick = {
@@ -208,12 +151,10 @@ fun ExerciseList (navController: NavController) {
                                         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                     ) {
 
-
-
                                         Column(
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .padding(start = 100.dp),
+                                                .padding(1.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
                                             Text(
@@ -262,6 +203,4 @@ fun ExerciseList (navController: NavController) {
     }
 
 }
-
-
 
