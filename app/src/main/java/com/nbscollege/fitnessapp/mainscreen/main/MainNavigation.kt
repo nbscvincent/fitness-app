@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
@@ -23,7 +24,6 @@ import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.model.ProfileScreen
-import com.nbscollege.fitnessapp.model.SplashScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
 import com.nbscollege.fitnessapp.navigation.CategoryRoute
@@ -31,7 +31,6 @@ import com.nbscollege.fitnessapp.navigation.Screen
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
-import com.nbscollege.fitnessapp.viewmodel.LogoutSplashScreen
 import com.nbscollege.fitnessapp.viewmodel.ScreenViewModel
 import kotlinx.coroutines.delay
 
@@ -171,9 +170,17 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     }
                 }
                 composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
-                    ChestScreen(navController, backStackEntry)
+                    ChestExerciseList(navController)
                     showBottomBar = false
                 }
+                composable("ChestDetails/{bid}") { navBackStackEntry ->
+                 val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ChestScreen(navController = navController, index = bid.toInt())
+                }
+            }
+
                 composable(route = CategoryRoute.ARM.name) { backStackEntry ->
                     ArmScreen(navController,backStackEntry)
                     showBottomBar = false
