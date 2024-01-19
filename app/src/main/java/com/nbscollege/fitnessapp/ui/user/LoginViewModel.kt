@@ -2,11 +2,9 @@ package com.nbscollege.fitnessapp.ui.user
 
 
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
@@ -54,12 +52,6 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     }
 
 
-
-
-
-
-
-
     // Function to perform login
     fun login(username: String, password: String) {
         viewModelScope.launch {
@@ -87,19 +79,6 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
             }
         }
     }
-@Composable
-    private fun SaveUserCredentials(username: String, password: String) {
-        val context = LocalContext.current
-        val preferences = context.getSharedPreferences("prefs", 0)
-        val editor = preferences.edit()
-        editor.putBoolean("status", true)
-        editor.putString("username", username)
-        editor.putString("password", password)
-        editor.apply()
-    }
-
-
-
 
 
 
