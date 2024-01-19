@@ -184,7 +184,7 @@ fun ChestScreen(navController: NavController, index: Int) {
                     item {
 
                         val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                            ChestExerciseList[index].animation.roundToInt()
+                            ChestExerciseList[index].animation
                         ))
 
                         val preloaderProgress by animateLottieCompositionAsState(

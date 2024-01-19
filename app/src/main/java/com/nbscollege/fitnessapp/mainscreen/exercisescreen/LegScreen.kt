@@ -182,7 +182,7 @@ fun LegScreen(navController: NavController, index: Int) {
                     item {
 
                         val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                            LegExerciseList[index].animation.roundToInt()
+                            LegExerciseList[index].animation
                         ))
 
                         val preloaderProgress by animateLottieCompositionAsState(

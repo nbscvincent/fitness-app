@@ -47,7 +47,6 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
-import kotlin.math.roundToInt
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -271,7 +270,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                     item {
 
                         val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                            ExerciseList[index].animation.roundToInt()
+                            ExerciseList[index].animation
                         ))
 
                         val preloaderProgress by animateLottieCompositionAsState(

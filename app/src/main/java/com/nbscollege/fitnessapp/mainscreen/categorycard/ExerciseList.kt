@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp.mainscreen.categorycard
 
+//ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -47,9 +48,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-//ExerciseList is now = to AbsExerciseList
 import com.nbscollege.fitnessapp.R
-import kotlin.math.roundToInt
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -561,7 +560,7 @@ fun LegExerciseList (navController: NavController) {
                     item {
                         com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
                             val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                                com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList[index].animation.roundToInt()
+                                com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList[index].animation
                             ))
 
                             Card(
