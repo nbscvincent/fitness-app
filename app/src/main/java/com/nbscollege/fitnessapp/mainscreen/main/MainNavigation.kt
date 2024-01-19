@@ -58,7 +58,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
     }
 
-
+    println()
 
 
 
