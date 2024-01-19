@@ -122,7 +122,7 @@ fun AbsExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "EXERCISES",
+                            text = "ABS EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
@@ -558,116 +558,87 @@ fun LegExerciseList (navController: NavController) {
                         )
                     }
                     item {
-                        Row(
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Column(horizontalAlignment = Alignment.Start) {
-                                val legExerciseList = com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
-//                                val currentIndex = 6
-//                                if (currentIndex >= 0 && currentIndex < legExerciseList.size) {
-//                                    val precedingAnimations = legExerciseList.subList(0, currentIndex)
-//
-//                                    // Now you have a list containing all the preceding animations up to the specified index
-//                                    // You can use this list as needed
-//                                    for (animation in precedingAnimations) {
-//                                        // Do something with each animation
-//                                    }
-//                                } else {
-//                                    // Handle the case where the index is out of bounds
-//                                    // (less than 0 or greater/equal to the size of the list)
-//                                }
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
+                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
+                                com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList[index].animation))
 
-
-
-//                                val legExerciseList = // your list of leg exercises
-                                val currentIndex = 0 // Replace with the index you are interested in
-
-//                                if (currentIndex > 0 && currentIndex < legExerciseList.size) {
-//                                    val precedingAnimation = legExerciseList[currentIndex + 1].animation
-//
-//                                    // Now you can use the precedingAnimation as needed
-//                                    val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(precedingAnimation))
-//                                } else {
-//                                    // Handle the case where the index is out of bounds or equal to 0
-//                                }
-//                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-//                                    legExerciseList.getOrNull(0)?.animation!! ))
-
-                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-                                    legExerciseList.getOrNull(0)?.animation!! ))
-
-//                                val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(
-//                                    com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.lastIndex))
-
-                                val preloaderProgress by animateLottieCompositionAsState(
-                                    composition,
-                                    iterations = LottieConstants.IterateForever,
-                                    isPlaying = true
-                                )
-
-                                LottieAnimation(
-                                    modifier = Modifier.size(105.dp),
-                                    progress = preloaderProgress,
-                                    composition =  composition,
-
-                                    )
-                            }
-
-                            Column(horizontalAlignment = Alignment.End) {
-                                com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
-                                    Card(
+                            Card(
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(Color.White)
+                                        .height(90.dp)
+                                        .clip(RoundedCornerShape(16.dp))
+                                ) {
+                                    Row (
                                         modifier = Modifier
-                                            .fillMaxWidth(),
-                                        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                                            .padding(start = 12.dp),
+                                        horizontalArrangement = Arrangement.Start
                                     ) {
-                                        Box(
+
+
+                                        val preloaderProgress by animateLottieCompositionAsState(
+                                            composition,
+                                            iterations = LottieConstants.IterateForever,
+                                            isPlaying = true
+                                        )
+
+                                        LottieAnimation(
+                                            modifier = Modifier.size(80.dp),
+                                            progress = preloaderProgress,
+                                            composition =  composition,
+
+                                            )
+
+                                        Button(
+                                            onClick = {
+                                                navController.navigate("CategoryDetails/$index")
+                                            },
+                                            shape = RoundedCornerShape(1.dp),
                                             modifier = Modifier
                                                 .fillMaxWidth()
-                                                .background(Color.White)
-                                                .height(90.dp)
                                                 .clip(RoundedCornerShape(16.dp))
+                                                .height(90.dp),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                         ) {
-                                            Button(
-                                                onClick = {
-                                                    navController.navigate("CategoryDetails/$index")
-                                                },
-                                                shape = RoundedCornerShape(1.dp),
+                                            Column(
                                                 modifier = Modifier
-                                                    .fillMaxWidth()
-                                                    .clip(RoundedCornerShape(16.dp))
-                                                    .height(90.dp),
-                                                colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                                    .fillMaxSize()
+                                                    .padding(start = 1.dp),
+                                                verticalArrangement = Arrangement.Center
                                             ) {
-                                                Column(
-                                                    modifier = Modifier
-                                                        .fillMaxSize()
-                                                        .padding(1.dp),
-                                                    verticalArrangement = Arrangement.Center
-                                                ) {
-                                                    Text(
-                                                        text = exercise.title,
-                                                        color = Color.Black,
-                                                        fontWeight = FontWeight.Bold,
-                                                        modifier = Modifier,
-                                                        textAlign = TextAlign.Center
-                                                    )
-                                                    Text(
-                                                        "${exercise.time} Seconds",
-                                                        color = Color.Black,
-                                                        fontWeight = FontWeight.Bold,
-                                                        modifier = Modifier,
-                                                        textAlign = TextAlign.Center,
-                                                    )
-                                                }
+                                                Text(
+                                                    text = exercise.title,
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center
+                                                )
+                                                Text(
+                                                    "${exercise.time} Seconds",
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center,
+                                                )
                                             }
-
                                         }
 
                                     }
-                                    Spacer(modifier = Modifier.height(20.dp))
+
+
+
+
                                 }
+
                             }
+                            Spacer(modifier = Modifier.height(20.dp))
                         }
+
                     }
 
                 }
