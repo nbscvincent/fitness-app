@@ -10,7 +10,7 @@ data class ExerList(
     val route:String
 )
 
-val ExerciseList = listOf(
+val AbsExerciseList = listOf(
     //for abs workout
     ExerList(title = "PLANK", R.raw.plank, time = 60, route = CategoryRoute.ABS.name),
     ExerList(title = "ABDOMINAL CRUNCHES", R.raw.abdominal, time = 60,route = CategoryRoute.ABS.name),

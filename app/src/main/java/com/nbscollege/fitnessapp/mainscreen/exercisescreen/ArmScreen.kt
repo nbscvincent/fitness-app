@@ -59,7 +59,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ExerCateg
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ArmExerciseList
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)

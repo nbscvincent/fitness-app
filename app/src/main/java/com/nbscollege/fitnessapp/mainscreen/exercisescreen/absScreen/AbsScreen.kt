@@ -46,7 +46,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
-import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
+import com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -54,7 +54,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.ExerciseList
 @Composable
 fun AbsScreen(navController: NavController, index: Int) {
 
-    var originalTime by remember { mutableStateOf(ExerciseList[index].time.toLong() * 1000) }
+    var originalTime by remember { mutableStateOf(AbsExerciseList[index].time.toLong() * 1000) }
     var remainingTime by remember { mutableStateOf(originalTime) }
     var isTimerRunning by remember { mutableStateOf(false) }
     var isPauseButtonVisible by remember { mutableStateOf(false) }
@@ -74,7 +74,7 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
 
             override fun onFinish() {
-                if (index < ExerciseList.size - 1) {
+                if (index < AbsExerciseList.size - 1) {
                     navController.navigate("CategoryDetails/${index + 1}")
                 } else {
                     navController.navigate("ExerciseList")
@@ -110,7 +110,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
                 ) {
                     Text(
-                        ExerciseList[index].title,
+                        AbsExerciseList[index].title,
                         fontWeight = FontWeight.Bold,
                         fontSize = 50.sp,
                         color = Color.Black,
@@ -269,7 +269,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
                     item {
 
-                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(ExerciseList[index].animation))
+                        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(AbsExerciseList[index].animation))
 
                         val preloaderProgress by animateLottieCompositionAsState(
                             composition,
@@ -292,12 +292,12 @@ fun AbsScreen(navController: NavController, index: Int) {
 //                            textAlign = TextAlign.Center,
 //                            color = Color(0xFF6562DF),
 //                        )
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+//                        Text(
+//                            text = "${remainingTime / 1000} seconds left",
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
 
                         Box(
                             modifier = Modifier
