@@ -125,6 +125,75 @@ fun ProfileScreen(
                             modifier = Modifier.padding(),
                         )
 
+                        Card(
+                            modifier = Modifier
+                                .padding(start = 20.dp, end = 20.dp)
+                                .background(Color(0xFFE57373))
+                                .graphicsLayer(translationY = 40f, translationX = 0f)
+                                .fillMaxSize(),
+                            elevation = CardDefaults.cardElevation(
+                                defaultElevation = 3.dp,
+                            ),
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .height(150.dp)
+                                    .background(Color.White)
+                                    .fillMaxWidth()
+                                    .background(Color.LightGray.copy(alpha = 0.1f))
+                            ) {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(),
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    Text(
+                                        "${user.age}\nAge",
+                                        color = Color.Black,
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.padding()
+                                            .weight(1f),
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color.Gray)
+                                            .width(1.dp)
+                                            .fillMaxHeight()
+                                    )
+                                    Text(
+                                        "${user.weight}\nWeight",
+                                        color = Color.Black,
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.padding()
+                                            .weight(1f),
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .background(Color.Gray)
+                                            .width(1.dp)
+                                            .fillMaxHeight()
+                                    )
+                                    Text(
+                                        "${user.height}\nHeight",
+                                        color = Color.Black,
+                                        fontSize = 20.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        textAlign = TextAlign.Center,
+                                        modifier = Modifier.padding()
+                                            .weight(1f),
+                                    )
+
+                                }
+
+                            }
+                        }
+
 
 
                     }
@@ -171,7 +240,7 @@ fun ProfileScreen(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp)
                                         .background(Color.White)
-                                        .graphicsLayer(translationY = 25f, translationX = 30f)
+                                        .graphicsLayer(translationY = 0f, translationX = 0f)
                                         .fillMaxSize(),
                                     elevation = CardDefaults.cardElevation(
                                         defaultElevation = 7.dp,
