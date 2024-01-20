@@ -32,6 +32,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -81,23 +82,19 @@ fun ProfileScreen(
                     .padding()
                     .background(Color(0xFFE57373))
                     .height(150.dp)
-                    .fillMaxWidth()
-            ) {
-                Row(
-                    modifier = Modifier
-                        .background(Color(0xFFE57373))
-                        .fillMaxSize()
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
+                    .fillMaxWidth(),
 
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.Center, // Center vertically
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
                     Row(
                         modifier = Modifier
                             .background(Color(0xFFE57373))
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-
                         Icon(
                             imageVector = Icons.Outlined.Person,
                             modifier = Modifier.size(38.dp),
@@ -117,23 +114,23 @@ fun ProfileScreen(
 
                     }
 
-                }
-
-                Column(
-                    modifier = Modifier.fillMaxSize(1f)
-                ) {
                     loggedInUser?.let { user ->
+
 
                         Text(
                             user.username,
                             color = Color.Black,
-                            fontSize = 30.sp,
+                            fontSize = 50.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
+
+
+
                     }
 
                 }
+
 
             }
         },
@@ -174,6 +171,7 @@ fun ProfileScreen(
                                     modifier = Modifier
                                         .padding(start = 20.dp, end = 20.dp)
                                         .background(Color.White)
+                                        .graphicsLayer(translationY = 25f, translationX = 30f)
                                         .fillMaxSize(),
                                     elevation = CardDefaults.cardElevation(
                                         defaultElevation = 7.dp,
