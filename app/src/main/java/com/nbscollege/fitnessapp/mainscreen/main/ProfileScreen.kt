@@ -81,7 +81,7 @@ fun ProfileScreen(
                 modifier = Modifier
                     .padding()
                     .background(Color(0xFFE57373))
-                    .height(150.dp)
+                    .height(200.dp)
                     .fillMaxWidth(),
 
             ) {
@@ -114,21 +114,28 @@ fun ProfileScreen(
 
                     }
 
+
+
                     loggedInUser?.let { user ->
+
+                        Spacer(modifier = Modifier.height(20.dp))
 
 
                         Text(
-                            user.username,
+                            "Hello, ${user.username}",
                             color = Color.Black,
                             fontSize = 50.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
 
+                        Spacer(modifier = Modifier.height(20.dp))
+
                         Card(
                             modifier = Modifier
-                                .padding(start = 20.dp, end = 20.dp)
+                                .padding(start = 15.dp, end = 15.dp)
                                 .background(Color(0xFFE57373))
+                                .graphicsLayer(translationY = 40f, translationX = 0f)
                                 .fillMaxSize(),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 3.dp,
@@ -189,8 +196,8 @@ fun ProfileScreen(
                                     )
 
                                 }
-
                             }
+
                         }
 
 
@@ -223,208 +230,6 @@ fun ProfileScreen(
                         item {
                             loggedInUser?.let { user ->
 
-
-
-                                println()
-
-                                Text(
-                                    "Username",
-                                    color = Color.Black,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                                )
-                                Spacer(modifier = Modifier.height(5.dp))
-
-                                Card(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp)
-                                        .background(Color.White)
-                                        .graphicsLayer(translationY = 0f, translationX = 0f)
-                                        .fillMaxSize(),
-                                    elevation = CardDefaults.cardElevation(
-                                        defaultElevation = 7.dp,
-                                    ),
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .height(70.dp)
-                                            .background(Color.White)
-                                            .fillMaxWidth()
-                                            .background(Color.LightGray.copy(alpha = 0.1f))
-                                    ) {
-                                        Row(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(),
-                                            verticalAlignment = Alignment.CenterVertically,
-                                            horizontalArrangement = Arrangement.SpaceBetween
-                                        ) {
-                                            Text(
-                                                "${user.age}\nAge",
-                                                color = Color.Black,
-                                                fontSize = 20.sp,
-                                                fontWeight = FontWeight.Medium,
-                                                textAlign = TextAlign.Center,
-                                                modifier = Modifier.padding()
-                                                    .weight(1f),
-                                            )
-                                            Box(
-                                                modifier = Modifier
-                                                    .background(Color.Gray)
-                                                    .width(1.dp)
-                                                    .fillMaxHeight()
-                                            )
-                                            Text(
-                                                "${user.weight}\nWeight",
-                                                color = Color.Black,
-                                                fontSize = 20.sp,
-                                                fontWeight = FontWeight.Medium,
-                                                textAlign = TextAlign.Center,
-                                                modifier = Modifier.padding()
-                                                    .weight(1f),
-                                            )
-                                            Box(
-                                                modifier = Modifier
-                                                    .background(Color.Gray)
-                                                    .width(1.dp)
-                                                    .fillMaxHeight()
-                                            )
-                                            Text(
-                                                "${user.height}\nHeight",
-                                                color = Color.Black,
-                                                fontSize = 20.sp,
-                                                fontWeight = FontWeight.Medium,
-                                                textAlign = TextAlign.Center,
-                                                modifier = Modifier.padding()
-                                                    .weight(1f),
-                                            )
-
-                                        }
-
-                                    }
-                                }
-
-                                Spacer(modifier = Modifier.height(10.dp))
-
-                                Text(
-                                    "Age",
-                                    color = Color.Black,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                                )
-                                Spacer(modifier = Modifier.height(5.dp))
-
-                                Card(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp)
-                                        .background(Color.White)
-                                        .fillMaxSize(),
-                                    elevation = CardDefaults.cardElevation(
-                                        defaultElevation = 7.dp,
-                                    ),
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .height(45.dp)
-                                            .background(Color.White)
-                                            .fillMaxWidth()
-                                            .background(Color.LightGray.copy(alpha = 0.1f))
-                                    ) {
-                                        Text(
-                                            "${user.age}",
-                                            color = Color.Black,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(
-                                                start = 20.dp,
-                                                top = 10.dp
-                                            ),
-                                        )
-                                    }
-                                }
-
-                                Spacer(modifier = Modifier.height(10.dp))
-
-                                Text(
-                                    "Weight",
-                                    color = Color.Black,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                                )
-                                Spacer(modifier = Modifier.height(5.dp))
-
-                                Card(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp)
-                                        .background(Color.White)
-                                        .fillMaxSize(),
-                                    elevation = CardDefaults.cardElevation(
-                                        defaultElevation = 7.dp,
-                                    ),
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .height(45.dp)
-                                            .background(Color.White)
-                                            .fillMaxWidth()
-                                            .background(Color.LightGray.copy(alpha = 0.1f))
-                                    ) {
-                                        Text(
-                                            "${user.weight}",
-                                            color = Color.Black,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(
-                                                start = 20.dp,
-                                                top = 10.dp
-                                            ),
-                                        )
-                                    }
-                                }
-
-
-                                Spacer(modifier = Modifier.height(10.dp))
-
-                                Text(
-                                    "Height",
-                                    color = Color.Black,
-                                    fontSize = 20.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                                )
-                                Spacer(modifier = Modifier.height(5.dp))
-
-                                Card(
-                                    modifier = Modifier
-                                        .padding(start = 20.dp, end = 20.dp)
-                                        .background(Color.White)
-                                        .fillMaxSize(),
-                                    elevation = CardDefaults.cardElevation(
-                                        defaultElevation = 7.dp,
-                                    ),
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .height(45.dp)
-                                            .background(Color.White)
-                                            .fillMaxWidth()
-                                            .background(Color.LightGray.copy(alpha = 0.1f))
-                                    ) {
-                                        Text(
-                                            "${user.height}",
-                                            color = Color.Black,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(
-                                                start = 20.dp,
-                                                top = 10.dp
-                                            ),
-                                        )
-                                    }
-                                }
 
                                 val height = user.height
                                 val weight = user.weight
