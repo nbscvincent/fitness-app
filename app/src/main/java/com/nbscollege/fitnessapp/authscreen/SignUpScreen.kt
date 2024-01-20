@@ -286,19 +286,12 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     )
                 )
 
-                Row(
-                    modifier = Modifier,
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Row(
-                        horizontalArrangement = Arrangement.SpaceEvenly
 
-                    ) {
                         TextField(
                             isError = weightError,
-                            modifier = Modifier.width(200.dp)
-                                .absolutePadding(left = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight(lb)", fontWeight = FontWeight.Medium) },
+                            modifier = Modifier.fillMaxWidth()
+                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                            label = { Text("Weight(kl)", fontWeight = FontWeight.Medium) },
                             value = weight,
                             onValueChange = { weight = it },
                             singleLine = true,
@@ -319,9 +312,9 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                         )
                         TextField(
                             isError = heightError,
-                            modifier = Modifier.width(300.dp)
-                                .clip(CircleShape)
-                                .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
+                            modifier = Modifier.fillMaxWidth()
+                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp)
+                             ,
                             label = { Text("Height(cm)", fontWeight = FontWeight.Medium) },
                             value = height,
                             onValueChange = { height = it },
@@ -341,18 +334,13 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                 errorIndicatorColor = Color.Transparent
                             )
                         )
-                    }
 
-                }
 
-                Row(
-                    horizontalArrangement = Arrangement.End,
-                    modifier = Modifier.padding(end = 225.dp)
-                ) {
+
                     TextField(
                         isError = ageError,
-                        modifier = Modifier.width(200.dp)
-                            .absolutePadding(left = 40.dp, bottom = 11.dp),
+                        modifier = Modifier.fillMaxWidth()
+                            .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
                         label = { Text("Age", fontWeight = FontWeight.Medium) },
                         value = age,
                         onValueChange = { age = it },
@@ -372,31 +360,8 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                             errorIndicatorColor = Color.Transparent
                         )
                     )
-//                TextField(
-//                    modifier = Modifier.
-//                    width(300.dp)
-//                        .clip(CircleShape)
-//                        .absolutePadding(left = 15.dp, bottom = 11.dp, right = 40.dp),
-//                    label = { Text("Gender") },
-//                    value = height,
-//                    onValueChange = { height = it },
-//                    singleLine = true,
-//                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-//                    trailingIcon = {
-//                        Icon(
-//                            Icons.Rounded.Transgender,
-//                            contentDescription = "height"
-//                        )
-//                    },
-//                    shape = RoundedCornerShape(12.dp),
-//                    colors = TextFieldDefaults.textFieldColors(
-//                        focusedIndicatorColor = Color.Transparent,
-//                        unfocusedIndicatorColor = Color.Transparent,
-//                        disabledIndicatorColor = Color.Transparent,
-//                        errorIndicatorColor = Color.Transparent
-//                    )
-//                )
-                }
+
+
             }
 
             item {
