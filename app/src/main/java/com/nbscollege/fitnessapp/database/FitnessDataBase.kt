@@ -12,7 +12,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.Category
 /**
  * Database class with a singleton Instance object.
  */
-@Database(entities = [User::class, Category::class], version = 3, exportSchema = true)
+@Database(entities = [User::class, Category::class], version = 1, exportSchema = true)
 abstract class FitnessDataBase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun categoryDao(): CategoryDao
