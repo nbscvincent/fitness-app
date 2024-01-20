@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,11 +27,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -123,20 +126,14 @@ fun ProfileScreen(
     ) { innerPadding ->
 
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
 
-
-        ) {
 
                     LazyColumn(
                         modifier = Modifier
                             .height(790.dp)
                             .fillMaxWidth()
                             .background(Color.White)
-                            .padding()
+                            .padding(innerPadding)
                             .clip(RoundedCornerShape(32.dp))
                     ) {
 
@@ -168,21 +165,60 @@ fun ProfileScreen(
                                 ) {
                                     Box(
                                         modifier = Modifier
-                                            .height(45.dp)
+                                            .height(70.dp)
                                             .background(Color.White)
                                             .fillMaxWidth()
                                             .background(Color.LightGray.copy(alpha = 0.1f))
                                     ) {
-                                        Text(
-                                            user.username,
-                                            color = Color.Black,
-                                            fontSize = 20.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(
-                                                start = 20.dp,
-                                                top = 10.dp
-                                            ),
-                                        )
+                                        Row(
+                                            modifier = Modifier
+                                                .fillMaxWidth()
+                                                .padding(),
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.SpaceBetween
+                                        ) {
+                                            Text(
+                                                "${user.age} KG\nAge",
+                                                color = Color.Black,
+                                                fontSize = 20.sp,
+                                                fontWeight = FontWeight.Medium,
+                                                textAlign = TextAlign.Center,
+                                                modifier = Modifier.padding()
+                                                    .weight(1f),
+                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .background(Color.Gray)
+                                                    .width(1.dp)
+                                                    .fillMaxHeight()
+                                            )
+                                            Text(
+                                                "${user.weight}\nWeight",
+                                                color = Color.Black,
+                                                fontSize = 20.sp,
+                                                fontWeight = FontWeight.Medium,
+                                                textAlign = TextAlign.Center,
+                                                modifier = Modifier.padding()
+                                                    .weight(1f),
+                                            )
+                                            Box(
+                                                modifier = Modifier
+                                                    .background(Color.Gray)
+                                                    .width(1.dp)
+                                                    .fillMaxHeight()
+                                            )
+                                            Text(
+                                                "${user.height}\nHeight",
+                                                color = Color.Black,
+                                                fontSize = 20.sp,
+                                                fontWeight = FontWeight.Medium,
+                                                textAlign = TextAlign.Center,
+                                                modifier = Modifier.padding()
+                                                    .weight(1f),
+                                            )
+
+                                        }
+
                                     }
                                 }
 
@@ -720,7 +756,7 @@ fun ProfileScreen(
 
 
 
-        }
+
 
         }
     }
