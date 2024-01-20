@@ -129,7 +129,6 @@ fun ProfileScreen(
                             modifier = Modifier
                                 .padding(start = 20.dp, end = 20.dp)
                                 .background(Color(0xFFE57373))
-                                .graphicsLayer(translationY = 40f, translationX = 0f)
                                 .fillMaxSize(),
                             elevation = CardDefaults.cardElevation(
                                 defaultElevation = 3.dp,
@@ -193,6 +192,7 @@ fun ProfileScreen(
 
                             }
                         }
+
 
 
 
