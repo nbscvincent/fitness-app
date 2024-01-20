@@ -120,7 +120,7 @@ fun ProfileScreen(
                 }
 
                 Column(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(1f)
                 ) {
                     loggedInUser?.let { user ->
 
