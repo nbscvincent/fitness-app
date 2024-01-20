@@ -1,5 +1,6 @@
 package com.nbscollege.fitnessapp.mainscreen.categorycard
 
+//ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -53,13 +54,10 @@ import com.nbscollege.fitnessapp.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChestExerciseList (navController: NavController) {
-
-
+fun LegExerciseList (navController: NavController) {
 
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
-
 
     Scaffold(
         topBar = {
@@ -88,7 +86,7 @@ fun ChestExerciseList (navController: NavController) {
                 }
 
                 Image(
-                    painter = painterResource(id = R.drawable.interchest),
+                    painter = painterResource(id = R.drawable.leg),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -124,24 +122,20 @@ fun ChestExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "CHEST EXERCISES",
+                            text = "LEG EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
                             modifier = Modifier
                         )
                     }
-
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList.forEachIndexed { index, exercise ->
-
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
                             val composition by rememberLottieComposition(
                                 spec = LottieCompositionSpec.RawRes(
                                     exercise.animation
                                 )
                             )
-
-
 
                             Card(
                                 modifier = Modifier
@@ -150,7 +144,6 @@ fun ChestExerciseList (navController: NavController) {
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
 
-
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -158,7 +151,6 @@ fun ChestExerciseList (navController: NavController) {
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
-
                                     Row(
 
                                     ) {
@@ -178,7 +170,7 @@ fun ChestExerciseList (navController: NavController) {
 
                                     Button(
                                         onClick = {
-                                            navController.navigate("ChestDetails/$index")
+                                            navController.navigate("LegDetails/$index")
                                         },
                                         shape = RoundedCornerShape(1.dp),
                                         modifier = Modifier
@@ -188,11 +180,10 @@ fun ChestExerciseList (navController: NavController) {
                                         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                     ) {
 
-
                                         Column(
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .padding(start = 1.dp),
+                                                .padding(1.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
                                             Text(
@@ -224,8 +215,8 @@ fun ChestExerciseList (navController: NavController) {
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-
                     }
+
                     }
 
                 }
@@ -238,6 +229,5 @@ fun ChestExerciseList (navController: NavController) {
     }
 
 }
-
 
 

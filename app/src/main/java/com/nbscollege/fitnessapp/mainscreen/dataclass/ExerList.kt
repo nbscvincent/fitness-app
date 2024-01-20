@@ -31,34 +31,34 @@ val ChestExerciseList = listOf(
     ExerList(title ="COBRA STRETCH", R.raw.cobrastretch, time =60, route = CategoryRoute.CHEST.name ),
     ExerList(title ="CHEST STRETCH", R.raw.cheststretch,  time =60, route = CategoryRoute.CHEST.name ),
     )
-//
-//val ArmExerciseList = listOf(
-//    ExerList(title ="ARM RAISES", R.raw.armraises,  time =60, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="SIDE ARM RAISE", R.raw.sidearm,  time =60, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="ARM CIRCLES BACKWARDS",  R.raw.armcircles, time =90, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="CHEST PRESS", R.raw.chestpress,  time =90, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="PLANK JACKS", R.raw.plankjack,  time =90, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="BENCH PRESS", R.raw.benchpress,  time =60, route = CategoryRoute.ARM.name ),
-//    ExerList(title ="REVERSE CURL", R.raw.reversecurl,  time =60, route = CategoryRoute.ARM.name ),
-//
-//)
-//
-//val LegExerciseList = listOf(
-//    ExerList(title ="BOX JUMPS", R.raw.boxjumps,  time =60, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="SQUATS",  R.raw.squats, time =30, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="SIDE-LYING LEG LIFT RIGHT", R.raw.legliftright,  time =30, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="SIDE-LYING LEG LIFT LEFT", R.raw.legliftleft,  time =30, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="ALTERNATE ARM AND LEG PLANK",  R.raw.alternateplank, time =120, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="STANDING BOW HAMSTRING STRETCH", R.raw.hamstring,  time =60, route = CategoryRoute.LEG.name ),
-//    ExerList(title ="HIGH KNEES",  R.raw.highknees, time =90, route = CategoryRoute.LEG.name ),
-//)
-//
-//val ShoulderExerciseList = listOf(
-//    ExerList(title ="JUMPING JACKS",  R.raw.jumping, time =90, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="ARM RAISES", R.raw.armraises,  time =60, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="LATERAL RAISES",  R.raw.lateralraises, time =60, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="SIDE ARM RAISE",  R.raw.sidearm, time =60, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="PUSH-UPS AND ROTATION", R.raw.pushuprotation,  time =90, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="SHOULDER PRESS SIT-UPS",  R.raw.shoulderpress, time =120, route = CategoryRoute.SHOULDER.name ),
-//    ExerList(title ="PIKE PUSH-UPS", R.raw.pikepush,  time =90, route = CategoryRoute.SHOULDER.name ),
-//)
+
+val ArmExerciseList = listOf(
+    ExerList(title ="ARM RAISES", R.raw.armraises,  time =60, route = CategoryRoute.ARM.name ),
+    ExerList(title ="SIDE ARM RAISE", R.raw.sidearm,  time =60, route = CategoryRoute.ARM.name ),
+    ExerList(title ="ARM CIRCLES BACKWARDS",  R.raw.armcircles, time =90, route = CategoryRoute.ARM.name ),
+    ExerList(title ="CHEST PRESS", R.raw.chestpress,  time =90, route = CategoryRoute.ARM.name ),
+    ExerList(title ="PLANK JACKS", R.raw.plankjack,  time =90, route = CategoryRoute.ARM.name ),
+    ExerList(title ="BENCH PRESS", R.raw.benchpress,  time =60, route = CategoryRoute.ARM.name ),
+    ExerList(title ="REVERSE CURL", R.raw.reversecurl,  time =60, route = CategoryRoute.ARM.name ),
+
+)
+
+val LegExerciseList = listOf(
+    ExerList(title ="BOX JUMPS", R.raw.boxjumps,  time =60, route = CategoryRoute.LEG.name ),
+    ExerList(title ="SQUATS",  R.raw.squats, time =30, route = CategoryRoute.LEG.name ),
+    ExerList(title ="SIDE-LYING LEG LIFT RIGHT", R.raw.legliftright,  time =30, route = CategoryRoute.LEG.name ),
+    ExerList(title ="SIDE-LYING LEG LIFT LEFT", R.raw.legliftleft,  time =30, route = CategoryRoute.LEG.name ),
+    ExerList(title ="ALTERNATE ARM AND LEG PLANK",  R.raw.alternateplank, time =120, route = CategoryRoute.LEG.name ),
+    ExerList(title ="STANDING BOW HAMSTRING STRETCH", R.raw.hamstring,  time =60, route = CategoryRoute.LEG.name ),
+    ExerList(title ="HIGH KNEES",  R.raw.highknees, time =90, route = CategoryRoute.LEG.name ),
+)
+
+val ShoulderExerciseList = listOf(
+    ExerList(title ="JUMPING JACKS",  R.raw.jumping, time =90, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="ARM RAISES", R.raw.armraises,  time =60, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="LATERAL RAISES",  R.raw.lateralraises, time =60, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="SIDE ARM RAISE",  R.raw.sidearm, time =60, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="PUSH-UPS AND ROTATION", R.raw.pushuprotation,  time =90, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="SHOULDER PRESS SIT-UPS",  R.raw.shoulderpress, time =120, route = CategoryRoute.SHOULDER.name ),
+    ExerList(title ="PIKE PUSH-UPS", R.raw.pikepush,  time =90, route = CategoryRoute.SHOULDER.name ),
+)

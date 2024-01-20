@@ -1,6 +1,6 @@
 package com.nbscollege.fitnessapp
 
-//import com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
@@ -15,14 +15,20 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
+
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.LegExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.ShoulderExerciseList
+
+//import com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
-import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
 import com.nbscollege.fitnessapp.model.ProfileScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -42,6 +48,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
     var showBottomBar by remember { mutableStateOf(true) }
     val context = LocalContext.current
 
+    
 
     var exit by remember { mutableStateOf(false) }
 
@@ -91,16 +98,13 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 //                }
 //
 //            }
-            navigation(
-                startDestination = SettingsRoute.GeneralSettings.name,
-                route = SettingsRoute.Settings.name
-            ) {
+            navigation(startDestination = SettingsRoute.GeneralSettings.name, route = SettingsRoute.Settings.name) {
                 composable(route = SettingsRoute.GeneralSettings.name) { backStackEntry ->
                     GeneralSettings(navController, backStackEntry)
                     showBottomBar = false
                 }
-
-                composable(route = SettingsRoute.Feed.name,) {
+            
+                composable(route = SettingsRoute.Feed.name, ) {
                     sendFeedback(navController, context)
                     showBottomBar = true
                 }
@@ -117,13 +121,12 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                             })
                         } else {
                             exit = true
-                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(context, "Press again to exit", Toast.LENGTH_SHORT).show()
 
                         }
                     }
 
-                    LogoutSplashScreen(navController, screenViewModel)
+                    LogoutSplashScreen(navController,screenViewModel)
                     showBottomBar = false
                 }
 
@@ -131,19 +134,19 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
             }
 
 
-            composable(route = CategoryRoute.ABS.name) { backStackEntry ->
+                composable(route = CategoryRoute.ABS.name) { backStackEntry ->
 
-                AbsExerciseList(navController)
-                showBottomBar = false
-            }
-
-            composable("AbsDetails/{bid}") { navBackStackEntry ->
-                val bid = navBackStackEntry.arguments?.getString("bid")
-
-                bid?.let {
-                    AbsScreen(navController = navController, index = bid.toInt())
+                    AbsExerciseList(navController)
+                    showBottomBar = false
                 }
-            }
+
+                composable("AbsDetails/{bid}") { navBackStackEntry ->
+                    val bid = navBackStackEntry.arguments?.getString("bid")
+
+                    bid?.let {
+                        AbsScreen(navController = navController, index = bid.toInt())
+                    }
+                }
 //            end of absscreen
 
 
@@ -160,28 +163,73 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
                     ChestScreen(navController = navController, index = bid.toInt())
                 }
             }
+//                composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
+//                    ChestScreen(navController, backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of chestscreen
 
             composable(route = CategoryRoute.ARM.name) { backStackEntry ->
 
-                ArmScreen(navController)
+                ArmExerciseList(navController)
                 showBottomBar = false
             }
 
+            composable("ArmDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ArmScreen(navController = navController, index = bid.toInt())
+                }
+            }
+//                composable(route = CategoryRoute.ARM.name) { backStackEntry ->
+//                    ArmScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
+
+//            end of arm screen
             composable(route = CategoryRoute.LEG.name) { backStackEntry ->
 
-                LegScreen(navController)
+                LegExerciseList(navController)
                 showBottomBar = false
             }
+
+            composable("LegDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    LegScreen(navController = navController, index = bid.toInt())
+                }
+            }
+
+//                composable(route = CategoryRoute.LEG.name) { backStackEntry ->
+//                    LegScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of legscreen
 
             composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
 
-                ShoulderScreen(navController)
+                ShoulderExerciseList(navController)
                 showBottomBar = false
             }
 
+            composable("ShoulderDetails/{bid}") { navBackStackEntry ->
+                val bid = navBackStackEntry.arguments?.getString("bid")
+
+                bid?.let {
+                    ShoulderScreen(navController = navController, index = bid.toInt())
+                }
+            }
+//                composable(route = CategoryRoute.SHOULDER.name) { backStackEntry ->
+//                    ShoulderScreen(navController,backStackEntry)
+//                    showBottomBar = false
+//                }
+//            end of shoulderscreen
 
         }
     }
+
 }
 
 

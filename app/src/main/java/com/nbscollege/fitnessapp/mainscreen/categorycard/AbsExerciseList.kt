@@ -131,13 +131,18 @@ fun AbsExerciseList (navController: NavController) {
                     }
                     item {
                         com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed { index, exercise ->
+                            val composition by rememberLottieComposition(
+                                spec = LottieCompositionSpec.RawRes(
+                                    exercise.animation
+                                )
+                            )
+
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
 
                                 elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
                             ) {
-
 
                                 Box(
                                     modifier = Modifier
@@ -146,6 +151,22 @@ fun AbsExerciseList (navController: NavController) {
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
+                                    Row(
+
+                                    ) {
+                                        val preloaderProgress by animateLottieCompositionAsState(
+                                            composition,
+                                            iterations = LottieConstants.IterateForever,
+                                            isPlaying = true
+                                        )
+
+                                        LottieAnimation(
+                                            modifier = Modifier.size(100.dp)
+                                                .padding(bottom = 20.dp),
+                                            progress = preloaderProgress,
+                                            composition = composition,
+
+                                            )
 
                                     Button(
                                         onClick = {
@@ -165,69 +186,36 @@ fun AbsExerciseList (navController: NavController) {
                                                 .padding(1.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
+                                            Text(
+                                                text = exercise.title,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier,
+                                                textAlign = TextAlign.Center
+                                            )
 
-                                            Row(
-                                                modifier = Modifier
-                                                    .padding(start = 1.dp),
-                                                horizontalArrangement = Arrangement.Start
-                                            ) {
-                                                val composition by rememberLottieComposition(
-                                                    spec = LottieCompositionSpec.RawRes(
-                                                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList[index].animation
-                                                    )
+                                            Text(
+
+                                                "${exercise.time} Seconds",
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier,
+                                                textAlign = TextAlign.Center,
+
                                                 )
-
-                                                val preloaderProgress by animateLottieCompositionAsState(
-                                                    composition,
-                                                    iterations = LottieConstants.IterateForever,
-                                                    isPlaying = true
-                                                )
-
-                                                LottieAnimation(
-                                                    modifier = Modifier.size(80.dp),
-                                                    progress = preloaderProgress,
-                                                    composition = composition,
-
-                                                    )
-
-                                            Column(
-                                                modifier = Modifier.fillMaxWidth()
-                                                    .padding(top = 15.dp, start=20.dp)
-                                            ) {
-                                                Text(
-                                                    text = exercise.title,
-                                                    color = Color.Black,
-                                                    fontWeight = FontWeight.Bold,
-                                                    modifier = Modifier,
-                                                    textAlign = TextAlign.Center
-                                                )
-
-                                                Text(
-
-                                                    "${exercise.time} Seconds",
-                                                    color = Color.Black,
-                                                    fontWeight = FontWeight.Bold,
-                                                    modifier = Modifier,
-                                                    textAlign = TextAlign.Center,
-
-                                                    )
-
-                                            }
-
-
-                                            }
-
 
                                         }
 
 
                                     }
 
+
                                 }
+
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-
+                    }
 
                     }
 

@@ -49,7 +49,6 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList
 
 
-
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalWearMaterialApi::class)
 @Composable
@@ -76,7 +75,7 @@ fun AbsScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < AbsExerciseList.size - 1) {
-                    navController.navigate("CategoryDetails/${index + 1}")
+                    navController.navigate("AbsDetails/${index + 1}")
                 } else {
                     navController.navigate("ExerciseList")
                 }
@@ -295,7 +294,6 @@ fun AbsScreen(navController: NavController, index: Int) {
 //                            textAlign = TextAlign.Center,
 //                            color = Color(0xFF6562DF),
 //                        )
-
 
                         Box(
                             modifier = Modifier
