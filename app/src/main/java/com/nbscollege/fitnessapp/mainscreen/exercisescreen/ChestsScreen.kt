@@ -200,12 +200,7 @@ fun ChestScreen(navController: NavController, index: Int) {
 
                             )
 
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
+
 
                         Box(
                             modifier = Modifier

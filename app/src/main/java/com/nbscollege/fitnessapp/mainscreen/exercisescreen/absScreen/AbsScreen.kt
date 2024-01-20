@@ -294,12 +294,6 @@ fun AbsScreen(navController: NavController, index: Int) {
 //                            textAlign = TextAlign.Center,
 //                            color = Color(0xFF6562DF),
 //                        )
-                        Text(
-                            text = "${remainingTime / 1000} seconds left",
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center,
-                            color = Color(0xFF6562DF),
-                        )
 
                         Box(
                             modifier = Modifier

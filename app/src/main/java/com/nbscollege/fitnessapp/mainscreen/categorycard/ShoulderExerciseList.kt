@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,6 +31,7 @@ import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,6 +44,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.LottieConstants
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.R
 
 
@@ -80,7 +87,7 @@ fun ShoulderExerciseList (navController: NavController) {
                 }
 
                 Image(
-                    painter = painterResource(id = R.drawable.abs),
+                    painter = painterResource(id = R.drawable.shoulderback),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -116,7 +123,7 @@ fun ShoulderExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "ABS EXERCISES",
+                            text = "SHOULDER EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
@@ -124,7 +131,13 @@ fun ShoulderExerciseList (navController: NavController) {
                         )
                     }
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed { index, exercise ->
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.ShoulderExerciseList.forEachIndexed { index, exercise ->
+                            val composition by rememberLottieComposition(
+                                spec = LottieCompositionSpec.RawRes(
+                                    exercise.animation
+                                )
+                            )
+
                             Card(
                                 modifier = Modifier
                                     .fillMaxWidth(),
@@ -139,6 +152,22 @@ fun ShoulderExerciseList (navController: NavController) {
                                         .height(90.dp)
                                         .clip(RoundedCornerShape(16.dp))
                                 ) {
+                                    Row(
+
+                                    ) {
+                                        val preloaderProgress by animateLottieCompositionAsState(
+                                            composition,
+                                            iterations = LottieConstants.IterateForever,
+                                            isPlaying = true
+                                        )
+
+                                        LottieAnimation(
+                                            modifier = Modifier.size(100.dp)
+                                                .padding(bottom = 20.dp),
+                                            progress = preloaderProgress,
+                                            composition = composition,
+
+                                            )
 
                                     Button(
                                         onClick = {
@@ -162,8 +191,7 @@ fun ShoulderExerciseList (navController: NavController) {
                                                 text = exercise.title,
                                                 color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
+                                                modifier = Modifier,
                                                 textAlign = TextAlign.Center
                                             )
 
@@ -172,14 +200,12 @@ fun ShoulderExerciseList (navController: NavController) {
                                                 "${exercise.time} Seconds",
                                                 color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
+                                                modifier = Modifier,
                                                 textAlign = TextAlign.Center,
 
                                                 )
 
                                         }
-
 
 
                                     }
@@ -190,7 +216,7 @@ fun ShoulderExerciseList (navController: NavController) {
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-
+                    }
 
                     }
 

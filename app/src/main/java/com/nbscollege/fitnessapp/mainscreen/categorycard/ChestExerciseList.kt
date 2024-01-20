@@ -88,7 +88,7 @@ fun ChestExerciseList (navController: NavController) {
                 }
 
                 Image(
-                    painter = painterResource(id = R.drawable.abs),
+                    painter = painterResource(id = R.drawable.interchest),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -124,7 +124,7 @@ fun ChestExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "EXERCISES",
+                            text = "CHEST EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
@@ -135,20 +135,12 @@ fun ChestExerciseList (navController: NavController) {
                     item {
                         com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList.forEachIndexed { index, exercise ->
 
-                            val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(exercise.animation))
-
-                            val preloaderProgress by animateLottieCompositionAsState(
-                                composition,
-                                iterations = LottieConstants.IterateForever,
-                                isPlaying = true
+                            val composition by rememberLottieComposition(
+                                spec = LottieCompositionSpec.RawRes(
+                                    exercise.animation
+                                )
                             )
 
-                            LottieAnimation(
-                                modifier = Modifier.size(500.dp),
-                                progress = preloaderProgress,
-                                composition =  composition,
-
-                                )
 
 
                             Card(
@@ -177,15 +169,12 @@ fun ChestExerciseList (navController: NavController) {
                                         )
 
                                         LottieAnimation(
-                                            modifier = Modifier.size(100.dp).padding(bottom=20.dp),
+                                            modifier = Modifier.size(100.dp)
+                                                .padding(bottom = 20.dp),
                                             progress = preloaderProgress,
-                                            composition =  composition,
+                                            composition = composition,
 
                                             )
-
-                                    }
-
-
 
                                     Button(
                                         onClick = {
@@ -200,19 +189,17 @@ fun ChestExerciseList (navController: NavController) {
                                     ) {
 
 
-
                                         Column(
                                             modifier = Modifier
                                                 .fillMaxSize()
-                                                .padding(start = 100.dp),
+                                                .padding(start = 1.dp),
                                             verticalArrangement = Arrangement.Center
                                         ) {
                                             Text(
                                                 text = exercise.title,
                                                 color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
+                                                modifier = Modifier,
                                                 textAlign = TextAlign.Center
                                             )
 
@@ -221,14 +208,12 @@ fun ChestExerciseList (navController: NavController) {
                                                 "${exercise.time} Seconds",
                                                 color = Color.Black,
                                                 fontWeight = FontWeight.Bold,
-                                                modifier = Modifier
-                                                ,
+                                                modifier = Modifier,
                                                 textAlign = TextAlign.Center,
 
                                                 )
 
                                         }
-
 
 
                                     }
@@ -240,7 +225,7 @@ fun ChestExerciseList (navController: NavController) {
                             Spacer(modifier = Modifier.height(20.dp))
                         }
 
-
+                    }
                     }
 
                 }
