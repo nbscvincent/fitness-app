@@ -100,7 +100,7 @@ fun ProfileScreen(
 
                         Icon(
                             imageVector = Icons.Outlined.Person,
-                            modifier = Modifier.size(45.dp),
+                            modifier = Modifier.size(38.dp),
                             contentDescription = "Back",
                             tint = Color.Black
                         )
@@ -108,7 +108,7 @@ fun ProfileScreen(
                         Text(
                             "Profile",
                             color = Color.Black,
-                            fontSize = 38.sp,
+                            fontSize = 30.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
@@ -126,11 +126,9 @@ fun ProfileScreen(
     ) { innerPadding ->
 
 
-
-
                     LazyColumn(
                         modifier = Modifier
-                            .height(790.dp)
+                            .fillMaxSize()
                             .fillMaxWidth()
                             .background(Color.White)
                             .padding(innerPadding)
@@ -178,7 +176,7 @@ fun ProfileScreen(
                                             horizontalArrangement = Arrangement.SpaceBetween
                                         ) {
                                             Text(
-                                                "${user.age} KG\nAge",
+                                                "${user.age}\nAge",
                                                 color = Color.Black,
                                                 fontSize = 20.sp,
                                                 fontWeight = FontWeight.Medium,
