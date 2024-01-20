@@ -2,6 +2,8 @@ package com.nbscollege.fitnessapp.model
 
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,9 +33,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -61,6 +69,16 @@ fun ProfileScreen(
 ) {
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
+
+    val categoryColors = mapOf(
+        "Underweight" to Color(0xFF42A5F5),
+        "Normal Weight" to Color(0xFF4CAF50),
+        "Overweight" to Color(0xFFF57C00),
+        "Obese" to Color(0xFFD32F2F)
+    )
+
+
+    val density = LocalDensity.current.density
 
 
     val loggedInUser = LoggedInUserHolder.getLoggedInUser() ?: run {
@@ -324,6 +342,9 @@ fun ProfileScreen(
                                         }
 
 
+
+
+
                                         Text(
                                             "Tis: Focus on a balanced and nutritious diet to ensure you are getting enough calories and essential nutrients.\n" +
                                                     "Include protein-rich foods, healthy fats, and complex carbohydrates in your meals.\n" +
@@ -333,6 +354,8 @@ fun ProfileScreen(
                                             fontSize = 18.sp,
                                             modifier = Modifier.padding(start = 30.dp, top = 10.dp)
                                         )
+
+
                                     } else if (bmi < 24.5) {
                                         Spacer(modifier = Modifier.height(10.dp))
                                         Row(
@@ -433,6 +456,9 @@ fun ProfileScreen(
                                             }
                                         }
                                         Spacer(modifier = Modifier.height(10.dp))
+
+                                        Spacer(modifier = Modifier.height(16.dp))
+                                        BmiGraphic(bmi = bmi, category = bmiCategory)
 
 
                                         Text(
@@ -648,6 +674,90 @@ fun ProfileScreen(
 
         }
     }
+
+@Composable
+fun BmiGraphic(bmi: Float, category: String) {
+    // Define colors for each BMI category
+    val underweightColor = Color.Blue
+    val normalWeightColor = Color.Green
+    val overweightColor = Color.Yellow
+    val obeseColor = Color.Red
+
+    // Draw the entire BMI bar graph
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(80.dp) // Increased height to accommodate labels
+    ) {
+        // Calculate individual bar widths for each category
+        val underweightBarWidth = size.width * (18.5f / 40f)
+        val normalWeightBarWidth = size.width * (24.9f / 40f - 18.5f / 40f)
+        val overweightBarWidth = size.width * (29.9f / 40f - 24.9f / 40f)
+        val obeseBarWidth = size.width * (1f - 29.9f / 40f)
+
+        // Draw bars for each category
+        drawRoundRect(
+            color = underweightColor,
+            size = Size(underweightBarWidth, size.height),
+            cornerRadius = CornerRadius.Zero
+        )
+        drawRoundRect(
+            color = normalWeightColor,
+            size = Size(normalWeightBarWidth, size.height),
+            topLeft = Offset(underweightBarWidth, 0f),
+            cornerRadius = CornerRadius.Zero
+        )
+        drawRoundRect(
+            color = overweightColor,
+            size = Size(overweightBarWidth, size.height),
+            topLeft = Offset(underweightBarWidth + normalWeightBarWidth, 0f),
+            cornerRadius = CornerRadius.Zero
+        )
+        drawRoundRect(
+            color = obeseColor,
+            size = Size(obeseBarWidth, size.height),
+            topLeft = Offset(underweightBarWidth + normalWeightBarWidth + overweightBarWidth, 0f),
+            cornerRadius = CornerRadius.Zero
+        )
+
+        // Draw labels for each category
+        drawIntoCanvas {
+            it.nativeCanvas.drawText(
+                "Underweight",
+                underweightBarWidth / 2 - 40.dp.toPx(),
+                size.height + 40.dp.toPx(),
+                Paint().apply {  }
+            )
+            it.nativeCanvas.drawText(
+                "Normal Weight",
+                underweightBarWidth + normalWeightBarWidth / 2 - 50.dp.toPx(),
+                size.height + 40.dp.toPx(),
+                Paint().apply {  }
+            )
+            it.nativeCanvas.drawText(
+                "Overweight",
+                underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 2 - 40.dp.toPx(),
+                size.height + 40.dp.toPx(),
+                Paint().apply {  }
+            )
+            it.nativeCanvas.drawText(
+                "Obese",
+                underweightBarWidth + normalWeightBarWidth + overweightBarWidth + obeseBarWidth / 2 - 20.dp.toPx(),
+                size.height + 40.dp.toPx(),
+                Paint().apply {  }
+            )
+        }
+    }
+}
+
+
+
+
+@Composable
+fun calculateBmi(height: Int, weight: Int): Float {
+    val heightInMeters = height / 100f
+    return weight / (heightInMeters * heightInMeters)
+}
 
 
 
