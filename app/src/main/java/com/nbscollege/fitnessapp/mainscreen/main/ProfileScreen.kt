@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -77,15 +78,14 @@ fun ProfileScreen(
         topBar = {
             Box(
                 modifier = Modifier
-                    .padding(top = 5.dp)
-                    .background(Color.White)
-                    .height(75.dp)
+                    .padding()
+                    .background(Color(0xFFE57373))
+                    .height(150.dp)
                     .fillMaxWidth()
-
             ) {
                 Row(
                     modifier = Modifier
-                        .background(Color.White)
+                        .background(Color(0xFFE57373))
                         .fillMaxSize()
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
@@ -93,7 +93,7 @@ fun ProfileScreen(
 
                     Row(
                         modifier = Modifier
-                            .background(Color.White)
+                            .background(Color(0xFFE57373))
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
@@ -114,8 +114,27 @@ fun ProfileScreen(
                         )
                         Spacer(modifier = Modifier.width(5.dp))
 
+
                     }
+
                 }
+
+                Column(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    loggedInUser?.let { user ->
+
+                        Text(
+                            user.username,
+                            color = Color.Black,
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(),
+                        )
+                    }
+
+                }
+
             }
         },
         bottomBar = {
@@ -139,7 +158,6 @@ fun ProfileScreen(
                             loggedInUser?.let { user ->
 
 
-                                Spacer(modifier = Modifier.height(10.dp))
 
                                 println()
 
