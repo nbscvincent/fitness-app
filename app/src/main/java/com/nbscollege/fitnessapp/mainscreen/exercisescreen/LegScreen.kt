@@ -76,7 +76,7 @@ fun LegScreen(navController: NavController, index: Int) {
                 if (index < LegExerciseList.size - 1) {
                     navController.navigate("LegDetails/${index + 1}")
                 } else {
-                    navController.navigate("ExerciseList")
+                    navController.navigate("LEG")
                 }
             }
         }

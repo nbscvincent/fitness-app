@@ -77,7 +77,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                 if (index < AbsExerciseList.size - 1) {
                     navController.navigate("AbsDetails/${index + 1}")
                 } else {
-                    navController.navigate("ExerciseList")
+                    navController.navigate("ABS")
                 }
             }
         }
