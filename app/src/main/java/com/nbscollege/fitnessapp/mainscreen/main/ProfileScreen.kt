@@ -144,7 +144,7 @@ fun ProfileScreen(
                         Text(
                             "Hello, ${user.username}",
                             color = Color.Black,
-                            fontSize = 50.sp,
+                            fontSize = 40.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
@@ -350,10 +350,6 @@ fun ProfileScreen(
                                         Spacer(modifier = Modifier.height(16.dp))
                                         BmiGraphic(bmi = bmi, category = bmiCategory)
 //                                        BmiBarChart(bmi = bmi, category = bmiCategory)
-
-
-
-
 
                                         Text(
                                             "Tis: Focus on a balanced and nutritious diet to ensure you are getting enough calories and essential nutrients.\n" +
@@ -724,6 +720,11 @@ fun BmiGraphic(bmi: Float, category: String) {
     val overweightLabel = "Overweight"
     val obeseLabel = "Obese"
 
+    val underweight = "18.5 Below"
+    val normalWeight = "18.5-25"
+    val overweight = "25-30"
+    val obese = "30 & Above"
+
     Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally) {
 
         Canvas(
@@ -774,25 +775,59 @@ fun BmiGraphic(bmi: Float, category: String) {
                 it.nativeCanvas.drawText(
                     underweightLabel,
                     underweightBarWidth / 1 - 100.dp.toPx(),
-                    size.height + -20.dp.toPx(),
+                    size.height + -25.dp.toPx(),
                     paint
                 )
                 it.nativeCanvas.drawText(
                     normalWeightLabel,
                     underweightBarWidth + normalWeightBarWidth / 2 - 45.dp.toPx(),
-                    size.height + -20.dp.toPx(),
+                    size.height + -25.dp.toPx(),
                     paint
                 )
                 it.nativeCanvas.drawText(
                     overweightLabel,
                     underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 2 - 30.dp.toPx(),
-                    size.height + -20.dp.toPx(),
+                    size.height + -25.dp.toPx(),
                     paint
                 )
                 it.nativeCanvas.drawText(
                     obeseLabel,
                     underweightBarWidth + normalWeightBarWidth + overweightBarWidth + obeseBarWidth / 1 - 80.dp.toPx(),
-                    size.height + -20.dp.toPx(),
+                    size.height + -25.dp.toPx(),
+                    paint
+                )
+            }
+
+            // number
+
+            drawIntoCanvas {
+                val paint = Paint().apply {
+
+                    textSize = 15.sp.toPx() // Set the text size to 20sp
+                }
+
+                it.nativeCanvas.drawText(
+                    underweight,
+                    underweightBarWidth / 1 - 95.dp.toPx(),
+                    size.height + -10.dp.toPx(),
+                    paint
+                )
+                it.nativeCanvas.drawText(
+                    normalWeight,
+                    underweightBarWidth + normalWeightBarWidth / 2 - 25.dp.toPx(),
+                    size.height + -10.dp.toPx(),
+                    paint
+                )
+                it.nativeCanvas.drawText(
+                    overweight,
+                    underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 2 - 15.dp.toPx(),
+                    size.height + -10.dp.toPx(),
+                    paint
+                )
+                it.nativeCanvas.drawText(
+                    obese,
+                    underweightBarWidth + normalWeightBarWidth + overweightBarWidth + obeseBarWidth / 1 - 95.dp.toPx(),
+                    size.height + -10.dp.toPx(),
                     paint
                 )
             }
@@ -800,13 +835,7 @@ fun BmiGraphic(bmi: Float, category: String) {
 
     }
 
-
 }
-
-
-
-
-
 
 @Composable
 fun calculateBmi(height: Int, weight: Int): Float {

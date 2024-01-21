@@ -297,7 +297,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     isError = weightError,
                     modifier = Modifier.fillMaxWidth()
                         .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                    label = { Text("Weight(kl)", fontWeight = FontWeight.Medium) },
+                    label = { Text("Weight(kg)", fontWeight = FontWeight.Medium) },
                     value = weight,
                     onValueChange = { weight = it },
                     singleLine = true,
