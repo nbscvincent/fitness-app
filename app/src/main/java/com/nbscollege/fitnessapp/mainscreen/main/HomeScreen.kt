@@ -80,7 +80,7 @@ import com.nbscollege.fitnessapp.mainscreen.dataclass.categoryExercise
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "EXERCISE",
+                            text = "CATEGORY EXERCISE",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,

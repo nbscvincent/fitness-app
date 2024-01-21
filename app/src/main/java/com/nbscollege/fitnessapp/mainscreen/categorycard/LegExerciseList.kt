@@ -70,7 +70,7 @@ fun LegExerciseList (navController: NavController) {
 
                 SmallFloatingActionButton(
                     onClick = {
-                        navController.navigate("HomeScreen")
+                        navController.popBackStack("ABS",inclusive = true)
                     },
                     containerColor = Color.Transparent,
                     modifier = Modifier
@@ -86,7 +86,7 @@ fun LegExerciseList (navController: NavController) {
                 }
 
                 Image(
-                    painter = painterResource(id = R.drawable.leg),
+                    painter = painterResource(id = R.drawable.abs),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -168,54 +168,55 @@ fun LegExerciseList (navController: NavController) {
 
                                             )
 
-                                    Button(
-                                        onClick = {
-                                            navController.navigate("LegDetails/$index")
-                                        },
-                                        shape = RoundedCornerShape(1.dp),
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .clip(RoundedCornerShape(16.dp))
-                                            .height(90.dp),
-                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
-                                    ) {
-
-                                        Column(
+                                        Button(
+                                            onClick = {
+                                                navController.navigate("LegDetails/$index")
+                                            },
+                                            shape = RoundedCornerShape(1.dp),
                                             modifier = Modifier
-                                                .fillMaxSize()
-                                                .padding(1.dp),
-                                            verticalArrangement = Arrangement.Center
+                                                .fillMaxWidth()
+                                                .clip(RoundedCornerShape(16.dp))
+                                                .height(90.dp),
+                                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
                                         ) {
-                                            Text(
-                                                text = exercise.title,
-                                                color = Color.Black,
-                                                fontWeight = FontWeight.Bold,
-                                                modifier = Modifier,
-                                                textAlign = TextAlign.Center
-                                            )
 
-                                            Text(
-
-                                                "${exercise.time} Seconds",
-                                                color = Color.Black,
-                                                fontWeight = FontWeight.Bold,
-                                                modifier = Modifier,
-                                                textAlign = TextAlign.Center,
-
+                                            Column(
+                                                modifier = Modifier
+                                                    .fillMaxSize()
+                                                    .padding(1.dp),
+                                                verticalArrangement = Arrangement.Center
+                                            ) {
+                                                Text(
+                                                    text = exercise.title,
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center
                                                 )
+
+                                                Text(
+
+                                                    "${exercise.time} Seconds",
+                                                    color = Color.Black,
+                                                    fontWeight = FontWeight.Bold,
+                                                    modifier = Modifier,
+                                                    textAlign = TextAlign.Center,
+
+                                                    )
+
+                                            }
+
 
                                         }
 
 
                                     }
 
-
                                 }
 
                             }
                             Spacer(modifier = Modifier.height(20.dp))
                         }
-                    }
 
                     }
 
@@ -229,5 +230,4 @@ fun LegExerciseList (navController: NavController) {
     }
 
 }
-
 

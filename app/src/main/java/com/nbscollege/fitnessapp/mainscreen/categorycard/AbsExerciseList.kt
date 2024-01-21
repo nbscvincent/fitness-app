@@ -70,7 +70,7 @@ fun AbsExerciseList (navController: NavController) {
 
                 SmallFloatingActionButton(
                     onClick = {
-                        navController.navigate("HomeScreen")
+                        navController.popBackStack("ABS",inclusive = true)
                     },
                     containerColor = Color.Transparent,
                     modifier = Modifier

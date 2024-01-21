@@ -12,13 +12,13 @@ data class ExerList(
 
 val AbsExerciseList = listOf(
     //for abs workout
-    ExerList(title = "PLANK", R.raw.plank, time = 60, route = CategoryRoute.ABS.name),
+    ExerList(title = "PLANK", R.raw.plank, time = 10, route = CategoryRoute.ABS.name),
     ExerList(title = "ABDOMINAL CRUNCHES", R.raw.abdominal, time = 60,route = CategoryRoute.ABS.name),
     ExerList(title = "RUSSIAN TWIST", R.raw.russian, time = 120,route = CategoryRoute.ABS.name),
     ExerList(title = "BURPEES", R.raw.burpee, time = 90,route = CategoryRoute.ABS.name),
     ExerList(title = "LEG RAISES", R.raw.leg, time = 45,route = CategoryRoute.ABS.name),
     ExerList(title = "SQUATS", R.raw.squats, time = 30,route = CategoryRoute.ABS.name),
-    ExerList(title = "FLUTTER KICKS", R.raw.flutter, time = 90,route = CategoryRoute.ABS.name),
+    ExerList(title = "FLUTTER KICKS", R.raw.flutter, time = 10,route = CategoryRoute.ABS.name),
 
 )
 
