@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.exercisescreen
+package com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen
 
 import android.annotation.SuppressLint
 import android.os.CountDownTimer
@@ -6,12 +6,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -40,16 +42,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.wear.compose.material.ExperimentalWearMaterialApi
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.nbscollege.fitnessapp.mainscreen.dataclass.ChestExerciseList
-import kotlin.math.roundToInt
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalWearMaterialApi::class)
 @Composable
 fun ChestScreen(navController: NavController, index: Int) {
 
@@ -60,6 +63,11 @@ fun ChestScreen(navController: NavController, index: Int) {
     var buttonColor by remember { mutableStateOf(Color.Red) }
 
     var progress by remember { mutableFloatStateOf(1f) }
+
+
+    var openAlertDialog = remember { mutableStateOf(false) }
+
+
 
 
 
@@ -74,9 +82,17 @@ fun ChestScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < ChestExerciseList.size - 1) {
-                    navController.navigate("ChestDetails/${index + 1}")
+                    navController.navigate("ChestDetails/${index + 1}") {
+                        // Clear the back stack up to AbsDetails screen (exclusive)
+                        popUpTo("CHEST") {
+                            inclusive = false
+                        }
+                    }
+
+
                 } else {
-                    navController.navigate("CHEST")
+                    openAlertDialog.value = true
+
                 }
             }
         }
@@ -119,6 +135,39 @@ fun ChestScreen(navController: NavController, index: Int) {
 
                 }
 
+//                Box(
+//                    modifier = Modifier
+//                        .size(150.dp)
+//                        .padding(16.dp)
+//                        .drawBehind {
+//                            // Draw circular progress
+//                            drawArc(
+//                                color = Color.Black,
+//                                startAngle = 0f,
+//                                sweepAngle = 360 * progress,
+//                                useCenter = false,
+//                                style = Stroke(width = 8.dp.toPx())
+//                            )
+//
+//                            // Draw timer text
+//                            drawIntoCanvas { canvas ->
+//                                val text = "${remainingTime / 1000}"
+//                                val paint = Paint().asFrameworkPaint().apply {
+//                                    color = Color(0xFF800000).toArgb()
+//                                    textAlign = android.graphics.Paint.Align.CENTER
+//                                    textSize = 50.sp.toPx()
+//                                }
+//                                canvas.nativeCanvas.drawText(
+//                                    text,
+//                                    size.width / 2,
+//                                    size.height / 2 + paint.textSize / 3, // Adjusted Y-coordinate
+//                                    paint
+//                                )
+//                            }
+//                        }
+//
+//
+//                )
             }
 
 
@@ -153,7 +202,26 @@ fun ChestScreen(navController: NavController, index: Int) {
                     ) {
                         Text("Start")
                     }
-
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//
+//                    ) {
+//                        Button(
+//                            modifier = Modifier.fillMaxWidth().height(50.dp),
+//                            onClick = {
+//                                if (index < ExerciseList.size - 1) {
+//                                    navController.navigate("CategoryDetails/${index + 1}")
+//                                } else {
+//                                    navController.navigate("ExerciseList")
+//                                }
+//                            },
+//                            enabled = !isTimerRunning,
+//                            colors = ButtonDefaults.buttonColors(Color.Blue)
+//                        ) {
+//                            Text("Next")
+//                        }
+//                    }
                 }
 
 
@@ -162,7 +230,40 @@ fun ChestScreen(navController: NavController, index: Int) {
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
+        // Content of your screen goes here
 
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxSize()
+//                .padding(innerPadding)
+//        ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                LazyColumn(
+//                    modifier = Modifier.padding(0.dp),
+//                ) {
+//                    item {
+//
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                        Text(
+//                            text = "${ExerciseList[index].time} seconds",
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                    }
+//                }
+//            }
+//        }
 
         Column(
             modifier = Modifier
@@ -202,6 +303,13 @@ fun ChestScreen(navController: NavController, index: Int) {
 
 
 
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+
                         Box(
                             modifier = Modifier
                                 .size(150.dp)
@@ -240,4 +348,68 @@ fun ChestScreen(navController: NavController, index: Int) {
             }
         }
     }
+
+
+    if (openAlertDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                navController.navigate("CHEST") {
+                    // Clear the back stack up to AbsDetails screen (exclusive)
+                    popUpTo("CHEST") {
+                        inclusive = true
+                    }
+                }
+
+                openAlertDialog.value = false
+            },
+            title = {
+                Text(
+                    text = "Great Job!!!",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                )
+            },
+            text = {
+                Text(
+                    text = "Keep it up!",
+                    fontSize = 16.sp,
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        // Navigate to "ABS" when confirmed
+                        navController.navigate("CHEST") {
+                            // Clear the back stack up to AbsDetails screen (exclusive)
+                            popUpTo("CHEST") {
+                                inclusive = true
+                            }
+                        }
+
+                        openAlertDialog.value = false
+                    },
+                    colors = ButtonDefaults.buttonColors(contentColor = Color.Gray),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    Text(
+                        "continue",
+                        color = Color.White
+                    )
+                }
+            },
+            dismissButton = {
+
+            }
+        )
+    }
+
+
+
 }
+
+
+
+
+
+
+

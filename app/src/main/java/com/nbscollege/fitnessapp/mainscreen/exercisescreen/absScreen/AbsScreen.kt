@@ -84,8 +84,8 @@ fun AbsScreen(navController: NavController, index: Int) {
                 if (index < AbsExerciseList.size - 1) {
                     navController.navigate("AbsDetails/${index + 1}") {
                         // Clear the back stack up to AbsDetails screen (exclusive)
-                        popUpTo("AbsDetails") {
-                            inclusive = true
+                        popUpTo("ABS") {
+                            inclusive = false
                         }
                     }
 
@@ -353,15 +353,12 @@ fun AbsScreen(navController: NavController, index: Int) {
     if (openAlertDialog.value) {
         AlertDialog(
             onDismissRequest = {
-                navController.navigate("ABS")  {
+                navController.navigate("ABS") {
                     // Clear the back stack up to AbsDetails screen (exclusive)
                     popUpTo("ABS") {
-                        inclusive = false
+                        inclusive = true
                     }
                 }
-
-
-                    // Clear the back stack up to AbsDetails screen (exclusive)
 
                 openAlertDialog.value = false
             },
