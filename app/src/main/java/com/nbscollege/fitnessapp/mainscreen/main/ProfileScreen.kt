@@ -696,9 +696,9 @@ fun BmiGraphic(bmi: Float, category: String) {
             .height(80.dp) // Increased height to accommodate labels
     ) {
         // Calculate individual bar widths for each category
-        val underweightBarWidth = size.width * (18.5f / 40f)
-        val normalWeightBarWidth = size.width * (24.9f / 40f - 18.5f / 40f)
-        val overweightBarWidth = size.width * (29.9f / 40f - 24.9f / 40f)
+        val underweightBarWidth = size.width * (18.5f / 60f)
+        val normalWeightBarWidth = size.width * (24.9f / 40f - 18.5f / 50f)
+        val overweightBarWidth = size.width * (29.9f / 40f - 24.9f / 48f)
         val obeseBarWidth = size.width * (1f - 29.9f / 40f)
 
         // Draw bars for each category
@@ -729,33 +729,32 @@ fun BmiGraphic(bmi: Float, category: String) {
         // Draw labels for each category
         drawIntoCanvas {
             val paint = Paint().apply {
-                textSize = 20.sp.toPx() // Set the text size to 20sp
+                textSize = 15.sp.toPx() // Set the text size to 20sp
             }
 
             it.nativeCanvas.drawText(
                 underweightLabel,
                 underweightBarWidth / 1 - 100.dp.toPx(),
                 size.height + 0.dp.toPx(),
-                Paint().apply {  }
+                paint
             )
             it.nativeCanvas.drawText(
                 normalWeightLabel,
-                underweightBarWidth + normalWeightBarWidth / 1 - 50.dp.toPx(),
-                size.height + 0.dp.toPx(),
-                Paint().apply { },
+                underweightBarWidth + normalWeightBarWidth / 2 - 50.dp.toPx(),
+                size.height + -30.dp.toPx(),
+                paint
             )
             it.nativeCanvas.drawText(
                 overweightLabel,
                 underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 1 - 40.dp.toPx(),
                 size.height + 0.dp.toPx(),
-                Paint().apply {  }
+                paint
             )
             it.nativeCanvas.drawText(
                 obeseLabel,
                 underweightBarWidth + normalWeightBarWidth + overweightBarWidth + obeseBarWidth / 1 - 80.dp.toPx(),
                 size.height + 0.dp.toPx(),
-                Paint().apply {  }
-                Paint
+                paint
             )
         }
     }
