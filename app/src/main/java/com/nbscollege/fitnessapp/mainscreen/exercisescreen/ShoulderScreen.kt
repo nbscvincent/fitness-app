@@ -6,16 +6,22 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +45,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
@@ -61,6 +68,11 @@ fun ShoulderScreen(navController: NavController, index: Int) {
     var progress by remember { mutableFloatStateOf(1f) }
 
 
+    var openAlertDialog = remember { mutableStateOf(false) }
+
+
+
+
 
 
     val countDownTimer = remember {
@@ -73,9 +85,17 @@ fun ShoulderScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < ShoulderExerciseList.size - 1) {
-                    navController.navigate("ShoulderDetails/${index + 1}")
+                    navController.navigate("ShoulderDetails/${index + 1}") {
+                        // Clear the back stack up to AbsDetails screen (exclusive)
+                        popUpTo("SHOULDER") {
+                            inclusive = false
+                        }
+                    }
+
+
                 } else {
-                    navController.navigate("SHOULDER")
+                    openAlertDialog.value = true
+
                 }
             }
         }
@@ -96,6 +116,28 @@ fun ShoulderScreen(navController: NavController, index: Int) {
 
     Scaffold(
         topBar = {
+            IconButton(
+                onClick = {
+                    navController.navigate("SHOULDER") {
+                        // Clear the back stack up to AbsDetails screen (inclusive)
+                        popUpTo("SHOULDER") {
+                            inclusive = true
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .padding(start = 5.dp, end = 5.dp)
+                    .zIndex(3f)
+            ) {
+                Icon(
+                    Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "Back",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
+                )
+            }
+
+
 
             Column(
                 modifier = Modifier.height(150.dp),
@@ -185,7 +227,26 @@ fun ShoulderScreen(navController: NavController, index: Int) {
                     ) {
                         Text("Start")
                     }
-
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//
+//                    ) {
+//                        Button(
+//                            modifier = Modifier.fillMaxWidth().height(50.dp),
+//                            onClick = {
+//                                if (index < ExerciseList.size - 1) {
+//                                    navController.navigate("CategoryDetails/${index + 1}")
+//                                } else {
+//                                    navController.navigate("ExerciseList")
+//                                }
+//                            },
+//                            enabled = !isTimerRunning,
+//                            colors = ButtonDefaults.buttonColors(Color.Blue)
+//                        ) {
+//                            Text("Next")
+//                        }
+//                    }
                 }
 
 
@@ -194,7 +255,40 @@ fun ShoulderScreen(navController: NavController, index: Int) {
             } // END BOTTOMBAR
         }
     ) { innerPadding ->
+        // Content of your screen goes here
 
+//        Column(
+//            modifier = Modifier
+//                .background(Color.White)
+//                .fillMaxSize()
+//                .padding(innerPadding)
+//        ) {
+//            Column(
+//                modifier = Modifier.fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally,
+//                verticalArrangement = Arrangement.Center
+//            ) {
+//                LazyColumn(
+//                    modifier = Modifier.padding(0.dp),
+//                ) {
+//                    item {
+//
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                        Text(
+//                            text = "${ExerciseList[index].time} seconds",
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+//                    }
+//                }
+//            }
+//        }
 
         Column(
             modifier = Modifier
@@ -234,6 +328,13 @@ fun ShoulderScreen(navController: NavController, index: Int) {
 
 
 
+//                        Text(
+//                            text = ExerciseList[index].title,
+//                            fontWeight = FontWeight.Bold,
+//                            textAlign = TextAlign.Center,
+//                            color = Color(0xFF6562DF),
+//                        )
+
                         Box(
                             modifier = Modifier
                                 .size(150.dp)
@@ -272,4 +373,61 @@ fun ShoulderScreen(navController: NavController, index: Int) {
             }
         }
     }
+
+
+    if (openAlertDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                navController.navigate("SHOULDER") {
+                    // Clear the back stack up to AbsDetails screen (exclusive)
+                    popUpTo("SHOULDER") {
+                        inclusive = true
+                    }
+                }
+
+                openAlertDialog.value = false
+            },
+            title = {
+                Text(
+                    text = "Great Job!!!",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                )
+            },
+            text = {
+                Text(
+                    text = "Keep it up!",
+                    fontSize = 16.sp,
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        // Navigate to "ABS" when confirmed
+                        navController.navigate("SHOULDER") {
+                            // Clear the back stack up to AbsDetails screen (exclusive)
+                            popUpTo("SHOULDER") {
+                                inclusive = true
+                            }
+                        }
+
+                        openAlertDialog.value = false
+                    },
+                    colors = ButtonDefaults.buttonColors(contentColor = Color.Gray),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    Text(
+                        "continue",
+                        color = Color.White
+                    )
+                }
+            },
+            dismissButton = {
+
+            }
+        )
+    }
+
+
+
 }

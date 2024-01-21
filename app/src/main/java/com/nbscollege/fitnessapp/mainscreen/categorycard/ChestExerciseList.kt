@@ -122,7 +122,7 @@ fun ChestExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "ABS EXERCISES",
+                            text = "CHEST EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,

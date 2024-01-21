@@ -121,9 +121,9 @@ fun ChestScreen(navController: NavController, index: Int) {
 
             IconButton(
                 onClick = {
-                    navController.navigate("ABS") {
+                    navController.navigate("CHEST") {
                         // Clear the back stack up to AbsDetails screen (inclusive)
-                        popUpTo("ABS") {
+                        popUpTo("CHEST") {
                             inclusive = true
                         }
                     }
