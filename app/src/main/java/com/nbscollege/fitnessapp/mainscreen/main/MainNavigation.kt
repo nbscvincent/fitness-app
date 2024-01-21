@@ -133,14 +133,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
 
                 composable(route = CategoryRoute.ABS.name) { backStackEntry ->
-                    BackHandler(enabled = true) {
-                        val currentDestination = navController.currentBackStackEntry?.destination?.route
-                        if (currentDestination?.startsWith("AbsDetails/") == true) {
-                            navController.navigate("ABS")
-                        } else {
-                            navController.navigate("ABS")
-                        }
-                    }
+
 
                     AbsExerciseList(navController)
                     showBottomBar = false
