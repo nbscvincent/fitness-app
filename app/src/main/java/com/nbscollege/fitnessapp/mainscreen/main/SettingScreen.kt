@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.settingsList
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.SettingCard
-import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardRateUs
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardWithLogoutDialog
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.SettingCardWithSendFeedbackDialog
 
@@ -74,7 +73,7 @@ fun settingscreen(context: Context, navController: NavController) {
 
                         Icon(
                             imageVector = Icons.Outlined.Settings,
-                            modifier = Modifier.size(45.dp),
+                            modifier = Modifier.size(38.dp),
                             contentDescription = "Back",
                             tint = Color.Black
                         )
@@ -82,7 +81,7 @@ fun settingscreen(context: Context, navController: NavController) {
                         Text(
                             "Settings",
                             color = Color.Black,
-                            fontSize = 38.sp,
+                            fontSize = 30.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(),
                         )
@@ -117,7 +116,6 @@ fun settingscreen(context: Context, navController: NavController) {
                 verticalArrangement = Arrangement.SpaceBetween
 
             ) {
-
                 items(settingsList) { general ->
                     when (general.title) {
                         "Log out" -> {
@@ -139,17 +137,17 @@ fun settingscreen(context: Context, navController: NavController) {
                                 isSendFeedBackDialogVisible = it
                             }
                         }
-                        "Rate Us" -> {
-                            SettingCardRateUs(
-                                general = general,
-                                context = LocalContext.current,
-                                navController,
-
-                                isRateUs
-                            ) {
-                                isRateUs = it
-                            }
-                        }
+//                        "Rate Us" -> {
+//                            SettingCardRateUs(
+//                                general = general,
+//                                context = LocalContext.current,
+//                                navController,
+//
+//                                isRateUs
+//                            ) {
+//                                isRateUs = it
+//                            }
+//                        }
 
                         else -> {
                             SettingCard(general = general, navController)

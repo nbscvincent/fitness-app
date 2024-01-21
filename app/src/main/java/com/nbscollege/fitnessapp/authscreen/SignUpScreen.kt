@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -106,7 +107,6 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
     var ageError by remember { mutableStateOf(false) }
 
 
-
     val context = LocalContext.current
     var confirmPasswordColor =
         if (confirmPassword.isEmpty()) Color.Transparent
@@ -114,6 +114,8 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
         else Color.Red
 
     val darkGreen = colorResource(id = R.color.DarkGreen)
+
+    val scrollState = rememberScrollState()
 
 
     if (openAlertDialog.value) {
@@ -146,8 +148,12 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 }
 
                 // Add the new user to the list of registered users
-                registeredUsers.add(User(id, username, password,
-                    weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()))
+                registeredUsers.add(
+                    User(
+                        id, username, password,
+                        weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()
+                    )
+                )
 //                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
 
 
@@ -287,79 +293,78 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 )
 
 
-                        TextField(
-                            isError = weightError,
-                            modifier = Modifier.fillMaxWidth()
-                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                            label = { Text("Weight(kl)", fontWeight = FontWeight.Medium) },
-                            value = weight,
-                            onValueChange = { weight = it },
-                            singleLine = true,
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            trailingIcon = {
-                                Icon(
-                                    Icons.Rounded.MonitorWeight,
-                                    contentDescription = "Weight"
-                                )
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            colors = TextFieldDefaults.textFieldColors(
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent,
-                                disabledIndicatorColor = Color.Transparent,
-                                errorIndicatorColor = Color.Transparent
-                            )
+                TextField(
+                    isError = weightError,
+                    modifier = Modifier.fillMaxWidth()
+                        .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                    label = { Text("Weight(kg)", fontWeight = FontWeight.Medium) },
+                    value = weight,
+                    onValueChange = { weight = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.MonitorWeight,
+                            contentDescription = "Weight"
                         )
-                        TextField(
-                            isError = heightError,
-                            modifier = Modifier.fillMaxWidth()
-                                .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp)
-                             ,
-                            label = { Text("Height(cm)", fontWeight = FontWeight.Medium) },
-                            value = height,
-                            onValueChange = { height = it },
-                            singleLine = true,
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            trailingIcon = {
-                                Icon(
-                                    Icons.Rounded.Height,
-                                    contentDescription = "height"
-                                )
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                            colors = TextFieldDefaults.textFieldColors(
-                                focusedIndicatorColor = Color.Transparent,
-                                unfocusedIndicatorColor = Color.Transparent,
-                                disabledIndicatorColor = Color.Transparent,
-                                errorIndicatorColor = Color.Transparent
-                            )
-                        )
-
-
-
-                    TextField(
-                        isError = ageError,
-                        modifier = Modifier.fillMaxWidth()
-                            .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
-                        label = { Text("Age", fontWeight = FontWeight.Medium) },
-                        value = age,
-                        onValueChange = { age = it },
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        trailingIcon = {
-                            Icon(
-                                Icons.Rounded.PlusOne,
-                                contentDescription = "Age"
-                            )
-                        },
-                        shape = RoundedCornerShape(12.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent,
-                            disabledIndicatorColor = Color.Transparent,
-                            errorIndicatorColor = Color.Transparent
-                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent
                     )
+                )
+                TextField(
+                    isError = heightError,
+                    modifier = Modifier.fillMaxWidth()
+                        .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                    label = { Text("Height(cm)", fontWeight = FontWeight.Medium) },
+                    value = height,
+                    onValueChange = { height = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.Height,
+                            contentDescription = "height"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent
+                    )
+                )
+
+
+
+                TextField(
+                    isError = ageError,
+                    modifier = Modifier.fillMaxWidth()
+                        .absolutePadding(left = 40.dp, right = 40.dp, bottom = 11.dp),
+                    label = { Text("Age", fontWeight = FontWeight.Medium) },
+                    value = age,
+                    onValueChange = { age = it },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    trailingIcon = {
+                        Icon(
+                            Icons.Rounded.PlusOne,
+                            contentDescription = "Age"
+                        )
+                    },
+                    shape = RoundedCornerShape(12.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        disabledIndicatorColor = Color.Transparent,
+                        errorIndicatorColor = Color.Transparent
+                    )
+                )
 
 
             }
@@ -381,9 +386,9 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
 //                            viewModel.saveUser()
 //                            Log.i("userUiState", userUiState.userDetails.toString())
 //                        }
-                            if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty()  && age.isNotEmpty() && password == confirmPassword) {
+                            if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty() && age.isNotEmpty() && password == confirmPassword) {
                                 // Check if the username is already taken
-                                if (registeredUsers.any { it.username == username}) {
+                                if (registeredUsers.any { it.username == username }) {
                                     userError = true
                                     passwordError = false
                                     weightError = false
@@ -392,19 +397,21 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
 
 
 
-                                    Toast.makeText(context, "Username already Taken!", Toast.LENGTH_SHORT).show()
-                                }
-                                else {
+                                    Toast.makeText(
+                                        context,
+                                        "Username already Taken!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
                                     openAlertDialog.value = true
                                 }
-                            }
-
-
-
-                            else if (confirmPassword != password) {
-                                Toast.makeText(context, "password does not match", Toast.LENGTH_SHORT).show()
-                            }
-                            else {
+                            } else if (confirmPassword != password) {
+                                Toast.makeText(
+                                    context,
+                                    "password does not match",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
                                 userError = username.isEmpty()
                                 passwordError = password.isEmpty()
                                 weightError = weight.isEmpty()
@@ -412,7 +419,11 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                 confirmPasswordError = confirmPassword.isEmpty()
                                 ageError = age.isEmpty()
 
-                                Toast.makeText(context, "Please fill the registration!", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    context,
+                                    "Please fill the registration!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         },
 
@@ -432,7 +443,12 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                         Row(
 //                        verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            Text("Register", fontSize = 19.sp,fontWeight = FontWeight.Medium, modifier = Modifier.padding(1.dp))
+                            Text(
+                                "Register",
+                                fontSize = 19.sp,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier.padding(1.dp)
+                            )
                         }
                     }
 
@@ -446,11 +462,23 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
                         ) {
-                            Text("Already a member?", fontSize = 16.sp , fontWeight = FontWeight.Medium)
+                            Text(
+                                "Already a member?",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Medium
+                            )
                             Box(Modifier.width(7.dp))
-                            Text("Login here", fontSize = 16.sp, color = Color.Red,fontWeight = FontWeight.Medium,modifier = Modifier.clickable( onClick = {
-                                navController.navigate(Auth.LogInScreen.name)
-                            }, ) )
+                            Text(
+                                "Login here",
+                                fontSize = 16.sp,
+                                color = Color.Red,
+                                fontWeight = FontWeight.Medium,
+                                modifier = Modifier.clickable(
+                                    onClick = {
+                                        navController.navigate(Auth.LogInScreen.name)
+                                    },
+                                )
+                            )
 
                         }
                     }
@@ -460,6 +488,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
 
         }
     }
+
 }
 
 
