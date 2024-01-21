@@ -179,7 +179,8 @@ fun ProfileScreen(
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
                                         textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding()
+                                        modifier = Modifier
+                                            .padding()
                                             .weight(1f),
                                     )
                                     Box(
@@ -194,7 +195,8 @@ fun ProfileScreen(
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
                                         textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding()
+                                        modifier = Modifier
+                                            .padding()
                                             .weight(1f),
                                     )
                                     Box(
@@ -209,7 +211,8 @@ fun ProfileScreen(
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
                                         textAlign = TextAlign.Center,
-                                        modifier = Modifier.padding()
+                                        modifier = Modifier
+                                            .padding()
                                             .weight(1f),
                                     )
 
@@ -459,6 +462,7 @@ fun ProfileScreen(
 
                                         Spacer(modifier = Modifier.height(16.dp))
                                         BmiGraphic(bmi = bmi, category = bmiCategory)
+//                                        BmiBarChart(bmi = bmi, category = bmiCategory)
 
 
                                         Text(
@@ -693,7 +697,7 @@ fun BmiGraphic(bmi: Float, category: String) {
     Canvas(
         modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp) // Increased height to accommodate labels
+            .height(50.dp) // Increased height to accommodate labels
     ) {
         // Calculate individual bar widths for each category
         val underweightBarWidth = size.width * (18.5f / 60f)
@@ -729,33 +733,89 @@ fun BmiGraphic(bmi: Float, category: String) {
         // Draw labels for each category
         drawIntoCanvas {
             val paint = Paint().apply {
+
                 textSize = 15.sp.toPx() // Set the text size to 20sp
             }
 
             it.nativeCanvas.drawText(
                 underweightLabel,
                 underweightBarWidth / 1 - 100.dp.toPx(),
-                size.height + 0.dp.toPx(),
+                size.height + -20.dp.toPx(),
                 paint
             )
             it.nativeCanvas.drawText(
                 normalWeightLabel,
-                underweightBarWidth + normalWeightBarWidth / 2 - 50.dp.toPx(),
-                size.height + -30.dp.toPx(),
+                underweightBarWidth + normalWeightBarWidth / 2 - 45.dp.toPx(),
+                size.height + -20.dp.toPx(),
                 paint
             )
             it.nativeCanvas.drawText(
                 overweightLabel,
-                underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 1 - 40.dp.toPx(),
-                size.height + 0.dp.toPx(),
+                underweightBarWidth + normalWeightBarWidth + overweightBarWidth / 2 - 30.dp.toPx(),
+                size.height + -20.dp.toPx(),
                 paint
             )
             it.nativeCanvas.drawText(
                 obeseLabel,
                 underweightBarWidth + normalWeightBarWidth + overweightBarWidth + obeseBarWidth / 1 - 80.dp.toPx(),
-                size.height + 0.dp.toPx(),
+                size.height + -20.dp.toPx(),
                 paint
             )
+        }
+    }
+}
+
+@Composable
+fun BmiBarChart(bmi: Float, category: String) {
+    // Define colors for each BMI category
+    val underweightColor = Color.Blue
+    val normalWeightColor = Color.Green
+    val overweightColor = Color.Yellow
+    val obeseColor = Color.Red
+
+    // Define labels for each BMI category
+    val underweightLabel = "Underweight"
+    val normalWeightLabel = "Normal Weight"
+    val overweightLabel = "Overweight"
+    val obeseLabel = "Obese"
+
+    // Map BMI categories to colors and labels
+    val bmiCategories = listOf(
+        underweightColor to underweightLabel,
+        normalWeightColor to normalWeightLabel,
+        overweightColor to overweightLabel,
+        obeseColor to obeseLabel
+    )
+
+    // Draw the BMI bar chart with labels
+    Canvas(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp) // Adjust the height as needed
+    ) {
+        val totalWidth = size.width
+        val barWidth = totalWidth / bmiCategories.size
+
+        bmiCategories.forEachIndexed { index, (color, label) ->
+            val startX = index * barWidth
+            drawRect(
+                color = color,
+                topLeft = Offset(startX, 0f),
+                size = Size(barWidth, size.height)
+            )
+
+            drawIntoCanvas {
+                val paint = Paint().apply {
+
+                    textSize = 16.sp.toPx() // Adjust the text size as needed
+                }
+                it.nativeCanvas.drawText(
+                    label,
+                    startX + barWidth / 2 - (label.length * 8), // Adjust text alignment
+                    size.height + 20.dp.toPx(),
+                    paint
+                )
+            }
         }
     }
 }
