@@ -70,6 +70,8 @@ fun AbsScreen(navController: NavController, index: Int) {
 
 
 
+
+
     val countDownTimer = remember {
         object : CountDownTimer(remainingTime, 1000) {
             override  fun onTick(millisUntilFinished: Long) {
@@ -80,7 +82,12 @@ fun AbsScreen(navController: NavController, index: Int) {
 
             override fun onFinish() {
                 if (index < AbsExerciseList.size - 1) {
-                    navController.navigate("AbsDetails/${index + 1}")
+                    navController.navigate("AbsDetails/${index + 1}") {
+                        // Clear the back stack up to AbsDetails screen (exclusive)
+                        popUpTo("AbsDetails") {
+                            inclusive = true
+                        }
+                    }
 
 
                 } else {
@@ -346,8 +353,16 @@ fun AbsScreen(navController: NavController, index: Int) {
     if (openAlertDialog.value) {
         AlertDialog(
             onDismissRequest = {
-                navController.navigate("ABS")
-                navController.popBackStack("AbsDetails", inclusive = true)
+                navController.navigate("ABS")  {
+                    // Clear the back stack up to AbsDetails screen (exclusive)
+                    popUpTo("ABS") {
+                        inclusive = false
+                    }
+                }
+
+
+                    // Clear the back stack up to AbsDetails screen (exclusive)
+
                 openAlertDialog.value = false
             },
             title = {
@@ -367,8 +382,13 @@ fun AbsScreen(navController: NavController, index: Int) {
                 Button(
                     onClick = {
                         // Navigate to "ABS" when confirmed
-                        navController.navigate("ABS")
-                        navController.popBackStack("AbsDetails", inclusive = true)
+                        navController.navigate("ABS") {
+                            // Clear the back stack up to AbsDetails screen (exclusive)
+                            popUpTo("ABS") {
+                                inclusive = true
+                            }
+                        }
+
                         openAlertDialog.value = false
                     },
                     colors = ButtonDefaults.buttonColors(contentColor = Color.Gray),
