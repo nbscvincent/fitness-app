@@ -7,25 +7,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -353,7 +345,8 @@ fun AbsScreen(navController: NavController, index: Int) {
     if (openAlertDialog.value) {
         AlertDialog(
             onDismissRequest = {
-                // Do nothing if dismissed
+                navController.navigate("ABS")
+                openAlertDialog.value = false
             },
             title = {
                 Text(
@@ -373,30 +366,19 @@ fun AbsScreen(navController: NavController, index: Int) {
                     onClick = {
                         // Navigate to "ABS" when confirmed
                         navController.navigate("ABS")
+                        openAlertDialog.value = false
                     },
-                    colors = ButtonDefaults.buttonColors(contentColor = LocalContentColor.current),
+                    colors = ButtonDefaults.buttonColors(contentColor = Color.Gray),
                     contentPadding = PaddingValues(16.dp)
                 ) {
-                    Row {
-                        Icon(Icons.Default.Check, contentDescription = null)
-                        Spacer(modifier = Modifier.width(4.dp))
-                    }
+                    Text(
+                        "continue",
+                        color = Color.White
+                    )
                 }
             },
             dismissButton = {
-                Button(
-                    onClick = {
-                        // Navigate to "ABS" when dismissed
-                        navController.navigate("ABS")
-                    },
-                    colors = ButtonDefaults.buttonColors(contentColor = LocalContentColor.current),
-                    contentPadding = PaddingValues(16.dp)
-                ) {
-                    Row {
-                        Icon(Icons., contentDescription = null)
-                        Spacer(modifier = Modifier.width(4.dp))
-                    }
-                }
+
             }
         )
     }

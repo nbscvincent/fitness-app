@@ -18,7 +18,7 @@ val AbsExerciseList = listOf(
     ExerList(title = "BURPEES", R.raw.burpee, time = 90,route = CategoryRoute.ABS.name),
     ExerList(title = "LEG RAISES", R.raw.leg, time = 45,route = CategoryRoute.ABS.name),
     ExerList(title = "SQUATS", R.raw.squats, time = 30,route = CategoryRoute.ABS.name),
-    ExerList(title = "FLUTTER KICKS", R.raw.flutter, time = 90,route = CategoryRoute.ABS.name),
+    ExerList(title = "FLUTTER KICKS", R.raw.flutter, time = 10,route = CategoryRoute.ABS.name),
 
 )
 
