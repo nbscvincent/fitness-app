@@ -729,8 +729,8 @@ fun BmiGraphic(bmi: Float, category: String) {
     val obeseLabel = "Obese"
 
     val underweight = "18.5 Below"
-    val normalWeight = "18.5-25"
-    val overweight = "25-30"
+    val normalWeight = "18.5 - 25"
+    val overweight = "25 - 30"
     val obese = "30 & Above"
 
     Column(modifier = Modifier.fillMaxSize(),horizontalAlignment = Alignment.CenterHorizontally) {
