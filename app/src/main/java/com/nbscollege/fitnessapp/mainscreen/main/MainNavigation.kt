@@ -141,6 +141,14 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
                 composable("AbsDetails/{bid}") { navBackStackEntry ->
                     val bid = navBackStackEntry.arguments?.getString("bid")
+                    BackHandler(enabled = true) {
+                        val currentDestination = navController.currentBackStackEntry?.destination?.route
+                        if (currentDestination?.startsWith("ABS") == true) {
+                            navController.navigate("AbsDetails")
+                        } else {
+                            navController.navigateUp()
+                        }
+                    }
 
                     bid?.let {
                         AbsScreen(navController = navController, index = bid.toInt())

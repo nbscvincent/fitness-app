@@ -82,6 +82,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                 if (index < AbsExerciseList.size - 1) {
                     navController.navigate("AbsDetails/${index + 1}")
 
+
                 } else {
                     openAlertDialog.value = true
 
@@ -346,6 +347,7 @@ fun AbsScreen(navController: NavController, index: Int) {
         AlertDialog(
             onDismissRequest = {
                 navController.navigate("ABS")
+                navController.popBackStack("AbsDetails", inclusive = true)
                 openAlertDialog.value = false
             },
             title = {
@@ -366,6 +368,7 @@ fun AbsScreen(navController: NavController, index: Int) {
                     onClick = {
                         // Navigate to "ABS" when confirmed
                         navController.navigate("ABS")
+                        navController.popBackStack("AbsDetails", inclusive = true)
                         openAlertDialog.value = false
                     },
                     colors = ButtonDefaults.buttonColors(contentColor = Color.Gray),
