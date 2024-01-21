@@ -11,7 +11,7 @@ data class User(
     var password: String,
     val weight: Float,
     val height: Float,
-    val age: Int
+    val age: Int,
 )
 
 object LoggedInUserHolder {

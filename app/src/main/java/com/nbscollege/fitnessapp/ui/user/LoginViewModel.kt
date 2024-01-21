@@ -66,7 +66,8 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
                     password = user.password,
                     weight = user.weight,
                     height = user.height,
-                    age = user.age
+                    age = user.age,
+
                 )
                 LoggedInUserHolder.setLoggedInUser(loggedInUser)
 
