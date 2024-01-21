@@ -187,12 +187,12 @@ fun ProfileScreen(
                                     )
                                     Box(
                                         modifier = Modifier
-                                            .background(Color.Gray)
+                                            .background(Color.LightGray)
                                             .width(1.dp)
                                             .fillMaxHeight()
                                     )
                                     Text(
-                                        "${user.weight.toInt()}kg\nWeight",
+                                        "${user.weight.toInt()} kg\nWeight",
                                         color = Color.Black,
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
@@ -203,12 +203,12 @@ fun ProfileScreen(
                                     )
                                     Box(
                                         modifier = Modifier
-                                            .background(Color.Gray)
+                                            .background(Color.LightGray)
                                             .width(1.dp)
                                             .fillMaxHeight()
                                     )
                                     Text(
-                                        "${user.height.toInt()}cm\nHeight",
+                                        "${user.height.toInt()} cm\nHeight",
                                         color = Color.Black,
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
