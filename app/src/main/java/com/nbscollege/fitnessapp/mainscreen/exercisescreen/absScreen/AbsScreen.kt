@@ -21,8 +21,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -118,22 +118,27 @@ fun AbsScreen(navController: NavController, index: Int) {
 
     Scaffold(
         topBar = {
-            SmallFloatingActionButton(
+            IconButton(
                 onClick = {
-                    navController.popBackStack("HomeScreen",inclusive = false)
+                    navController.navigate("ABS") {
+                        // Clear the back stack up to AbsDetails screen (inclusive)
+                        popUpTo("ABS") {
+                            inclusive = true
+                        }
+                    }
                 },
-                containerColor = Color.Transparent,
                 modifier = Modifier
                     .padding(start = 5.dp, end = 5.dp)
                     .zIndex(3f)
-
             ) {
                 Icon(
-                    Icons.Filled.KeyboardArrowLeft, "Back",
+                    Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "Back",
                     modifier = Modifier.size(40.dp),
-                    tint = Color.White
+                    tint = Color.Black
                 )
             }
+
 
 
             Column(

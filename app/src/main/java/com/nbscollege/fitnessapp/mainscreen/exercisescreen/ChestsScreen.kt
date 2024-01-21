@@ -13,11 +13,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,6 +45,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import androidx.wear.compose.material.ExperimentalWearMaterialApi
 import com.airbnb.lottie.compose.LottieAnimation
@@ -113,6 +118,27 @@ fun ChestScreen(navController: NavController, index: Int) {
 
     Scaffold(
         topBar = {
+
+            IconButton(
+                onClick = {
+                    navController.navigate("ABS") {
+                        // Clear the back stack up to AbsDetails screen (inclusive)
+                        popUpTo("ABS") {
+                            inclusive = true
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .padding(start = 5.dp, end = 5.dp)
+                    .zIndex(3f)
+            ) {
+                Icon(
+                    Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "Back",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
+                )
+            }
 
             Column(
                 modifier = Modifier.height(150.dp),
