@@ -189,7 +189,7 @@ fun ProfileScreen(
                                             .fillMaxHeight()
                                     )
                                     Text(
-                                        "${user.weight}\nWeight",
+                                        "${user.weight.toInt()}kg\nWeight",
                                         color = Color.Black,
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
@@ -204,7 +204,7 @@ fun ProfileScreen(
                                             .fillMaxHeight()
                                     )
                                     Text(
-                                        "${user.height}\nHeight",
+                                        "${user.height.toInt()}cm\nHeight",
                                         color = Color.Black,
                                         fontSize = 20.sp,
                                         fontWeight = FontWeight.Medium,
