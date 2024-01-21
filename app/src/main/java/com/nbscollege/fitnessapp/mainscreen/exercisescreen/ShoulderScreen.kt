@@ -75,7 +75,7 @@ fun ShoulderScreen(navController: NavController, index: Int) {
                 if (index < ShoulderExerciseList.size - 1) {
                     navController.navigate("ShoulderDetails/${index + 1}")
                 } else {
-                    navController.navigate("ExerciseList")
+                    navController.navigate("SHOULDER")
                 }
             }
         }

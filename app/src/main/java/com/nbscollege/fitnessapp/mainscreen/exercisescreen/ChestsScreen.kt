@@ -76,7 +76,7 @@ fun ChestScreen(navController: NavController, index: Int) {
                 if (index < ChestExerciseList.size - 1) {
                     navController.navigate("ChestDetails/${index + 1}")
                 } else {
-                    navController.navigate("ExerciseList")
+                    navController.navigate("CHEST")
                 }
             }
         }

@@ -76,7 +76,7 @@ fun ArmScreen(navController: NavController, index: Int) {
                 if (index < ArmExerciseList.size - 1) {
                     navController.navigate("ArmDetails/${index + 1}")
                 } else {
-                    navController.navigate("ExerciseList")
+                    navController.navigate("ARM")
                 }
             }
         }
