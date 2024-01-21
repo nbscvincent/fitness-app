@@ -1,6 +1,7 @@
 package com.nbscollege.fitnessapp
 
 
+//import com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.Toast
@@ -16,19 +17,16 @@ import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
 import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
-
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.LegExerciseList
 import com.nbscollege.fitnessapp.mainscreen.categorycard.ShoulderExerciseList
-
-//import com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ArmScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ChestScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.LegScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.ShoulderScreen
 import com.nbscollege.fitnessapp.mainscreen.exercisescreen.absScreen.AbsScreen
-import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.GeneralSettings
+import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingcard.sendFeedback
 import com.nbscollege.fitnessapp.model.ProfileScreen
 import com.nbscollege.fitnessapp.model.homescreen
 import com.nbscollege.fitnessapp.model.settingscreen
@@ -142,6 +140,14 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
                 composable("AbsDetails/{bid}") { navBackStackEntry ->
                     val bid = navBackStackEntry.arguments?.getString("bid")
+                    BackHandler(enabled = true) {
+                        val currentDestination = navController.currentBackStackEntry?.destination?.route
+                        if (currentDestination?.startsWith("AbsDetails/") == true) {
+                            navController.navigate("ABS")
+                        } else {
+                            navController.navigateUp()
+                        }
+                    }
 
                     bid?.let {
                         AbsScreen(navController = navController, index = bid.toInt())
@@ -151,6 +157,7 @@ fun mainNavigation(navController: NavController, screenViewModel: ScreenViewMode
 
 
             composable(route = CategoryRoute.CHEST.name) { backStackEntry ->
+
 
                 ChestExerciseList(navController)
                 showBottomBar = false

@@ -6,16 +6,26 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,6 +73,9 @@ fun AbsScreen(navController: NavController, index: Int) {
     var progress by remember { mutableFloatStateOf(1f) }
 
 
+    var openAlertDialog = remember { mutableStateOf(false) }
+
+
 
 
     val countDownTimer = remember {
@@ -76,8 +89,10 @@ fun AbsScreen(navController: NavController, index: Int) {
             override fun onFinish() {
                 if (index < AbsExerciseList.size - 1) {
                     navController.navigate("AbsDetails/${index + 1}")
+
                 } else {
-                    navController.navigate("ABS")
+                    openAlertDialog.value = true
+
                 }
             }
         }
@@ -333,7 +348,64 @@ fun AbsScreen(navController: NavController, index: Int) {
             }
         }
     }
+
+
+    if (openAlertDialog.value) {
+        AlertDialog(
+            onDismissRequest = {
+                // Do nothing if dismissed
+            },
+            title = {
+                Text(
+                    text = "Great Job!!!",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp,
+                )
+            },
+            text = {
+                Text(
+                    text = "Keep it up!",
+                    fontSize = 16.sp,
+                )
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        // Navigate to "ABS" when confirmed
+                        navController.navigate("ABS")
+                    },
+                    colors = ButtonDefaults.buttonColors(contentColor = LocalContentColor.current),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    Row {
+                        Icon(Icons.Default.Check, contentDescription = null)
+                        Spacer(modifier = Modifier.width(4.dp))
+                    }
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = {
+                        // Navigate to "ABS" when dismissed
+                        navController.navigate("ABS")
+                    },
+                    colors = ButtonDefaults.buttonColors(contentColor = LocalContentColor.current),
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    Row {
+                        Icon(Icons., contentDescription = null)
+                        Spacer(modifier = Modifier.width(4.dp))
+                    }
+                }
+            }
+        )
+    }
+
+
+
 }
+
+
 
 
 
