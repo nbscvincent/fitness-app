@@ -6,6 +6,16 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
+//start
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.unit.dp
+
+//end
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absolutePadding
@@ -14,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -94,7 +105,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             Box(
                 modifier = Modifier
-                    .height(50.dp)
+                    .height(70.dp)
                     .background(Color.White)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
@@ -108,26 +119,25 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 )
             }
 
-            IconButton(
-                onClick = {
-                    navController.navigate("SettingScreen") {
-                        // Clear the back stack up to AbsDetails screen (inclusive)
-                        popUpTo("SettingScreen") {
-                            inclusive = true
-                        }
-                    }
-                },
-                modifier = Modifier
-                    .padding(start = 5.dp, end = 5.dp)
-                    .zIndex(3f)
-            ) {
-                Icon(
-                    Icons.Filled.KeyboardArrowLeft,
-                    contentDescription = "Back",
-                    modifier = Modifier.size(40.dp),
-                    tint = Color.Black
-                )
-            }
+//            IconButton(
+//                onClick = {
+//                    navController.navigate("SettingScreen") {
+//                        popUpTo("SettingScreen") {
+//                            inclusive = true
+//                        }
+//                    }
+//                },
+//                modifier = Modifier
+//                    .padding(start = 5.dp, end = 5.dp)
+//                    .zIndex(3f)
+//            ) {
+//                Icon(
+//                    Icons.Filled.KeyboardArrowLeft,
+//                    contentDescription = "Back",
+//                    modifier = Modifier.size(40.dp),
+//                    tint = Color.Black
+//                )
+//            }
 
         },
         bottomBar = {
@@ -289,12 +299,17 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text("Change Password")
             }
 
+//            Spacer(modifier = Modifier.height(10.dp))
+
 
             Button(
                 onClick = {
                     // Navigate back when the button is clicked
-                    navController.navigate("SettingScreen")                },
-                contentPadding = PaddingValues(16.dp)
+                    navController.navigate("SettingScreen")
+                },
+                modifier = Modifier
+                    .width(190.dp)  // Set a specific width for the button
+                    .padding(16.dp), // Add padding to the button
             ) {
                 Text(text = "Cancel")
             }
