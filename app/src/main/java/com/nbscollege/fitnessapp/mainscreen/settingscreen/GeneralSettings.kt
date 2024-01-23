@@ -227,35 +227,24 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                               .clear()
 //                               .apply()
 
-                           if(newPassword == currentPassword && viewModel.oldPasswordCorrect) {
-                               Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
-                           }
-                           else if (newPassword != confirmPassword) {
-                               Toast.makeText(
-                                   context,
-                                   "please input the same password",
-                                   Toast.LENGTH_SHORT
-                               ).show()
-                           }
-                           else {
                                    showDialogConfirmation = true
-                               }
 
 
 
-
-                       }
-//                       else if (newPassword.isEmpty() && currentPassword.isEmpty()) {
-//                           currentPasswordError = currentPassword.isEmpty()
-//                           newPasswordError = newPassword.isEmpty()
-//                           confirmPasswordError = confirmPassword.isEmpty()
-//
-//                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
-//
-//                       }
 
 
                        }
+                       else if(newPassword == currentPassword && !viewModel.oldPasswordCorrect) {
+                           Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
+                       }
+                       else if (newPassword != confirmPassword) {
+                           Toast.makeText(
+                               context,
+                               "please input the same password",
+                               Toast.LENGTH_SHORT
+                           ).show()
+                       }
+
                        else {
                            currentPasswordError = currentPassword.isEmpty()
                            newPasswordError = newPassword.isEmpty()
