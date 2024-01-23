@@ -123,8 +123,11 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
 
+
             }
         },
+
+
 
         bottomBar = {
 //            BottomAppBar {
@@ -133,6 +136,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
         }
     )
+
+
 
 
 
@@ -147,10 +152,17 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
         horizontalAlignment = Alignment.CenterHorizontally
         )
 
-
-
-
         {
+
+            Image(
+                painter = painterResource(id = R.drawable.lock),
+                contentDescription = "Change Password Image",
+                modifier = Modifier
+                    .height(150.dp) // Customize the height as needed
+                    .clip(shape = RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.height(20.dp))
 
             Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
@@ -185,9 +197,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text("")
             }
 
+//            Spacer(modifier = Modifier.height(20.dp))
 
-
-            Spacer(modifier = Modifier.height(20.dp))
 
             Text("New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
@@ -311,15 +322,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text(text = "Cancel")
             }
 
-//            Button(
-//                onClick = {
-//                    // Navigate back when the button is clicked
-//                    navController.popBackStack()
-//                },
-//                contentPadding = PaddingValues(16.dp)
-//            ) {
-//                Text(text = "Cancel")
-//            }
 
             if (showDialogConfirmation) {
                 AlertDialog(
