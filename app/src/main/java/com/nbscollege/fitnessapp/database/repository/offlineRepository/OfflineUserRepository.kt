@@ -1,7 +1,8 @@
-package com.nbscollege.fitnessapp.database.repository
+package com.nbscollege.fitnessapp.database.repository.offlineRepository
 
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.dao.UserDao
+import com.nbscollege.fitnessapp.database.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 

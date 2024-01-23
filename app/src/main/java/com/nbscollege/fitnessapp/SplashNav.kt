@@ -64,7 +64,7 @@ fun SplashNav(screenViewModel: ScreenViewModel) {
             exit = false
         }
     }
-    
+
     Scaffold {
         NavHost(navController = navController, startDestination = Auth.Splash.name) {
             composable(route = Auth.Splash.name) {

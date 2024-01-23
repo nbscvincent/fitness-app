@@ -50,26 +50,4 @@ fun SplashLoading(
         )
     }
 
-
-//    if (state.value) {
-//
-//        navController.navigate(Auth.LogInScreen.name)
-//    } else {
-//        Column(
-//            verticalArrangement = Arrangement.Center,
-//            horizontalAlignment = Alignment.CenterHorizontally,
-//            modifier = Modifier.fillMaxSize()
-//        ) {
-//            Image(
-//                modifier = Modifier.size(300.dp),
-//                painter = painterResource(id = R.drawable.fitness_logo),
-//                contentDescription = "NBS LOGO"
-//            )
-//            Box(Modifier.height(25.dp))
-//            CircularProgressIndicator(
-//                modifier = Modifier.width(64.dp),
-//                color = MaterialTheme.colorScheme.surfaceVariant,
-//            )
-//        }
-//    }
 }

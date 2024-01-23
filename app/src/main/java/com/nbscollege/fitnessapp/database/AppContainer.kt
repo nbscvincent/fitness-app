@@ -2,8 +2,8 @@ package com.nbscollege.fitnessapp.database
 
 import android.content.Context
 import com.nbscollege.fitnessapp.database.repository.CategoryRepository
-import com.nbscollege.fitnessapp.database.repository.OfflineCategoryRepository
-import com.nbscollege.fitnessapp.database.repository.OfflineUserRepository
+import com.nbscollege.fitnessapp.database.repository.offlineRepository.OfflineCategoryRepository
+import com.nbscollege.fitnessapp.database.repository.offlineRepository.OfflineUserRepository
 import com.nbscollege.fitnessapp.database.repository.UserRepository
 
 
