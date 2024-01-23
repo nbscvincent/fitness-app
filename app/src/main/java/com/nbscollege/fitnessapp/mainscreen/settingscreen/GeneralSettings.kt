@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.AlertDialog
@@ -30,9 +32,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -41,6 +43,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
@@ -90,21 +93,40 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
     Scaffold(
         topBar = {
 
-            Box(
-                modifier = Modifier
-                    .height(50.dp)
-                    .background(Color.White)
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = "Change Password",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
-                    color = Color.Black,
-                    modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
-                )
 
+            IconButton(
+                onClick = {
+                    navController.popBackStack("Settings",inclusive = true)
+                },
+                modifier = Modifier
+                    .padding(start = 5.dp, end = 5.dp)
+                    .zIndex(2f)
+            ) {
+                Icon(
+                    Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "Back",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
+                )
             }
+
+                Box(
+                    modifier = Modifier
+                        .height(50.dp)
+                        .background(Color.White)
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Change Password",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 25.sp,
+                        color = Color.Black,
+//                        modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
+                    )
+
+                }
+
 
         },
         bottomBar = {
@@ -117,15 +139,18 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+                horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp, right = 280.dp), fontWeight = FontWeight.Bold)
 
             OutlinedTextField(
 
                 modifier = Modifier
-                    .absolutePadding(left = 20.dp, bottom = 11.dp),
+                    .absolutePadding(left = 20.dp, bottom = 11.dp, right = 20.dp).fillMaxWidth(),
                 isError = currentPasswordError,
 
                 label = { Text("Current Password", fontWeight = FontWeight.Medium) },
@@ -133,7 +158,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 singleLine = true,
                 onValueChange = { currentPassword = it },
                 trailingIcon = {
-
                     IconButton(onClick = { showCurrent = showCurrent != true }) {
                         Icon(
                             if (showCurrent) Icons.Default.Visibility else Icons.Default.VisibilityOff,
@@ -147,21 +171,17 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 shape = RoundedCornerShape(12.dp),
 
             )
-            if (!viewModel.oldPasswordCorrect) {
-                Text("Current password is incorrect", color = Color.Red)
-            } else {
-                Text("")
-            }
+
 
 
 
             Spacer(modifier = Modifier.height(5.dp))
 
-            Text("New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
+            Text("New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp, right = 295.dp), fontWeight = FontWeight.Bold)
 
             OutlinedTextField(
 
-                modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp),
+                modifier = Modifier.absolutePadding(left = 20.dp, bottom = 11.dp, right = 20.dp) .fillMaxWidth(),
                 isError = newPasswordError,
                 label = { Text("New Password", fontWeight = FontWeight.Medium) },
                 value = newPassword,
@@ -184,12 +204,12 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
             Spacer(modifier = Modifier.height(5.dp))
 
-            Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
+            Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp, right = 250.dp), fontWeight = FontWeight.Bold)
 
             OutlinedTextField(
 
                 modifier = Modifier
-                    .absolutePadding(left = 20.dp, bottom = 11.dp),
+                    .absolutePadding(left = 20.dp, bottom = 11.dp , right = 20.dp) .fillMaxWidth(),
                 isError = confirmPasswordError,
                 label = { Text("Confirm Password", fontWeight = FontWeight.Medium) },
                 value = confirmPassword,
@@ -212,6 +232,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Spacer(modifier = Modifier.height(5.dp))
 
             Button(
+                modifier = Modifier.height(40.dp),
                onClick = {
 
 
@@ -219,24 +240,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                        if (currentPassword.isNotEmpty() && newPassword.isNotEmpty()  && confirmPassword.isNotEmpty() &&
                            newPassword == confirmPassword
                                ) {
-                           // Call your ViewModel function to change the password
-//                           viewModel.changePassword(currentPassword, newPassword, navController)
-//                           viewModel.status = false
-//                           val prefer = context.getSharedPreferences("prefs", 0)
-//                           prefer.edit()
-//                               .clear()
-//                               .apply()
-
-                                   showDialogConfirmation = true
 
 
 
+                                showDialogConfirmation = true
 
 
                        }
-                       else if(newPassword == currentPassword && !viewModel.oldPasswordCorrect) {
-                           Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
-                       }
+
                        else if (newPassword != confirmPassword) {
                            Toast.makeText(
                                context,
@@ -261,6 +272,14 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 Text("Change Password")
             }
 
+            Spacer(modifier = Modifier.height(20.dp))
+
+            if (!viewModel.oldPasswordCorrect) {
+                Text("Current password is incorrect", color = Color.Red)
+            } else {
+                Text("")
+            }
+
 
 
             if (showDialogConfirmation) {
@@ -279,14 +298,19 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                         Button(
                             onClick = {
 
+
+
+                                    viewModel.changePassword(currentPassword, newPassword, navController)
+                                    viewModel.status = false
+                                    val prefer = context.getSharedPreferences("prefs", 0)
+                                    prefer.edit()
+                                        .clear()
+                                        .apply()
+                                    showDialogConfirmation = false
+
+
                                 // Call your ViewModel function to change the password
-                                viewModel.changePassword(currentPassword, newPassword, navController)
-                                viewModel.status = false
-                                val prefer = context.getSharedPreferences("prefs", 0)
-                                prefer.edit()
-                                    .clear()
-                                    .apply()
-                                showDialogConfirmation = false
+
 
                             }
                         ) {

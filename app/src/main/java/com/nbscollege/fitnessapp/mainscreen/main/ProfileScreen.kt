@@ -363,10 +363,10 @@ fun ProfileScreen(
                                             "Tis: Focus on a balanced and nutritious diet to ensure you are getting enough calories and essential nutrients.\n" +
                                                     "Include protein-rich foods, healthy fats, and complex carbohydrates in your meals.\n" +
                                                     "Consider consulting with a healthcare professional or a nutritionist to develop a healthy weight gain plan",
-                                            color = Color.Red,
+                                            color = Color.Black,
                                             fontWeight = FontWeight.Bold,
                                             fontSize = 18.sp,
-                                            modifier = Modifier.padding(start = 30.dp, top = 10.dp)
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp, end = 20.dp)
                                         )
 
 
@@ -493,10 +493,10 @@ fun ProfileScreen(
                                             "Tips: Maintain a balanced diet that includes a variety of fruits, vegetables, lean proteins, whole grains, and healthy fats." +
                                                     "Engage in regular physical activity to support overall health and well-being." +
                                                     "Monitor your weight to ensure it stays within the normal BMI range.",
-                                            color = Color.Red,
+                                            color = Color.Black,
                                             fontWeight = FontWeight.Bold,
                                             fontSize = 18.sp,
-                                            modifier = Modifier.padding(start = 30.dp, top = 10.dp)
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp, end = 20.dp)
                                         )
                                         Spacer(modifier = Modifier.height(20.dp))
                                     } else if (bmi < 29.9) {
@@ -587,9 +587,9 @@ fun ProfileScreen(
                                             "Tips: Adopt a well-balanced and portion-controlled diet to manage calorie intake.\n" +
                                                     "Increase physical activity levels with a mix of cardiovascular exercise and strength training.\n" +
                                                     "Consult with a healthcare professional or a registered dietitian for personalized advice and guidance.",
-                                            color = Color.Red,
+                                            color = Color.Black,
                                             fontSize = 18.sp,
-                                            modifier = Modifier.padding(start = 30.dp, top = 10.dp)
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp, end = 20.dp)
                                         )
                                     } else {
                                         Spacer(modifier = Modifier.height(10.dp))
@@ -678,10 +678,10 @@ fun ProfileScreen(
                                             "Tips: Seek professional guidance for a comprehensive weight management plan that includes dietary changes and increased physical activity.\n" +
                                                     "Consider working with a healthcare provider, nutritionist, or weight loss specialist to develop a sustainable and effective approach.\n" +
                                                     "Focus on gradual, sustainable changes rather than extreme or fad diets.",
-                                            color = Color.Red,
+                                            color = Color.Black,
                                             fontSize = 18.sp,
                                             fontWeight = FontWeight.Bold,
-                                            modifier = Modifier.padding(start = 30.dp, top = 10.dp)
+                                            modifier = Modifier.padding(start = 20.dp, top = 10.dp, end = 20.dp)
                                         )
 
 

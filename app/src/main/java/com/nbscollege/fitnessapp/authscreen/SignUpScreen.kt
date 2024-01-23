@@ -27,10 +27,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Height
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.MonitorWeight
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.PlusOne
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -212,7 +212,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                     singleLine = true,
                     trailingIcon = {
                         Icon(
-                            Icons.Rounded.Email,
+                            Icons.Rounded.Person,
                             contentDescription = "newUsername"
                         )
                     },
@@ -394,8 +394,6 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                     weightError = false
                                     heightError = false
                                     ageError = false
-
-
 
                                     Toast.makeText(
                                         context,

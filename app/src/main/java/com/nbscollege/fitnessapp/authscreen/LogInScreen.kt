@@ -25,7 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -138,7 +138,7 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                 onValueChange = { username = it },
                 trailingIcon = {
                     Icon(
-                        Icons.Rounded.Email,
+                        Icons.Rounded.Person,
                         contentDescription = "Username"
                     )
                 },
