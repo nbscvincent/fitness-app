@@ -3,17 +3,21 @@ package com.nbscollege.fitnessapp.mainscreen.settingscreen
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.AlertDialog
@@ -30,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -41,6 +46,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
@@ -83,10 +89,6 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
         mutableStateOf(false)
     }
 
-
-
-
-
     Scaffold(
         topBar = {
 
@@ -94,7 +96,8 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 modifier = Modifier
                     .height(50.dp)
                     .background(Color.White)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = "Change Password",
@@ -103,7 +106,27 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     color = Color.Black,
                     modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
+            }
 
+            IconButton(
+                onClick = {
+                    navController.navigate("SettingScreen") {
+                        // Clear the back stack up to AbsDetails screen (inclusive)
+                        popUpTo("SettingScreen") {
+                            inclusive = true
+                        }
+                    }
+                },
+                modifier = Modifier
+                    .padding(start = 5.dp, end = 5.dp)
+                    .zIndex(3f)
+            ) {
+                Icon(
+                    Icons.Filled.KeyboardArrowLeft,
+                    contentDescription = "Back",
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Black
+                )
             }
 
         },
@@ -117,7 +140,9 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             modifier = Modifier
                 .background(Color.White)
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
             Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
@@ -265,6 +290,24 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             }
 
 
+            Button(
+                onClick = {
+                    // Navigate back when the button is clicked
+                    navController.navigate("SettingScreen")                },
+                contentPadding = PaddingValues(16.dp)
+            ) {
+                Text(text = "Cancel")
+            }
+
+//            Button(
+//                onClick = {
+//                    // Navigate back when the button is clicked
+//                    navController.popBackStack()
+//                },
+//                contentPadding = PaddingValues(16.dp)
+//            ) {
+//                Text(text = "Cancel")
+//            }
 
             if (showDialogConfirmation) {
                 AlertDialog(
