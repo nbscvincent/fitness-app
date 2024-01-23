@@ -2,6 +2,7 @@ package com.nbscollege.fitnessapp.mainscreen.settingscreen
 
 import android.annotation.SuppressLint
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -47,9 +48,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -61,6 +65,7 @@ import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.R
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.LoginViewModel
 import kotlinx.coroutines.launch
@@ -117,35 +122,28 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                     color = Color.Black,
                     modifier = Modifier.graphicsLayer(translationY = 25f, translationX = 30f)
                 )
+
             }
-
-//            IconButton(
-//                onClick = {
-//                    navController.navigate("SettingScreen") {
-//                        popUpTo("SettingScreen") {
-//                            inclusive = true
-//                        }
-//                    }
-//                },
-//                modifier = Modifier
-//                    .padding(start = 5.dp, end = 5.dp)
-//                    .zIndex(3f)
-//            ) {
-//                Icon(
-//                    Icons.Filled.KeyboardArrowLeft,
-//                    contentDescription = "Back",
-//                    modifier = Modifier.size(40.dp),
-//                    tint = Color.Black
-//                )
-//            }
-
         },
+
         bottomBar = {
 //            BottomAppBar {
 //
 //            }
         }
-    ) { innerPadding ->
+    )
+
+    { innerPadding ->
+
+        Image(
+            painter = painterResource(id = R.drawable.lock),
+            contentDescription = "Change Password Image",
+            modifier = Modifier
+                        .fillMaxWidth()
+                .height(200.dp)
+                .clip(shape = RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
+        )
         Column(
             modifier = Modifier
                 .background(Color.White)
