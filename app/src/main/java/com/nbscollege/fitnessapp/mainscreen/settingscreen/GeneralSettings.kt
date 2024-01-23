@@ -155,7 +155,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
 
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
             Text("New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
@@ -182,7 +182,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
                 )
 
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
             Text("Confirm New Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
@@ -209,7 +209,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
                 )
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
             Button(
                onClick = {
@@ -226,13 +226,22 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                           prefer.edit()
 //                               .clear()
 //                               .apply()
+
                            if(newPassword == currentPassword && viewModel.oldPasswordCorrect) {
                                Toast.makeText(context,"password is the same with the current password, Please try again", Toast.LENGTH_SHORT).show()
                            }
-
-                           else {
-                               showDialogConfirmation = true
+                           else if (newPassword != confirmPassword) {
+                               Toast.makeText(
+                                   context,
+                                   "please input the same password",
+                                   Toast.LENGTH_SHORT
+                               ).show()
                            }
+                           else {
+                                   showDialogConfirmation = true
+                               }
+
+
 
 
                        }
@@ -244,8 +253,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //                           Toast.makeText(context,"Pleas fill the text-field", Toast.LENGTH_SHORT).show()
 //
 //                       }
-                       else if (newPassword != confirmPassword){
-                           Toast.makeText(context,"please input the same password", Toast.LENGTH_SHORT).show()
+
 
                        }
                        else {
