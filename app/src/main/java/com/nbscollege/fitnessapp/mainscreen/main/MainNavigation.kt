@@ -15,11 +15,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.nbscollege.fitnessapp.bottomNavBar.BottomNavBar
-import com.nbscollege.fitnessapp.mainscreen.categorycard.AbsExerciseList
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ArmExerciseList
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ChestExerciseList
-import com.nbscollege.fitnessapp.mainscreen.categorycard.LegExerciseList
-import com.nbscollege.fitnessapp.mainscreen.categorycard.ShoulderExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard.AbsExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard.ArmExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard.ChestExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard.LegExerciseList
+import com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard.ShoulderExerciseList
 
 
 

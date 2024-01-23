@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.categorycard
+package com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard
 
 //ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint

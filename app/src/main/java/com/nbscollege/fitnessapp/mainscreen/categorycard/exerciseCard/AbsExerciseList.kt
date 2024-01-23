@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.categorycard
+package com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard
 
 //ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
@@ -54,7 +54,7 @@ import com.nbscollege.fitnessapp.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LegExerciseList (navController: NavController) {
+fun AbsExerciseList (navController: NavController) {
 
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
@@ -122,7 +122,7 @@ fun LegExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "LEG EXERCISES",
+                            text = "ABS EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
@@ -130,7 +130,7 @@ fun LegExerciseList (navController: NavController) {
                         )
                     }
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.AbsExerciseList.forEachIndexed { index, exercise ->
                             val composition by rememberLottieComposition(
                                 spec = LottieCompositionSpec.RawRes(
                                     exercise.animation
@@ -168,55 +168,55 @@ fun LegExerciseList (navController: NavController) {
 
                                             )
 
-                                        Button(
-                                            onClick = {
-                                                navController.navigate("LegDetails/$index")
-                                            },
-                                            shape = RoundedCornerShape(1.dp),
+                                    Button(
+                                        onClick = {
+                                            navController.navigate("AbsDetails/$index")
+                                        },
+                                        shape = RoundedCornerShape(1.dp),
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .clip(RoundedCornerShape(16.dp))
+                                            .height(90.dp),
+                                        colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                    ) {
+
+                                        Column(
                                             modifier = Modifier
-                                                .fillMaxWidth()
-                                                .clip(RoundedCornerShape(16.dp))
-                                                .height(90.dp),
-                                            colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
+                                                .fillMaxSize()
+                                                .padding(1.dp),
+                                            verticalArrangement = Arrangement.Center
                                         ) {
+                                            Text(
+                                                text = exercise.title,
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier,
+                                                textAlign = TextAlign.Center
+                                            )
 
-                                            Column(
-                                                modifier = Modifier
-                                                    .fillMaxSize()
-                                                    .padding(1.dp),
-                                                verticalArrangement = Arrangement.Center
-                                            ) {
-                                                Text(
-                                                    text = exercise.title,
-                                                    color = Color.Black,
-                                                    fontWeight = FontWeight.Bold,
-                                                    modifier = Modifier,
-                                                    textAlign = TextAlign.Center
+                                            Text(
+
+                                                "${exercise.time} Seconds",
+                                                color = Color.Black,
+                                                fontWeight = FontWeight.Bold,
+                                                modifier = Modifier,
+                                                textAlign = TextAlign.Center,
+
                                                 )
-
-                                                Text(
-
-                                                    "${exercise.time} Seconds",
-                                                    color = Color.Black,
-                                                    fontWeight = FontWeight.Bold,
-                                                    modifier = Modifier,
-                                                    textAlign = TextAlign.Center,
-
-                                                    )
-
-                                            }
-
 
                                         }
 
 
                                     }
 
+
                                 }
 
                             }
-                            Spacer(modifier = Modifier.height(20.dp))
+
                         }
+                            Spacer(modifier = Modifier.height(20.dp))
+                    }
 
                     }
 

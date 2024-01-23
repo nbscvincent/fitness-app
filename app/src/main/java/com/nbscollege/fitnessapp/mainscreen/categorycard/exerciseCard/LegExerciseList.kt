@@ -1,4 +1,4 @@
-package com.nbscollege.fitnessapp.mainscreen.categorycard
+package com.nbscollege.fitnessapp.mainscreen.categorycard.exerciseCard
 
 //ExerciseList is now = to AbsExerciseList
 import android.annotation.SuppressLint
@@ -54,7 +54,7 @@ import com.nbscollege.fitnessapp.R
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ShoulderExerciseList (navController: NavController) {
+fun LegExerciseList (navController: NavController) {
 
     val state = rememberScrollState()
     LaunchedEffect(Unit) { state.animateScrollTo(100) }
@@ -70,7 +70,7 @@ fun ShoulderExerciseList (navController: NavController) {
 
                 SmallFloatingActionButton(
                     onClick = {
-                        navController.popBackStack("SHOULDER",inclusive = true)
+                        navController.popBackStack("ABS",inclusive = true)
                     },
                     containerColor = Color.Transparent,
                     modifier = Modifier
@@ -122,7 +122,7 @@ fun ShoulderExerciseList (navController: NavController) {
                     item {
                         Spacer(modifier = Modifier.height(20.dp))
                         Text(
-                            text = "SHOULDER & BACK EXERCISES",
+                            text = "LEG EXERCISES",
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black,
@@ -130,7 +130,7 @@ fun ShoulderExerciseList (navController: NavController) {
                         )
                     }
                     item {
-                        com.nbscollege.fitnessapp.mainscreen.dataclass.ShoulderExerciseList.forEachIndexed { index, exercise ->
+                        com.nbscollege.fitnessapp.mainscreen.dataclass.LegExerciseList.forEachIndexed { index, exercise ->
                             val composition by rememberLottieComposition(
                                 spec = LottieCompositionSpec.RawRes(
                                     exercise.animation
@@ -170,7 +170,7 @@ fun ShoulderExerciseList (navController: NavController) {
 
                                         Button(
                                             onClick = {
-                                                navController.navigate("ShoulderDetails/$index")
+                                                navController.navigate("LegDetails/$index")
                                             },
                                             shape = RoundedCornerShape(1.dp),
                                             modifier = Modifier
@@ -221,6 +221,8 @@ fun ShoulderExerciseList (navController: NavController) {
                     }
 
                 }
+
+
 
             }
         }
