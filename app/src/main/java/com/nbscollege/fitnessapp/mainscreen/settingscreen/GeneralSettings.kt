@@ -111,7 +111,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Box(
                 modifier = Modifier
                     .height(70.dp)
-                    .background(Color.Green)
+                    .background(Color.White)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
@@ -145,7 +145,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 
         Column(
             modifier = Modifier
-                .background(Color.Red)
+                .background(Color.White)
                 .fillMaxSize()
                 .padding(1.dp),
         verticalArrangement = Arrangement.Center,
@@ -155,7 +155,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
         {
 
             Image(
-                painter = painterResource(id = R.drawable.lock),
+                painter = painterResource(id = R.drawable.locker),
                 contentDescription = "Change Password Image",
                 modifier = Modifier
                     .height(150.dp) // Customize the height as needed
