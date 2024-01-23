@@ -111,7 +111,7 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
             Box(
                 modifier = Modifier
                     .height(70.dp)
-                    .background(Color.White)
+                    .background(Color.Green)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
@@ -130,28 +130,27 @@ fun GeneralSettings(navController: NavController, backStackEntry: NavBackStackEn
 //            BottomAppBar {
 //
 //            }
+
         }
     )
 
+
+
     { innerPadding ->
 
-        Image(
-            painter = painterResource(id = R.drawable.lock),
-            contentDescription = "Change Password Image",
-            modifier = Modifier
-                        .fillMaxWidth()
-                .height(200.dp)
-                .clip(shape = RoundedCornerShape(8.dp)),
-            contentScale = ContentScale.Crop
-        )
         Column(
             modifier = Modifier
-                .background(Color.White)
+                .background(Color.Red)
                 .fillMaxSize()
-                .padding(innerPadding),
+                .padding(1.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        )
+
+
+
+
+        {
 
             Text("Current Password", modifier = Modifier.absolutePadding(left = 10.dp, bottom = 5.dp))
 
