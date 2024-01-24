@@ -10,9 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Logout
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -63,7 +61,7 @@ fun SettingCardWithLogoutDialog(general: General, navController: NavController, 
                     Icon(
                         imageVector = Icons.Outlined.Logout, // You can use any other icon
                         contentDescription = null,
-                        tint = Color.Red,
+                        tint = Color(0xFFE57373),
                         modifier = Modifier.padding(start = 20.dp, top = 17.dp)
                     )
                     Text(

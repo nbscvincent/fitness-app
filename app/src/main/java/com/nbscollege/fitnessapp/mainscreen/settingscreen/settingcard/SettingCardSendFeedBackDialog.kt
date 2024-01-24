@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Feedback
-import androidx.compose.material.icons.outlined.Logout
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -26,7 +25,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 import com.nbscollege.fitnessapp.mainscreen.settingscreen.settingdialog.SendFeedbackDialog
-import com.nbscollege.fitnessapp.navigation.SettingsRoute
 
 @Composable
 fun SettingCardWithSendFeedbackDialog(
@@ -67,7 +65,7 @@ fun SettingCardWithSendFeedbackDialog(
                     Icon(
                         imageVector = Icons.Outlined.Feedback, // You can use any other icon
                         contentDescription = null,
-                        tint = Color.Red,
+                        tint = Color(0xFFE57373),
                         modifier = Modifier.padding(start = 20.dp, top = 17.dp)
                     )
                     Text(

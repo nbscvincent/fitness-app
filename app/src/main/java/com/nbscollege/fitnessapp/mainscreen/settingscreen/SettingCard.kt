@@ -3,38 +3,25 @@ package com.nbscollege.fitnessapp.mainscreen.settingscreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-
-import androidx.compose.material3.Text
-
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-
-
-import com.nbscollege.fitnessapp.mainscreen.dataclass.General
-
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Lock
-import androidx.compose.material.icons.outlined.StarOutline
-
-
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.nbscollege.fitnessapp.mainscreen.dataclass.General
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -68,7 +55,7 @@ fun SettingCard(general: General, navController: NavController) {
                     Icon(
                         imageVector = Icons.Outlined.Lock, // You can use any other icon
                         contentDescription = null,
-                        tint = Color.Red,
+                        tint = Color(0xFFE57373),
                         modifier = Modifier.padding(start = 20.dp, top = 17.dp)
                     )
                     Text(
