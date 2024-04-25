@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import com.nbscollege.fitnessapp.authscreen.model.LoggedInUserHolder
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.database.repository.onlineRepository.OnlineUserRepository
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,7 +19,7 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 
-class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
+class LoginViewModel(private val userRepository: UserRepository, private val onlineUserRepository: OnlineUserRepository) : ViewModel() {
 
     // State for UI to observe
     private val _loginState = MutableStateFlow<LoginState>(LoginState.Initial)
@@ -56,7 +57,7 @@ class LoginViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun login(username: String, password: String) {
         viewModelScope.launch {
             // Perform authentication logic here
-            val user = userRepository.getUserStream(username).firstOrNull()
+            val user = userRepository.getUserStream(username, password).firstOrNull()
 
             if (user != null && user.password == password) {
                 _loginState.value = LoginState.Success(user)
