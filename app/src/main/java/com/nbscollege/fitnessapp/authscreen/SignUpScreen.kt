@@ -72,7 +72,9 @@ import com.nbscollege.fitnessapp.dialog.AlertDialogExample
 import com.nbscollege.fitnessapp.ui.AppViewModelProvider
 import com.nbscollege.fitnessapp.ui.user.RegistrationViewModel
 import com.nbscollege.fitnessapp.ui.user.UserDetails
+
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -131,29 +133,65 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 ageError = false
 
                 coroutineScope.launch {
-                    var userUiState = viewModel.userUiState
+                    var saveData = 'N'
+                    val check = viewModel.selectUser(username,password)
 
-                    userUiState.userDetails = UserDetails(
-                        username = username,
-                        password = password,
-                        height = height.toFloatOrNull()!!,
-                        weight = weight.toFloatOrNull()!!,
-                        age = age.toInt()
-                    )
 
-                    viewModel.saveUser()
-                    Log.i("userUiState", userUiState.userDetails.toString())
-                    navController.navigate(Auth.LogInScreen.name)
+
+
+
+
+
+                    if (check != null) {
+                        check.collect {
+
+                            Timber.i("SAMPLE $it")
+                            if (it == null) {
+                                saveData = 'Y'
+                            }else{
+                                if (it.username.isEmpty() && it.password.isEmpty()){
+                                    saveData = 'Y'
+                                }
+                            }
+
+                            if (saveData == 'Y') {
+
+
+                                val userUiState = viewModel.userUiState
+                                userUiState.userDetails = UserDetails(
+                                    username = username,
+                                    password = password,
+                                    height = height.toFloatOrNull()!!,
+                                    weight = weight.toFloatOrNull()!!,
+                                    age = age.toInt()
+                                )
+
+                                registeredUsers.add(
+                                    User(
+                                        id, username, password,
+                                        weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()
+                                    )
+                                )
+
+                                viewModel.saveUser()
+                                Log.i("userUiState", userUiState.userDetails.toString())
+                                navController.navigate(Auth.LogInScreen.name)
+                            } else {
+
+                                Toast.makeText(
+                                    context,
+                                    "Username already Taken!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+
+                        }
+                    }
 
                 }
 
                 // Add the new user to the list of registered users
-                registeredUsers.add(
-                    User(
-                        id, username, password,
-                        weight.toFloatOrNull()!!, height.toFloatOrNull()!!, age.toInt()
-                    )
-                )
+
 //                navController.navigate(Auth.LogInScreen.name) // Add logic here to handle confirmation.
 
 
@@ -379,13 +417,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                 ) {
                     Button(
                         onClick = {
-//                        coroutineScope.launch {
-//                            var userUiState = viewModel.userUiState
-//                            userUiState.userDetails
-//                                UserDetails(username = username, password = password)
-//                            viewModel.saveUser()
-//                            Log.i("userUiState", userUiState.userDetails.toString())
-//                        }
+
                             if (username.isNotEmpty() && password.isNotEmpty() && weight.isNotEmpty() && height.isNotEmpty() && confirmPassword.isNotEmpty() && age.isNotEmpty() && password == confirmPassword) {
                                 // Check if the username is already taken
                                 if (registeredUsers.any { it.username == username }) {
@@ -423,6 +455,7 @@ fun SignUpScreen(navController: NavController, viewModel: RegistrationViewModel 
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
+
                         },
 
 

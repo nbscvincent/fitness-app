@@ -25,7 +25,16 @@ class ScreenViewModel() : ViewModel() {
     private val _isProgressVisible = MutableStateFlow(false)
     val isProgressVisible: StateFlow<Boolean> = _isProgressVisible.asStateFlow()
 
+    private val _loading = MutableStateFlow(true)
+    val loading = _loading.asStateFlow()
+    private val _uiState = MutableStateFlow(ScreenUiState())
 
+    private val _isLogin = MutableStateFlow(false)
+    val isLogin = _isLogin.asStateFlow()
+
+    fun setLogin(){
+        _isLogin.value = true;
+    }
     fun resetLogoutUser() {
         _isLoggedOut.value = false
     }
@@ -80,3 +89,9 @@ class ScreenViewModel() : ViewModel() {
 
 }
 
+data class ScreenUiState(
+    /** Name of selectedScreen screen */
+
+    /** Name of selected screen */
+    val selectedScreen: String = "",
+)

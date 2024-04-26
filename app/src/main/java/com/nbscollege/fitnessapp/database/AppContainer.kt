@@ -12,6 +12,7 @@ interface AppContainer {
     val userRepository: UserRepository
     val categoryRepository: CategoryRepository
     val onlineUserRepository: OnlineUserRepository
+    
 
 
 

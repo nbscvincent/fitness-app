@@ -13,11 +13,11 @@ object AppViewModelProvider {
     val Factory = viewModelFactory {
         // Initializer for RegistrationViewModel
         initializer {
-            RegistrationViewModel(FitnessApp().container.userRepository)
+            RegistrationViewModel(FitnessApp().container.userRepository, FitnessApp().container.onlineUserRepository)
         }
         // Initializer for RegistrationViewModel
         initializer {
-            RegistrationViewModel(FitnessApp().container.userRepository)
+            RegistrationViewModel(FitnessApp().container.userRepository, FitnessApp().container.onlineUserRepository)
         }
 
         initializer {

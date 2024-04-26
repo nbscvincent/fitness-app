@@ -6,8 +6,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
+import com.nbscollege.fitnessapp.database.repository.onlineRepository.OnlineUserRepository
+import kotlinx.coroutines.flow.Flow
+import timber.log.Timber
 
-class RegistrationViewModel(private val userRepository: UserRepository) : ViewModel() {
+class RegistrationViewModel(private val userRepository: UserRepository, private val onlineUserRepository: OnlineUserRepository) : ViewModel() {
 
     /**
      * Holds current user ui state
@@ -27,7 +30,8 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
      */
     suspend fun saveUser() {
         if (validateInput()) {
-            userRepository.insertUser(userUiState.userDetails.toUser())
+            userRepository.insertUser(userUiState.userDetails.toUser()) ; onlineUserRepository.insertUser(userUiState.userDetails.toUser())
+
         }
     }
     private fun validateInput(uiState: UserDetails = userUiState.userDetails): Boolean {
@@ -35,7 +39,22 @@ class RegistrationViewModel(private val userRepository: UserRepository) : ViewMo
             username.isNotBlank() && password.isNotBlank()
         }
     }
+
+    suspend fun selectUser(username:String, password: String) : Flow<User?>? {
+
+        var flow : Flow<User?>? = null
+
+        //flow = usersRepository.getUserPasswordStream(userDetails.username, userDetails.password)
+        try {
+            flow = userRepository.getUserStream(username,password); onlineUserRepository.getUserStream(username,password)
+
+        } catch (e: Exception){
+            Timber.i("SAMPLE $e")
+        }
+        return flow
+    }
 }
+
 /**
  * Represents Ui State for an User.
  */
@@ -44,9 +63,9 @@ data class UserUiState(
     val isEntryValid: Boolean = false
 )
 data class UserDetails(
-    val id: Int = 0,
     val username: String = "",
     val password: String = "",
+    val id: Int = 0,
     val weight: Float = 0.00f,
     val height: Float = 0.00f,
     val age: Int = 0

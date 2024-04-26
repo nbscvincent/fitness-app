@@ -34,7 +34,7 @@ class OnlineUserRepository(private val ktorClient: HttpClient = KtorClient() ) :
             setBody(MultiPartFormDataContent(formData {
                 append("type", "login")
                 append("username", username)
-                append("username", password)
+                append("password", password)
             }))
         }
         return flow {
@@ -43,7 +43,23 @@ class OnlineUserRepository(private val ktorClient: HttpClient = KtorClient() ) :
     }
 
     override suspend fun insertUser(user: User) {
-        TODO("Not yet implemented")
+        val cl = ktorClient.request(
+            HttpRoutes.login
+        ) {
+            method = HttpMethod.Post
+            url(HttpRoutes.login)
+            contentType(ContentType.Application.Json)
+            accept(ContentType.Application.Json)
+            setBody(MultiPartFormDataContent(formData {
+                append("type", "save_user")
+                append("username", user.username)
+                append("password", user.password)
+                append("password", user.age)
+                append("password", user.height)
+                append("password", user.id)
+                append("password", user.weight)
+            }))
+        }
     }
 
     override suspend fun deleteUser(user: User) {

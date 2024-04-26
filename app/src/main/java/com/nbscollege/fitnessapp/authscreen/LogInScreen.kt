@@ -239,11 +239,6 @@ fun LoginScreen(navController: NavController, screenViewModel: ScreenViewModel, 
                                     Toast.makeText(context, "Welcome $username!", Toast.LENGTH_SHORT)
                                         .show()
 
-
-
-
-
-
                                     navController.navigate(Routes.MAIN.name)
                                     return@collect
 

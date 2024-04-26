@@ -13,10 +13,12 @@ import com.nbscollege.fitnessapp.authscreen.model.User
 import com.nbscollege.fitnessapp.database.repository.UserRepository
 import com.nbscollege.fitnessapp.database.repository.onlineRepository.OnlineUserRepository
 import com.nbscollege.fitnessapp.navigation.SettingsRoute
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 
 class LoginViewModel(private val userRepository: UserRepository, private val onlineUserRepository: OnlineUserRepository) : ViewModel() {
@@ -28,7 +30,6 @@ class LoginViewModel(private val userRepository: UserRepository, private val onl
     var status by mutableStateOf(false)
     var username by mutableStateOf("")
     var password by mutableStateOf("")
-
 
 
     var oldPasswordCorrect by mutableStateOf(true)
@@ -52,12 +53,14 @@ class LoginViewModel(private val userRepository: UserRepository, private val onl
         }
     }
 
+    var userUiState by mutableStateOf(UserUiState())
+        private set
 
     // Function to perform login
     fun login(username: String, password: String) {
         viewModelScope.launch {
             // Perform authentication logic here
-            val user = userRepository.getUserStream(username, password).firstOrNull()
+            val user = userRepository.getUserStream(username, password).firstOrNull(); onlineUserRepository.getUserStream(username, password)
 
             if (user != null && user.password == password) {
                 _loginState.value = LoginState.Success(user)
@@ -82,6 +85,28 @@ class LoginViewModel(private val userRepository: UserRepository, private val onl
         }
     }
 
+    suspend fun selectUser(userDetails: UserDetails = userUiState.userDetails): Flow<User?>? {
+        var flow : Flow<User?>? = null
+
+        if (validateInput()) {
+            //flow = usersRepository.getUserPasswordStream(userDetails.username, userDetails.password)
+            try {
+                flow = onlineUserRepository.getUserStream(userDetails.username, userDetails.password);
+                userRepository.getUserStream(userDetails.username, userDetails.password)
+            } catch (e: Exception){
+                Timber.i("SAMPLE $e")
+            }
+        }
+        return flow
+    }
+
+
+    private fun validateInput(uiState: UserDetails = userUiState.userDetails): Boolean {
+        return with(uiState) {
+            username.isNotBlank() && password.isNotBlank()
+        }
+    }
+
 
 
 }
@@ -94,3 +119,4 @@ sealed class LoginState {
 
     data class Error(val error: String) : LoginState()
 }
+
