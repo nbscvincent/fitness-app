@@ -26,9 +26,6 @@ class ScreenViewModel() : ViewModel() {
     val isProgressVisible: StateFlow<Boolean> = _isProgressVisible.asStateFlow()
 
 
-
-
-
     fun resetLogoutUser() {
         _isLoggedOut.value = false
     }

@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+    id("kotlinx-serialization")
 }
 
 android {
@@ -97,6 +99,29 @@ dependencies {
 
 //    lottie ulit pero animation view
 //    implementation ("com.airbnb.android:lottie:4.2.0")
+
+    implementation ("com.jakewharton.timber:timber:5.0.1")
+    // ktor for networking
+    val ktor_version = "2.2.2"
+    implementation ("io.ktor:ktor-client-core:$ktor_version")
+    implementation ("io.ktor:ktor-client-android:$ktor_version")
+    implementation ("io.ktor:ktor-client-serialization:$ktor_version")
+    implementation ("io.ktor:ktor-client-logging:$ktor_version")
+    implementation ("io.ktor:ktor-client-auth:$ktor_version")
+    implementation ("io.ktor:ktor-client-content-negotiation:$ktor_version")
+    implementation ("io.ktor:ktor-server-http-redirect:$ktor_version")
+
+    //Dagger - Hilt
+    implementation ("com.google.dagger:hilt-android:2.45")
+    ksp ("com.google.dagger:hilt-android-compiler:2.45")
+    ksp ("androidx.hilt:hilt-compiler:1.0.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation ("com.google.dagger:dagger-android-support:2.45")
+    implementation( "io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
+    implementation ("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
+
+
 
 
 }

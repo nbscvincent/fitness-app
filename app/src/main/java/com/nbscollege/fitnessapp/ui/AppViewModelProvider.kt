@@ -21,11 +21,11 @@ object AppViewModelProvider {
         }
 
         initializer {
-            LoginViewModel(FitnessApp().container.userRepository)
+            LoginViewModel(FitnessApp().container.userRepository, FitnessApp().container.onlineUserRepository)
 
         }
         initializer {
-            LoginViewModel(FitnessApp().container.userRepository)
+            LoginViewModel(FitnessApp().container.userRepository, FitnessApp().container.onlineUserRepository)
 
         }
 

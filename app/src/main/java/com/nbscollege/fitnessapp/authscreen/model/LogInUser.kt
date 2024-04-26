@@ -2,7 +2,9 @@ package com.nbscollege.fitnessapp.authscreen.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 
+@Serializable
 @Entity(tableName = "user")
 data class User(
     @PrimaryKey(autoGenerate = true)
